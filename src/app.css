@@ -3,3 +3,23 @@
   --black: #232020;
   --white: #fff;
 }
+
+/* Custom Buttons */
+.btn--primary {
+  background-color: var(--primary-color);
+  color: var(--black);
+}
+
+/* Form Styles */
+.form-background {
+  box-shadow: rgb(59 201 219 / 35%) 0px 5px 15px;
+  padding: 3em;
+}
+.login-form {
+  width: 80%;
+  margin: 0 auto;
+}
+.login-form .form-control,
+.register-form .form-control {
+  border: 1px solid var(--primary-color);
+}
