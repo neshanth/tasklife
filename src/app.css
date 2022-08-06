@@ -23,3 +23,26 @@
 .register-form .form-control {
   border: 1px solid var(--primary-color);
 }
+
+/* Sidebar */
+.dashboard {
+  margin-left: 308px;
+}
+
+.sidebar {
+  margin-top: 66px;
+  width: 20% !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    width: 100% !important;
+  }
+  .dashboard {
+    margin: 0;
+  }
+}
+
+.dashboard .close {
+  margin-left: 0;
+}
