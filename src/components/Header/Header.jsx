@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -6,8 +6,13 @@ import Logo from "../../Images/Logo.svg";
 import "./header.css";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import Hamburger from "../Hamburger/Hamburger";
+import UserIcon from "../UserIcon/UserIcon";
+import { UserContext } from "../../context";
 
 function Header() {
+  let authStatus = localStorage.getItem("isAuth");
+  const { handleSidebarToggle } = useContext(UserContext);
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -16,9 +21,18 @@ function Header() {
             <img className="logo" src={Logo} alt="Logo" />
           </Link>
           <Nav className="mr-auto">
-            <Link to="/login">
-              <Button className="btn--primary">Login</Button>
-            </Link>
+            {authStatus === "true" ? (
+              <>
+                <Hamburger handleSidebarToggle={handleSidebarToggle} />
+                <Link to="/dashboard">
+                  <UserIcon className="mx-2" />
+                </Link>
+              </>
+            ) : (
+              <Link to="/login">
+                <Button className="btn--primary">Login</Button>
+              </Link>
+            )}
           </Nav>
         </Container>
       </Navbar>

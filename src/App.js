@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import { Routes, Route } from "react-router-dom";
@@ -8,9 +8,14 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Tasks from "./components/Tasks/Tasks";
 
 function App() {
+  const [show, setShow] = useState(true);
+  const handleSidebarToggle = () => {
+    setShow(!show);
+  };
+
   return (
     <>
-      <Header />
+      <Header show={show} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
