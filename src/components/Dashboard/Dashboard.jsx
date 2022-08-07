@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
+import { UserContext } from "../../context";
 import Sidebar from "../Sidebar/Sidebar";
 import "./dashboard.css";
 
 function Dashboard() {
-  const [show, setShow] = useState(true);
+  const { show, setShow } = useContext(UserContext);
   const handleClose = () => {
     setShow(false);
   };
