@@ -14,6 +14,9 @@ a {
   background-color: var(--primary-color);
   color: var(--black);
 }
+.text--primary {
+  color: var(--primary-color);
+}
 
 /* Form Styles */
 .form-background {
@@ -51,4 +54,8 @@ a {
 
 .btn-close {
   background: url("/public/close.svg") center/1em auto no-repeat;
+}
+
+.logout-btn {
+  margin: 1em 0;
 }

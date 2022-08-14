@@ -7,10 +7,16 @@
   padding: 1em;
   font-size: 1rem;
   font-weight: 700;
+  margin: 1em 0;
+}
+
+.sidebar-link:hover {
+  background-color: var(--white);
 }
 
 .sidebar-link a {
   color: var(--black);
+  display: block;
 }
 
 .sidebar .offcanvas-body {

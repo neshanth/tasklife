@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Logo from "../../Images/Logo.svg";
 import "./header.css";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Hamburger from "../Hamburger/Hamburger";
 import UserIcon from "../UserIcon/UserIcon";
 import { UserContext } from "../../context";
@@ -13,6 +13,9 @@ import { UserContext } from "../../context";
 function Header() {
   let authStatus = localStorage.getItem("isAuth");
   const { handleSidebarToggle } = useContext(UserContext);
+  let location = useLocation();
+  console.log(location.pathname);
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -23,7 +26,7 @@ function Header() {
           <Nav className="mr-auto">
             {authStatus === "true" ? (
               <>
-                <Hamburger handleSidebarToggle={handleSidebarToggle} />
+                {location.pathname !== "/" && <Hamburger handleSidebarToggle={handleSidebarToggle} />}
                 <Link to="/dashboard">
                   <UserIcon className="mx-2" />
                 </Link>
