@@ -1,10 +1,18 @@
-/* .sidebar {
-  margin-top: 66px;
-  width: 20% !important;
+.sidebar .offcanvas-title {
+  color: var(--primary-color);
 }
 
-@media only screen and (max-width: 768px) {
-  .sidebar {
-    width: 100% !important;
-  }
-} */
+.sidebar-link {
+  background-color: var(--primary-color);
+  padding: 1em;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.sidebar-link a {
+  color: var(--black);
+}
+
+.sidebar .offcanvas-body {
+  padding: 0;
+}

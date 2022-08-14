@@ -4,6 +4,11 @@
   --white: #fff;
 }
 
+/* Globals */
+a {
+  text-decoration: none;
+}
+
 /* Custom Buttons */
 .btn--primary {
   background-color: var(--primary-color);
@@ -26,11 +31,12 @@
 
 /* Sidebar */
 .dashboard {
-  margin-left: 308px;
+  margin-left: 400px;
 }
 
 .sidebar {
   margin-top: 66px;
+  background-color: var(--black);
 }
 
 @media only screen and (max-width: 768px) {
@@ -41,4 +47,8 @@
 
 .dashboard .close {
   margin-left: 0;
+}
+
+.btn-close {
+  background: url("/public/close.svg") center/1em auto no-repeat;
 }

@@ -5,7 +5,12 @@ import { UserContext } from "../../context";
 import "./sidebar.css";
 
 function Sidebar({ handleClose }) {
-  const { show } = useContext(UserContext);
+  const { show, setShow } = useContext(UserContext);
+
+  const handleSidebarForMobile = () => {
+    window.innerWidth <= 1024 ? setShow(false) : setShow(true);
+  };
+
   return (
     <>
       <Offcanvas className="sidebar" show={show} onHide={handleClose} backdrop={false}>
@@ -13,7 +18,11 @@ function Sidebar({ handleClose }) {
           <Offcanvas.Title>TaskLife</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Link to="/dashboard/tasks">My Tasks</Link>
+          <div className="sidebar-link">
+            <Link onClick={handleSidebarForMobile} to="/dashboard/tasks">
+              My Tasks
+            </Link>
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </>
