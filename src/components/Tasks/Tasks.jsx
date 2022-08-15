@@ -9,6 +9,7 @@ import TaskItem from "../TaskItem/TaskItem";
 import { useContext } from "react";
 import { UserContext } from "../../context";
 import Spinner from "../Spinner/Spinner";
+import { updateTaskStatusApi } from "../../utils/utils";
 
 function Tasks() {
   const effectRan = useRef(false);
@@ -36,12 +37,26 @@ function Tasks() {
     }
   };
 
+  const updateTaskStatus = async (id) => {
+    try {
+      const updatedTasks = tasks.map((task) => {
+        if (task.id === id) {
+          return { ...task, status: !task.status };
+        } else {
+          return { ...task };
+        }
+      });
+      setTasks([...updatedTasks]);
+      updateTaskStatusApi(id);
+    } catch (err) {}
+  };
+
   if (loading) {
     return <Spinner />;
   }
 
   return (
-    <Container className="my-2">
+    <>
       <h2 className="text-center text--primary my-2">Tasks</h2>
       <Container>
         <Row className="justify-content-center">
@@ -65,11 +80,11 @@ function Tasks() {
         </thead>
         <tbody>
           {tasks.map((task) => {
-            return <TaskItem key={task.id} taskData={task} />;
+            return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} />;
           })}
         </tbody>
       </Table>
-    </Container>
+    </>
   );
 }
 

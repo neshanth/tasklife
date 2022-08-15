@@ -9,11 +9,19 @@ import Tasks from "./components/Tasks/Tasks";
 import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
 import api from "./api/api";
 import { useNavigate } from "react-router-dom";
+import EditTask from "./components/EditTask/EditTask";
 
 function App() {
+  const effectRan = useRef(false);
   let navigate = useNavigate();
+
   useEffect(() => {
-    checkAuth();
+    if (effectRan.current === false) {
+      checkAuth();
+    }
+    return () => {
+      effectRan.current = true;
+    };
   }, []);
 
   const checkAuth = async () => {
@@ -36,6 +44,7 @@ function App() {
         <Route element={<PrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="/dashboard/tasks" element={<Tasks />} />
+            <Route path="/dashboard/tasks/edit/:id" element={<EditTask />} />
           </Route>
         </Route>
       </Routes>

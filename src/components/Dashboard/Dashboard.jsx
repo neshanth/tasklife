@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { UserContext } from "../../context";
 import Sidebar from "../Sidebar/Sidebar";
+import Container from "react-bootstrap/Container";
 import "./dashboard.css";
 
 function Dashboard() {
@@ -12,7 +13,9 @@ function Dashboard() {
   return (
     <div className={`${show ? "dashboard" : "container"}`}>
       <Sidebar show={show} handleClose={handleClose} />
-      <Outlet />
+      <Container className="my-2">
+        <Outlet />
+      </Container>
     </div>
   );
 }

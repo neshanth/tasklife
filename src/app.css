@@ -23,12 +23,14 @@ a {
   box-shadow: rgb(59 201 219 / 35%) 0px 5px 15px;
   padding: 3em;
 }
-.login-form {
+.login-form,
+.custom-form {
   width: 80%;
   margin: 0 auto;
 }
 .login-form .form-control,
-.register-form .form-control {
+.register-form .form-control,
+.custom-form .form-control {
   border: 1px solid var(--primary-color);
 }
 

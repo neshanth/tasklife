@@ -12,4 +12,12 @@ const logout = async () => {
   }
 };
 
-export { logout };
+const updateTaskStatusApi = async (id) => {
+  try {
+    await api.patch(`/api/tasks/status/${id}`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { logout, updateTaskStatusApi };
