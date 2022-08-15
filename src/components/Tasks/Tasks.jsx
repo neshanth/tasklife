@@ -3,26 +3,43 @@ import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import api from "../../api/api";
-import EditIcon from "../Icons/EditIcon";
-import { Link } from "react-router-dom";
+import TaskItem from "../TaskItem/TaskItem";
+import { useContext } from "react";
+import { UserContext } from "../../context";
+import Spinner from "../Spinner/Spinner";
 
 function Tasks() {
+  const effectRan = useRef(false);
   const [tasks, setTasks] = useState([]);
+  const { loading, setLoading } = useContext(UserContext);
 
   useEffect(() => {
-    getTasks();
+    if (effectRan.current === false) {
+      getTasks();
+    }
+    return () => {
+      effectRan.current = true;
+    };
   }, []);
 
   const getTasks = async () => {
+    setLoading(true);
     try {
       const response = await api.get("/api/tasks");
       setTasks([...response.data.tasks]);
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <Container className="my-2">
       <h2 className="text-center text--primary my-2">Tasks</h2>
@@ -48,22 +65,7 @@ function Tasks() {
         </thead>
         <tbody>
           {tasks.map((task) => {
-            return (
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>{task.task}</td>
-                <td>{task.description}</td>
-                <td>{task.due_date}</td>
-                <td>
-                  <Link to="/">
-                    <EditIcon />
-                  </Link>
-                  <Link to="/"></Link>
-                </td>
-              </tr>
-            );
+            return <TaskItem key={task.id} taskData={task} />;
           })}
         </tbody>
       </Table>

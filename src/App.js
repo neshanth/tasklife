@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import { Routes, Route } from "react-router-dom";
@@ -7,8 +7,12 @@ import Register from "./components/Register/Register";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Tasks from "./components/Tasks/Tasks";
 import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
+import { checkAuth } from "./utils/utils";
 
 function App() {
+  // useEffect(() => {
+  //   checkAuth();
+  // }, []);
   return (
     <>
       <Header />

@@ -1,5 +1,4 @@
 import api from "../api/api";
-
 const logout = async () => {
   try {
     let response = await api.post("/api/logout", {});
@@ -12,4 +11,14 @@ const logout = async () => {
   }
 };
 
-export { logout };
+const checkAuth = async () => {
+  try {
+    await api.get("/api/user");
+    localStorage.setItem("isAuth", true);
+  } catch (err) {
+    localStorage.removeItem("isAuth");
+    window.location.pathname = "/login";
+  }
+};
+
+export { logout, checkAuth };

@@ -5,4 +5,19 @@ const api = axios.create({
   withCredentials: true,
 });
 
+api.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    let status = error.response.status;
+
+    if (status === 401 || status === 419) {
+      localStorage.removeItem("isAuth");
+      window.location.pathname = "/login";
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default api;

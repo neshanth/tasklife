@@ -14,8 +14,6 @@ function Header() {
   let authStatus = localStorage.getItem("isAuth");
   const { handleSidebarToggle } = useContext(UserContext);
   let location = useLocation();
-  console.log(location.pathname);
-
   return (
     <>
       <Navbar bg="dark" variant="dark">
