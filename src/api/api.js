@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import history from "../history";
 const api = axios.create({
   baseURL: "http://localhost:8000/",
   withCredentials: true,
@@ -14,7 +14,7 @@ api.interceptors.response.use(
 
     if (status === 401 || status === 419) {
       localStorage.removeItem("isAuth");
-      window.location.pathname = "/login";
+      history.push("/login");
     }
     return Promise.reject(error);
   }
