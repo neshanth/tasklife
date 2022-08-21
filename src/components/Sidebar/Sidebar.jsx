@@ -14,7 +14,7 @@ function Sidebar({ handleClose }) {
 
   return (
     <>
-      <Offcanvas className="sidebar" show={show} onHide={handleClose} backdrop={false}>
+      <Offcanvas className="sidebar" show={show} tabIndex="" onHide={handleClose} backdrop={false}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>TaskLife</Offcanvas.Title>
         </Offcanvas.Header>
