@@ -57,18 +57,7 @@ function Tasks() {
 
   return (
     <>
-      <h2 className="text-center text--primary my-2">Tasks</h2>
-      <Container>
-        <Row className="justify-content-center">
-          <Col lg={3}>
-            <h4>Completed : 4</h4>
-          </Col>
-          <Col lg={3}>
-            <h4>Pending : 5</h4>
-          </Col>
-        </Row>
-      </Container>
-      <Table className="my-2" striped bordered responsive>
+      {/* <Table className="my-2" striped bordered responsive>
         <thead>
           <tr>
             <th></th>
@@ -83,7 +72,10 @@ function Tasks() {
             return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} />;
           })}
         </tbody>
-      </Table>
+      </Table> */}
+      {tasks.map((task) => {
+        return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} />;
+      })}
     </>
   );
 }

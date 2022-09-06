@@ -1,0 +1,59 @@
+.task-item {
+  box-shadow: rgb(59 201 219 / 35%) 0px 5px 15px;
+  padding: 0.5em 0;
+}
+
+.task-status {
+  width: 10%;
+}
+.task-data {
+  width: 60%;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.actions-dropdown {
+  background: none;
+  border: none;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-toggle {
+  background: none !important;
+  border: none !important;
+}
+
+.task-item .dropdown-menu {
+  min-width: 50%;
+  text-align: center;
+}
+
+.form-switch .form-check-input:checked {
+  background-color: var(--primary-color);
+}
+
+.task-name {
+  color: var(--primary-color);
+}
+
+.task-due-date {
+  font-size: 0.8rem;
+}
+.calendar-icon {
+  margin-right: 2%;
+}
+
+@media only screen and (min-width: 768px) {
+  .bi .bi-three-dots {
+    width: 40;
+    height: 40;
+  }
+  .task-name {
+    font-size: 1.5rem;
+  }
+}
