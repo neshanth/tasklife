@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
 import { UserContext } from "../../context";
-import { updateTaskStatusApi } from "../../utils/utils";
 
 const EditTask = () => {
   let { id } = useParams();

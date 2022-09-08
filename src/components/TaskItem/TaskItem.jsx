@@ -6,9 +6,10 @@ import DeleteIcon from "../Icons/DeleteIcon";
 import EditIcon from "../Icons/EditIcon";
 import "./taskitem.css";
 
-const TaskItem = ({ taskData, updateTaskStatus }) => {
+const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
   const { task, description, due_date, id, status } = taskData;
   let todo_date = new Date(due_date);
+
   return (
     <>
       {/* <tr>
@@ -53,9 +54,7 @@ const TaskItem = ({ taskData, updateTaskStatus }) => {
             <Link to={`/dashboard/tasks/edit/${id}`} className="mx-2 d-block my-2">
               <EditIcon />
             </Link>
-            <Link to="/" className="mx-2 my-2 d-block">
-              <DeleteIcon />
-            </Link>
+            <DeleteIcon deleteTask={deleteTask} id={id} />
           </Dropdown.Menu>
         </Dropdown>
       </div>

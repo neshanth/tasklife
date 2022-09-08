@@ -1,8 +1,4 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { useState, useEffect, useRef } from "react";
 import api from "../../api/api";
 import TaskItem from "../TaskItem/TaskItem";
@@ -10,6 +6,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context";
 import Spinner from "../Spinner/Spinner";
 import { updateTaskStatusApi } from "../../utils/utils";
+import { Link } from "react-router-dom";
 
 function Tasks() {
   const effectRan = useRef(false);
@@ -51,31 +48,30 @@ function Tasks() {
     } catch (err) {}
   };
 
+  const handleTaskDelete = async (id) => {
+    try {
+      await api.delete(`/api/tasks/${id}`);
+      const filteredTasks = tasks.filter((task) => task.id !== id);
+      setTasks([...filteredTasks]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   if (loading) {
     return <Spinner />;
   }
 
   return (
     <>
-      {/* <Table className="my-2" striped bordered responsive>
-        <thead>
-          <tr>
-            <th></th>
-            <th className="text-center">Task</th>
-            <th className="text-center">Description</th>
-            <th className="text-center">Due Date</th>
-            <th className="text-center">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tasks.map((task) => {
-            return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} />;
-          })}
-        </tbody>
-      </Table> */}
       {tasks.map((task) => {
-        return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} />;
+        return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />;
       })}
+      <div className="new-btn d-flex justify-content-center">
+        <Link to="/dashboard/tasks/new">
+          <button className="btn btn--primary">New Task</button>
+        </Link>
+      </div>
     </>
   );
 }
