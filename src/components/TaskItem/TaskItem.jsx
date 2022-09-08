@@ -12,37 +12,17 @@ const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
 
   return (
     <>
-      {/* <tr>
-        <td>
-          <input type="checkbox" checked={status} onChange={() => updateTaskStatus(id)} />
-        </td>
-        <td>{task}</td>
-        <td>{description}</td>
-        <td>{due_date}</td>
-        <td className="text-center">
-          <Link to={`/dashboard/tasks/edit/${id}`} className="mx-2">
-            <EditIcon />
-          </Link>
-          <Link to="/" className="mx-2">
-            <DeleteIcon />
-          </Link>
-        </td>
-      </tr> */}
       <div className="task-item my-3 d-flex align-items-baseline justify-content-center">
         <Form className="task-status d-flex align-self-center">
           <Form.Check type="switch" id="status" checked={status} onChange={() => updateTaskStatus(id)} />
         </Form>
         <div className="task-data mx-3">
           <Link to={`/dashboard/tasks/edit/${id}`}>
-            <p className="task-name my-0">{task}</p>
+            <div className="task-date-info d-flex">
+              <p className="task-name my-0">{task}</p>
+              <p className="task-due-date d-flex align-items-center">({todo_date.toLocaleDateString("default", { day: "numeric", month: "short" })})</p>
+            </div>
           </Link>
-          <p className="task-desc my-0">{description}</p>
-          <p className="task-due">
-            <span className="d-inline-block calendar-icon">
-              <CalenderIcon />
-            </span>
-            <span className="task-due-date">{todo_date.toLocaleDateString("default", { day: "numeric", month: "short" })}</span>
-          </p>
         </div>
         <Dropdown className="d-flex mx-2 actions-dropdown align-self-center" autoClose="outside">
           <Dropdown.Toggle id="dropdown-autoclose-true">
@@ -54,7 +34,9 @@ const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
             <Link to={`/dashboard/tasks/edit/${id}`} className="mx-2 d-block my-2">
               <EditIcon />
             </Link>
-            <DeleteIcon deleteTask={deleteTask} id={id} />
+            <span className="d-block my-2">
+              <DeleteIcon className="my-2" deleteTask={deleteTask} id={id} />
+            </span>
           </Dropdown.Menu>
         </Dropdown>
       </div>

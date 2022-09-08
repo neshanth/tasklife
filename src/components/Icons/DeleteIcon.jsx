@@ -1,7 +1,6 @@
 import React from "react";
 
 const DeleteIcon = ({ deleteTask, id }) => {
-  console.log(id);
   return (
     <svg onClick={() => deleteTask(id)} xmlns="http://www.w3.org/2000/svg" aria-label="Delete" width="16" height="16" fill="tomato" className="bi bi-trash2-fill delete-icon" viewBox="0 0 16 16">
       <title>Delete</title>

@@ -43,6 +43,8 @@
 
 .task-due-date {
   font-size: 0.8rem;
+  margin: 0 1em;
+  color: var(--black);
 }
 .calendar-icon {
   margin-right: 2%;
