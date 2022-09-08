@@ -1,13 +1,12 @@
 import React from "react";
-import { Container, Row, Col, Form, Dropdown } from "react-bootstrap";
+import { Form, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import CalenderIcon from "../Icons/CalenderIcon";
 import DeleteIcon from "../Icons/DeleteIcon";
 import EditIcon from "../Icons/EditIcon";
 import "./taskitem.css";
 
 const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
-  const { task, description, due_date, id, status } = taskData;
+  const { task, due_date, id, status } = taskData;
   let todo_date = new Date(due_date);
 
   return (
