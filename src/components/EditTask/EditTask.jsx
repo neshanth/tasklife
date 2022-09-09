@@ -2,15 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import "./editTask.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
 import { UserContext } from "../../context";
 
 const EditTask = () => {
   let { id } = useParams();
-  const [editTask, setEditTask] = useState({ task: "", description: "", due_date: "", status: "", priority: "Medium" });
-
+  const navigate = useNavigate();
+  const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "" });
   const { loading, setLoading } = useContext(UserContext);
   useEffect(() => {
     getTask(id);
@@ -20,8 +20,8 @@ const EditTask = () => {
     setLoading(true);
     try {
       const response = await api.get(`/api/tasks/${id}`);
-      const { task, description, status, due_date, priority } = response.data;
-      setEditTask({ task, description, status, due_date, priority });
+      const { task, status, due_date } = response.data;
+      setEditTask({ task, status, due_date });
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -48,7 +48,9 @@ const EditTask = () => {
     setLoading(true);
     try {
       await api.put(`/api/tasks/${id}`, editTask);
+      setEditTask({ task: "", due_date: "", status: "" });
       setLoading(false);
+      navigate(-1);
     } catch (err) {
       console.log(err);
       setLoading(false);
@@ -66,9 +68,6 @@ const EditTask = () => {
         <Form.Group className="my-4" controlId="task">
           <Form.Control name="task" placeholder="Task" onChange={handleEditTask} value={editTask.task} />
         </Form.Group>
-        <Form.Group className="my-4" controlId="description">
-          <Form.Control as="textarea" name="description" placeholder="Description" value={editTask.description} onChange={handleEditTask} />
-        </Form.Group>
         <Form.Group className="my-4" controlId="due_date">
           <Form.Control type="date" name="due_date" placeholder="Due Date" value={editTask.due_date} onChange={handleEditTask} />
         </Form.Group>
@@ -78,6 +77,9 @@ const EditTask = () => {
         <div className="my-4 d-flex justify-content-center align-items-baseline">
           <Button className="btn--primary mx-2" variant="primary" type="submit">
             Update
+          </Button>
+          <Button onClick={() => navigate("/dashboard/tasks")} className="btn-warning mx-2" variant="primary" type="submit">
+            Back
           </Button>
         </div>
       </Form>
