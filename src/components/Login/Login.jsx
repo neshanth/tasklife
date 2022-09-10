@@ -41,11 +41,14 @@ function Login() {
         .post("/api/login/", { ...loginDetails })
         .then((res) => {
           const { data } = res;
+          const { user } = data;
+          const { name, email, id } = user;
           setLoginDetails({ email: "", password: "" });
           setLoading(false);
           setAuth(true);
           setStatus({ msg: data, status: "success" });
           localStorage.setItem("isAuth", true);
+          localStorage.setItem("user", JSON.stringify({ name, email, id }));
           navigate("/dashboard", { replace: true });
         })
         .catch((err) => {

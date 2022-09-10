@@ -5,6 +5,7 @@ const logout = async () => {
     let response = await api.post("/api/logout", {});
     if (response.status === 200) {
       localStorage.removeItem("isAuth");
+      localStorage.removeItem("user");
       history.push("/");
     }
   } catch (err) {

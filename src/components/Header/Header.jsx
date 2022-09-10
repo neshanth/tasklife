@@ -12,7 +12,7 @@ import { UserContext } from "../../context";
 
 function Header() {
   let authStatus = localStorage.getItem("isAuth");
-  const { handleSidebarToggle } = useContext(UserContext);
+  const { handleSidebarToggle, auth } = useContext(UserContext);
   let location = useLocation();
   return (
     <>
