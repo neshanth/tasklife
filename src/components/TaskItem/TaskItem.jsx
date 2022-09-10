@@ -18,7 +18,10 @@ const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
         <div className="task-data mx-3">
           <Link to={`/dashboard/tasks/edit/${id}`}>
             <div className="task-date-info d-flex">
-              <p className="task-name my-0">{task}</p>
+              <p className="task-name my-0">
+                {task.substring(0, 50)}
+                {task.length > 50 ? "..." : ""}
+              </p>
               <p className="task-due-date d-flex align-items-center">({todo_date.toLocaleDateString("default", { day: "numeric", month: "short" })})</p>
             </div>
           </Link>
