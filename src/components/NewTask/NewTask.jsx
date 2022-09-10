@@ -4,11 +4,16 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import api from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context";
+import { Spinner } from "react-bootstrap";
 
 function NewTask() {
   const [newTask, setNewTask] = useState({ task: "", due_date: "" });
+  const { loading, setLoading } = useContext(UserContext);
 
   const navigate = useNavigate();
+  const userId = JSON.parse(localStorage.getItem("user"));
 
   const handleTaskForm = (e) => {
     const target = e.target;
@@ -22,14 +27,21 @@ function NewTask() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      await api.post(`/api/tasks`, { ...newTask });
+      await api.post(`/api/tasks`, { ...newTask, user_id: userId.id });
+      setLoading(false);
       setNewTask({ task: "", due_date: "" });
       navigate(-1);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <>
