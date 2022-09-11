@@ -70,10 +70,10 @@ function Login() {
           {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} /> : ""}
           <Form className="login-form" onSubmit={handleSubmit}>
             <Form.Group className="my-4" controlId="email">
-              <Form.Control type="email" name="email" placeholder="Email" onChange={handleLoginDetails} value={loginDetails.email} />
+              <Form.Control type="email" name="email" placeholder="Email" onChange={handleLoginDetails} value={loginDetails.email} required />
             </Form.Group>
             <Form.Group className="my-4" controlId="password">
-              <Form.Control type="password" name="password" placeholder="Password" onChange={handleLoginDetails} value={loginDetails.password} />
+              <Form.Control type="password" name="password" placeholder="Password" onChange={handleLoginDetails} value={loginDetails.password} required />
             </Form.Group>
             <div className="my-4 d-flex justify-content-center align-items-baseline">
               <Button className="btn--primary mx-2" variant="primary" type="submit">

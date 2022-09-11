@@ -45,7 +45,8 @@ const EditTask = () => {
     });
   };
 
-  const handleTaskUpdate = async () => {
+  const handleTaskUpdate = async (e) => {
+    e.preventDefault();
     setLoading(true);
     try {
       await api.put(`/api/tasks/${id}`, editTask);

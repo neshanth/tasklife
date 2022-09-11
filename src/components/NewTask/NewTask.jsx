@@ -29,15 +29,12 @@ function NewTask() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     try {
       await api.post(`/api/tasks`, { ...newTask, user_id: userId.id });
-      setLoading(false);
       setNewTask({ task: "", due_date: "" });
       navigate(-1);
     } catch (err) {
       setError([...error, err.response.data.errors]);
-      setLoading(false);
     }
   };
 

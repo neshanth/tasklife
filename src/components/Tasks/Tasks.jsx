@@ -7,11 +7,15 @@ import { UserContext } from "../../context";
 import Spinner from "../Spinner/Spinner";
 import { updateTaskStatusApi } from "../../utils/utils";
 import { Link } from "react-router-dom";
+import Alerts from "../Alerts/Alerts";
+import { Toast, ToastContainer } from "react-bootstrap";
 
 function Tasks() {
   const effectRan = useRef(false);
   const [tasks, setTasks] = useState([]);
   const { loading, setLoading } = useContext(UserContext);
+  const [success, setSuccess] = useState("");
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (effectRan.current === false) {
@@ -49,12 +53,19 @@ function Tasks() {
   };
 
   const handleTaskDelete = async (id) => {
+    setLoading(true);
     try {
-      await api.delete(`/api/tasks/${id}`);
+      const response = await api.delete(`/api/tasks/${id}`);
       const filteredTasks = tasks.filter((task) => task.id !== id);
+      if (response.status === 200) {
+        setSuccess("Task has been Deleted");
+      }
       setTasks([...filteredTasks]);
+      setShow(true);
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
 
@@ -64,6 +75,11 @@ function Tasks() {
 
   return (
     <>
+      <ToastContainer position="top-end">
+        <Toast bg="success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
+          <Toast.Body> {success}</Toast.Body>
+        </Toast>
+      </ToastContainer>
       {tasks.map((task) => {
         return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />;
       })}
