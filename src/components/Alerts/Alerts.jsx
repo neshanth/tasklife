@@ -7,7 +7,7 @@ function Alerts({ text, variant }) {
   if (show) {
     return (
       <Alert variant={variant} onClose={() => setShow(false)} dismissible>
-        <Alert.Heading>{text}</Alert.Heading>
+        {text}
       </Alert>
     );
   }

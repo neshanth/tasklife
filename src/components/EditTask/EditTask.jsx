@@ -6,11 +6,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
 import { UserContext } from "../../context";
+import Alerts from "../Alerts/Alerts";
 
 const EditTask = () => {
   let { id } = useParams();
   const navigate = useNavigate();
   const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "" });
+  const [error, setError] = useState([]);
   const { loading, setLoading } = useContext(UserContext);
   useEffect(() => {
     getTask(id);
@@ -24,7 +26,6 @@ const EditTask = () => {
       setEditTask({ task, status, due_date });
       setLoading(false);
     } catch (err) {
-      console.log(err);
       setLoading(false);
     }
   };
@@ -53,6 +54,7 @@ const EditTask = () => {
       navigate(-1);
     } catch (err) {
       console.log(err);
+      setError([...error, err.response.data.errors]);
       setLoading(false);
     }
   };
@@ -66,11 +68,13 @@ const EditTask = () => {
       <h2 className="my-2 text-center text--primary">Edit Task</h2>
       <Form className="custom-form edit-form" onSubmit={handleTaskUpdate}>
         <Form.Group className="my-4" controlId="task">
-          <Form.Control name="task" placeholder="Task" onChange={handleEditTask} value={editTask.task} />
+          <Form.Control name="task" placeholder="Task" onChange={handleEditTask} value={editTask.task} required />
         </Form.Group>
+        {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts text={error[0].task[0]} variant="danger" /> : ""}
         <Form.Group className="my-4" controlId="due_date">
-          <Form.Control type="date" name="due_date" placeholder="Due Date" value={editTask.due_date} onChange={handleEditTask} />
+          <Form.Control type="date" name="due_date" placeholder="Due Date" value={editTask.due_date} onChange={handleEditTask} required />
         </Form.Group>
+        {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
         <Form.Group className="my-4" controlId="status">
           <Form.Check type="checkbox" name="status" checked={editTask.status} onChange={handleEditTask} label="Status" />
         </Form.Group>
