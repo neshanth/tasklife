@@ -1,0 +1,18 @@
+.rounded-bar {
+  background-color: red;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inner-number {
+  width: 115px;
+  height: 115px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
