@@ -52,7 +52,7 @@ const EditTask = () => {
       await api.put(`/api/tasks/${id}`, editTask);
       setEditTask({ task: "", due_date: "", status: "" });
       setLoading(false);
-      navigate(-1);
+      navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been updated" } });
     } catch (err) {
       console.log(err);
       setError([...error, err.response.data.errors]);

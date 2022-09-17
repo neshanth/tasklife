@@ -6,9 +6,9 @@ import { useContext } from "react";
 import { UserContext } from "../../context";
 import Spinner from "../Spinner/Spinner";
 import { updateTaskStatusApi } from "../../utils/utils";
-import { Link } from "react-router-dom";
-import Alerts from "../Alerts/Alerts";
+import { Link, useLocation } from "react-router-dom";
 import { Toast, ToastContainer } from "react-bootstrap";
+import "./tasks.css";
 
 function Tasks() {
   const effectRan = useRef(false);
@@ -16,10 +16,16 @@ function Tasks() {
   const { loading, setLoading } = useContext(UserContext);
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     if (effectRan.current === false) {
       getTasks();
+
+      if (location.state !== null) {
+        setShow(true);
+        setSuccess(location.state.msg);
+      }
     }
     return () => {
       effectRan.current = true;
@@ -76,17 +82,28 @@ function Tasks() {
   return (
     <>
       <ToastContainer position="top-end">
-        <Toast bg="success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
+        <Toast
+          bg="success"
+          onClose={() => {
+            setShow(false);
+            window.history.replaceState({}, document.title);
+          }}
+          show={show}
+          delay={3000}
+          autohide
+        >
           <Toast.Body> {success}</Toast.Body>
         </Toast>
       </ToastContainer>
-      {tasks.map((task) => {
-        return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />;
-      })}
-      <div className="new-btn d-flex justify-content-center">
-        <Link to="/dashboard/tasks/new">
-          <button className="btn btn--primary">New Task</button>
-        </Link>
+      <div className="tasks-wrapper">
+        {tasks.map((task) => {
+          return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />;
+        })}
+        <div className="new-btn d-flex justify-content-center">
+          <Link to="/dashboard/tasks/new">
+            <button className="btn btn--primary">New Task</button>
+          </Link>
+        </div>
       </div>
     </>
   );

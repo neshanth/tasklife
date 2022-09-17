@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import api from "../../api/api";
 import Alerts from "../Alerts/Alerts";
-
+import bcrypt from "bcryptjs";
 function Register() {
   const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
   const [loading, setLoading] = useState(false);
@@ -33,6 +33,7 @@ function Register() {
   };
 
   const handleSubmit = async (e) => {
+    let salt = bcrypt.genSaltSync(10);
     e.preventDefault();
     if (registerDetails.password !== registerDetails.password_confirmation) {
       setConfirmPass("Passwords Do not Match");

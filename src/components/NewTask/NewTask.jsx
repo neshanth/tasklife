@@ -32,7 +32,7 @@ function NewTask() {
     try {
       await api.post(`/api/tasks`, { ...newTask, user_id: userId.id });
       setNewTask({ task: "", due_date: "" });
-      navigate(-1);
+      navigate("/dashboard/tasks", { state: { show: true, msg: "New Task has been Added" } });
     } catch (err) {
       setError([...error, err.response.data.errors]);
     }
