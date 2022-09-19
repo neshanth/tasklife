@@ -1,0 +1,19 @@
+.stat-name {
+  color: var(--primary-color);
+  letter-spacing: 0.2rem;
+}
+.stat-card {
+  background-color: var(--black);
+  padding: 1em 0;
+  text-transform: uppercase;
+}
+.stat {
+  color: var(--white);
+  font-size: 2rem;
+}
+.completed {
+  color: #00fca4;
+}
+.pending {
+  color: #fc0022;
+}

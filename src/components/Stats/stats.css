@@ -1,5 +1,4 @@
 .rounded-bar {
-  background-color: red;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -10,9 +9,29 @@
 .inner-number {
   width: 115px;
   height: 115px;
-  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  background-color: var(--black);
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+.stats-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--black);
+}
+.welcome-text {
+  color: var(--primary-color);
+  background-color: var(--black);
+  padding: 0.3em 0;
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 800px) {
+  .welcome-text {
+    width: 100%;
+  }
 }
