@@ -6,10 +6,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
+import Spinner from "../Spinner/Spinner";
 import api from "../../api/api";
 import Alerts from "../Alerts/Alerts";
-import bcrypt from "bcryptjs";
+
 function Register() {
   const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
   const [loading, setLoading] = useState(false);
@@ -33,23 +33,24 @@ function Register() {
   };
 
   const handleSubmit = async (e) => {
-    let salt = bcrypt.genSaltSync(10);
     e.preventDefault();
+    setLoading(true);
     if (registerDetails.password !== registerDetails.password_confirmation) {
       setConfirmPass("Passwords Do not Match");
+      setLoading(false);
       return;
     }
-    setLoading(true);
     try {
       const response = await api.post("/api/register", { ...registerDetails });
       setRegisterDetails({ name: "", email: "", password: "", password_confirmation: "" });
       setLoading(false);
+      console.log(response);
       if (response.status === 200) {
         navigate("/login");
       }
     } catch (err) {
-      console.log(err);
-      setError(err.response.data.errors);
+      console.log(err.response.data.errors);
+      setError([err.response.data.errors]);
       setLoading(false);
     }
   };
