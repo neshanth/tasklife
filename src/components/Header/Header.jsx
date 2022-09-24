@@ -25,7 +25,7 @@ function Header() {
             {authStatus === "true" ? (
               <>
                 {location.pathname !== "/" && <Hamburger handleSidebarToggle={handleSidebarToggle} />}
-                <Link to="/dashboard">
+                <Link to="/dashboard/tasks">
                   <UserIcon className="mx-2" />
                 </Link>
               </>

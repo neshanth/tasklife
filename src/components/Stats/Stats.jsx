@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import api from "../../api/api";
+import Spinner from "../Spinner/Spinner";
 import StatCard from "../StatCard/StatCard";
 import "./stats.css";
 
@@ -14,12 +15,14 @@ function Stats() {
     { statName: "Pending", stat: 0 },
     { statName: "Total", stat: 0 },
   ]);
+  const [loading, setLoading] = useState(false);
   let root = document.querySelector(":root");
   let productivity = (stats[0].stat / stats[2].stat) * 100;
   root.style.setProperty("--gradient", productivity.toFixed() + "%");
   let gradient = { backgroundImage: "conic-gradient(var(--primary-color) var(--gradient),#fff 0)" };
 
   const getStats = async () => {
+    setLoading(true);
     try {
       const response = await api.get(`/api/tasks/stats/${JSON.parse(localStorage.getItem("user"))["id"]}`);
       const { data } = response;
@@ -29,10 +32,14 @@ function Stats() {
         { statName: "Pending", stat: pending },
         { statName: "Total", stat: tasks },
       ]);
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
+
+  if (loading) return <Spinner />;
 
   return (
     <>

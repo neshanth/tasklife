@@ -20,11 +20,6 @@ function Sidebar({ handleClose }) {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className="sidebar-link">
-            <Link onClick={handleSidebarForMobile} to="/dashboard">
-              Dashboard
-            </Link>
-          </div>
-          <div className="sidebar-link">
             <Link onClick={handleSidebarForMobile} to="/dashboard/tasks">
               My Tasks
             </Link>

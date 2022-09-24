@@ -22,7 +22,7 @@ function Login() {
   useEffect(() => {
     let authStatus = localStorage.getItem("isAuth");
     if (authStatus === "true") {
-      navigate("/dashboard");
+      navigate("/dashboard/tasks");
     }
   }, []);
 
@@ -50,7 +50,7 @@ function Login() {
           setStatus({ msg: data, status: "success" });
           localStorage.setItem("isAuth", true);
           localStorage.setItem("user", JSON.stringify({ name, email, id }));
-          navigate("/dashboard", { replace: true });
+          navigate("/dashboard/tasks", { replace: true });
         })
         .catch((err) => {
           const { data } = err.response;

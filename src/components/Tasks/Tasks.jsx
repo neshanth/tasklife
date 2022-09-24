@@ -83,7 +83,6 @@ function Tasks() {
     <>
       <ToastContainer position="top-end">
         <Toast
-          bg="success"
           onClose={() => {
             setShow(false);
             window.history.replaceState({}, document.title);
