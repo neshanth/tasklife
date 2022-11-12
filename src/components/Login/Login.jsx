@@ -39,7 +39,7 @@ function Login() {
     setLoading(true);
     api.get("/sanctum/csrf-cookie").then(() => {
       api
-        .post("/api/login/", { ...loginDetails })
+        .post("/api/login", { ...loginDetails })
         .then((res) => {
           const { data } = res;
           const { user } = data;
