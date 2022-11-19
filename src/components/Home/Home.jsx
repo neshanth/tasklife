@@ -1,18 +1,20 @@
 import React from "react";
-import Login from "../Login/Login";
-import Stats from "../Stats/Stats";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 
 function Home() {
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("isAuth") === "true") {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
     <div className="container home-wrapper">
-      {localStorage.getItem("isAuth") === "true" ? (
-        <Stats />
-      ) : (
-        <>
-          <Login />
-        </>
-      )}
+      <h2>Welcome To Tasklife</h2>
     </div>
   );
 }

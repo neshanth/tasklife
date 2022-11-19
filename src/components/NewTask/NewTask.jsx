@@ -58,7 +58,7 @@ function NewTask() {
           <Button className="btn--primary mx-2" variant="primary" type="submit">
             Save
           </Button>
-          <Button onClick={() => navigate("/dashboard/tasks")} className="btn-warning mx-2" variant="primary" type="submit">
+          <Button onClick={() => navigate("/dashboard/tasks")} className="btn-warning mx-2" variant="primary">
             Back
           </Button>
         </div>

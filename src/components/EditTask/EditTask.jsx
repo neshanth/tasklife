@@ -7,22 +7,26 @@ import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
 import { UserContext } from "../../context";
 import Alerts from "../Alerts/Alerts";
+import { checkObjectChangeCount } from "../../utils/utils";
 
 const EditTask = () => {
   let { id } = useParams();
   const navigate = useNavigate();
   const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "" });
+  const [existingEditTask, setExistingEditTask] = useState({});
   const [error, setError] = useState([]);
+  const [count, setCount] = useState(0);
   const { loading, setLoading } = useContext(UserContext);
   useEffect(() => {
     getTask(id);
-  }, [id]);
+  }, []);
 
   const getTask = async (id) => {
     setLoading(true);
     try {
       const response = await api.get(`/api/tasks/${id}`);
       const { task, status, due_date } = response.data;
+      setExistingEditTask({ task, status, due_date });
       setEditTask({ task, status, due_date });
       setLoading(false);
     } catch (err) {
@@ -36,6 +40,7 @@ const EditTask = () => {
     let value;
     if (target.type === "checkbox") {
       value = target.checked;
+      value = target.checked === true ? 1 : 0;
     } else {
       value = target.value;
     }
@@ -43,6 +48,7 @@ const EditTask = () => {
       ...editTask,
       [name]: value,
     });
+    setCount(checkObjectChangeCount(existingEditTask, { ...editTask, [name]: value }));
   };
 
   const handleTaskUpdate = async (e) => {
@@ -80,10 +86,10 @@ const EditTask = () => {
           <Form.Check type="checkbox" name="status" checked={editTask.status} onChange={handleEditTask} label="Status" />
         </Form.Group>
         <div className="my-4 d-flex justify-content-center align-items-baseline">
-          <Button className="btn--primary mx-2" variant="primary" type="submit">
+          <Button disabled={count === 0 ? true : false} className="btn--primary mx-2" variant="primary" type="submit">
             Update
           </Button>
-          <Button onClick={() => navigate("/dashboard/tasks")} className="btn-warning mx-2" variant="primary" type="submit">
+          <Button onClick={() => navigate("/dashboard/tasks")} className="btn-warning mx-2" variant="primary">
             Back
           </Button>
         </div>
