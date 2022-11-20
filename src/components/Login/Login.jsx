@@ -66,21 +66,26 @@ function Login() {
 
   return (
     <Container>
-      <Row className="justify-content-center align-items-center vh-100">
-        <Col md={8} className="form-background">
+      <Row className="justify-content-center align-items-center mt-6">
+        <Col md={4} className="form-background">
+          <h2 className="text-center">Sign in</h2>
           {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} /> : ""}
           <Form className="login-form" onSubmit={handleSubmit}>
             <Form.Group className="my-4" controlId="email">
+              <Form.Label>Email address</Form.Label>
               <Form.Control type="email" name="email" placeholder="Email" onChange={handleLoginDetails} value={loginDetails.email} required />
             </Form.Group>
             <Form.Group className="my-4" controlId="password">
+              <Form.Label>Password</Form.Label>
               <Form.Control type="password" name="password" placeholder="Password" onChange={handleLoginDetails} value={loginDetails.password} required />
             </Form.Group>
-            <div className="my-4 d-flex justify-content-center align-items-baseline">
-              <Button className="btn--primary mx-2" variant="primary" type="submit">
-                Login
+            <div className="my-4 d-grid gap-2">
+              <Button className="btn--primary" variant="primary" size="lg" type="submit">
+                Sign In
               </Button>
-              <Link to="/register">Create An Account ? </Link>
+            </div>
+            <div className="mt-4">
+              <Link to="/register">Create An Account</Link>
             </div>
           </Form>
         </Col>

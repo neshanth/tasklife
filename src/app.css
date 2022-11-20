@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #3bc9db;
+  --primary-color: #2940d3;
   --black: #232020;
   --white: #fff;
   --gradient: 50;
@@ -13,7 +13,9 @@ a {
 /* Custom Buttons */
 .btn--primary {
   background-color: var(--primary-color);
-  color: var(--black);
+  color: var(--white);
+  font-size: 1em;
+  border: none;
 }
 .text--primary {
   color: var(--primary-color);
@@ -25,18 +27,22 @@ a {
 
 /* Form Styles */
 .form-background {
-  box-shadow: rgb(59 201 219 / 35%) 0px 5px 15px;
-  padding: 3em;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  padding: 1em;
+  margin: 3em 0;
+  border-radius: 11px;
 }
 .login-form,
-.custom-form {
+.custom-form,
+.register-form {
   width: 80%;
   margin: 0 auto;
 }
-.login-form .form-control,
-.register-form .form-control,
-.custom-form .form-control {
-  border: 1px solid var(--primary-color);
+
+.login-form input:focus,
+.custom-form input:focus,
+.register-form input:focus {
+  box-shadow: 0 0 0 0.25rem rgb(41 64 211 / 25%);
 }
 
 /* Sidebar */

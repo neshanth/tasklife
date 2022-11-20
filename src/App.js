@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -49,6 +49,7 @@ function App() {
             <Route path="/dashboard/tasks/new" element={<NewTask />} />
           </Route>
         </Route>
+        <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Routes>
     </>
   );

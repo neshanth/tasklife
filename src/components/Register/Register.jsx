@@ -65,28 +65,33 @@ function Register() {
 
   return (
     <Container>
-      <Row className="justify-content-center align-items-center vh-100">
-        <Col md={8} className="form-background">
+      <Row className="justify-content-center align-items-center">
+        <Col md={4} className="form-background">
+          <h2 className="text-center">Sign Up</h2>
           <Form className="register-form" onSubmit={handleSubmit}>
             <Form.Group className="my-4" controlId="name">
+              <Form.Label>Name</Form.Label>
               <Form.Control type="name" name="name" onChange={handleRegisterDetails} value={registerDetails.name} placeholder="Name" required />
             </Form.Group>
             {error.length > 0 && error[0].hasOwnProperty("name") ? <Alerts closeHandler={closeHandler} text={error[0].name[0]} variant="danger" /> : ""}
             <Form.Group className="my-4" controlId="email">
+              <Form.Label>Email</Form.Label>
               <Form.Control type="email" name="email" onChange={handleRegisterDetails} value={registerDetails.email} placeholder="Email" required />
             </Form.Group>
             {error.length > 0 && error[0].hasOwnProperty("email") ? <Alerts closeHandler={closeHandler} text={error[0].email[0]} variant="danger" /> : ""}
             <Form.Group className="my-4" controlId="password">
+              <Form.Label>Password</Form.Label>
               <Form.Control type="password" name="password" onChange={handleRegisterDetails} value={registerDetails.password} placeholder="Password" required />
             </Form.Group>
             {error.length > 0 && error[0].hasOwnProperty("password") ? <Alerts closeHandler={closeHandler} text={error[0].password[0]} variant="danger" /> : ""}
             <Form.Group className="my-4" controlId="password_confirmation">
+              <Form.Label>Confirm Password</Form.Label>
               <Form.Control type="password" name="password_confirmation" onChange={handleRegisterDetails} value={registerDetails.password_confirmation} placeholder="Confirm Password" required />
             </Form.Group>
             {confirmPass.length > 0 ? <Alerts closeHandler={closeHandler} text={confirmPass} variant="danger" /> : ""}
-            <div className="my-4 d-flex justify-content-center align-items-baseline">
-              <Button className="btn--primary mx-2" variant="primary" type="submit">
-                Register
+            <div className="mt-4 d-grid gap-2">
+              <Button className="btn--primary" variant="primary" size="lg" type="submit">
+                Sign Up
               </Button>
             </div>
           </Form>

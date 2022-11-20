@@ -7,7 +7,6 @@ import "./header.css";
 import Button from "react-bootstrap/Button";
 import { Link, useLocation } from "react-router-dom";
 import Hamburger from "../Hamburger/Hamburger";
-import UserIcon from "../UserIcon/UserIcon";
 import { UserContext } from "../../context";
 
 function Header() {
@@ -23,12 +22,7 @@ function Header() {
           </Link>
           <Nav className="mr-auto">
             {authStatus === "true" ? (
-              <>
-                {location.pathname !== "/" && <Hamburger handleSidebarToggle={handleSidebarToggle} />}
-                <Link to="/dashboard/tasks">
-                  <UserIcon className="mx-2" />
-                </Link>
-              </>
+              <>{location.pathname !== "/" && <Hamburger handleSidebarToggle={handleSidebarToggle} />}</>
             ) : (
               <Link to="/login">
                 <Button className="btn--primary">Login</Button>
