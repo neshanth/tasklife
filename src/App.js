@@ -11,6 +11,7 @@ import api from "./api/api";
 import { useNavigate } from "react-router-dom";
 import EditTask from "./components/EditTask/EditTask";
 import NewTask from "./components/NewTask/NewTask";
+import Stats from "./components/Stats/Stats.jsx";
 
 function App() {
   const effectRan = useRef(false);
@@ -44,6 +45,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="/dashboard/stats" element={<Stats />} />
             <Route path="/dashboard/tasks" element={<Tasks />} />
             <Route path="/dashboard/tasks/edit/:id" element={<EditTask />} />
             <Route path="/dashboard/tasks/new" element={<NewTask />} />

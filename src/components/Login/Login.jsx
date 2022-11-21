@@ -10,14 +10,12 @@ import Spinner from "../Spinner/Spinner";
 import Alerts from "../Alerts/Alerts";
 import { UserContext } from "../../context";
 import { useEffect } from "react";
-import bcrypt from "bcryptjs";
 
 function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ msg: "", status: "" });
   let navigate = useNavigate();
-  const { setAuth } = useContext(UserContext);
+  const { setAuth, loading, setLoading } = useContext(UserContext);
 
   useEffect(() => {
     let authStatus = localStorage.getItem("isAuth");

@@ -55,6 +55,12 @@ a {
   background-color: var(--black);
 }
 
+/* Task Form */
+
+.task-form-title {
+  color: var(--primary-color);
+}
+
 /* Navabr and Dashboard */
 
 @media only screen and (max-width: 768px) {

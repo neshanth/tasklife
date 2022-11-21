@@ -8,7 +8,7 @@ function Home() {
 
   useEffect(() => {
     if (localStorage.getItem("isAuth") === "true") {
-      navigate("/dashboard");
+      navigate("/dashboard/tasks");
     }
   }, []);
 
