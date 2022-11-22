@@ -29,9 +29,22 @@
   width: 50%;
   margin: 0 auto;
 }
+.stat-container {
+  box-shadow: var(--shadow);
+  margin-top: 5em;
+  margin-left: 2.5em;
+  margin-right: 2.5em;
+  border-radius: var(--radius);
+}
 
 @media screen and (max-width: 800px) {
   .welcome-text {
     width: 100%;
+  }
+}
+
+@media (max-width: 770px) {
+  .stat-container {
+    flex-direction: column;
   }
 }

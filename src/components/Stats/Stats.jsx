@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import api from "../../api/api";
-import { getSalutation } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
 import StatCard from "../StatCard/StatCard";
 import "./stats.css";
@@ -44,11 +43,7 @@ function Stats() {
 
   return (
     <>
-      <h2 className="text-center welcome-text">
-        Good {getSalutation()} {JSON.parse(localStorage.getItem("user"))["name"]}
-      </h2>
-      <div className="row justify-content-center my-5">
-        <p className="stats-text text-center mt-2">Stats</p>
+      <div className="justify-content-center stat-container d-flex">
         {stats.map((stat, index) => {
           return <StatCard key={index} statName={stat.statName} stat={stat.stat} />;
         })}

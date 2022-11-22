@@ -3,6 +3,8 @@
   --black: #232020;
   --white: #fff;
   --gradient: 50;
+  --shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  --radius: 11px;
 }
 
 /* Globals */
