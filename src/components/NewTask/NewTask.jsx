@@ -30,6 +30,7 @@ function NewTask() {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       await api.post(`/api/tasks`, { ...newTask, user_id: userId.id });
@@ -38,6 +39,7 @@ function NewTask() {
     } catch (err) {
       setError([...error, err.response.data.errors]);
     }
+    setLoading(false);
   };
 
   if (loading) {

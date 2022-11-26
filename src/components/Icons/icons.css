@@ -1,0 +1,4 @@
+.bi-x:hover {
+  cursor: pointer;
+  fill: var(--primary-color);
+}

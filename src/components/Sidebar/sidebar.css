@@ -1,22 +1,28 @@
 .sidebar .offcanvas-title {
-  color: var(--primary-color);
+  color: var(--white);
+}
+.offcanvas-body,
+.offcanvas-header {
+  background-color: #38383a;
 }
 
 .sidebar-link {
-  background-color: var(--primary-color);
-  padding: 1em;
   font-size: 1rem;
   font-weight: 700;
-  margin: 1em 0;
 }
 
 .sidebar-link:hover {
-  background-color: var(--white);
+  background-color: var(--primary-hover);
 }
 
 .sidebar-link a {
-  color: var(--black);
+  color: var(--white);
   display: block;
+  padding: 1em;
+  margin: 1em 0;
+}
+.sidebar-link a:hover {
+  color: var(--white);
 }
 
 .sidebar .offcanvas-body {

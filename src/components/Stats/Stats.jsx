@@ -19,7 +19,7 @@ function Stats() {
   let root = document.querySelector(":root");
   let productivity = (stats[0].stat / stats[2].stat) * 100;
   root.style.setProperty("--gradient", productivity.toFixed() + "%");
-  let gradient = { backgroundImage: "conic-gradient(var(--primary-color) var(--gradient),#fff 0)" };
+  let gradient = { backgroundImage: "conic-gradient(var(--primary-color) var(--gradient),#ADA9BB 0)" };
 
   const getStats = async () => {
     setLoading(true);

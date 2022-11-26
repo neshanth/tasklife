@@ -5,6 +5,12 @@
   --gradient: 50;
   --shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   --radius: 11px;
+  --grey: #f8f9fa;
+  --primary-hover: #5d5ff8;
+}
+
+body {
+  background-color: var(--grey);
 }
 
 /* Globals */
@@ -18,6 +24,10 @@ a {
   color: var(--white);
   font-size: 1em;
   border: none;
+}
+.btn--primary:hover {
+  background-color: var(--primary-hover);
+  color: var(--white);
 }
 .text--primary {
   color: var(--primary-color);
