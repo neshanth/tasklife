@@ -1,3 +1,41 @@
-.home-wrapper {
-  margin-top: 5em;
+.hero-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../../Images/hero.jpg");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  padding: 10em;
+}
+
+.hero-content {
+  position: absolute;
+  color: var(--white);
+  top: 30%;
+  left: 30%;
+}
+
+.hero-title {
+  text-align: center;
+  font-size: 3rem;
+}
+.hero-secondary {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.hero-buttons {
+  gap: 15px;
+}
+.hero-content .btn-login,
+.hero-content .btn-demo-login {
+  width: 40%;
+}
+.hero-title,
+.hero-secondary {
+  color: var(--white);
+}
+
+@media (max-width: 560px) {
+  .hero-buttons {
+    flex-direction: column;
+  }
 }
