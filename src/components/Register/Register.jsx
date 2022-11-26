@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import api from "../../api/api";
 import Alerts from "../Alerts/Alerts";
+import "./register.css";
 
 function Register() {
   const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
@@ -66,7 +67,7 @@ function Register() {
   return (
     <Container>
       <Row className="justify-content-center align-items-center">
-        <Col md={4} className="form-background">
+        <Col md={4} className="form-background register-form-background">
           <h2 className="text-center">Sign Up</h2>
           <Form className="register-form" onSubmit={handleSubmit}>
             <Form.Group className="my-4" controlId="name">

@@ -10,6 +10,7 @@ import Spinner from "../Spinner/Spinner";
 import Alerts from "../Alerts/Alerts";
 import { UserContext } from "../../context";
 import { useEffect } from "react";
+import "./login.css";
 
 function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
@@ -65,7 +66,7 @@ function Login() {
   return (
     <Container>
       <Row className="justify-content-center align-items-center mt-6">
-        <Col md={4} className="form-background">
+        <Col md={4} className="form-background login-form-background">
           <h2 className="text-center">Sign in</h2>
           {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} /> : ""}
           <Form className="login-form" onSubmit={handleSubmit}>
