@@ -1,12 +1,14 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { useEffect, useContext } from "react";
+import { Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
+import { UserContext } from "../../context";
 import "./home.css";
+import api from "../../api/api";
 
 function Home() {
-  const [loading, setLoading] = useState(true);
+  const { setAuth, loading, setLoading } = useContext(UserContext);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -15,6 +17,33 @@ function Home() {
     }
     setLoading(false);
   }, []);
+
+  const loginDetails = {
+    email: `${process.env.REACT_APP_DEMO_EMAIL}`,
+    password: `${process.env.REACT_APP_DEMO_PASSWORD}`,
+  };
+
+  const handleDemoLogin = () => {
+    setLoading(true);
+    api.get("/sanctum/csrf-cookie").then(() => {
+      api
+        .post("/api/login", { ...loginDetails })
+        .then((res) => {
+          const { data } = res;
+          const { user } = data;
+          const { name, email, id } = user;
+          setLoading(false);
+          setAuth(true);
+          localStorage.setItem("isAuth", true);
+          localStorage.setItem("user", JSON.stringify({ name, email, id }));
+          navigate("/dashboard/tasks", { replace: true });
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    });
+  };
 
   if (loading) return <Spinner />;
 
@@ -30,7 +59,9 @@ function Home() {
                 <Link className="btn btn--primary btn-login" to="/login">
                   Login
                 </Link>
-                <button className="btn btn--secondary btn-demo-login">Demo Login</button>
+                <button className="btn btn--secondary btn-demo-login" onClick={handleDemoLogin}>
+                  Demo Login
+                </button>
               </div>
             </section>
           </Container>
