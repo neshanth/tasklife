@@ -1,3 +1,4 @@
 .navbar {
   box-shadow: var(--shadow);
+  background-color: var(--white) !important;
 }
