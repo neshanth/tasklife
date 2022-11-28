@@ -5,7 +5,7 @@ const UserContext = React.createContext();
 const UserProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
   const [show, setShow] = useState(true);
   const handleSidebarToggle = () => {

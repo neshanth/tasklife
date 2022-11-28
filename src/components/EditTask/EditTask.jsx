@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import "./editTask.css";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
-import { UserContext } from "../../context";
 import Alerts from "../Alerts/Alerts";
 import { checkObjectChangeCount } from "../../utils/utils";
 import Row from "react-bootstrap/row";
@@ -19,7 +18,8 @@ const EditTask = () => {
   const [existingEditTask, setExistingEditTask] = useState({});
   const [error, setError] = useState([]);
   const [count, setCount] = useState(0);
-  const { loading, setLoading } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getTask(id);
   }, []);

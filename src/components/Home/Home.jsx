@@ -6,9 +6,11 @@ import Spinner from "../Spinner/Spinner";
 import { UserContext } from "../../context";
 import "./home.css";
 import api from "../../api/api";
+import { useState } from "react";
 
 function Home() {
-  const { setAuth, loading, setLoading } = useContext(UserContext);
+  const { setAuth } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
 
   useEffect(() => {

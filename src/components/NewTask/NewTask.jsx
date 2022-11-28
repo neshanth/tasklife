@@ -6,14 +6,12 @@ import Col from "react-bootstrap/Col";
 import { useState } from "react";
 import api from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { UserContext } from "../../context";
 import { Container, Spinner } from "react-bootstrap";
 import Alerts from "../Alerts/Alerts";
 
 function NewTask() {
   const [newTask, setNewTask] = useState({ task: "", due_date: "" });
-  const { loading, setLoading } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState([]);
 
   const navigate = useNavigate();
@@ -30,8 +28,8 @@ function NewTask() {
   };
 
   const handleSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
+    setLoading(true);
     try {
       await api.post(`/api/tasks`, { ...newTask, user_id: userId.id });
       setNewTask({ task: "", due_date: "" });

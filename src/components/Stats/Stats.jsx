@@ -15,8 +15,8 @@ function Stats() {
     { statName: "Pending", stat: 0 },
     { statName: "Total", stat: 0 },
   ]);
-  const [loading, setLoading] = useState(false);
-  let root = document.querySelector(":root");
+  const [loading, setLoading] = useState(true);
+  let root = document.querySelector(":root"); // select root variables
   let productivity = (stats[0].stat / stats[2].stat) * 100;
   root.style.setProperty("--gradient", productivity.toFixed() + "%");
   let gradient = { backgroundImage: "conic-gradient(var(--primary-color) var(--gradient),#ADA9BB 0)" };

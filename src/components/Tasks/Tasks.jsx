@@ -2,8 +2,6 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import api from "../../api/api";
 import TaskItem from "../TaskItem/TaskItem";
-import { useContext } from "react";
-import { UserContext } from "../../context";
 import Spinner from "../Spinner/Spinner";
 import { updateTaskStatusApi } from "../../utils/utils";
 import { Link, useLocation } from "react-router-dom";
@@ -13,23 +11,17 @@ import "./tasks.css";
 function Tasks() {
   const effectRan = useRef(false);
   const [tasks, setTasks] = useState([]);
-  const { loading, setLoading } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    if (effectRan.current === false) {
-      getTasks();
-
-      if (location.state !== null) {
-        setShow(true);
-        setSuccess(location.state.msg);
-      }
+    getTasks();
+    if (location.state !== null) {
+      setShow(true);
+      setSuccess(location.state.msg);
     }
-    return () => {
-      effectRan.current = true;
-    };
   }, []);
 
   const getTasks = async () => {

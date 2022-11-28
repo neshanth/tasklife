@@ -15,8 +15,9 @@ import "./login.css";
 function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   const [status, setStatus] = useState({ msg: "", status: "" });
+  const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
-  const { setAuth, loading, setLoading } = useContext(UserContext);
+  const { setAuth } = useContext(UserContext);
 
   useEffect(() => {
     let authStatus = localStorage.getItem("isAuth");
