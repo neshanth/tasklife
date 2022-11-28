@@ -10,6 +10,7 @@ function Stats() {
   useEffect(() => {
     getStats();
   }, []);
+
   const [stats, setStats] = useState([
     { statName: "Completed", stat: 0 },
     { statName: "Pending", stat: 0 },
@@ -17,7 +18,8 @@ function Stats() {
   ]);
   const [loading, setLoading] = useState(true);
   let root = document.querySelector(":root"); // select root variables
-  let productivity = (stats[0].stat / stats[2].stat) * 100;
+  let statCalculation = (stats[0].stat / stats[2].stat) * 100;
+  let productivity = isNaN(statCalculation) ? 0 : statCalculation;
   root.style.setProperty("--gradient", productivity.toFixed() + "%");
   let gradient = { backgroundImage: "conic-gradient(var(--primary-color) var(--gradient),#ADA9BB 0)" };
 
