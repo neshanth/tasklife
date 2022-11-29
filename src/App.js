@@ -32,7 +32,6 @@ function App() {
       localStorage.setItem("isAuth", true);
     } catch (err) {
       localStorage.removeItem("isAuth");
-      navigate("/");
     }
   };
 

@@ -10,12 +10,15 @@ import Spinner from "../Spinner/Spinner";
 import api from "../../api/api";
 import Alerts from "../Alerts/Alerts";
 import "./register.css";
+import { useContext } from "react";
+import { UserContext } from "../../context";
 
 function Register() {
   const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState([]);
   const [confirmPass, setConfirmPass] = useState("");
+  const { setAuthLoader } = useContext(UserContext);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -36,23 +39,25 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setAuthLoader(true);
     if (registerDetails.password !== registerDetails.password_confirmation) {
       setConfirmPass("Passwords Do not Match");
       setLoading(false);
+      setAuthLoader(false);
       return;
     }
     try {
       const response = await api.post("/api/register", { ...registerDetails });
       setRegisterDetails({ name: "", email: "", password: "", password_confirmation: "" });
       setLoading(false);
-      console.log(response);
+      setAuthLoader(false);
       if (response.status === 200) {
         navigate("/login");
       }
     } catch (err) {
-      console.log(err.response.data.errors);
       setError([err.response.data.errors]);
       setLoading(false);
+      setAuthLoader(false);
     }
   };
 
