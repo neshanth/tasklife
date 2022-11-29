@@ -11,7 +11,7 @@ import { UserContext } from "../../context";
 
 function Header() {
   let authStatus = localStorage.getItem("isAuth");
-  const { handleSidebarToggle, loading } = useContext(UserContext);
+  const { handleSidebarToggle, authLoader } = useContext(UserContext);
   let location = useLocation();
   return (
     <>
@@ -24,7 +24,7 @@ function Header() {
             {authStatus === "true" ? (
               <>{location.pathname !== "/" && <Hamburger handleSidebarToggle={handleSidebarToggle} />}</>
             ) : (
-              <Link to="/login">{!loading && <Button className="btn--primary">Login</Button>}</Link>
+              <Link to="/login">{!authLoader && <Button className="btn--primary">Login</Button>}</Link>
             )}
           </Nav>
         </Container>

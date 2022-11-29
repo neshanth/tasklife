@@ -47,4 +47,12 @@ export const checkObjectChangeCount = (obj1, obj2) => {
   return count;
 };
 
+export const redirectPageBasedOnUrl = (currentPath) => {
+  if (currentPath === "/login") {
+    history.push("/login");
+  } else {
+    history.push("/");
+  }
+};
+
 export { logout, updateTaskStatusApi, getSalutation };
