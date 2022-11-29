@@ -15,7 +15,7 @@ import "./login.css";
 function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   const [status, setStatus] = useState({ msg: "", status: "" });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
   const { setAuth } = useContext(UserContext);
 

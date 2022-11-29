@@ -14,7 +14,7 @@ api.interceptors.response.use(
 
     if (status === 401 || status === 419) {
       localStorage.removeItem("isAuth");
-      history.push("/login");
+      history.push("/");
     }
     return Promise.reject(error);
   }
