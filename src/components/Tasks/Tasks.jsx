@@ -1,15 +1,14 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import api from "../../api/api";
 import TaskItem from "../TaskItem/TaskItem";
 import Spinner from "../Spinner/Spinner";
 import { updateTaskStatusApi } from "../../utils/utils";
 import { Link, useLocation } from "react-router-dom";
-import { Toast, ToastContainer } from "react-bootstrap";
+import { Toast, ToastContainer, Table } from "react-bootstrap";
 import "./tasks.css";
 
 function Tasks() {
-  const effectRan = useRef(false);
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState("");
@@ -87,14 +86,28 @@ function Tasks() {
         </Toast>
       </ToastContainer>
       <div className="tasks-wrapper">
-        {tasks.map((task) => {
-          return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />;
-        })}
-        <div className="new-btn d-flex justify-content-center">
+        <div className="table-heading d-flex justify-content-between">
+          <p className="table-header">Tasks</p>
           <Link to="/dashboard/tasks/new">
             <button className="btn btn--primary">New Task</button>
           </Link>
         </div>
+        <Table responsive>
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Task</th>
+              <th scope="col">Due Date</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tasks.map((task) => {
+              return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />;
+            })}
+          </tbody>
+        </Table>
+        <div className="new-btn d-flex justify-content-center"></div>
       </div>
     </>
   );

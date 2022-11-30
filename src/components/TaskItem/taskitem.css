@@ -50,6 +50,12 @@
 .calendar-icon {
   margin-right: 2%;
 }
+.btn.btn--link {
+  text-decoration: none;
+}
+.small-table-column {
+  width: 10%;
+}
 
 @media only screen and (min-width: 769px) {
   .bi .bi-three-dots {
@@ -69,4 +75,8 @@
 
 .stat {
   margin-bottom: 0;
+}
+
+.table-row {
+  padding-left: 1em !important;
 }

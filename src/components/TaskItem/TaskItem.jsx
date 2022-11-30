@@ -1,8 +1,8 @@
 import React from "react";
-import { Form, Dropdown } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import DeleteIcon from "../Icons/DeleteIcon";
 import EditIcon from "../Icons/EditIcon";
+import DeleteIcon from "../Icons/DeleteIcon";
 import "./taskitem.css";
 
 const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
@@ -11,7 +11,7 @@ const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
 
   return (
     <>
-      <div className="task-item my-3 d-flex align-items-baseline justify-content-center">
+      {/* <div className="task-item my-3 d-flex align-items-baseline justify-content-center">
         <Form className="task-status d-flex align-self-center">
           <Form.Check type="switch" id="status" checked={status} onChange={() => updateTaskStatus(id)} />
         </Form>
@@ -41,7 +41,26 @@ const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
             </span>
           </Dropdown.Menu>
         </Dropdown>
-      </div>
+      </div> */}
+      <tr key={id}>
+        <td className="table-row small-table-column">
+          <Form className="task-status d-flex align-self-center">
+            <Form.Check type="switch" id="status" checked={status} onChange={() => updateTaskStatus(id)} />
+          </Form>
+        </td>
+        <td className="table-row">{task}</td>
+        <td className="table-row">{due_date}</td>
+        <td className="small-table-column table-row">
+          <div className="d-flex">
+            <Link className="me-3 d-inline-block" to={`/dashboard/tasks/edit/${id}`}>
+              <EditIcon />
+            </Link>
+            <span className="d-block">
+              <DeleteIcon deleteTask={deleteTask} id={id} />
+            </span>
+          </div>
+        </td>
+      </tr>
     </>
   );
 };

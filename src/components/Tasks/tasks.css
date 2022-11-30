@@ -1,5 +1,17 @@
 .tasks-wrapper {
+  background-color: var(--white);
   margin-top: 5em;
-  overflow: auto;
-  height: 500px;
+  padding: 2em;
+}
+.table-header {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.table {
+  border: 1px solid #999;
+}
+
+.table tr th {
+  padding-left: 1em;
 }
