@@ -92,7 +92,7 @@ function Tasks() {
             <button className="btn btn--primary">New Task</button>
           </Link>
         </div>
-        <Table responsive>
+        <Table className="my-3" responsive>
           <thead>
             <tr>
               <th scope="col">Status</th>

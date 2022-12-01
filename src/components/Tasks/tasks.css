@@ -2,10 +2,16 @@
   background-color: var(--white);
   margin-top: 5em;
   padding: 2em;
+  border-radius: 5px;
 }
 .table-header {
   font-size: 1.5rem;
   font-weight: 500;
+}
+
+thead {
+  background-color: var(--grey);
+  color: var(--black);
 }
 
 .table {
@@ -14,4 +20,9 @@
 
 .table tr th {
   padding-left: 1em;
+}
+
+tbody tr td {
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
 }
