@@ -80,3 +80,12 @@
 .table-row {
   padding-left: 1em !important;
 }
+
+.completed-table-row {
+  background-color: var(--primary-hover);
+  color: #fff;
+}
+
+.completed-task {
+  text-decoration: line-through;
+}

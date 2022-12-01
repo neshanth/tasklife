@@ -42,13 +42,13 @@ const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
           </Dropdown.Menu>
         </Dropdown>
       </div> */}
-      <tr key={id}>
+      <tr key={id} className={status ? "completed-table-row" : ""}>
         <td className="table-row small-table-column">
           <Form className="task-status d-flex align-self-center">
             <Form.Check type="switch" id="status" checked={status} onChange={() => updateTaskStatus(id)} />
           </Form>
         </td>
-        <td className="table-row">{task}</td>
+        <td className={`table-row ${status ? "completed-task" : ""}`}>{task}</td>
         <td className="table-row">{due_date}</td>
         <td className="small-table-column table-row">
           <div className="d-flex">
