@@ -3,18 +3,42 @@
   --black: #232020;
   --white: #fff;
   --gradient: 50;
-  --shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  --shadow: #ebebeb 0px 2px 8px;
   --radius: 11px;
-  --grey: #f0f0f1;
+  --grey: #ebebeb;
   --primary-hover: #5d5ff8;
   --secondary-color: #ada9bb;
+  --primary-text-color: #333333;
 }
 
-body {
-  background-color: var(--grey);
+@font-face {
+  font-family: "inter";
+  src: url("./assets/fonts/inter-v12-latin-regular.woff");
+}
+@font-face {
+  font-family: "inter";
+  src: url("./assets/fonts/inter-v12-latin-600.woff");
+  font-weight: 600;
 }
 
 /* Globals */
+
+body {
+  font-family: "inter";
+  background-color: var(--grey);
+  font-size: 1rem;
+  color: var(--primary-text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
 a {
   text-decoration: none;
 }
@@ -47,6 +71,8 @@ a {
 .text--primary {
   color: var(--primary-color);
 }
+
+/* End of Globals */
 
 .delete-icon {
   cursor: pointer;
