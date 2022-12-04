@@ -1,3 +1,5 @@
+import React from "react";
+
 const EditIcon = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" aria-label="Edit" width="16" height="16" fill="var(--primary-color)" className="bi bi-eraser-fill" viewBox="0 0 16 16">
