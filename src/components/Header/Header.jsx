@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Logo from "../../Images/Logo.svg";
 import "./header.css";
 import Button from "react-bootstrap/Button";
 import { Link, useLocation } from "react-router-dom";
 import Hamburger from "../Hamburger/Hamburger";
 import { UserContext } from "../../context";
+import logo from "../../Images/tasklife__logo.png";
 
 function Header() {
   let authStatus = localStorage.getItem("isAuth");
@@ -18,7 +18,7 @@ function Header() {
       <Navbar bg="light" variant="light">
         <Container>
           <Link to="/">
-            <img className="logo" src={Logo} alt="Logo" />
+            <img className="logo" src={logo} width="100" alt="Logo" />
           </Link>
           <Nav className="mr-auto">
             {authStatus === "true" ? (
