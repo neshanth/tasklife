@@ -1,4 +1,14 @@
 .navbar {
   box-shadow: var(--shadow);
   background-color: var(--white) !important;
+  padding: var(--padding-0);
+}
+
+.navbar .header-cta {
+  padding: 0.8rem 1.5rem;
+  display: inline-block;
+}
+
+.disabled-link {
+  pointer-events: none;
 }

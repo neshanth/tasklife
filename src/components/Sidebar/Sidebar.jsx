@@ -3,7 +3,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../../context";
 import { logout } from "../../utils/utils";
-import CloseButton from "../Icons/CloseButton";
+import CloseButton from "../../assets/Icons/CloseButton";
 import "./sidebar.css";
 
 function Sidebar({ handleClose }) {

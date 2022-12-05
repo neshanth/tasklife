@@ -1,8 +1,8 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import EditIcon from "../Icons/EditIcon";
-import DeleteIcon from "../Icons/DeleteIcon";
+import EditIcon from "../../assets/Icons/EditIcon";
+import DeleteIcon from "../../assets/Icons/DeleteIcon";
 import "./taskitem.css";
 
 const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {

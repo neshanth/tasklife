@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import { Link, useLocation } from "react-router-dom";
 import Hamburger from "../Hamburger/Hamburger";
 import { UserContext } from "../../context";
-import logo from "../../Images/tasklife__logo.png";
+import logo from "../../assets/Images/tasklife__logo.png";
 
 function Header() {
   let authStatus = localStorage.getItem("isAuth");
@@ -24,7 +24,9 @@ function Header() {
             {authStatus === "true" ? (
               <>{location.pathname !== "/" && <Hamburger handleSidebarToggle={handleSidebarToggle} />}</>
             ) : (
-              <Link to="/login">{!authLoader && <Button className="btn--primary">Login</Button>}</Link>
+              <Link to="/login" className={`btn btn--primary header-cta ${authLoader ? "disabled-link" : ""}`}>
+                Login
+              </Link>
             )}
           </Nav>
         </Container>

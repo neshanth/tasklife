@@ -10,6 +10,7 @@ import Spinner from "../Spinner/Spinner";
 import Alerts from "../Alerts/Alerts";
 import { UserContext } from "../../context";
 import { useEffect } from "react";
+import logo from "../../assets/Images/tasklife__logo.png";
 import "./login.css";
 
 function Login() {
@@ -69,28 +70,31 @@ function Login() {
 
   return (
     <Container>
-      <Row className="justify-content-center align-items-center mt-6">
-        <Col md={4} className="form-background login-form-background">
-          <h2 className="text-center">Sign in</h2>
-          {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} /> : ""}
-          <Form className="login-form" onSubmit={handleSubmit}>
-            <Form.Group className="my-4" controlId="email">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" name="email" placeholder="Email" onChange={handleLoginDetails} value={loginDetails.email} required />
-            </Form.Group>
-            <Form.Group className="my-4" controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" name="password" placeholder="Password" onChange={handleLoginDetails} value={loginDetails.password} required />
-            </Form.Group>
-            <div className="my-4 d-grid gap-2">
-              <Button className="btn--primary" variant="primary" size="lg" type="submit">
-                Sign In
-              </Button>
-            </div>
-            <div className="mt-4">
-              <Link to="/register">Create An Account</Link>
-            </div>
-          </Form>
+      <Row className="justify-content-center align-items-center  home-login-form">
+        <Col md={4}>
+          <img className="form-logo" src={logo} width="100" alt="logo" />
+          <div className="form-background login-form-background">
+            {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} /> : ""}
+            <Form className="login-form" onSubmit={handleSubmit}>
+              <h4>Log in to your account</h4>
+              <Form.Group className="my-4" controlId="email">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" name="email" placeholder="Email" onChange={handleLoginDetails} value={loginDetails.email} required />
+              </Form.Group>
+              <Form.Group className="my-4" controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" name="password" placeholder="Password" onChange={handleLoginDetails} value={loginDetails.password} required />
+              </Form.Group>
+              <div className="my-4 d-grid gap-2">
+                <Button className="btn--primary" variant="primary" size="lg" type="submit">
+                  Log In
+                </Button>
+              </div>
+              <div className="mt-4">
+                <span>New to TaskLife?</span> <Link to="/register">Sign up</Link>
+              </div>
+            </Form>
+          </div>
         </Col>
       </Row>
     </Container>
