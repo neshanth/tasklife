@@ -6,7 +6,7 @@
   --shadow: #ebebeb 0px 2px 8px;
   --radius: 11px;
   --grey: #ebebeb;
-  --primary-hover: #5d5ff8;
+  --primary-hover: #3145c9;
   --secondary-color: #ada9bb;
   --primary-text-color: #333333;
 }
@@ -28,6 +28,7 @@ body {
   background-color: var(--grey);
   font-size: 1rem;
   color: var(--primary-text-color);
+  letter-spacing: -0.2px;
 }
 
 h1,
@@ -37,6 +38,7 @@ h4,
 h5,
 h6 {
   font-weight: 600;
+  letter-spacing: -0.7px;
 }
 
 a {
