@@ -11,7 +11,7 @@ import api from "../../api/api";
 import Alerts from "../Alerts/Alerts";
 import "./register.css";
 import { useContext } from "react";
-import { UserContext } from "../../context";
+import { UserContext } from "../../context/context";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Images/tasklife__logo.png";
 

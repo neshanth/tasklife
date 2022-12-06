@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
 import Alerts from "../Alerts/Alerts";
-import { UserContext } from "../../context";
+import { UserContext } from "../../context/context";
 import { useEffect } from "react";
 import logo from "../../assets/Images/tasklife__logo.png";
 import "./login.css";

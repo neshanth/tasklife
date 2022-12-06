@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { NavLink } from "react-router-dom";
-import { UserContext } from "../../context";
+import { UserContext } from "../../context/context";
 import { logout } from "../../utils/utils";
 import CloseButton from "../../assets/Icons/CloseButton";
 import "./sidebar.css";

@@ -1,21 +1,19 @@
 import React, { useEffect, useRef } from "react";
-import Home from "./components/Home/Home";
-import Header from "./components/Header/Header";
+import Home from "../Home/Home";
+import Header from "../Header/Header";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Tasks from "./components/Tasks/Tasks";
-import PrivateRoutes from "./components/PrivateRoutes/PrivateRoutes";
-import api from "./api/api";
-import { useNavigate } from "react-router-dom";
-import EditTask from "./components/EditTask/EditTask";
-import NewTask from "./components/NewTask/NewTask";
-import Stats from "./components/Stats/Stats.jsx";
+import Login from "../Login/Login";
+import Register from "../Register/Register";
+import Dashboard from "../Dashboard/Dashboard";
+import Tasks from "../Tasks/Tasks";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import api from "../../api/api";
+import EditTask from "../EditTask/EditTask";
+import NewTask from "../NewTask/NewTask";
+import Stats from "../Stats/Stats.jsx";
 
 function App() {
   const effectRan = useRef(false);
-  let navigate = useNavigate();
 
   useEffect(() => {
     if (effectRan.current === false) {

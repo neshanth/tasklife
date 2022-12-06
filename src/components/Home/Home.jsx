@@ -3,7 +3,7 @@ import { useEffect, useContext } from "react";
 import { Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
-import { UserContext } from "../../context";
+import { UserContext } from "../../context/context";
 import "./home.css";
 import api from "../../api/api";
 import { useState } from "react";

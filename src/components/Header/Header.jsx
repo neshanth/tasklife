@@ -6,7 +6,7 @@ import "./header.css";
 import Button from "react-bootstrap/Button";
 import { Link, useLocation } from "react-router-dom";
 import Hamburger from "../Hamburger/Hamburger";
-import { UserContext } from "../../context";
+import { UserContext } from "../../context/context";
 import logo from "../../assets/Images/tasklife__logo.png";
 
 function Header() {

@@ -1,5 +1,5 @@
 import api from "../api/api";
-import history from "../history";
+import history from "../history/history";
 
 const logout = async () => {
   try {
