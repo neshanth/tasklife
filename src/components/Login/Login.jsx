@@ -77,20 +77,20 @@ function Login() {
             {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} /> : ""}
             <Form className="login-form" onSubmit={handleSubmit}>
               <h4>Log in to your account</h4>
-              <Form.Group className="my-4" controlId="email">
+              <Form.Group className="my-3" controlId="email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" name="email" placeholder="Email" onChange={handleLoginDetails} value={loginDetails.email} required />
               </Form.Group>
-              <Form.Group className="my-4" controlId="password">
+              <Form.Group className="my-3" controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" name="password" placeholder="Password" onChange={handleLoginDetails} value={loginDetails.password} required />
               </Form.Group>
-              <div className="my-4 d-grid gap-2">
+              <div className="my-3 d-grid gap-2">
                 <Button className="btn--primary" variant="primary" size="lg" type="submit">
                   Log In
                 </Button>
               </div>
-              <div className="mt-4">
+              <div className="mt-3">
                 <span>New to TaskLife?</span> <Link to="/register">Sign up</Link>
               </div>
             </Form>

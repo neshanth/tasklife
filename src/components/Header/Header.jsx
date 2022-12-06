@@ -15,7 +15,7 @@ function Header() {
   let location = useLocation();
   return (
     <>
-      <Navbar bg="light" variant="light">
+      <Navbar variant="light">
         <Container>
           <Link to="/">
             <img className="logo" src={logo} width="100" alt="Logo" />

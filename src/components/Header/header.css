@@ -1,6 +1,6 @@
 .navbar {
   box-shadow: var(--shadow);
-  background-color: var(--white) !important;
+  background-color: var(--grey);
   padding: var(--padding-0);
 }
 

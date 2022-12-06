@@ -50,6 +50,8 @@ export const checkObjectChangeCount = (obj1, obj2) => {
 export const redirectPageBasedOnUrl = (currentPath) => {
   if (currentPath === "/login") {
     history.push("/login");
+  } else if (currentPath === "/register") {
+    history.push("/register");
   } else {
     history.push("/");
   }

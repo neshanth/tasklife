@@ -12,6 +12,8 @@ import Alerts from "../Alerts/Alerts";
 import "./register.css";
 import { useContext } from "react";
 import { UserContext } from "../../context";
+import { Link } from "react-router-dom";
+import logo from "../../assets/Images/tasklife__logo.png";
 
 function Register() {
   const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
@@ -71,36 +73,42 @@ function Register() {
 
   return (
     <Container>
-      <Row className="justify-content-center align-items-center">
-        <Col md={4} className="form-background register-form-background">
-          <h2 className="text-center">Sign Up</h2>
-          <Form className="register-form" onSubmit={handleSubmit}>
-            <Form.Group className="my-4" controlId="name">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="name" name="name" onChange={handleRegisterDetails} value={registerDetails.name} placeholder="Name" required />
-            </Form.Group>
-            {error.length > 0 && error[0].hasOwnProperty("name") ? <Alerts closeHandler={closeHandler} text={error[0].name[0]} variant="danger" /> : ""}
-            <Form.Group className="my-4" controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" name="email" onChange={handleRegisterDetails} value={registerDetails.email} placeholder="Email" required />
-            </Form.Group>
-            {error.length > 0 && error[0].hasOwnProperty("email") ? <Alerts closeHandler={closeHandler} text={error[0].email[0]} variant="danger" /> : ""}
-            <Form.Group className="my-4" controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" name="password" onChange={handleRegisterDetails} value={registerDetails.password} placeholder="Password" required />
-            </Form.Group>
-            {error.length > 0 && error[0].hasOwnProperty("password") ? <Alerts closeHandler={closeHandler} text={error[0].password[0]} variant="danger" /> : ""}
-            <Form.Group className="my-4" controlId="password_confirmation">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" name="password_confirmation" onChange={handleRegisterDetails} value={registerDetails.password_confirmation} placeholder="Confirm Password" required />
-            </Form.Group>
-            {confirmPass.length > 0 ? <Alerts closeHandler={closeHandler} text={confirmPass} variant="danger" /> : ""}
-            <div className="mt-4 d-grid gap-2">
-              <Button className="btn--primary" variant="primary" size="lg" type="submit">
-                Sign Up
-              </Button>
-            </div>
-          </Form>
+      <Row className="justify-content-center align-items-center home-register-form">
+        <Col md={4}>
+          <img className="form-logo" src={logo} width="100" alt="logo" />
+          <div className="form-background">
+            <Form className="register-form" onSubmit={handleSubmit}>
+              <h4>Sign Up for an account</h4>
+              <Form.Group className="my-3" controlId="name">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="name" name="name" onChange={handleRegisterDetails} value={registerDetails.name} placeholder="Name" required />
+              </Form.Group>
+              {error.length > 0 && error[0].hasOwnProperty("name") ? <Alerts closeHandler={closeHandler} text={error[0].name[0]} variant="danger" /> : ""}
+              <Form.Group className="my-3" controlId="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" name="email" onChange={handleRegisterDetails} value={registerDetails.email} placeholder="Email" required />
+              </Form.Group>
+              {error.length > 0 && error[0].hasOwnProperty("email") ? <Alerts closeHandler={closeHandler} text={error[0].email[0]} variant="danger" /> : ""}
+              <Form.Group className="my-3" controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" name="password" onChange={handleRegisterDetails} value={registerDetails.password} placeholder="Password" required />
+              </Form.Group>
+              {error.length > 0 && error[0].hasOwnProperty("password") ? <Alerts closeHandler={closeHandler} text={error[0].password[0]} variant="danger" /> : ""}
+              <Form.Group className="my-3" controlId="password_confirmation">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control type="password" name="password_confirmation" onChange={handleRegisterDetails} value={registerDetails.password_confirmation} placeholder="Confirm Password" required />
+              </Form.Group>
+              {confirmPass.length > 0 ? <Alerts closeHandler={closeHandler} text={confirmPass} variant="danger" /> : ""}
+              <div className="mt-3 d-grid gap-2">
+                <Button className="btn--primary" variant="primary" size="lg" type="submit">
+                  Sign Up
+                </Button>
+              </div>
+              <div className="mt-3">
+                <span>Have An Account ?</span> <Link to="/login">Please log in</Link>
+              </div>
+            </Form>
+          </div>
         </Col>
       </Row>
     </Container>
