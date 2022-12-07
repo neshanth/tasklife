@@ -1,7 +1,7 @@
 .tasks-wrapper {
   background-color: var(--white);
-  margin-top: 5em;
-  padding: 2em;
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
   border-radius: 5px;
 }
 .table-header {
@@ -25,4 +25,7 @@ thead {
 tbody tr td {
   padding-top: 1em !important;
   padding-bottom: 1em !important;
+}
+.tasks-in-progress p {
+  font-weight: 600;
 }

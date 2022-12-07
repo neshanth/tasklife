@@ -6,7 +6,7 @@ import "./dashboardheader.css";
 const DashboardHeader = () => {
   const { handleSidebarToggle } = useContext(UserContext);
   return (
-    <div className="d-flex justify-content-between dashboard-header border-bottom">
+    <div className="d-flex justify-content-between align-items-center dashboard-header border-bottom">
       <p className="title mb-0">Dashboard</p>
       <Hamburger handleSidebarToggle={handleSidebarToggle} />
     </div>

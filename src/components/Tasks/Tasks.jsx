@@ -86,13 +86,12 @@ function Tasks() {
         </Toast>
       </ToastContainer>
       <div className="tasks-wrapper">
-        <div className="table-heading d-flex justify-content-between">
-          <p className="table-header">Tasks</p>
-          <Link to="/dashboard/tasks/new">
-            <button className="btn btn--primary">New Task</button>
-          </Link>
+        <p className="heading">Tasks</p>
+        <p>Manage Your Tasks</p>
+        <div className="tasks-in-progress mt-3">
+          <p>In Progress (4)</p>
         </div>
-        <Table className="my-3" responsive>
+        {/* <Table className="my-3" responsive>
           <thead>
             <tr>
               <th scope="col">Status</th>
@@ -106,8 +105,7 @@ function Tasks() {
               return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />;
             })}
           </tbody>
-        </Table>
-        <div className="new-btn d-flex justify-content-center"></div>
+        </Table> */}
       </div>
     </>
   );
