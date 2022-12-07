@@ -14,6 +14,7 @@
   --padding-1: 1rem;
   --padding-2: 1.5rem;
   --padding-3: 3rem;
+  --border-color: #ebebeb;
 }
 
 @font-face {
@@ -78,9 +79,11 @@ a {
   background-color: var(--white);
   color: var(--black);
 }
-
 .text--primary {
   color: var(--primary-color);
+}
+.border-bottom {
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* End of Globals */

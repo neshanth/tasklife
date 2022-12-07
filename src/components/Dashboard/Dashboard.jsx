@@ -4,6 +4,7 @@ import { UserContext } from "../../context/context";
 import Sidebar from "../Sidebar/Sidebar";
 import Container from "react-bootstrap/Container";
 import "./dashboard.css";
+import DashboardHeader from "../DashboardHeader/DashboardHeader";
 
 function Dashboard() {
   const { show, setShow } = useContext(UserContext);
@@ -14,7 +15,8 @@ function Dashboard() {
   return (
     <div className={`${show ? "dashboard" : "container"}`}>
       <Sidebar show={show} handleClose={handleClose} />
-      <Container className="my-2">
+      <Container className="p-0">
+        <DashboardHeader />
         <Outlet />
       </Container>
     </div>

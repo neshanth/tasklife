@@ -2,3 +2,7 @@
   cursor: pointer;
   fill: var(--primary-color);
 }
+
+.logout-icon {
+  margin-right: 0.8rem;
+}

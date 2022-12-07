@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./header.css";
-import Button from "react-bootstrap/Button";
 import { Link, useLocation } from "react-router-dom";
 import Hamburger from "../Hamburger/Hamburger";
 import { UserContext } from "../../context/context";

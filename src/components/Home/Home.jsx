@@ -7,6 +7,7 @@ import { UserContext } from "../../context/context";
 import "./home.css";
 import api from "../../api/api";
 import { useState } from "react";
+import Header from "../Header/Header";
 
 function Home() {
   const { setAuth, setAuthLoader } = useContext(UserContext);
@@ -53,26 +54,29 @@ function Home() {
   if (loading) return <Spinner />;
 
   return (
-    <div className="home-wrapper">
-      <div className="hero-wrapper">
-        <div className="hero-bg">
-          <Container>
-            <section className="hero-content">
-              <h1 className="hero-title">Welcome to Tasklife</h1>
-              <p className="hero-secondary lead">Manage your tasks without any hassle</p>
-              <div className="hero-buttons d-grid gap-2 d-sm-flex justify-content-sm-center flex-column">
-                <Link className="btn btn--primary btn-login" to="/login">
-                  Login
-                </Link>
-                <button className="btn btn--secondary btn-demo-login" onClick={handleDemoLogin}>
-                  Demo Login
-                </button>
-              </div>
-            </section>
-          </Container>
+    <>
+      <Header />
+      <div className="home-wrapper">
+        <div className="hero-wrapper">
+          <div className="hero-bg">
+            <Container>
+              <section className="hero-content">
+                <h1 className="hero-title">Welcome to Tasklife</h1>
+                <p className="hero-secondary lead">Manage your tasks without any hassle</p>
+                <div className="hero-buttons d-grid gap-2 d-sm-flex justify-content-sm-center flex-column">
+                  <Link className="btn btn--primary btn-login" to="/login">
+                    Login
+                  </Link>
+                  <button className="btn btn--secondary btn-demo-login" onClick={handleDemoLogin}>
+                    Demo Login
+                  </button>
+                </div>
+              </section>
+            </Container>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

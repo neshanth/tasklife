@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import { UserContext } from "../../context/context";
 import { logout } from "../../utils/utils";
 import CloseButton from "../../assets/Icons/CloseButton";
+import logo from "../../assets/Images/tasklife__logo-white.png";
 import "./sidebar.css";
+import LogoutIcon from "../../assets/Icons/LogoutIcon";
 
 function Sidebar({ handleClose }) {
   const { show, setShow } = useContext(UserContext);
@@ -24,8 +26,8 @@ function Sidebar({ handleClose }) {
   return (
     <>
       <Offcanvas className="sidebar" show={show} tabIndex="" onHide={handleClose} backdrop={false}>
-        <Offcanvas.Header>
-          <Offcanvas.Title>TaskLife</Offcanvas.Title>
+        <Offcanvas.Header className="border-bottom">
+          <img alt="logo" src={logo} width="100" />
           <CloseButton handleClick={handleClick} />
         </Offcanvas.Header>
         <Offcanvas.Body>
@@ -39,10 +41,14 @@ function Sidebar({ handleClose }) {
               My Tasks
             </NavLink>
           </div>
-          <div className="logout-btn d-flex justify-content-center">
+          {/* <div className="logout-btn d-flex justify-content-center">
             <button onClick={logout} className="btn btn-danger mx-auto">
               Logout
             </button>
+          </div> */}
+          <div className="d-flex text-white align-items-center logout-menu" onClick={logout}>
+            <LogoutIcon />
+            <p className="mb-0">Logout</p>
           </div>
         </Offcanvas.Body>
       </Offcanvas>

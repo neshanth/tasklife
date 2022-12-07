@@ -1,9 +1,22 @@
 .sidebar .offcanvas-title {
   color: var(--white);
 }
+
+.sidebar {
+  margin-top: 0 !important;
+}
+
 .offcanvas-body,
 .offcanvas-header {
-  background-color: #38383a;
+  background-color: var(--primary-color);
+}
+
+.offcanvas .offcanvas-header {
+  padding: 1rem 1.5rem;
+}
+
+.offcanvas.offcanvas-start {
+  width: 300px !important;
 }
 
 .sidebar-link {
@@ -27,4 +40,17 @@
 
 .sidebar .offcanvas-body {
   padding: 0;
+}
+
+.logout-menu {
+  cursor: pointer;
+  fill: #fff;
+  padding: 1rem 2rem;
+}
+.logout-menu p {
+  font-weight: 600;
+}
+
+.logout-menu:hover {
+  background-color: var(--primary-hover);
 }

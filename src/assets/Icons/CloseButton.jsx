@@ -4,8 +4,11 @@ import "./icons.css";
 const CloseButton = ({ handleClick }) => {
   return (
     <div onClick={handleClick}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="var(--white)" className="bi bi-x" viewBox="0 0 16 16">
-        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+      <svg height="30" viewBox="0 0 512 512" width="30" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+        <g id="_02_User" data-name="02 User">
+          <path d="m25 512a25 25 0 0 1 -17.68-42.68l462-462a25 25 0 0 1 35.36 35.36l-462 462a24.93 24.93 0 0 1 -17.68 7.32z" />
+          <path d="m487 512a24.93 24.93 0 0 1 -17.68-7.32l-462-462a25 25 0 0 1 35.36-35.36l462 462a25 25 0 0 1 -17.68 42.68z" />
+        </g>
       </svg>
     </div>
   );
