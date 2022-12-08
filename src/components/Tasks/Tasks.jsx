@@ -4,8 +4,8 @@ import api from "../../api/api";
 import TaskItem from "../TaskItem/TaskItem";
 import Spinner from "../Spinner/Spinner";
 import { updateTaskStatusApi } from "../../utils/utils";
-import { Link, useLocation } from "react-router-dom";
-import { Toast, ToastContainer, Table } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+import { Toast, ToastContainer } from "react-bootstrap";
 import "./tasks.css";
 
 function Tasks() {
@@ -13,6 +13,7 @@ function Tasks() {
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
+  const [completedTasks, setCompletedTasks] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
@@ -28,6 +29,8 @@ function Tasks() {
     try {
       const response = await api.get("/api/tasks");
       setTasks([...response.data.tasks]);
+      const completedTasks = response.data.tasks.filter((task) => task.status === 0);
+      setCompletedTasks(completedTasks);
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -90,22 +93,10 @@ function Tasks() {
         <p>Manage Your Tasks</p>
         <div className="tasks-in-progress mt-3">
           <p>In Progress (4)</p>
+          {completedTasks.map((task) => (
+            <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
+          ))}
         </div>
-        {/* <Table className="my-3" responsive>
-          <thead>
-            <tr>
-              <th scope="col">Status</th>
-              <th scope="col">Task</th>
-              <th scope="col">Due Date</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tasks.map((task) => {
-              return <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />;
-            })}
-          </tbody>
-        </Table> */}
       </div>
     </>
   );
