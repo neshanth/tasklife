@@ -15,37 +15,37 @@
   padding: 1rem 1.5rem;
 }
 
-/* .offcanvas.offcanvas-start {
-  width: 300px !important;
-} */
-
 .sidebar-link {
   font-size: 1rem;
   font-weight: 700;
+  margin: 1rem 0;
 }
 
-.sidebar-link:hover {
+.sidebar-link:hover,
+.sidebar-link-active {
   background-color: var(--primary-hover);
 }
 
 .sidebar-link a {
   color: var(--white);
-  display: block;
-  padding: 1rem;
-  margin: 1.5rem 0;
+  display: inline-block;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  width: 100%;
 }
 .sidebar-link a:hover {
   color: var(--white);
 }
 
 .sidebar .offcanvas-body {
-  padding: 0;
+  padding: 2rem 0;
 }
 
 .logout-menu {
   cursor: pointer;
   fill: #fff;
   padding: 1rem 2rem;
+  margin: 1rem 0;
 }
 .logout-menu p {
   font-weight: 600;

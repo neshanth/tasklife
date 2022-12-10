@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { UserContext } from "../../context/context";
 import { logout } from "../../utils/utils";
 import CloseButton from "../../assets/Icons/CloseButton";
 import logo from "../../assets/Images/tasklife__logo-white.png";
 import "./sidebar.css";
 import LogoutIcon from "../../assets/Icons/LogoutIcon";
+import PieIcon from "../../assets/Icons/PieIcon";
+import ListIcon from "../../assets/Icons/ListIcon";
 
 function Sidebar({ handleClose }) {
   const { show, setShow } = useContext(UserContext);
+  let location = useLocation();
 
   const handleClick = () => {
     setShow(false);
@@ -17,10 +20,6 @@ function Sidebar({ handleClose }) {
 
   const handleSidebarForMobile = () => {
     window.innerWidth <= 1024 ? setShow(false) : setShow(true);
-  };
-
-  const activeStyles = {
-    backgroundColor: "var(--primary-color)",
   };
 
   return (
@@ -31,21 +30,18 @@ function Sidebar({ handleClose }) {
           <CloseButton handleClick={handleClick} />
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <div className="sidebar-link">
-            <NavLink style={({ isActive }) => (isActive ? activeStyles : null)} onClick={handleSidebarForMobile} to="/dashboard/stats">
+          <div className={`d-flex text-white align-items-center sidebar-link ${location.pathname === "/dashboard/stats" ? "sidebar-link-active" : ""}`}>
+            <NavLink onClick={handleSidebarForMobile} to="/dashboard/stats">
+              <PieIcon />
               Stats
             </NavLink>
           </div>
-          <div className="sidebar-link">
-            <NavLink style={({ isActive }) => (isActive ? activeStyles : null)} onClick={handleSidebarForMobile} to="/dashboard/tasks">
+          <div className={`d-flex text-white align-items-center sidebar-link ${location.pathname === "/dashboard/tasks" ? "sidebar-link-active" : ""}`}>
+            <NavLink onClick={handleSidebarForMobile} to="/dashboard/tasks">
+              <ListIcon />
               My Tasks
             </NavLink>
           </div>
-          {/* <div className="logout-btn d-flex justify-content-center">
-            <button onClick={logout} className="btn btn-danger mx-auto">
-              Logout
-            </button>
-          </div> */}
           <div className="d-flex text-white align-items-center logout-menu" onClick={logout}>
             <LogoutIcon />
             <p className="mb-0">Logout</p>
