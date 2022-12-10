@@ -92,8 +92,8 @@ function Tasks() {
         <p className="heading">Tasks</p>
         <p>Manage Your Tasks</p>
         <div className="tasks-in-progress mt-3">
-          <p>In Progress (4)</p>
-          {completedTasks.map((task) => (
+          <p className="pending-tasks">Pending (4)</p>
+          {tasks.map((task) => (
             <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
           ))}
         </div>

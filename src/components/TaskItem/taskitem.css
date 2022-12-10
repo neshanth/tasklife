@@ -1,91 +1,59 @@
 .task-item {
-  padding: 0.5em 0;
-  /* border: 1px solid var(--primary-color); */
-  border-bottom: 1px solid var(--primary-color);
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--grey-2);
+  border-radius: var(--radius);
 }
-
-.task-status {
-  width: 10%;
+.due-date p {
+  font-weight: 600;
+}
+.task-item .form-check-input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background-color: var(--grey-2);
+  border: none;
+}
+.task-item .form-check-input:checked[type="checkbox"] {
+  background-image: none;
+  background-color: var(--primary-color);
 }
 .task-data {
   width: 60%;
 }
-
 .dropdown-toggle::after {
   display: none;
 }
-
 .actions-dropdown {
   background: none;
   border: none;
 }
-
 .dropdown-toggle::after {
   display: none !important;
 }
-
 .dropdown-toggle {
   background: none !important;
   border: none !important;
 }
-
+.task-status .form-check-input[type="checkbox"] {
+  margin-top: 0;
+}
 .task-item .dropdown-menu {
   min-width: 50%;
   text-align: center;
 }
-
-.form-switch .form-check-input:checked {
-  background-color: var(--primary-color);
-}
-
-.task-name {
-  color: var(--primary-color);
-}
-
-.task-due-date {
-  font-size: 0.8rem;
-  margin: 0 1em;
-  color: var(--black);
-}
-.calendar-icon {
-  margin-right: 2%;
-}
 .btn.btn--link {
   text-decoration: none;
 }
-.small-table-column {
-  width: 10%;
+.task-item-icons svg:hover {
+  cursor: pointer;
 }
-
 @media only screen and (min-width: 769px) {
   .bi .bi-three-dots {
     width: 40;
     height: 40;
   }
-  .task-name {
-    font-size: 1.5rem;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .task-name {
-    font-size: 0.9rem;
-  }
 }
 
 .stat {
   margin-bottom: 0;
-}
-
-.table-row {
-  padding-left: 1em !important;
-}
-
-.completed-table-row {
-  background-color: var(--primary-hover);
-  color: #fff;
-}
-
-.completed-task {
-  text-decoration: line-through;
 }
