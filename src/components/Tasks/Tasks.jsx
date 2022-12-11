@@ -27,10 +27,6 @@ function Tasks() {
     }
   }, []);
 
-  const handleClose = () => {
-    setShowNewModal(false);
-  };
-
   const getTasks = async () => {
     setLoading(true);
     try {

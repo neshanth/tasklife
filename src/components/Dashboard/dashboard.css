@@ -5,6 +5,10 @@
 .dashboard-form-container {
   transform: translateY(50%);
 }
+.dashboard .container {
+  margin: 0;
+  max-width: 100%;
+}
 
 .heading,
 .sub-heading {
@@ -13,4 +17,10 @@
 
 .heading {
   font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    margin-left: 0 !important;
+  }
 }
