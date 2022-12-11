@@ -2,6 +2,10 @@
   color: var(--white);
 }
 
+.offcanvas.offcanvas-start {
+  width: 300px !important;
+}
+
 .sidebar {
   margin-top: 0 !important;
 }
@@ -38,7 +42,7 @@
 }
 
 .sidebar .offcanvas-body {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 }
 
 .logout-menu {

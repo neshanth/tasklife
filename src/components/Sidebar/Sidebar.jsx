@@ -1,16 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { NavLink, useLocation } from "react-router-dom";
 import { UserContext } from "../../context/context";
-import { logout } from "../../utils/utils";
 import CloseButton from "../../assets/Icons/CloseButton";
 import logo from "../../assets/Images/tasklife__logo-white.png";
 import "./sidebar.css";
 import LogoutIcon from "../../assets/Icons/LogoutIcon";
 import PieIcon from "../../assets/Icons/PieIcon";
 import ListIcon from "../../assets/Icons/ListIcon";
+import Spinner from "../Spinner/Spinner";
+import api from "../../api/api";
+import history from "../../history/history";
 
 function Sidebar({ handleClose }) {
+  const [loading, setLoading] = useState(false);
   const { show, setShow } = useContext(UserContext);
   let location = useLocation();
 
@@ -18,9 +21,28 @@ function Sidebar({ handleClose }) {
     setShow(false);
   };
 
+  const logout = async () => {
+    setLoading(true);
+    try {
+      let response = await api.post("/api/logout", {});
+      if (response.status === 200) {
+        localStorage.removeItem("isAuth");
+        localStorage.removeItem("user");
+        history.push("/");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    setLoading(false);
+  };
+
   const handleSidebarForMobile = () => {
     window.innerWidth <= 1024 ? setShow(false) : setShow(true);
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <>

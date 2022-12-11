@@ -6,8 +6,9 @@ import Col from "react-bootstrap/Col";
 import { useState } from "react";
 import api from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import { Container, Spinner } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Alerts from "../Alerts/Alerts";
+import Spinner from "../Spinner/Spinner";
 
 function NewTask() {
   const [newTask, setNewTask] = useState({ task: "", due_date: "" });

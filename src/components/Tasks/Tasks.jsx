@@ -100,7 +100,7 @@ function Tasks() {
       </ToastContainer>
       <div className="tasks-wrapper">
         <p className="heading">Tasks</p>
-        <p>Manage Your Tasks</p>
+        <p>Create, Read, Update and Delete Your Tasks.</p>
         <div className="tasks-in-progress mt-3">
           <p className="pending-tasks">Pending ({pendingTasks.length})</p>
           {pendingTasks.map((task) => (

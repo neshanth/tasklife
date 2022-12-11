@@ -12,7 +12,7 @@ const TaskItem = ({ taskData, updateTaskStatus, deleteTask }) => {
   return (
     <>
       <div className="task-item d-flex align-items-center my-3">
-        <Form.Check id="status" className="mx-2" checked={status} onChange={() => updateTaskStatus(id)} />
+        <Form.Check id="status" className="mx-2 status-checkbox" checked={status} onChange={() => updateTaskStatus(id)} />
         <div className="task">
           <p className="mb-0 mx-3">{task}</p>
         </div>

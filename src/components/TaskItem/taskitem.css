@@ -3,6 +3,9 @@
   border: 1px solid var(--grey-2);
   border-radius: var(--radius);
 }
+.task-item:hover {
+  box-shadow: var(--highlight-shadow);
+}
 .due-date p {
   font-weight: 600;
 }
@@ -44,16 +47,11 @@
 .btn.btn--link {
   text-decoration: none;
 }
-.task-item-icons svg:hover {
+.task-item-icons svg:hover,
+.status-checkbox,
+.form-check-input[type="checkbox"] {
   cursor: pointer;
 }
-@media only screen and (min-width: 769px) {
-  .bi .bi-three-dots {
-    width: 40;
-    height: 40;
-  }
-}
-
 .stat {
   margin-bottom: 0;
 }
