@@ -122,12 +122,6 @@ a {
   background-color: var(--black);
 }
 
-/* Task Form */
-
-.task-form-title {
-  color: var(--primary-color);
-}
-
 /* Navabr and Dashboard */
 
 @media only screen and (max-width: 768px) {
@@ -141,7 +135,7 @@ a {
 }
 
 .btn-close {
-  background: url("/public/close.svg") center/1em auto no-repeat;
+  background: url("../assets/Images/tasklife__close.svg") center/1em auto no-repeat;
 }
 
 .modal-open {

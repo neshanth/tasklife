@@ -1,6 +1,11 @@
 .dashboard {
   margin-left: 300px !important;
 }
+
+.dashboard-form-container {
+  transform: translateY(50%);
+}
+
 .heading,
 .sub-heading {
   font-weight: 600;

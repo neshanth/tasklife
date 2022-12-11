@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState } from "react";
 import api from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Alerts from "../Alerts/Alerts";
 import Spinner from "../Spinner/Spinner";
@@ -47,29 +47,27 @@ function NewTask() {
 
   return (
     <>
-      <Container>
-        <Row className="justify-content-center align-items-center mt-6">
-          <Col md={6} className="form-background">
-            <h5 className="text-center task-form-title">New Task</h5>
+      <Container className="dashboard-form-container">
+        <Row className="justify-content-center align-items-center">
+          <Col md={4} className="form-background">
             <Form className="custom-form edit-form" onSubmit={handleSubmit}>
-              <Form.Group className="my-4" controlId="task">
+              <h4 className="task-form-title">Add New Task</h4>
+              <Form.Group className="my-3" controlId="task">
                 <Form.Label>Task</Form.Label>
                 <Form.Control name="task" placeholder="Task" value={newTask.task} onChange={handleTaskForm} required />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts text={error[0].task[0]} variant="danger" /> : ""}
-              <Form.Group className="my-4" controlId="due_date">
+              <Form.Group className="my-3" controlId="due_date">
                 <Form.Label>Due Date</Form.Label>
                 <Form.Control type="date" name="due_date" placeholder="Due Date" onChange={handleTaskForm} value={newTask.due_date} required />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
-              <div className="my-4 d-flex justify-content-center align-items-baseline">
-                <Button className="btn--primary mx-2" variant="primary" type="submit">
+              <div className="my-3 d-grid gap-2">
+                <Button className="btn--primary btn btn-primary btn-lg" variant="primary" type="submit">
                   Save
                 </Button>
-                <Button onClick={() => navigate("/dashboard/tasks")} className="btn-warning mx-2" variant="primary">
-                  Back
-                </Button>
               </div>
+              <Link to="/dashboard/tasks">Back</Link>
             </Form>
           </Col>
         </Row>
