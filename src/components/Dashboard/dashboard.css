@@ -1,3 +1,11 @@
 .dashboard {
   margin-left: 300px !important;
 }
+.heading,
+.sub-heading {
+  font-weight: 600;
+}
+
+.heading {
+  font-size: 1.5rem;
+}

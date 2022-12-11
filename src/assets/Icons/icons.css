@@ -9,3 +9,7 @@
 .list-icon {
   margin-right: 0.8rem;
 }
+
+.close-icon:hover {
+  cursor: pointer;
+}

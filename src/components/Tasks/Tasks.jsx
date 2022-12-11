@@ -102,7 +102,7 @@ function Tasks() {
         <p className="heading">Tasks</p>
         <p>Create, Read, Update and Delete Your Tasks.</p>
         <div className="tasks-in-progress mt-3">
-          <p className="pending-tasks">Pending ({pendingTasks.length})</p>
+          <p className="sub-heading">Pending ({pendingTasks.length})</p>
           {pendingTasks.map((task) => (
             <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
           ))}
@@ -114,7 +114,7 @@ function Tasks() {
           </div>
         </div>
         <div className="tasks-in-progress mt-3">
-          <p className="pending-tasks">Completed ({completedTasks.length})</p>
+          <p className="sub-heading">Completed ({completedTasks.length})</p>
           {completedTasks.map((task) => (
             <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
           ))}
