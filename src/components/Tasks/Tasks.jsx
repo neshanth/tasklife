@@ -69,6 +69,8 @@ function Tasks() {
         setSuccess("Task has been Deleted");
       }
       setTasks([...filteredTasks]);
+      setCompletedTasks([...filteredTasks.filter((task) => task.status === 1)]);
+      setPendingTasks([...filteredTasks.filter((task) => task.status === 0)]);
       setShow(true);
       setLoading(false);
     } catch (err) {
