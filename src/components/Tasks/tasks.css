@@ -7,3 +7,7 @@
 .pending-tasks {
   font-weight: 600;
 }
+
+.add-new-task-link {
+  font-size: 1rem;
+}

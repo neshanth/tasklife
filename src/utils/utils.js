@@ -16,7 +16,8 @@ const logout = async () => {
 
 const updateTaskStatusApi = async (id) => {
   try {
-    await api.patch(`/api/tasks/status/${id}`);
+    const response = await api.patch(`/api/tasks/status/${id}`);
+    return response;
   } catch (err) {
     console.log(err);
   }

@@ -4,15 +4,17 @@ import api from "../../api/api";
 import TaskItem from "../TaskItem/TaskItem";
 import Spinner from "../Spinner/Spinner";
 import { updateTaskStatusApi } from "../../utils/utils";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Toast, ToastContainer } from "react-bootstrap";
 import "./tasks.css";
+import PlusIcon from "../../assets/Icons/PlusIcon";
 
 function Tasks() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
+  const [pendingTasks, setPendingTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const location = useLocation();
 
@@ -29,7 +31,9 @@ function Tasks() {
     try {
       const response = await api.get("/api/tasks");
       setTasks([...response.data.tasks]);
-      const completedTasks = response.data.tasks.filter((task) => task.status === 0);
+      const pendingTasks = response.data.tasks.filter((task) => task.status === 0);
+      const completedTasks = response.data.tasks.filter((task) => task.status === 1);
+      setPendingTasks(pendingTasks);
       setCompletedTasks(completedTasks);
       setLoading(false);
     } catch (err) {
@@ -39,6 +43,7 @@ function Tasks() {
   };
 
   const updateTaskStatus = async (id) => {
+    setLoading(true);
     try {
       const updatedTasks = tasks.map((task) => {
         if (task.id === id) {
@@ -48,7 +53,10 @@ function Tasks() {
         }
       });
       setTasks([...updatedTasks]);
-      updateTaskStatusApi(id);
+      const updatedResponse = await updateTaskStatusApi(id);
+      setCompletedTasks([...updatedResponse.data.completed]);
+      setPendingTasks([...updatedResponse.data.pending]);
+      setLoading(false);
     } catch (err) {}
   };
 
@@ -92,8 +100,20 @@ function Tasks() {
         <p className="heading">Tasks</p>
         <p>Manage Your Tasks</p>
         <div className="tasks-in-progress mt-3">
-          <p className="pending-tasks">Pending (4)</p>
-          {tasks.map((task) => (
+          <p className="pending-tasks">Pending ({pendingTasks.length})</p>
+          {pendingTasks.map((task) => (
+            <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
+          ))}
+          <div className="task-item">
+            <PlusIcon />
+            <Link to="/dashboard/tasks/new" className="add-new-task-link">
+              Add new task
+            </Link>
+          </div>
+        </div>
+        <div className="tasks-in-progress mt-3">
+          <p className="pending-tasks">Completed ({completedTasks.length})</p>
+          {completedTasks.map((task) => (
             <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
           ))}
         </div>
