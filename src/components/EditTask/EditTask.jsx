@@ -7,7 +7,7 @@ import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
 import Alerts from "../Alerts/Alerts";
 import { checkObjectChangeCount } from "../../utils/utils";
-import Row from "react-bootstrap/row";
+import { Row } from "react-bootstrap";
 import Col from "react-bootstrap/col";
 import Container from "react-bootstrap/Container";
 
