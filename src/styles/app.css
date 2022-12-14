@@ -5,10 +5,12 @@
   --gradient: 50;
   --shadow: 0px 3px 10px 0px #eceeff;
   --form-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+  --highlight-shadow: 0px 3px 10px 0px #eceeff;
   --radius: 12px;
   --grey: #ebebeb;
+  --grey-2: #eeedeb;
   --primary-hover: #3145c9;
-  --secondary-color: #ada9bb;
+  --secondary-color: #282828;
   --primary-text-color: #333333;
   --padding-0: 0.5rem;
   --padding-1: 1rem;
@@ -83,10 +85,6 @@ a {
 .border-bottom {
   border-bottom: 1px solid var(--border-color);
 }
-.heading {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
 
 /* End of Globals */
 
@@ -124,12 +122,6 @@ a {
   background-color: var(--black);
 }
 
-/* Task Form */
-
-.task-form-title {
-  color: var(--primary-color);
-}
-
 /* Navabr and Dashboard */
 
 @media only screen and (max-width: 768px) {
@@ -143,7 +135,7 @@ a {
 }
 
 .btn-close {
-  background: url("/public/close.svg") center/1em auto no-repeat;
+  background: url("../assets/Images/tasklife__close.svg") center/1em auto no-repeat;
 }
 
 .modal-open {

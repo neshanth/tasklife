@@ -1,31 +1,10 @@
 .tasks-wrapper {
   background-color: var(--white);
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   padding: 0.8rem 2rem;
   border-radius: 5px;
 }
-.table-header {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
 
-thead {
-  background-color: var(--grey);
-  color: var(--black);
-}
-
-.table {
-  border: 1px solid #999;
-}
-
-.table tr th {
-  padding-left: 1em;
-}
-
-tbody tr td {
-  padding-top: 1em !important;
-  padding-bottom: 1em !important;
-}
-.tasks-in-progress p {
-  font-weight: 600;
+.add-new-task-link {
+  font-size: 1rem;
 }
