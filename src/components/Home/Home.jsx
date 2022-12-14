@@ -61,7 +61,7 @@ function Home() {
           <div className="hero-bg">
             <Container>
               <section className="hero-content">
-                <h1 className="hero-title">Welcome to Tasklife</h1>
+                <h1 className="hero-title">Welcome to Tasklife !!!</h1>
                 <p className="hero-secondary lead">Manage your tasks without any hassle</p>
                 <div className="hero-buttons d-grid gap-2 d-sm-flex justify-content-sm-center flex-column">
                   <Link className="btn btn--primary btn-login" to="/login">
