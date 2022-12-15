@@ -5,7 +5,7 @@ import TaskItem from "../TaskItem/TaskItem";
 import Spinner from "../Spinner/Spinner";
 import { updateTaskStatusApi } from "../../utils/utils";
 import { Link, useLocation } from "react-router-dom";
-import { Toast, ToastContainer, Modal, Button } from "react-bootstrap";
+import { Toast, ToastContainer } from "react-bootstrap";
 import "./tasks.css";
 import PlusIcon from "../../assets/Icons/PlusIcon";
 
@@ -16,7 +16,6 @@ function Tasks() {
   const [show, setShow] = useState(false);
   const [pendingTasks, setPendingTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
-  const [showNewModal, setShowNewModal] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -48,13 +47,14 @@ function Tasks() {
     try {
       const updatedTasks = tasks.map((task) => {
         if (task.id === id) {
-          return { ...task, status: !task.status };
+          return { ...task, status: task.status === 1 ? 0 : 1 };
         } else {
           return { ...task };
         }
       });
       setTasks([...updatedTasks]);
       const updatedResponse = await updateTaskStatusApi(id);
+      console.log(updatedResponse);
       setCompletedTasks([...updatedResponse.data.completed]);
       setPendingTasks([...updatedResponse.data.pending]);
       setLoading(false);

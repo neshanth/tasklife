@@ -9,7 +9,6 @@ import Alerts from "../Alerts/Alerts";
 import { checkObjectChangeCount } from "../../utils/utils";
 import { Row, Col } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
 
 const EditTask = () => {
   let { id } = useParams();
@@ -75,30 +74,30 @@ const EditTask = () => {
 
   return (
     <>
-      <Container className="dashboard-form-container">
-        <Row className="justify-content-center align-items-center">
-          <Col md={4} className="form-background">
+      <Container>
+        <Row className="justify-content-center align-items-center mt-6">
+          <Col md={6} className="form-background">
+            <h5 className="text-center task-form-title">Edit Task</h5>
             <Form className="custom-form edit-form" onSubmit={handleTaskUpdate}>
-              <h4 className="task-form-title">Edit Task</h4>
-              <Form.Group className="my-3" controlId="task">
-                <Form.Label>Task Name</Form.Label>
+              <Form.Group className="my-4" controlId="task">
                 <Form.Control name="task" placeholder="Task" onChange={handleEditTask} value={editTask.task} required />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts text={error[0].task[0]} variant="danger" /> : ""}
-              <Form.Group className="my-3" controlId="due_date">
-                <Form.Label>Due Date</Form.Label>
+              <Form.Group className="my-4" controlId="due_date">
                 <Form.Control type="date" name="due_date" placeholder="Due Date" value={editTask.due_date} onChange={handleEditTask} required />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
-              <Form.Group className="my-3" controlId="status">
+              <Form.Group className="my-4" controlId="status">
                 <Form.Check type="checkbox" name="status" checked={editTask.status} onChange={handleEditTask} label="Status" />
               </Form.Group>
-              <div className="my-3 d-grid gap-2">
+              <div className="my-4 d-flex justify-content-center align-items-baseline">
                 <Button disabled={count === 0 ? true : false} className="btn--primary mx-2" variant="primary" type="submit">
                   Update
                 </Button>
+                <Button onClick={() => navigate("/dashboard/tasks")} className="btn-warning mx-2" variant="primary">
+                  Back
+                </Button>
               </div>
-              <Link to="/dashboard/tasks">Back</Link>
             </Form>
           </Col>
         </Row>
