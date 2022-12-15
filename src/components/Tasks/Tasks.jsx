@@ -54,7 +54,6 @@ function Tasks() {
       });
       setTasks([...updatedTasks]);
       const updatedResponse = await updateTaskStatusApi(id);
-      console.log(updatedResponse);
       setCompletedTasks([...updatedResponse.data.completed]);
       setPendingTasks([...updatedResponse.data.pending]);
       setLoading(false);
