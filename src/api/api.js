@@ -1,7 +1,6 @@
 import axios from "axios";
 import history from "../history/history";
 import { redirectPageBasedOnUrl } from "../utils/utils";
-console.log(process.env);
 const api = axios.create({
   baseURL: `${process.env.REACT_APP_BASE_URL}`,
   withCredentials: true,
