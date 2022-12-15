@@ -6,6 +6,8 @@ on:
       - develop
 env:
   REACT_APP_BASE_URL: https://api.tasklife.in
+  REACT_APP_DEMO_EMAIL: demouser@demo.com
+  REACT_APP_DEMO_PASSWORD: demo1882
 
 jobs:
   build:
