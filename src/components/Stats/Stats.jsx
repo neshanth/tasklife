@@ -12,8 +12,8 @@ function Stats() {
   }, []);
 
   const [stats, setStats] = useState([
-    { statName: "Completed", stat: 0 },
     { statName: "Pending", stat: 0 },
+    { statName: "Completed", stat: 0 },
     { statName: "Total", stat: 0 },
   ]);
   const [loading, setLoading] = useState(true);
@@ -30,9 +30,9 @@ function Stats() {
       const { data } = response;
       const { completed, pending, tasks } = data;
       setStats([
-        { statName: "Completed", stat: completed },
-        { statName: "Pending", stat: pending },
-        { statName: "Total", stat: tasks },
+        { statName: "pending", stat: pending },
+        { statName: "completed", stat: completed },
+        { statName: "total", stat: tasks },
       ]);
       setLoading(false);
     } catch (err) {
@@ -45,11 +45,13 @@ function Stats() {
 
   return (
     <>
-      <div className="justify-content-center stat-container d-flex">
+      <p className="heading">Analytics</p>
+      <div className="row mx-0 my-0 justify-content-between">
         {stats.map((stat, index) => {
           return <StatCard key={index} statName={stat.statName} stat={stat.stat} />;
         })}
       </div>
+
       <div className="row justify-content-center">
         <div className="col-md-4 my-3">
           <p className="stats-text text-center mt-2">Productivity</p>

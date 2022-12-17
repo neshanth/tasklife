@@ -2,6 +2,13 @@
   margin-left: 300px !important;
 }
 
+.dashboard-wrapper {
+  background-color: var(--white);
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+}
+
 .dashboard-form-container {
   transform: translateY(50%);
 }

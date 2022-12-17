@@ -31,15 +31,8 @@
 }
 .stat-container {
   box-shadow: var(--shadow);
-  margin-top: 5em;
-  margin-left: 2.5em;
-  margin-right: 2.5em;
   border-radius: var(--radius);
   background-color: var(--white);
-}
-.stat-name {
-  color: var(--black);
-  font-weight: 500;
 }
 
 @media screen and (max-width: 800px) {

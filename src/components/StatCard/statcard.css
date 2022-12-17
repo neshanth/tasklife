@@ -1,16 +1,33 @@
 .stat-name {
-  color: #999;
   margin-bottom: 0;
 }
-.stat-card {
-  padding: 1em 0;
-}
+.stat-name,
 .stat {
-  font-size: 2rem;
+  font-weight: 600;
 }
-.completed {
-  color: #00fca4;
+.stat-card {
+  text-transform: capitalize;
+  border-radius: var(--radius);
 }
-.pending {
-  color: #fc0022;
+
+.dashboard-wrapper .stat-card {
+  padding: 2rem 1.5rem;
+}
+
+.stat-card.completed {
+  background-color: #9efdc7;
+  color: #0c321d;
+}
+.stat-card.pending {
+  background-color: #f1c78e;
+  color: #4c3105;
+}
+.stat-card.total {
+  background-color: #ececec;
+  color: #777777;
+}
+.stat-link {
+  color: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
 }

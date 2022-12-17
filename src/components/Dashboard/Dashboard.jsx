@@ -17,7 +17,9 @@ function Dashboard() {
       <Sidebar show={show} handleClose={handleClose} />
       <Container className="p-0">
         <DashboardHeader />
-        <Outlet />
+        <div className="dashboard-wrapper">
+          <Outlet />
+        </div>
       </Container>
     </div>
   );

@@ -98,27 +98,25 @@ function Tasks() {
           <Toast.Body> {success}</Toast.Body>
         </Toast>
       </ToastContainer>
-      <div className="tasks-wrapper">
-        <p className="heading">Tasks</p>
-        <p>Create, Read, Update and Delete Your Tasks.</p>
-        <div className="tasks-in-progress mt-3">
-          <p className="sub-heading">Pending ({pendingTasks.length})</p>
-          {pendingTasks.map((task) => (
-            <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
-          ))}
-          <div className="task-item">
-            <PlusIcon />
-            <Link to="/dashboard/tasks/new" className="add-new-task-link">
-              Add new task
-            </Link>
-          </div>
+      <p className="heading">Tasks</p>
+      <p>Create, Read, Update and Delete Your Tasks.</p>
+      <div className="tasks-in-progress mt-3">
+        <p className="sub-heading">Pending ({pendingTasks.length})</p>
+        {pendingTasks.map((task) => (
+          <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
+        ))}
+        <div className="task-item">
+          <PlusIcon />
+          <Link to="/dashboard/tasks/new" className="add-new-task-link">
+            Add new task
+          </Link>
         </div>
-        <div className="tasks-in-progress mt-3">
-          <p className="sub-heading">Completed ({completedTasks.length})</p>
-          {completedTasks.map((task) => (
-            <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
-          ))}
-        </div>
+      </div>
+      <div className="tasks-in-progress mt-3">
+        <p className="sub-heading">Completed ({completedTasks.length})</p>
+        {completedTasks.map((task) => (
+          <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
+        ))}
       </div>
     </>
   );
