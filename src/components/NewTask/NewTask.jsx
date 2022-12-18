@@ -14,7 +14,7 @@ import { TaskContext } from "../../context/taskContext";
 function NewTask() {
   const [newTask, setNewTask] = useState({ task: "", due_date: "" });
   const [error, setError] = useState([]);
-  const { loading, setLoading } = useContext(TaskContext);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const userId = JSON.parse(localStorage.getItem("user"));

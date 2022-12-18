@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import api from "../../api/api";
 import { TaskContext } from "../../context/taskContext";
+import { handleTaskDeleteResponse } from "../../utils/utils";
 import AddTask from "../AddTask/AddTask";
 import Spinner from "../Spinner/Spinner";
 import StatCard from "../StatCard/StatCard";
@@ -58,8 +59,12 @@ function Stats() {
 
   const deleteTask = async (id) => {
     setLoading(true);
-    await handleTaskDelete(id);
-    await getRecentTasks();
+    try {
+      await handleTaskDeleteResponse(id);
+      await getRecentTasks();
+    } catch (err) {
+      console.log(err);
+    }
     setLoading(false);
   };
 
