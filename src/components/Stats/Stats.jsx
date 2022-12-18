@@ -46,20 +46,23 @@ function Stats() {
   return (
     <>
       <p className="heading">Analytics</p>
-      <div className="row mx-0 my-0 justify-content-between">
+      <div className="row stats-container justify-content-between mx-1">
         {stats.map((stat, index) => {
           return <StatCard key={index} statName={stat.statName} stat={stat.stat} />;
         })}
       </div>
+      <div className="recent-tasks my-4">
+        <p className="sub-heading">Recent Tasks</p>
+      </div>
 
-      <div className="row justify-content-center">
+      {/* <div className="row justify-content-center">
         <div className="col-md-4 my-3">
           <p className="stats-text text-center mt-2">Productivity</p>
           <div className="rounded-bar mx-auto" style={gradient}>
             <div className="inner-number">{productivity.toFixed()}%</div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

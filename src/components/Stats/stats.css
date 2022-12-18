@@ -46,3 +46,9 @@
     flex-direction: column;
   }
 }
+
+@media (min-width: 768px) {
+  .stats-container .col-lg-3 {
+    width: 32%;
+  }
+}

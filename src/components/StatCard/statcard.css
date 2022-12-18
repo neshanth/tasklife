@@ -9,9 +9,12 @@
   text-transform: capitalize;
   border-radius: var(--radius);
 }
+.stat-container {
+  margin: 0 0.2rem;
+}
 
 .dashboard-wrapper .stat-card {
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
 }
 
 .stat-card.completed {
