@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "1ed6d613fd97221d00f8",
-    "url": "/static/css/main.410f865f.chunk.css"
+    "revision": "53768ac96b5f74bb8871",
+    "url": "/static/css/main.67022fb0.chunk.css"
   },
   {
-    "revision": "1ed6d613fd97221d00f8",
-    "url": "/static/js/main.514c4336.chunk.js"
+    "revision": "53768ac96b5f74bb8871",
+    "url": "/static/js/main.9a68d86d.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
     "url": "/static/js/runtime~main.a8a9905a.js"
   },
   {
-    "revision": "252851c8b663c9250636",
+    "revision": "474205ddac7f2703d418",
     "url": "/static/css/2.4276ffe7.chunk.css"
   },
   {
-    "revision": "252851c8b663c9250636",
-    "url": "/static/js/2.75b8768c.chunk.js"
+    "revision": "474205ddac7f2703d418",
+    "url": "/static/js/2.114bc67b.chunk.js"
   },
   {
     "revision": "c0e90fb53725fffe1fd3bb1bd0ef5985",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/static/media/tasklife__close.b486f818.svg"
   },
   {
-    "revision": "ca4e64dcfe9d15d2fd14971a83d038ca",
+    "revision": "f75c274317ec104281be6cc0175bbe3e",
     "url": "/index.html"
   }
 ];
