@@ -28,4 +28,22 @@ export const redirectPageBasedOnUrl = (currentPath) => {
   }
 };
 
-export { updateTaskStatusApi };
+const getTasksResponse = async () => {
+  try {
+    const response = await api.get("/api/tasks");
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const handleTaskDeleteResponse = async (id) => {
+  try {
+    const response = await api.delete(`/api/tasks/${id}`);
+    return response;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse };

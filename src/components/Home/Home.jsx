@@ -10,7 +10,7 @@ import { useState } from "react";
 import Header from "../Header/Header";
 
 function Home() {
-  const { setAuth, setAuthLoader } = useContext(UserContext);
+  const { setAuth } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
 
@@ -28,7 +28,6 @@ function Home() {
 
   const handleDemoLogin = () => {
     setLoading(true);
-    setAuthLoader(true);
     api.get("/sanctum/csrf-cookie").then(() => {
       api
         .post("/api/login", { ...loginDetails })
@@ -38,7 +37,6 @@ function Home() {
           const { name, email, id } = user;
           setLoading(false);
           setAuth(true);
-          setAuthLoader(false);
           localStorage.setItem("isAuth", true);
           localStorage.setItem("user", JSON.stringify({ name, email, id }));
           navigate("/dashboard/tasks", { replace: true });
@@ -46,7 +44,6 @@ function Home() {
         .catch((err) => {
           console.log(err);
           setLoading(false);
-          setAuthLoader(false);
         });
     });
   };

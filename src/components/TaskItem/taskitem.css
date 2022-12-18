@@ -6,6 +6,12 @@
 .task-item:hover {
   box-shadow: var(--highlight-shadow);
 }
+.task-label {
+  font-size: 0.8rem;
+  padding: 0 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+}
 .due-date p {
   font-weight: 600;
 }

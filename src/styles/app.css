@@ -122,6 +122,22 @@ a {
   background-color: var(--black);
 }
 
+/* Task status Styles */
+.stat-card.completed,
+.completed {
+  background-color: #9efdc7;
+  color: #0c321d;
+}
+.stat-card.pending,
+.pending {
+  background-color: #f1c78e;
+  color: #4c3105;
+}
+.stat-card.total {
+  background-color: #ececec;
+  color: #777777;
+}
+
 /* Navabr and Dashboard */
 
 @media only screen and (max-width: 768px) {

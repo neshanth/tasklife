@@ -10,7 +10,7 @@ import logo from "../../assets/Images/tasklife__logo.png";
 
 function Header() {
   let authStatus = localStorage.getItem("isAuth");
-  const { handleSidebarToggle, authLoader } = useContext(UserContext);
+  const { handleSidebarToggle } = useContext(UserContext);
   let location = useLocation();
   return (
     <>
@@ -23,7 +23,7 @@ function Header() {
             {authStatus === "true" ? (
               <>{location.pathname !== "/" && <Hamburger handleSidebarToggle={handleSidebarToggle} />}</>
             ) : (
-              <Link to="/login" className={`btn btn--primary header-cta ${authLoader ? "disabled-link" : ""}`}>
+              <Link to="/login" className="btn btn--primary header-cta">
                 Login
               </Link>
             )}

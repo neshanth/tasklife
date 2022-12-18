@@ -17,18 +17,6 @@
   padding: 1.5rem;
 }
 
-.stat-card.completed {
-  background-color: #9efdc7;
-  color: #0c321d;
-}
-.stat-card.pending {
-  background-color: #f1c78e;
-  color: #4c3105;
-}
-.stat-card.total {
-  background-color: #ececec;
-  color: #777777;
-}
 .stat-link {
   color: inherit;
   font-size: 0.8rem;

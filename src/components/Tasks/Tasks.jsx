@@ -1,22 +1,16 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import api from "../../api/api";
+import React, { useContext } from "react";
+import { useEffect } from "react";
 import TaskItem from "../TaskItem/TaskItem";
 import Spinner from "../Spinner/Spinner";
-import { updateTaskStatusApi } from "../../utils/utils";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Toast, ToastContainer } from "react-bootstrap";
 import "./tasks.css";
-import PlusIcon from "../../assets/Icons/PlusIcon";
+import AddTask from "../AddTask/AddTask";
+import { TaskContext } from "../../context/taskContext";
 
 function Tasks() {
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [success, setSuccess] = useState("");
-  const [show, setShow] = useState(false);
-  const [pendingTasks, setPendingTasks] = useState([]);
-  const [completedTasks, setCompletedTasks] = useState([]);
   const location = useLocation();
+  const { getTasks, loading, completedTasks, pendingTasks, updateTaskStatus, setShow, setSuccess, show, success, handleTaskDelete } = useContext(TaskContext);
 
   useEffect(() => {
     getTasks();
@@ -25,59 +19,6 @@ function Tasks() {
       setSuccess(location.state.msg);
     }
   }, []);
-
-  const getTasks = async () => {
-    setLoading(true);
-    try {
-      const response = await api.get("/api/tasks");
-      setTasks([...response.data.tasks]);
-      const pendingTasks = response.data.tasks.filter((task) => task.status === 0);
-      const completedTasks = response.data.tasks.filter((task) => task.status === 1);
-      setPendingTasks(pendingTasks);
-      setCompletedTasks(completedTasks);
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
-    }
-  };
-
-  const updateTaskStatus = async (id) => {
-    setLoading(true);
-    try {
-      const updatedTasks = tasks.map((task) => {
-        if (task.id === id) {
-          return { ...task, status: task.status === 1 ? 0 : 1 };
-        } else {
-          return { ...task };
-        }
-      });
-      setTasks([...updatedTasks]);
-      const updatedResponse = await updateTaskStatusApi(id);
-      setCompletedTasks([...updatedResponse.data.completed]);
-      setPendingTasks([...updatedResponse.data.pending]);
-      setLoading(false);
-    } catch (err) {}
-  };
-
-  const handleTaskDelete = async (id) => {
-    setLoading(true);
-    try {
-      const response = await api.delete(`/api/tasks/${id}`);
-      const filteredTasks = tasks.filter((task) => task.id !== id);
-      if (response.status === 200) {
-        setSuccess("Task has been Deleted");
-      }
-      setTasks([...filteredTasks]);
-      setCompletedTasks([...filteredTasks.filter((task) => task.status === 1)]);
-      setPendingTasks([...filteredTasks.filter((task) => task.status === 0)]);
-      setShow(true);
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
-    }
-  };
 
   if (loading) {
     return <Spinner />;
@@ -105,13 +46,8 @@ function Tasks() {
         {pendingTasks.map((task) => (
           <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
         ))}
-        <div className="task-item">
-          <PlusIcon />
-          <Link to="/dashboard/tasks/new" className="add-new-task-link">
-            Add new task
-          </Link>
-        </div>
       </div>
+      <AddTask />
       <div className="tasks-in-progress mt-3">
         <p className="sub-heading">Completed ({completedTasks.length})</p>
         {completedTasks.map((task) => (
