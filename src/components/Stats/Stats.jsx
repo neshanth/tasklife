@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import api from "../../api/api";
 import { TaskContext } from "../../context/taskContext";
-import { handleTaskDeleteResponse } from "../../utils/utils";
+import { handleTaskDeleteResponse, updateTaskStatusApi } from "../../utils/utils";
 import AddTask from "../AddTask/AddTask";
 import Spinner from "../Spinner/Spinner";
 import StatCard from "../StatCard/StatCard";
@@ -70,8 +70,12 @@ function Stats() {
 
   const updateTask = async (id) => {
     setLoading(true);
-    await updateTaskStatus(id);
-    await getRecentTasks();
+    try {
+      await updateTaskStatusApi(id);
+      await getRecentTasks();
+    } catch (err) {
+      console.log(err);
+    }
     setLoading(false);
   };
 
