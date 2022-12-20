@@ -1,8 +1,5 @@
-import React, { useContext } from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../../api/api";
-import { TaskContext } from "../../context/taskContext";
 import { handleTaskDeleteResponse, updateTaskStatusApi } from "../../utils/utils";
 import AddTask from "../AddTask/AddTask";
 import Spinner from "../Spinner/Spinner";
@@ -18,39 +15,30 @@ function Stats() {
     { statName: "Completed", stat: 0 },
     { statName: "Total", stat: 0 },
   ]);
-  const { updateTaskStatus, handleTaskDelete } = useContext(TaskContext);
 
   useEffect(() => {
-    getStats();
-    getRecentTasks();
+    fetchData();
   }, []);
 
   let root = document.querySelector(":root"); // select root variables
-  let statCalculation = (stats[0].stat / stats[2].stat) * 100;
+  let statCalculation = (stats[1].stat / stats[2].stat) * 100;
   let productivity = isNaN(statCalculation) ? 0 : statCalculation;
   root.style.setProperty("--gradient", productivity.toFixed() + "%");
   let gradient = { backgroundImage: "conic-gradient(var(--primary-color) var(--gradient),#ADA9BB 0)" };
 
-  const getStats = async () => {
+  const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await api.get(`/api/tasks/stats/${JSON.parse(localStorage.getItem("user"))["id"]}`);
-      const { data } = response;
-      const { completed, pending, tasks } = data;
+      const statsResponse = api.get(`/api/tasks/stats/${JSON.parse(localStorage.getItem("user"))["id"]}`);
+      const recentTasksResponse = api.get(`/api/tasks/recent/${JSON.parse(localStorage.getItem("user"))["id"]}`);
+      const [statsData, recentTasksData] = await Promise.all([statsResponse, recentTasksResponse]);
+      const { completed, pending, tasks } = statsData.data;
       setStats([
         { statName: "pending", stat: pending },
         { statName: "completed", stat: completed },
         { statName: "total", stat: tasks },
       ]);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getRecentTasks = async () => {
-    try {
-      const response = await api.get(`/api/tasks/recent/${JSON.parse(localStorage.getItem("user"))["id"]}`);
-      setRecent(response.data.recent);
+      setRecent(recentTasksData.data.recent);
     } catch (err) {
       console.log(err);
     }
@@ -61,7 +49,7 @@ function Stats() {
     setLoading(true);
     try {
       await handleTaskDeleteResponse(id);
-      await getRecentTasks();
+      await fetchData();
     } catch (err) {
       console.log(err);
     }
@@ -72,7 +60,7 @@ function Stats() {
     setLoading(true);
     try {
       await updateTaskStatusApi(id);
-      await getRecentTasks();
+      await fetchData();
     } catch (err) {
       console.log(err);
     }
@@ -97,14 +85,14 @@ function Stats() {
       </div>
       <AddTask />
 
-      {/* <div className="row justify-content-center">
+      <div className="row justify-content-center">
         <div className="col-md-4 my-3">
           <p className="stats-text text-center mt-2">Productivity</p>
           <div className="rounded-bar mx-auto" style={gradient}>
             <div className="inner-number">{productivity.toFixed()}%</div>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
