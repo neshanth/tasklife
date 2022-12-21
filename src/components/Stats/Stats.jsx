@@ -87,7 +87,7 @@ function Stats() {
 
       <div className="row justify-content-center">
         <div className="col-md-4 my-3">
-          <p className="stats-text text-center mt-2">Productivity</p>
+          <p className="sub-heading mt-2 text-center">Productivity</p>
           <div className="rounded-bar mx-auto" style={gradient}>
             <div className="inner-number">{productivity.toFixed()}%</div>
           </div>
