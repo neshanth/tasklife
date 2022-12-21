@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useEffect } from "react";
 import TaskItem from "../TaskItem/TaskItem";
 import Spinner from "../Spinner/Spinner";
@@ -6,11 +6,9 @@ import { useLocation } from "react-router-dom";
 import { Toast, ToastContainer } from "react-bootstrap";
 import "./tasks.css";
 import AddTask from "../AddTask/AddTask";
-import { TaskContext } from "../../context/taskContext";
 
-function Tasks() {
+function Tasks({ getTasks, loading, completedTasks, pendingTasks, updateTaskStatus, setShow, setSuccess, show, success, handleTaskDelete }) {
   const location = useLocation();
-  const { getTasks, loading, completedTasks, pendingTasks, updateTaskStatus, setShow, setSuccess, show, success, handleTaskDelete } = useContext(TaskContext);
 
   useEffect(() => {
     getTasks();

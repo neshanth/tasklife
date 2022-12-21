@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -9,7 +9,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Alerts from "../Alerts/Alerts";
 import Spinner from "../Spinner/Spinner";
-import { TaskContext } from "../../context/taskContext";
 
 function NewTask() {
   const [newTask, setNewTask] = useState({ task: "", due_date: "" });

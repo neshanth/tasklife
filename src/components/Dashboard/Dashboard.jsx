@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 import { UserContext } from "../../context/context";
 import Sidebar from "../Sidebar/Sidebar";
 import Container from "react-bootstrap/Container";
-import "./dashboard.css";
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
+import "./dashboard.css";
 
 function Dashboard() {
   const { show, setShow } = useContext(UserContext);

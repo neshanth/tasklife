@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import "./editTask.css";
@@ -9,16 +9,15 @@ import Alerts from "../Alerts/Alerts";
 import { checkObjectChangeCount } from "../../utils/utils";
 import { Row, Col } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import { TaskContext } from "../../context/taskContext";
 
 const EditTask = () => {
   let { id } = useParams();
   const navigate = useNavigate();
   const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "" });
+  const [loading, setLoading] = useState(true);
   const [existingEditTask, setExistingEditTask] = useState({});
   const [error, setError] = useState([]);
   const [count, setCount] = useState(0);
-  const { loading, setLoading } = useContext(TaskContext);
 
   useEffect(() => {
     getTask(id);
