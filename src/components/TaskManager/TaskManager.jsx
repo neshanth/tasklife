@@ -11,26 +11,33 @@ import EditTask from "../EditTask/EditTask";
 import NewTask from "../NewTask/NewTask";
 import Stats from "../Stats/Stats.jsx";
 import { getTasksResponse, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
+import Spinner from "../Spinner/Spinner";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
   const [pendingTasks, setPendingTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
+  const { setAuth, authLoader, setAuthLoader, setUser } = useAuthContext();
 
   useEffect(() => {
     checkAuth();
   }, []);
 
   const checkAuth = async () => {
+    setAuthLoader(true);
     try {
-      await api.get("/api/user");
-      localStorage.setItem("isAuth", true);
+      const response = await api.get("/api/user");
+      const { id } = response.data;
+      setAuth(true);
+      setUser({ id });
     } catch (err) {
-      localStorage.removeItem("isAuth");
+      setAuth(false);
     }
+    setAuthLoader(false);
   };
 
   const getTasks = () => {
@@ -85,6 +92,8 @@ const TaskManager = () => {
         setLoading(false);
       });
   };
+
+  if (authLoader) return <Spinner />;
 
   return (
     <>

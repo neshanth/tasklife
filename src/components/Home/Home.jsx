@@ -1,23 +1,23 @@
 import React from "react";
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
-import { UserContext } from "../../context/context";
 import "./home.css";
 import api from "../../api/api";
 import { useState } from "react";
 import Header from "../Header/Header";
+import useAuthContext from "../../hooks/useAuthContext";
 
 function Home() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
+  const { auth, setAuth, setUser } = useAuthContext();
 
   useEffect(() => {
-    if (localStorage.getItem("isAuth") === "true") {
+    if (auth) {
       navigate("/dashboard/tasks");
     }
-    setLoading(false);
   }, []);
 
   const loginDetails = {
@@ -33,14 +33,15 @@ function Home() {
         .then((res) => {
           const { data } = res;
           const { user } = data;
-          const { name, email, id } = user;
+          const { id } = user;
           setLoading(false);
-          localStorage.setItem("isAuth", true);
-          localStorage.setItem("user", JSON.stringify({ name, email, id }));
+          setAuth(true);
+          setUser({ id });
           navigate("/dashboard/tasks", { replace: true });
         })
         .catch((err) => {
           console.log(err);
+          setAuth(false);
           setLoading(false);
         });
     });

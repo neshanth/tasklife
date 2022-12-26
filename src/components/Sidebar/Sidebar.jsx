@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { NavLink, useLocation } from "react-router-dom";
-import { UserContext } from "../../context/context";
 import CloseButton from "../../assets/Icons/CloseButton";
 import logo from "../../assets/Images/tasklife__logo-white.png";
 import "./sidebar.css";
@@ -11,10 +10,11 @@ import ListIcon from "../../assets/Icons/ListIcon";
 import Spinner from "../Spinner/Spinner";
 import api from "../../api/api";
 import history from "../../history/history";
+import useAuthContext from "../../hooks/useAuthContext";
 
 function Sidebar({ handleClose }) {
   const [loading, setLoading] = useState(false);
-  const { show, setShow } = useContext(UserContext);
+  const { show, setShow, setAuth } = useAuthContext();
   let location = useLocation();
 
   const handleClick = () => {
@@ -26,8 +26,7 @@ function Sidebar({ handleClose }) {
     try {
       let response = await api.post("/api/logout", {});
       if (response.status === 200) {
-        localStorage.removeItem("isAuth");
-        localStorage.removeItem("user");
+        setAuth(false);
         history.push("/");
       }
     } catch (err) {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -13,16 +13,18 @@ import "./register.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Images/tasklife__logo.png";
 import Header from "../Header/Header";
+import { UserContext } from "../../context/context";
 
 function Register() {
   const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState([]);
   const [confirmPass, setConfirmPass] = useState("");
+  const { auth } = useContext(UserContext);
   let navigate = useNavigate();
 
   useEffect(() => {
-    let authStatus = localStorage.getItem("isAuth");
+    let authStatus = auth;
     if (authStatus === "true") {
       navigate("/dashboard/tasks");
     }

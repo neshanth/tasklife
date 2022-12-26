@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -8,11 +8,11 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
 import Alerts from "../Alerts/Alerts";
-import { UserContext } from "../../context/context";
 import { useEffect } from "react";
 import logo from "../../assets/Images/tasklife__logo.png";
 import "./login.css";
 import Header from "../Header/Header";
+import useAuthContext from "../../hooks/useAuthContext";
 
 function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
@@ -20,8 +20,10 @@ function Login() {
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
+  const { auth, setAuth, setUser } = useAuthContext();
+
   useEffect(() => {
-    let authStatus = localStorage.getItem("isAuth");
+    let authStatus = auth;
     if (authStatus === "true") {
       navigate("/dashboard/tasks");
     }
@@ -44,17 +46,19 @@ function Login() {
         .then((res) => {
           const { data } = res;
           const { user } = data;
-          const { name, email, id } = user;
+          const { id } = user;
           setLoginDetails({ email: "", password: "" });
           setLoading(false);
           setStatus({ msg: data, status: "success" });
-          localStorage.setItem("isAuth", true);
-          localStorage.setItem("user", JSON.stringify({ name, email, id }));
+          setAuth(true);
+          setUser({ id });
           navigate("/dashboard/tasks", { replace: true });
         })
         .catch((err) => {
+          console.log(err);
           const { data } = err.response;
           setStatus({ msg: data, status: "danger" });
+          setAuth(false);
           setLoading(false);
         });
     });
@@ -72,7 +76,7 @@ function Login() {
           <Col md={4}>
             <img className="form-logo" src={logo} width="100" alt="logo" />
             <div className="form-background login-form-background">
-              {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} /> : ""}
+              {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} closeHandler={() => {}} /> : ""}
               <Form className="login-form" onSubmit={handleSubmit}>
                 <h4>Log in to your account</h4>
                 <Form.Group className="my-3" controlId="email">

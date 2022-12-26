@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import api from "../../api/api";
+import { UserContext } from "../../context/context";
 import { handleTaskDeleteResponse, updateTaskStatusApi } from "../../utils/utils";
 import AddTask from "../AddTask/AddTask";
 import Spinner from "../Spinner/Spinner";
@@ -15,6 +16,7 @@ function Stats() {
     { statName: "Completed", stat: 0 },
     { statName: "Total", stat: 0 },
   ]);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -29,8 +31,8 @@ function Stats() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const statsResponse = api.get(`/api/tasks/stats/${JSON.parse(localStorage.getItem("user"))["id"]}`);
-      const recentTasksResponse = api.get(`/api/tasks/recent/${JSON.parse(localStorage.getItem("user"))["id"]}`);
+      const statsResponse = api.get(`/api/tasks/stats/${user.id}`);
+      const recentTasksResponse = api.get(`/api/tasks/recent/${user.id}`);
       const [statsData, recentTasksData] = await Promise.all([statsResponse, recentTasksResponse]);
       const { completed, pending, tasks } = statsData.data;
       setStats([

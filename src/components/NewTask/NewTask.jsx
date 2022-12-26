@@ -9,6 +9,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Alerts from "../Alerts/Alerts";
 import Spinner from "../Spinner/Spinner";
+import useAuthContext from "../../hooks/useAuthContext";
 
 function NewTask() {
   const [newTask, setNewTask] = useState({ task: "", due_date: "" });
@@ -16,7 +17,8 @@ function NewTask() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const userId = JSON.parse(localStorage.getItem("user"));
+  const { user } = useAuthContext();
+  const userId = user.id;
 
   const handleTaskForm = (e) => {
     const target = e.target;
@@ -32,7 +34,7 @@ function NewTask() {
     e.preventDefault();
     setLoading(true);
     try {
-      await api.post(`/api/tasks`, { ...newTask, user_id: userId.id });
+      await api.post(`/api/tasks`, { ...newTask, user_id: userId });
       setNewTask({ task: "", due_date: "" });
       navigate("/dashboard/tasks", { state: { show: true, msg: "New Task has been Added" } });
     } catch (err) {

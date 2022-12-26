@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import interceptor from "../../api/interceptor";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const PrivateRoutes = () => {
-  let auth = localStorage.getItem("isAuth");
+  const { auth, setAuth } = useAuthContext();
 
-  return auth === "true" ? <Outlet /> : <Navigate to="/" />;
+  useEffect(() => {
+    interceptor(setAuth);
+  }, [setAuth]);
+
+  return auth ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default PrivateRoutes;
