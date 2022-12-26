@@ -19,7 +19,6 @@ function Login() {
   const [status, setStatus] = useState({ msg: "", status: "" });
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
-  const { setAuth } = useContext(UserContext);
 
   useEffect(() => {
     let authStatus = localStorage.getItem("isAuth");
@@ -48,7 +47,6 @@ function Login() {
           const { name, email, id } = user;
           setLoginDetails({ email: "", password: "" });
           setLoading(false);
-          setAuth(true);
           setStatus({ msg: data, status: "success" });
           localStorage.setItem("isAuth", true);
           localStorage.setItem("user", JSON.stringify({ name, email, id }));

@@ -10,7 +10,6 @@ import { useState } from "react";
 import Header from "../Header/Header";
 
 function Home() {
-  const { setAuth } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
 
@@ -36,7 +35,6 @@ function Home() {
           const { user } = data;
           const { name, email, id } = user;
           setLoading(false);
-          setAuth(true);
           localStorage.setItem("isAuth", true);
           localStorage.setItem("user", JSON.stringify({ name, email, id }));
           navigate("/dashboard/tasks", { replace: true });
