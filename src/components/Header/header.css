@@ -1,12 +1,14 @@
 .navbar {
   box-shadow: var(--shadow);
-  background-color: var(--grey);
   padding: var(--padding-0);
 }
 
 .navbar .header-cta {
-  padding: 0.8rem 1.5rem;
+  padding: 0.5rem 1rem;
   display: inline-block;
+  background: none;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 .disabled-link {

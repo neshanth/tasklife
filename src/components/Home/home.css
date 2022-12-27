@@ -1,33 +1,58 @@
 .hero-bg {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../../assets/Images/hero.jpg");
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  padding: 10em 0;
+  padding: 4rem 0;
 }
 
 .hero-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 .hero-secondary {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-align: center;
 }
 .hero-buttons {
   gap: 15px;
   margin: 0 auto;
 }
-
+.hero-image .img-fluid {
+  max-width: 50%;
+  margin: 2rem auto;
+}
 .hero-title,
 .hero-secondary {
-  color: var(--white);
+  color: var(--black);
+  width: 50%;
+  margin: 2rem auto;
 }
 
 .hero-buttons .btn-login,
 .hero-buttons .btn-demo-login {
-  margin: 0.3em auto;
+  margin: 0.5rem auto;
+  padding: 0.7rem 0.5rem;
+}
+
+.home-section {
+  background-color: #eceeff;
+}
+
+.btn-demo-login {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.hero-buttons .btn-demo-login {
+  background-color: var(--black);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.hero-buttons .btn-demo-login:hover {
+  background-color: var(--white);
+  color: var(--black);
 }
 
 @media (max-width: 375px) {
@@ -50,6 +75,14 @@
 @media (min-width: 768px) {
   .hero-buttons .btn-login,
   .hero-buttons .btn-demo-login {
-    width: 25%;
+    width: 15%;
   }
+}
+
+.features-section {
+  margin: 5rem 0;
+}
+
+.footer {
+  margin-top: 3rem;
 }

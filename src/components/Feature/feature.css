@@ -1,0 +1,11 @@
+.feature-img {
+  background-color: #eceeff;
+  padding: 10rem;
+}
+.feature {
+  margin: 2.5rem 0;
+}
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
