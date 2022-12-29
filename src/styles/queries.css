@@ -22,18 +22,8 @@
   .hero-buttons .btn-demo-login {
     width: 50%;
   }
-}
-
-/* @media (max-width: 375px) {
-  .hero-buttons .btn-login,
-  .hero-buttons .btn-demo-login {
+  .form-background {
     width: 80%;
+    margin: 0 auto;
   }
 }
-
-@media (min-width: 375px) {
-  .hero-buttons .btn-login,
-  .hero-buttons .btn-demo-login {
-    width: 50%;
-  }
-} */
