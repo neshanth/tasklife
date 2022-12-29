@@ -18,7 +18,7 @@ function Header() {
       <Navbar>
         <Container>
           <Link to="/">
-            <img className="logo" src={logo} width="100" alt="Logo" />
+            <img className="logo" src={logo} alt="Logo" />
           </Link>
           <Nav className="mr-auto">
             {authStatus === "true" ? (

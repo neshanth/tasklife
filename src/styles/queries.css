@@ -26,4 +26,10 @@
     width: 80%;
     margin: 0 auto;
   }
+  .logo {
+    width: 30%;
+  }
+  .navbar {
+    padding: 0.7rem;
+  }
 }
