@@ -1,11 +1,11 @@
 import React from "react";
 import Feature from "../Feature/Feature";
-import features from "./features";
+import featuresData from "./featuresData";
 
 function Features() {
   return (
     <>
-      {features.map((feature) => (
+      {featuresData.map((feature) => (
         <Feature key={feature.id} text={feature.text} title={feature.title} alt={feature.alt} />
       ))}
     </>

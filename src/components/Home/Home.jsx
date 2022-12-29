@@ -1,15 +1,13 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
-import "./home.css";
 import api from "../../api/api";
-import { useState } from "react";
 import Header from "../Header/Header";
 import useAuthContext from "../../hooks/useAuthContext";
 import { Figure } from "react-bootstrap";
-import Features from "../Features/Features";
+import Features from "../Features/Features.jsx";
+import "./home.css";
 
 function Home() {
   const [loading, setLoading] = useState(false);

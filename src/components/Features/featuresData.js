@@ -1,4 +1,4 @@
-const features = [
+const featuresData = [
   {
     id: 1,
     title: "Easy Interface for anyone to use",
@@ -13,4 +13,4 @@ const features = [
   },
 ];
 
-export default features;
+export default featuresData;
