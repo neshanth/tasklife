@@ -18,7 +18,7 @@ const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
   const [pendingTasks, setPendingTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
   const { setAuth, authLoader, setAuthLoader, setUser } = useAuthContext();
