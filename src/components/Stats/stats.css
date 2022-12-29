@@ -23,12 +23,6 @@
   background-color: var(--white);
 }
 
-@media screen and (max-width: 800px) {
-  .welcome-text {
-    width: 100%;
-  }
-}
-
 @media (max-width: 770px) {
   .stat-container {
     flex-direction: column;
