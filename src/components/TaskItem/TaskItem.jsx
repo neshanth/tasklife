@@ -10,7 +10,7 @@ const TaskItem = ({ taskData, updateTaskStatus, deleteTask, label }) => {
   let todo_date = new Date(due_date);
   let isTaskNameLong = false;
 
-  if (window.innerWidth <= 600) {
+  if (window.innerWidth <= 500) {
     isTaskNameLong = task.length > 10 ? true : false;
   }
 
