@@ -25,7 +25,7 @@
 .hero-title,
 .hero-secondary {
   color: var(--black);
-  width: 100%;
+  width: 50%;
   margin: 2rem auto;
 }
 
@@ -33,6 +33,7 @@
 .hero-buttons .btn-demo-login {
   margin: 0.5rem auto;
   padding: 0.7rem 0.5rem;
+  width: 20%;
 }
 
 .home-section {
@@ -53,31 +54,6 @@
 .hero-buttons .btn-demo-login:hover {
   background-color: var(--white);
   color: var(--black);
-}
-
-@media (max-width: 375px) {
-  .hero-buttons .btn-login,
-  .hero-buttons .btn-demo-login {
-    width: 80%;
-  }
-}
-
-@media (min-width: 375px) {
-  .hero-buttons .btn-login,
-  .hero-buttons .btn-demo-login {
-    width: 50%;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-buttons .btn-login,
-  .hero-buttons .btn-demo-login {
-    width: 15%;
-  }
-  .hero-title,
-  .hero-secondary {
-    width: 50%;
-  }
 }
 
 .features-section {

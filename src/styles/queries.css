@@ -1,0 +1,39 @@
+/* Below 1000px */
+@media (max-width: 62.5em) {
+  html {
+    font-size: 75%;
+  }
+  .hero-buttons .btn-login,
+  .hero-buttons .btn-demo-login {
+    width: 25%;
+  }
+  .hero-title,
+  .hero-secondary {
+    width: 50%;
+  }
+}
+/* Below 500px */
+@media (max-width: 43.75em) {
+  .hero-title,
+  .hero-secondary {
+    width: 90%;
+  }
+  .hero-buttons .btn-login,
+  .hero-buttons .btn-demo-login {
+    width: 50%;
+  }
+}
+
+/* @media (max-width: 375px) {
+  .hero-buttons .btn-login,
+  .hero-buttons .btn-demo-login {
+    width: 80%;
+  }
+}
+
+@media (min-width: 375px) {
+  .hero-buttons .btn-login,
+  .hero-buttons .btn-demo-login {
+    width: 50%;
+  }
+} */
