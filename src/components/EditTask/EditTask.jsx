@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
-import "./editTask.css";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
@@ -74,11 +73,11 @@ const EditTask = () => {
 
   return (
     <>
-      <Container>
-        <Row className="justify-content-center align-items-center mt-6">
-          <Col md={6} className="form-background">
-            <h5 className="text-center task-form-title">Edit Task</h5>
-            <Form className="custom-form edit-form" onSubmit={handleTaskUpdate}>
+      <Container className="dashboard-form-container">
+        <Row className="justify-content-center align-items-center">
+          <Col md={4} className="form-background">
+            <h5 className="task-form-title">Edit Task</h5>
+            <Form className="custom-form" onSubmit={handleTaskUpdate}>
               <Form.Group className="my-4" controlId="task">
                 <Form.Label>Task</Form.Label>
                 <Form.Control name="task" placeholder="Task" onChange={handleEditTask} value={editTask.task} required />

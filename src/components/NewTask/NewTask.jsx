@@ -52,7 +52,7 @@ function NewTask() {
       <Container className="dashboard-form-container">
         <Row className="justify-content-center align-items-center">
           <Col md={4} className="form-background">
-            <Form className="custom-form edit-form" onSubmit={handleSubmit}>
+            <Form className="custom-form" onSubmit={handleSubmit}>
               <h4 className="task-form-title">Add New Task</h4>
               <Form.Group className="my-3" controlId="task">
                 <Form.Label>Task</Form.Label>

@@ -38,6 +38,10 @@ body {
   letter-spacing: -0.2px;
 }
 
+body.modal-open {
+  overflow: auto;
+}
+
 h1,
 h2,
 h3,
