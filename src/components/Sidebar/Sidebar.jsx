@@ -47,7 +47,7 @@ function Sidebar({ handleClose }) {
     <>
       <Offcanvas className="sidebar" show={show} tabIndex="" onHide={handleClose} backdrop={false}>
         <Offcanvas.Header className="border-bottom">
-          <img alt="logo" src={logo} width="100" />
+          <img alt="logo" src={logo} className="logo" />
           <CloseButton handleClick={handleClick} />
         </Offcanvas.Header>
         <Offcanvas.Body>

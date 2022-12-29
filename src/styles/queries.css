@@ -32,4 +32,15 @@
   .navbar {
     padding: 0.7rem;
   }
+  .dashboard-wrapper {
+    padding: 0;
+  }
+
+  .modal-open .dashboard-wrapper {
+    padding: 0 0.5rem;
+  }
+
+  .dashboard-header {
+    padding: 0.8rem 0;
+  }
 }

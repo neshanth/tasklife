@@ -80,10 +80,12 @@ const EditTask = () => {
             <h5 className="text-center task-form-title">Edit Task</h5>
             <Form className="custom-form edit-form" onSubmit={handleTaskUpdate}>
               <Form.Group className="my-4" controlId="task">
+                <Form.Label>Task</Form.Label>
                 <Form.Control name="task" placeholder="Task" onChange={handleEditTask} value={editTask.task} required />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts text={error[0].task[0]} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="due_date">
+                <Form.Label>Due Date</Form.Label>
                 <Form.Control type="date" name="due_date" placeholder="Due Date" value={editTask.due_date} onChange={handleEditTask} required />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
