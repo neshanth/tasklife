@@ -22,7 +22,12 @@
 .sidebar-link {
   font-size: 1rem;
   font-weight: 700;
-  margin: 1rem 0;
+  border-radius: var(--radius);
+}
+
+.sidebar-link,
+.logout-menu {
+  margin: 1rem;
 }
 
 .sidebar-link:hover,
@@ -34,9 +39,14 @@
   color: var(--white);
   display: inline-block;
   cursor: pointer;
-  padding: 1rem 2rem;
   width: 100%;
 }
+
+.sidebar-link a,
+.logout-menu {
+  padding: 1rem 2rem;
+}
+
 .sidebar-link a:hover {
   color: var(--white);
 }
@@ -48,13 +58,13 @@
 .logout-menu {
   cursor: pointer;
   fill: #fff;
-  padding: 1rem 2rem;
-  margin: 1rem 0;
 }
+
 .logout-menu p {
   font-weight: 600;
 }
 
 .logout-menu:hover {
   background-color: var(--primary-hover);
+  border-radius: var(--radius);
 }

@@ -13,6 +13,7 @@ import Stats from "../Stats/Stats.jsx";
 import { getTasksResponse, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
 import useAuthContext from "../../hooks/useAuthContext";
+import Footer from "../Footer/Footer";
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
@@ -31,9 +32,9 @@ const TaskManager = () => {
     setAuthLoader(true);
     try {
       const response = await api.get("/api/user");
-      const { id } = response.data;
+      const { id, name } = response.data;
       setAuth(true);
-      setUser({ id });
+      setUser({ id, name });
     } catch (err) {
       setAuth(false);
     }
@@ -127,6 +128,7 @@ const TaskManager = () => {
         </Route>
         <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Routes>
+      <Footer />
     </>
   );
 };

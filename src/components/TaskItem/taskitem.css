@@ -5,6 +5,7 @@
 }
 .task-item:hover {
   box-shadow: var(--highlight-shadow);
+  transition: all 0.2s;
 }
 .task-label {
   font-size: 0.8rem;
@@ -24,8 +25,16 @@
 }
 .task-item .form-check-input:checked[type="checkbox"] {
   background-image: none;
-  background-color: var(--primary-color);
 }
+
+.task-item .done .form-check-input:checked[type="checkbox"] {
+  background-color: var(--completed-bg);
+}
+
+.task-item .in-progress .form-check-input[type="checkbox"] {
+  background-color: var(--pending-bg);
+}
+
 .task-data {
   width: 60%;
 }

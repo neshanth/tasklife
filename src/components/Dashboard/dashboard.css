@@ -7,11 +7,16 @@
   margin-top: 1.5rem;
   padding: 0.8rem 2rem;
   border-radius: 5px;
+  min-height: 100vh;
 }
 
 .dashboard .container {
   margin: 0;
   max-width: 100%;
+}
+
+.dashboard-wrapper .dashboard-section {
+  margin: 2rem 0;
 }
 
 .heading,
@@ -20,7 +25,11 @@
 }
 
 .heading {
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+
+.sub-heading {
+  font-size: 1.25rem;
 }
 
 @media (max-width: 768px) {

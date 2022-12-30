@@ -33,10 +33,10 @@ function Home() {
         .then((res) => {
           const { data } = res;
           const { user } = data;
-          const { id } = user;
+          const { id, name } = user;
           setLoading(false);
           setAuth(true);
-          setUser({ id });
+          setUser({ id, name });
           navigate("/dashboard/tasks", { replace: true });
         })
         .catch((err) => {
@@ -59,7 +59,7 @@ function Home() {
               <Container>
                 <section className="hero-content">
                   <h1 className="hero-title">Easy-to-use task manager for your work and life</h1>
-                  <p className="hero-secondary lead">"TaskLife: the ultimate tool for managing your daily tasks and goals."</p>
+                  <p className="hero-secondary">TaskLife is the ultimate tool for managing your daily tasks, goals and overall productivity</p>
                   <div className="hero-buttons d-grid gap-2 d-sm-flex justify-content-sm-center flex-column">
                     <Link className="btn btn--primary btn-login" to="/login">
                       Get Started
@@ -85,9 +85,6 @@ function Home() {
           <Features />
         </section>
       </Container>
-      <footer className="footer">
-        <p className="text-center">&copy; {new Date().getFullYear()} TaskLife. All rights reserved.</p>
-      </footer>
     </>
   );
 }

@@ -46,12 +46,12 @@ function Login() {
         .then((res) => {
           const { data } = res;
           const { user } = data;
-          const { id } = user;
+          const { id, name } = user;
           setLoginDetails({ email: "", password: "" });
           setLoading(false);
           setStatus({ msg: data, status: "success" });
           setAuth(true);
-          setUser({ id });
+          setUser({ id, name });
           navigate("/dashboard/tasks", { replace: true });
         })
         .catch((err) => {

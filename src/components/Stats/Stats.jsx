@@ -26,7 +26,7 @@ function Stats() {
   let statCalculation = (stats[1].stat / stats[2].stat) * 100;
   let productivity = isNaN(statCalculation) ? 0 : statCalculation;
   root.style.setProperty("--gradient", productivity.toFixed() + "%");
-  let gradient = { backgroundImage: "conic-gradient(var(--primary-color) var(--gradient),#ADA9BB 0)" };
+  let gradient = { backgroundImage: "conic-gradient(var(--completed-bg) var(--gradient),var(--pending-bg) 0)" };
 
   const fetchData = async () => {
     setLoading(true);
@@ -74,26 +74,25 @@ function Stats() {
   return (
     <>
       <p className="heading">Analytics</p>
-      <div className="row stats-container justify-content-between mx-1">
+      <div className="row dashboard-section stats-container justify-content-between">
         {stats.map((stat, index) => {
           return <StatCard key={index} statName={stat.statName} stat={stat.stat} />;
         })}
       </div>
-      <div className="recent-tasks my-4">
-        <p className="sub-heading">Recent Tasks</p>
-        {recent.map((r) => (
-          <TaskItem key={r.id} taskData={r} label={true} updateTaskStatus={updateTask} deleteTask={deleteTask} />
-        ))}
-      </div>
-      <AddTask />
-
-      <div className="row justify-content-center">
+      <div className="row justify-content-center dashboard-section">
         <div className="col-md-4 my-3">
           <p className="sub-heading mt-2 text-center">Productivity</p>
           <div className="rounded-bar mx-auto" style={gradient}>
             <div className="inner-number">{productivity.toFixed()}%</div>
           </div>
         </div>
+      </div>
+      <div className="recent-tasks dashboard-section">
+        <p className="sub-heading">Recent Tasks</p>
+        {recent.map((r) => (
+          <TaskItem key={r.id} taskData={r} label={true} updateTaskStatus={updateTask} deleteTask={deleteTask} />
+        ))}
+        <AddTask />
       </div>
     </>
   );

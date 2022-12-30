@@ -1,6 +1,7 @@
 .feature-img {
-  background-color: #eceeff;
   padding: 10rem;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .features-section .feature {
   margin: 2.5rem 0;
@@ -9,4 +10,13 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-top: 1rem;
+}
+
+.feature-1 {
+  background-image: url("../../assets/Images/features/TaskLife-EasyToUse.png");
+  background-position: left;
+}
+.feature-2 {
+  background-image: url("../../assets/Images/features/TaskLife-QuickAnalytics.png");
+  background-position: right;
 }
