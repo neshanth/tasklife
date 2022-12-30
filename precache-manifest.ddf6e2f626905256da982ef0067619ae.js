@@ -1,23 +1,31 @@
 self.__precacheManifest = [
   {
-    "revision": "9da87d8d7be2e358c9ac",
-    "url": "/static/css/main.0be852aa.chunk.css"
+    "revision": "c9c76dcf03d14517162a",
+    "url": "/static/css/main.18720b40.chunk.css"
   },
   {
-    "revision": "9da87d8d7be2e358c9ac",
-    "url": "/static/js/main.e6541529.chunk.js"
+    "revision": "c9c76dcf03d14517162a",
+    "url": "/static/js/main.04ddd2b4.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
     "url": "/static/js/runtime~main.a8a9905a.js"
   },
   {
-    "revision": "c3b78e54f9a2f8b6e3a3",
+    "revision": "b2331ecdaa6c4960489b",
     "url": "/static/css/2.4276ffe7.chunk.css"
   },
   {
-    "revision": "c3b78e54f9a2f8b6e3a3",
-    "url": "/static/js/2.9ee7ec04.chunk.js"
+    "revision": "b2331ecdaa6c4960489b",
+    "url": "/static/js/2.0144f3dc.chunk.js"
+  },
+  {
+    "revision": "d60571bd1bac766c669f3413f0e90314",
+    "url": "/static/media/TaskLife-EasyToUse.d60571bd.png"
+  },
+  {
+    "revision": "2521030abc127e5b89cc87e07d8d6552",
+    "url": "/static/media/TaskLife-QuickAnalytics.2521030a.png"
   },
   {
     "revision": "c0e90fb53725fffe1fd3bb1bd0ef5985",
@@ -36,7 +44,7 @@ self.__precacheManifest = [
     "url": "/static/media/tasklife__close.b486f818.svg"
   },
   {
-    "revision": "52e73d89772c8354abac77ff704f9167",
+    "revision": "46ecdc3f2fd164dcd0ddafa1e289b08d",
     "url": "/index.html"
   }
 ];
