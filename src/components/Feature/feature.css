@@ -1,7 +1,13 @@
 .feature-img {
-  padding: 10rem;
+  padding: 11rem;
   background-size: contain;
   background-repeat: no-repeat;
+  background-color: #eceeff;
+  box-shadow: 0 15px 45px 0px #eceeff;
+  border-radius: var(--radius);
+}
+.feature .feature-img {
+  width: 400px;
 }
 .features-section .feature {
   margin: 2.5rem 0;

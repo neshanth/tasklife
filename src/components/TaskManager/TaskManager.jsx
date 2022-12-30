@@ -128,7 +128,6 @@ const TaskManager = () => {
         </Route>
         <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Routes>
-      <Footer />
     </>
   );
 };

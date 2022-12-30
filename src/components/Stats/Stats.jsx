@@ -74,19 +74,22 @@ function Stats() {
   return (
     <>
       <p className="heading">Analytics</p>
+      <div className="row justify-content-center dashboard-section">
+        <div className="col-md-4">
+          <div className="rounded-bar mx-auto" style={gradient}>
+            <div className="inner-number">
+              <p className="prod-percent">{productivity.toFixed()}%</p>
+              <p className="prod-title">Productivity</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="row dashboard-section stats-container justify-content-between">
         {stats.map((stat, index) => {
           return <StatCard key={index} statName={stat.statName} stat={stat.stat} />;
         })}
       </div>
-      <div className="row justify-content-center dashboard-section">
-        <div className="col-md-4 my-3">
-          <p className="sub-heading mt-2 text-center">Productivity</p>
-          <div className="rounded-bar mx-auto" style={gradient}>
-            <div className="inner-number">{productivity.toFixed()}%</div>
-          </div>
-        </div>
-      </div>
+
       <div className="recent-tasks dashboard-section">
         <p className="sub-heading">Recent Tasks</p>
         {recent.map((r) => (

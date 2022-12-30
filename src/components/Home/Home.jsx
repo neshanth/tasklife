@@ -8,6 +8,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 import { Figure } from "react-bootstrap";
 import Features from "../Features/Features.jsx";
 import "./home.css";
+import Footer from "../Footer/Footer";
 
 function Home() {
   const [loading, setLoading] = useState(false);
@@ -85,6 +86,7 @@ function Home() {
           <Features />
         </section>
       </Container>
+      <Footer />
     </>
   );
 }

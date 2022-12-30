@@ -38,10 +38,11 @@ body {
   font-size: 1rem;
   color: var(--primary-text-color);
   letter-spacing: -0.2px;
+  overflow-x: hidden;
 }
 
 body.modal-open {
-  overflow: auto !important;
+  overflow-y: auto !important;
 }
 
 h1,

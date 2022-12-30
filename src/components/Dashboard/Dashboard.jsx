@@ -7,6 +7,7 @@ import "./dashboard.css";
 import api from "../../api/api";
 import history from "../../history/history";
 import Spinner from "../Spinner/Spinner";
+import Footer from "../Footer/Footer";
 
 function Dashboard() {
   const { show, setShow, setAuth } = useContext(UserContext);
@@ -39,6 +40,7 @@ function Dashboard() {
       <div className="dashboard-wrapper">
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 }

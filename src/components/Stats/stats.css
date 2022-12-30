@@ -1,26 +1,38 @@
 .rounded-bar {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .inner-number {
-  width: 115px;
-  height: 115px;
+  width: 150px;
+  height: 150px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: var(--primary-color);
-  color: var(--white);
+  background-color: #ececec;
+  color: var(--primary-text-color);
   font-size: 1.5rem;
 }
 .stat-container {
   box-shadow: var(--shadow);
   border-radius: var(--radius);
   background-color: var(--white);
+}
+.prod-percent {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.prod-title {
+  font-size: 1rem;
+}
+.prod-percent,
+.prod-title {
+  margin-bottom: 0;
 }
 
 @media (max-width: 770px) {
