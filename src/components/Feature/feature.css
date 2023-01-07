@@ -9,13 +9,15 @@
 .feature .feature-img {
   width: 400px;
 }
+
 .features-section .feature {
   margin: 2.5rem 0;
 }
 .feature-title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   margin-top: 1rem;
+  letter-spacing: -0.9px;
 }
 
 .feature-1 {

@@ -13,7 +13,6 @@ import Stats from "../Stats/Stats.jsx";
 import { getTasksResponse, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
 import useAuthContext from "../../hooks/useAuthContext";
-import Footer from "../Footer/Footer";
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);

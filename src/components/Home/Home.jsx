@@ -73,7 +73,7 @@ function Home() {
                     </button>
                   </div>
                   <Figure className="hero-image text-center">
-                    <Figure.Image alt="Hero Image" src={require("../../assets/Images/hero.jpg")} />
+                    <Figure.Image alt="Hero Image" src={require("../../assets/Images/hero.png")} />
                   </Figure>
                 </section>
               </Container>

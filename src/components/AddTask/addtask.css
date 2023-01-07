@@ -1,0 +1,3 @@
+.task-item.add-new-task {
+  border: 2px dashed var(--grey-2);
+}

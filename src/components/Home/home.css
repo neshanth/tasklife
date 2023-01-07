@@ -3,12 +3,24 @@
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  padding: 4rem 0;
+  padding-top: 4em;
+}
+
+.hero-image .img-fluid {
+  max-width: 50%;
+  margin: 3rem auto;
+  margin-bottom: 0;
+}
+
+.hero-image {
+  margin-bottom: 0;
 }
 
 .hero-title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  line-height: 1.1;
+  letter-spacing: -2.5px;
 }
 .hero-secondary {
   font-size: 1.3rem;
@@ -18,10 +30,7 @@
   gap: 15px;
   margin: 0 auto;
 }
-.hero-image .img-fluid {
-  max-width: 50%;
-  margin: 2rem auto;
-}
+
 .hero-title,
 .hero-secondary {
   color: var(--black);
@@ -32,7 +41,7 @@
 .hero-buttons .btn-login,
 .hero-buttons .btn-demo-login {
   margin: 0.5rem auto;
-  padding: 0.7rem 0.5rem;
+  padding: 1rem 0.5rem;
   width: 20%;
 }
 

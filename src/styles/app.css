@@ -102,9 +102,12 @@ a {
 /* Form Styles */
 .form-background {
   box-shadow: var(--form-shadow);
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: var(--radius);
   background-color: var(--white);
+}
+.form-background h4 {
+  letter-spacing: -0.9px;
 }
 .login-form,
 .custom-form,

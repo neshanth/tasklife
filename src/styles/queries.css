@@ -1,8 +1,5 @@
 /* Below 1000px */
 @media (max-width: 62.5em) {
-  html {
-    font-size: 75%;
-  }
   .hero-buttons .btn-login,
   .hero-buttons .btn-demo-login {
     width: 25%;
@@ -18,6 +15,12 @@
   .hero-secondary {
     width: 90%;
   }
+  .hero-title {
+    font-size: 2.25rem;
+  }
+  .hero-secondary {
+    font-size: 1.1rem;
+  }
   .hero-buttons .btn-login,
   .hero-buttons .btn-demo-login {
     width: 50%;
@@ -27,13 +30,13 @@
     margin: 0 auto;
   }
   .logo {
-    width: 30%;
+    width: 40%;
   }
   .navbar {
     padding: 0.7rem;
   }
   .dashboard-wrapper {
-    padding: 0;
+    padding: 1rem;
   }
 
   .modal-open .dashboard-wrapper {
@@ -41,6 +44,18 @@
   }
 
   .dashboard-header {
-    padding: 0.8rem 0;
+    padding: 0.8rem 1rem;
+  }
+  .features-section {
+    margin-top: 4rem;
+  }
+  .feature:nth-child(even) {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1140px;
   }
 }

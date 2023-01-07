@@ -74,6 +74,7 @@ function Stats() {
   return (
     <>
       <p className="heading">Analytics</p>
+      <p>Track your progress and optimize your productivity with this analytics page. The progress bar and task status cards provide an overview of your task completion and help you stay on track</p>
       <div className="row justify-content-center dashboard-section">
         <div className="col-md-4">
           <div className="rounded-bar mx-auto" style={gradient}>
