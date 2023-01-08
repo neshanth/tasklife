@@ -112,7 +112,7 @@ const EditTask = () => {
                 <Button disabled={count === 0 ? true : false} className="btn--primary mx-2" type="submit">
                   Update
                 </Button>
-                <Button className="btn btn-danger" onClick={() => handleTaskDelete(id)}>
+                <Button className="btn btn-danger btn--delete" onClick={() => handleTaskDelete(id)}>
                   Delete
                 </Button>
               </div>

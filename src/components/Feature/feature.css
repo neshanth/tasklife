@@ -2,8 +2,8 @@
   padding: 11rem;
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: #eceeff;
-  box-shadow: 0 15px 45px 0px #eceeff;
+  background-color: var(--light-blue);
+  box-shadow: 0 15px 45px 0px var(--light-blue);
   border-radius: var(--radius);
 }
 .feature .feature-img {

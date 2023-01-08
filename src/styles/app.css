@@ -3,9 +3,9 @@
   --black: #232020;
   --white: #fff;
   --gradient: 50;
-  --shadow: 0px 3px 10px 0px #eceeff;
+  --shadow: 0px 3px 10px 0px var(--light-blue);
   --form-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
-  --highlight-shadow: 0px 3px 10px 0px #eceeff;
+  --highlight-shadow: 0px 3px 10px 0px var(--light-blue);
   --radius: 12px;
   --grey: #ebebeb;
   --grey-2: #eeedeb;
@@ -19,6 +19,7 @@
   --border-color: #ebebeb;
   --pending-bg: #f1c78e;
   --completed-bg: #9efdc7;
+  --light-blue: #eceeff;
 }
 
 @font-face {
@@ -85,6 +86,9 @@ a {
 .btn--secondary:hover {
   background-color: var(--white);
   color: var(--black);
+}
+.btn--delete {
+  border: none;
 }
 .text--primary {
   color: var(--primary-color);
