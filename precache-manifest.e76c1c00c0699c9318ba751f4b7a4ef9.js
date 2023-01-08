@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "3abbffb1eb4b9e3130b0",
-    "url": "/static/css/main.0b91e88d.chunk.css"
+    "revision": "039c6b2cd01434de9115",
+    "url": "/static/css/main.bc521580.chunk.css"
   },
   {
-    "revision": "3abbffb1eb4b9e3130b0",
-    "url": "/static/js/main.d2d6b8c2.chunk.js"
+    "revision": "039c6b2cd01434de9115",
+    "url": "/static/js/main.d7b393fe.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -20,12 +20,12 @@ self.__precacheManifest = [
     "url": "/static/js/2.a8ae67d2.chunk.js"
   },
   {
-    "revision": "d60571bd1bac766c669f3413f0e90314",
-    "url": "/static/media/TaskLife-EasyToUse.d60571bd.png"
-  },
-  {
     "revision": "2521030abc127e5b89cc87e07d8d6552",
     "url": "/static/media/TaskLife-QuickAnalytics.2521030a.png"
+  },
+  {
+    "revision": "d60571bd1bac766c669f3413f0e90314",
+    "url": "/static/media/TaskLife-EasyToUse.d60571bd.png"
   },
   {
     "revision": "7675c920eb82266cffeb141ff4c1996c",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/static/media/tasklife__close.b486f818.svg"
   },
   {
-    "revision": "f8b61a214d0c92346e4e999369463288",
+    "revision": "6c15601ba37d50df314ab64c86736973",
     "url": "/index.html"
   }
 ];
