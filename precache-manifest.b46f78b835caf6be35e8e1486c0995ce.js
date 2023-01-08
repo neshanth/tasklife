@@ -20,12 +20,12 @@ self.__precacheManifest = [
     "url": "/static/js/2.a8ae67d2.chunk.js"
   },
   {
-    "revision": "2521030abc127e5b89cc87e07d8d6552",
-    "url": "/static/media/TaskLife-QuickAnalytics.2521030a.png"
-  },
-  {
     "revision": "d60571bd1bac766c669f3413f0e90314",
     "url": "/static/media/TaskLife-EasyToUse.d60571bd.png"
+  },
+  {
+    "revision": "2521030abc127e5b89cc87e07d8d6552",
+    "url": "/static/media/TaskLife-QuickAnalytics.2521030a.png"
   },
   {
     "revision": "7675c920eb82266cffeb141ff4c1996c",
