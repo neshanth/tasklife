@@ -9,7 +9,6 @@ import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
 import Alerts from "../Alerts/Alerts";
 import { useEffect } from "react";
-import logo from "../../assets/Images/tasklife__logo.png";
 import "./login.css";
 import Header from "../Header/Header";
 import useAuthContext from "../../hooks/useAuthContext";
@@ -74,7 +73,6 @@ function Login() {
       <Container>
         <Row className="justify-content-center align-items-center  home-login-form">
           <Col md={4}>
-            <img className="form-logo" src={logo} width="100" alt="logo" />
             <div className="form-background login-form-background">
               {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} closeHandler={() => {}} /> : ""}
               <Form className="login-form" onSubmit={handleSubmit}>

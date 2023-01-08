@@ -11,7 +11,6 @@ import api from "../../api/api";
 import Alerts from "../Alerts/Alerts";
 import "./register.css";
 import { Link } from "react-router-dom";
-import logo from "../../assets/Images/tasklife__logo.png";
 import Header from "../Header/Header";
 import { UserContext } from "../../context/context";
 
@@ -73,7 +72,6 @@ function Register() {
       <Container>
         <Row className="justify-content-center align-items-center home-register-form">
           <Col md={4}>
-            <img className="form-logo" src={logo} width="100" alt="logo" />
             <div className="form-background">
               <Form className="register-form" onSubmit={handleSubmit}>
                 <h4>Sign Up for an account</h4>

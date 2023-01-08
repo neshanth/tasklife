@@ -8,6 +8,8 @@ import Alerts from "../Alerts/Alerts";
 import { checkObjectChangeCount } from "../../utils/utils";
 import { Row, Col } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
+import { handleTaskDeleteResponse } from "../../utils/utils";
 
 const EditTask = () => {
   let { id } = useParams();
@@ -67,6 +69,21 @@ const EditTask = () => {
     }
   };
 
+  const handleTaskDelete = (id) => {
+    setLoading(true);
+    handleTaskDeleteResponse(id)
+      .then((response) => {
+        if (response.status === 200) {
+          navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been deleted" } });
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  };
+
   if (loading) {
     return <Spinner />;
   }
@@ -92,13 +109,14 @@ const EditTask = () => {
                 <Form.Check type="checkbox" name="status" checked={editTask.status} onChange={handleEditTask} label="Status" />
               </Form.Group>
               <div className="my-4 d-flex justify-content-center align-items-baseline">
-                <Button disabled={count === 0 ? true : false} className="btn--primary mx-2" variant="primary" type="submit">
+                <Button disabled={count === 0 ? true : false} className="btn--primary mx-2" type="submit">
                   Update
                 </Button>
-                <Button onClick={() => navigate("/dashboard/tasks")} className="btn-warning mx-2" variant="primary">
-                  Back
+                <Button className="btn btn-danger" onClick={() => handleTaskDelete(id)}>
+                  Delete
                 </Button>
               </div>
+              <Link to="/dashboard/tasks">Back</Link>
             </Form>
           </Col>
         </Row>

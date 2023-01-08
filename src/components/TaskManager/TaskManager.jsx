@@ -10,7 +10,7 @@ import api from "../../api/api";
 import EditTask from "../EditTask/EditTask";
 import NewTask from "../NewTask/NewTask";
 import Stats from "../Stats/Stats.jsx";
-import { getTasksResponse, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
+import { getTasksResponse, updateTaskStatusApi } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
 import useAuthContext from "../../hooks/useAuthContext";
 
@@ -73,25 +73,25 @@ const TaskManager = () => {
       });
   };
 
-  const handleTaskDelete = (id) => {
-    setLoading(true);
-    handleTaskDeleteResponse(id)
-      .then((response) => {
-        const filteredTasks = tasks.filter((task) => task.id !== id);
-        if (response.status === 200) {
-          setSuccess("Task has been Deleted");
-        }
-        setTasks([...filteredTasks]);
-        setCompletedTasks([...filteredTasks.filter((task) => task.status === 1)]);
-        setPendingTasks([...filteredTasks.filter((task) => task.status === 0)]);
-        setShow(true);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
-  };
+  // const handleTaskDelete = (id) => {
+  //   setLoading(true);
+  //   handleTaskDeleteResponse(id)
+  //     .then((response) => {
+  //       const filteredTasks = tasks.filter((task) => task.id !== id);
+  //       if (response.status === 200) {
+  //         setSuccess("Task has been Deleted");
+  //       }
+  //       setTasks([...filteredTasks]);
+  //       setCompletedTasks([...filteredTasks.filter((task) => task.status === 1)]);
+  //       setPendingTasks([...filteredTasks.filter((task) => task.status === 0)]);
+  //       setShow(true);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setLoading(false);
+  //     });
+  // };
 
   if (authLoader) return <Spinner />;
 
@@ -117,7 +117,6 @@ const TaskManager = () => {
                   setSuccess={setSuccess}
                   show={show}
                   success={success}
-                  handleTaskDelete={handleTaskDelete}
                 />
               }
             />

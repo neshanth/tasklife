@@ -2,7 +2,7 @@ import React from "react";
 
 const EditIcon = () => {
   return (
-    <svg version="1.1" className="edit-icon" id="Capa_1" width="15px" height="15px" xmlns="http://www.w3.org/2000/svg" fill="var(--primary-color)" x="0px" y="0px" viewBox="0 0 348.882 348.882">
+    <svg version="1.1" className="edit-icon" id="Capa_1" width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="var(--primary-color)" x="0px" y="0px" viewBox="0 0 348.882 348.882">
       <g>
         <path
           d="M333.988,11.758l-0.42-0.383C325.538,4.04,315.129,0,304.258,0c-12.187,0-23.888,5.159-32.104,14.153L116.803,184.231

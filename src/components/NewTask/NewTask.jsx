@@ -65,8 +65,8 @@ function NewTask() {
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
               <div className="my-3 d-grid gap-2">
-                <Button className="btn--primary btn btn-primary btn-lg" variant="primary" type="submit">
-                  Save
+                <Button className="btn--primary  btn-lg" type="submit">
+                  Add
                 </Button>
               </div>
               <Link to="/dashboard/tasks">Back</Link>

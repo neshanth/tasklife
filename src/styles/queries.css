@@ -17,6 +17,7 @@
   }
   .hero-title {
     font-size: 2.25rem;
+    letter-spacing: -2px;
   }
   .hero-secondary {
     font-size: 1.1rem;
@@ -26,7 +27,7 @@
     width: 50%;
   }
   .form-background {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
   }
   .logo {
@@ -49,8 +50,18 @@
   .features-section {
     margin-top: 4rem;
   }
+  .feature {
+    text-align: center;
+  }
   .feature:nth-child(even) {
     flex-direction: column-reverse;
+  }
+  .task-label {
+    display: none;
+  }
+
+  .hero-image .img-fluid {
+    max-width: 100%;
   }
 }
 

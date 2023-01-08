@@ -38,7 +38,7 @@ function Tasks({ getTasks, loading, completedTasks, pendingTasks, updateTaskStat
         </Toast>
       </ToastContainer>
       <p className="heading">Tasks</p>
-      <p>Create, Read, Update and Delete Your Tasks. Update the status of your task by clicking on the circle to the left of the task</p>
+      <p>Create, Read, Update and Delete Your Tasks. Update the status of your task by toggling the button to the left of the task</p>
       <div className="tasks-in-progress dashboard-section">
         <p className="sub-heading">Pending ({pendingTasks.length})</p>
         {pendingTasks.map((task) => (
