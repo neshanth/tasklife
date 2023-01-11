@@ -61,7 +61,7 @@ const EditTask = () => {
       await api.put(`/api/tasks/${id}`, editTask);
       setEditTask({ task: "", due_date: "", status: "" });
       setLoading(false);
-      navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been updated" } });
+      navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been updated", className: "notification-success" } });
     } catch (err) {
       console.log(err);
       setError([...error, err.response.data.errors]);
@@ -74,7 +74,7 @@ const EditTask = () => {
     handleTaskDeleteResponse(id)
       .then((response) => {
         if (response.status === 200) {
-          navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been deleted" } });
+          navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been deleted", className: "notification-danger" } });
         }
         setLoading(false);
       })

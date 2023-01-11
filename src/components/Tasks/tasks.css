@@ -1,3 +1,13 @@
 .add-new-task-link {
   font-size: 1rem;
 }
+
+.toast-body.notification-success {
+  background-color: #31a503;
+  color: #fff;
+}
+
+.toast-body.notification-danger {
+  background-color: #dc3545;
+  color: #fff;
+}

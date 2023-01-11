@@ -34,7 +34,7 @@ function Tasks({ getTasks, loading, completedTasks, pendingTasks, updateTaskStat
           delay={3000}
           autohide
         >
-          <Toast.Body> {success}</Toast.Body>
+          <Toast.Body className={`${(location.state && location.state.className) || ""}`}> {success}</Toast.Body>
         </Toast>
       </ToastContainer>
       <p className="heading">Tasks</p>
