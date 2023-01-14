@@ -116,7 +116,7 @@ const EditTask = () => {
                   Delete
                 </Button>
               </div>
-              <Link to="/dashboard/tasks">Back</Link>
+              <Link to={-1}>Back</Link>
             </Form>
           </Col>
         </Row>
