@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import "./login.css";
 import Header from "../Header/Header";
 import useAuthContext from "../../hooks/useAuthContext";
+import { verifyCookie } from "../../utils/utils";
 
 function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
@@ -36,31 +37,28 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    api.get("/sanctum/csrf-cookie").then(() => {
-      api
-        .post("/api/login", { ...loginDetails })
-        .then((res) => {
-          const { data } = res;
-          const { user } = data;
-          const { id, name } = user;
-          setLoginDetails({ email: "", password: "" });
-          setLoading(false);
-          setStatus({ msg: data, status: "success" });
-          setAuth(true);
-          setUser({ id, name });
-          navigate("/dashboard/tasks", { replace: true });
-        })
-        .catch((err) => {
-          console.log(err);
-          const { data } = err.response;
-          setStatus({ msg: data, status: "danger" });
-          setAuth(false);
-          setLoading(false);
-        });
-    });
+    try {
+      await verifyCookie();
+      let res = await api.post("/api/login", { ...loginDetails });
+      const { data } = res;
+      const { user } = data;
+      const { id, name } = user;
+      setLoginDetails({ email: "", password: "" });
+      setLoading(false);
+      setStatus({ msg: data, status: "success" });
+      setAuth(true);
+      setUser({ id, name });
+      navigate("/dashboard/tasks", { replace: true });
+    } catch (err) {
+      console.log(err);
+      const { data } = err.response;
+      setStatus({ msg: data, status: "danger" });
+      setAuth(false);
+      setLoading(false);
+    }
   };
 
   if (loading) {

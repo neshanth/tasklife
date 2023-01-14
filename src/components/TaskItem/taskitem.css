@@ -30,26 +30,8 @@
 .task-data {
   width: 60%;
 }
-.dropdown-toggle::after {
-  display: none;
-}
-.actions-dropdown {
-  background: none;
-  border: none;
-}
-.dropdown-toggle::after {
-  display: none !important;
-}
-.dropdown-toggle {
-  background: none !important;
-  border: none !important;
-}
 .task-status .form-check-input[type="checkbox"] {
   margin-top: 0;
-}
-.task-item .dropdown-menu {
-  min-width: 50%;
-  text-align: center;
 }
 .btn.btn--link {
   text-decoration: none;

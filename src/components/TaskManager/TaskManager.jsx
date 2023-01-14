@@ -73,26 +73,6 @@ const TaskManager = () => {
       });
   };
 
-  // const handleTaskDelete = (id) => {
-  //   setLoading(true);
-  //   handleTaskDeleteResponse(id)
-  //     .then((response) => {
-  //       const filteredTasks = tasks.filter((task) => task.id !== id);
-  //       if (response.status === 200) {
-  //         setSuccess("Task has been Deleted");
-  //       }
-  //       setTasks([...filteredTasks]);
-  //       setCompletedTasks([...filteredTasks.filter((task) => task.status === 1)]);
-  //       setPendingTasks([...filteredTasks.filter((task) => task.status === 0)]);
-  //       setShow(true);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setLoading(false);
-  //     });
-  // };
-
   if (authLoader) return <Spinner />;
 
   return (

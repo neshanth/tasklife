@@ -9,6 +9,7 @@ import { Figure } from "react-bootstrap";
 import Features from "../Features/Features.jsx";
 import "./home.css";
 import Footer from "../Footer/Footer";
+import { handleApiResponse, verifyCookie } from "../../utils/utils";
 
 function Home() {
   const [loading, setLoading] = useState(false);
@@ -26,26 +27,23 @@ function Home() {
     password: `${process.env.REACT_APP_DEMO_PASSWORD}`,
   };
 
-  const handleDemoLogin = () => {
+  const handleDemoLogin = async () => {
     setLoading(true);
-    api.get("/sanctum/csrf-cookie").then(() => {
-      api
-        .post("/api/login", { ...loginDetails })
-        .then((res) => {
-          const { data } = res;
-          const { user } = data;
-          const { id, name } = user;
-          setLoading(false);
-          setAuth(true);
-          setUser({ id, name });
-          navigate("/dashboard/tasks", { replace: true });
-        })
-        .catch((err) => {
-          console.log(err);
-          setAuth(false);
-          setLoading(false);
-        });
-    });
+    try {
+      await verifyCookie();
+      let response = await handleApiResponse(() => api.post("/api/login", { ...loginDetails }));
+      const { data } = response;
+      const { user } = data;
+      const { id, name } = user;
+      setLoading(false);
+      setAuth(true);
+      setUser({ id, name });
+      navigate("/dashboard/tasks", { replace: true });
+    } catch (err) {
+      console.log(err);
+      setAuth(false);
+      setLoading(false);
+    }
   };
 
   if (loading) return <Spinner />;
