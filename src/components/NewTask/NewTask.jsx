@@ -36,11 +36,11 @@ function NewTask() {
     try {
       await api.post(`/api/tasks`, { ...newTask, user_id: userId });
       setNewTask({ task: "", due_date: "" });
-      navigate("/dashboard/tasks", { state: { show: true, msg: "New Task has been Added" } });
+      navigate("/dashboard/tasks", { state: { show: true, msg: "New Task has been Added", className: "notification-added" } });
     } catch (err) {
       setError([...error, err.response.data.errors]);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   if (loading) {

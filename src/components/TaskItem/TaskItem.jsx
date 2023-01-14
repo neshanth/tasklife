@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import EditIcon from "../../assets/Icons/EditIcon";
 import "./taskitem.css";
 
-const TaskItem = ({ taskData, updateTaskStatus, deleteTask, label }) => {
+const TaskItem = ({ taskData, updateTaskStatus, label }) => {
   const { task, due_date, id, status } = taskData;
   let todo_date = new Date(due_date);
   let isTaskNameLong = false;
