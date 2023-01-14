@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/static/media/tasklife__close.b486f818.svg"
   },
   {
-    "revision": "8f713d3d171ecb4677b2fc0241aeb981",
+    "revision": "530b3072c17e8ed15e7c9a923f56787f",
     "url": "/index.html"
   }
 ];
