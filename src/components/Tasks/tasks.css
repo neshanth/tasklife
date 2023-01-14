@@ -1,15 +1,23 @@
 .add-new-task-link {
   font-size: 1rem;
 }
-.toast-body {
-  color: #fff;
+.toast {
+  border-width: 0px;
 }
-.toast-body.notification-success {
+.toast {
+  padding: 1.2rem;
+  border-radius: var(--radius);
+}
+.toast .toast-body {
+  color: #fff;
+  padding: 0;
+}
+.toast.notification-success {
   background-color: #31a503;
 }
-.toast-body.notification-danger {
+.toast.notification-danger {
   background-color: #dc3545;
 }
-.toast-body.notification-added {
+.toast.notification-added {
   background-color: var(--primary-color);
 }

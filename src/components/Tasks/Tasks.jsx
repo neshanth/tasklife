@@ -26,15 +26,16 @@ function Tasks({ getTasks, loading, completedTasks, pendingTasks, updateTaskStat
     <>
       <ToastContainer position="top-end">
         <Toast
+          className={`${(location.state && location.state.className) || ""}`}
           onClose={() => {
             setShow(false);
             window.history.replaceState({}, document.title);
           }}
           show={show}
-          delay={3000}
+          delay={5000}
           autohide
         >
-          <Toast.Body className={`${(location.state && location.state.className) || ""}`}> {success}</Toast.Body>
+          <Toast.Body> {success}</Toast.Body>
         </Toast>
       </ToastContainer>
       <p className="heading">Tasks</p>
