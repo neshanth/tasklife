@@ -61,7 +61,7 @@ function NewTask() {
               {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts text={error[0].task[0]} variant="danger" /> : ""}
               <Form.Group className="my-3" controlId="due_date">
                 <Form.Label>Due Date</Form.Label>
-                <Form.Control type="date" name="due_date" placeholder="Due Date" onChange={handleTaskForm} value={newTask.due_date} required />
+                <Form.Control type="date" name="due_date" placeholder="Due Date" min={new Date().toISOString().split("T")[0]} onChange={handleTaskForm} value={newTask.due_date} required />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
               <div className="my-3 d-grid gap-2">

@@ -99,7 +99,7 @@ const EditTask = () => {
               {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts text={error[0].task[0]} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="due_date">
                 <Form.Label>Due Date</Form.Label>
-                <Form.Control type="date" name="due_date" placeholder="Due Date" value={editTask.due_date} onChange={handleEditTask} required />
+                <Form.Control type="date" min={new Date().toISOString().split("T")[0]} name="due_date" placeholder="Due Date" value={editTask.due_date} onChange={handleEditTask} required />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="status">
