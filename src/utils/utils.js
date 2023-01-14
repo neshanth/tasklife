@@ -1,14 +1,18 @@
 import api from "../api/api";
 import history from "../history/history";
 
-const updateTaskStatusApi = async (id) => {
+const handleApiResponse = async (fn) => {
   try {
-    const response = await api.patch(`/api/tasks/status/${id}`);
-    return response;
+    const reponse = await fn();
+    return reponse;
   } catch (err) {
     console.log(err);
   }
 };
+
+const updateTaskStatusApi = (id) => handleApiResponse(() => api.patch(`/api/tasks/status/${id}`));
+const getTasksResponse = () => handleApiResponse(() => api.get("/api/tasks"));
+const handleTaskDeleteResponse = (id) => handleApiResponse(() => api.delete(`/api/tasks/${id}`));
 
 export const checkObjectChangeCount = (obj1, obj2) => {
   let count = 0;
@@ -28,22 +32,8 @@ export const redirectPageBasedOnUrl = (currentPath) => {
   }
 };
 
-const getTasksResponse = async () => {
-  try {
-    const response = await api.get("/api/tasks");
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
+const verifyCookie = async () => {
+  handleApiResponse(() => api.get("/sanctum/csrf-cookie"));
 };
 
-const handleTaskDeleteResponse = async (id) => {
-  try {
-    const response = await api.delete(`/api/tasks/${id}`);
-    return response;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse };
+export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse, handleApiResponse, verifyCookie };
