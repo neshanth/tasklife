@@ -16,7 +16,7 @@ const handleTaskDeleteResponse = (id) => handleApiResponse(() => api.delete(`/ap
 
 export const checkObjectChangeCount = (obj1, obj2) => {
   let count = 0;
-  if (obj1.task !== obj2.task || obj1.due_date !== obj2.due_date || obj1.status !== obj2.status) {
+  if (obj1.task !== obj2.task || obj1.due_date !== obj2.due_date || obj1.status !== obj2.status || obj1.description !== obj2.description) {
     count++;
   }
   return count;
