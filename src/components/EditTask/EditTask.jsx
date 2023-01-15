@@ -14,7 +14,7 @@ import { handleTaskDeleteResponse } from "../../utils/utils";
 const EditTask = () => {
   let { id } = useParams();
   const navigate = useNavigate();
-  const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "" });
+  const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "", description: "" });
   const [loading, setLoading] = useState(true);
   const [existingEditTask, setExistingEditTask] = useState({});
   const [error, setError] = useState([]);
@@ -28,9 +28,9 @@ const EditTask = () => {
     setLoading(true);
     try {
       const response = await api.get(`/api/tasks/${id}`);
-      const { task, status, due_date } = response.data;
-      setExistingEditTask({ task, status, due_date });
-      setEditTask({ task, status, due_date });
+      const { task, status, due_date, description } = response.data;
+      setExistingEditTask({ task, status, due_date, description });
+      setEditTask({ task, status, due_date, description });
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -59,7 +59,7 @@ const EditTask = () => {
     setLoading(true);
     try {
       await api.put(`/api/tasks/${id}`, editTask);
-      setEditTask({ task: "", due_date: "", status: "" });
+      setEditTask({ task: "", due_date: "", status: "", description: "" });
       navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been updated", className: "notification-success" } });
     } catch (err) {
       console.log(err);
@@ -102,6 +102,11 @@ const EditTask = () => {
                 <Form.Control type="date" min={new Date().toISOString().split("T")[0]} name="due_date" placeholder="Due Date" value={editTask.due_date} onChange={handleEditTask} required />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
+              <Form.Group className="my-4">
+                <Form.Label>Description</Form.Label>
+                <Form.Control as="textarea" name="description" onChange={handleEditTask} value={editTask.description} />
+                <span className="d-flex justify-content-end count-text">{editTask.description ? editTask.description.length : 0} / 50 </span>
+              </Form.Group>
               <Form.Group className="my-4" controlId="status">
                 <Form.Check type="checkbox" name="status" checked={editTask.status} onChange={handleEditTask} label="Status" />
               </Form.Group>
