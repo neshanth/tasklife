@@ -22,17 +22,24 @@
   --light-blue: #eceeff;
 }
 
+/*------------------------------
+     FONT FAMILY     
+ ------------------------------- */
 @font-face {
   font-family: "inter";
   src: url("../assets/fonts/inter-v12-latin-regular.woff");
 }
+
 @font-face {
   font-family: "inter";
   src: url("../assets/fonts/inter-v12-latin-600.woff");
   font-weight: 600;
 }
 
-/* Globals */
+
+/*------------------------------
+     GLOBALS    
+ ------------------------------- */
 
 body {
   font-family: "inter";
@@ -64,7 +71,10 @@ a {
   color: var(--primary-color);
   font-weight: 600;
 }
-/* Custom Buttons */
+
+/*------------------------------
+     BUTTONS
+ ------------------------------- */
 .btn--primary {
   background-color: var(--primary-color);
   color: var(--white);
@@ -72,10 +82,12 @@ a {
   border: none;
   font-weight: 600;
 }
+
 .btn--primary:hover {
   background-color: var(--primary-hover);
   color: var(--white);
 }
+
 .btn--secondary {
   background-color: var(--secondary-color);
   color: var(--black);
@@ -83,36 +95,30 @@ a {
   border: none;
   font-weight: 600;
 }
+
 .btn--secondary:hover {
   background-color: var(--white);
   color: var(--black);
 }
+
 .btn--delete {
   border: none;
 }
-.text--primary {
-  color: var(--primary-color);
-}
-.border-bottom {
-  border-bottom: 1px solid var(--border-color);
-}
 
-/* End of Globals */
-
-.delete-icon {
-  cursor: pointer;
-}
-
-/* Form Styles */
+/*------------------------------
+     FORM STYLES
+ ------------------------------- */
 .form-background {
   box-shadow: var(--form-shadow);
   padding: 2rem;
   border-radius: var(--radius);
   background-color: var(--white);
 }
+
 .form-background h4 {
   letter-spacing: -0.9px;
 }
+
 .login-form,
 .custom-form,
 .register-form {
@@ -125,9 +131,28 @@ a {
   box-shadow: 0 0 0 0.25rem rgb(41 64 211 / 25%);
 }
 
-/* Sidebar */
-.dashboard {
-  margin-left: 400px;
+/*------------------------------
+    ICON STYLES
+ ------------------------------- */
+.logout-icon,
+.pie-icon,
+.list-icon {
+  margin-right: 0.8rem;
+}
+
+.close-icon:hover {
+  cursor: pointer;
+}
+
+/*------------------------------
+     GLOBAL CLASSES
+ ------------------------------- */
+.border-bottom {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.delete-icon {
+  cursor: pointer;
 }
 
 .sidebar {
@@ -136,41 +161,27 @@ a {
 }
 
 /* Task status Styles */
-.stat-card.completed,
 .completed {
   background-color: #9efdc7;
   color: #0c321d;
 }
-.stat-card.pending,
+
 .pending {
   background-color: #f1c78e;
   color: #4c3105;
 }
-.stat-card.total {
+
+.total {
   background-color: #ececec;
   color: #777777;
 }
 
 /* Navabr and Dashboard */
-
-@media only screen and (max-width: 768px) {
-  .dashboard {
-    margin: 0;
-  }
-}
-
-.dashboard .close {
-  margin-left: 0;
-}
-
-.btn-close {
-  background: url("../assets/Images/tasklife__close.svg") center/1rem auto no-repeat;
-}
-
 .modal-open {
   padding-right: 0 !important;
 }
 
+/* Logout Button */
 .logout-btn {
   margin: 1rem 0;
 }

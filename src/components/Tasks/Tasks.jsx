@@ -38,10 +38,10 @@ function Tasks({ getTasks, loading, completedTasks, pendingTasks, updateTaskStat
           <Toast.Body> {success}</Toast.Body>
         </Toast>
       </ToastContainer>
-      <p className="heading">Tasks</p>
+      <p className="dashboard-heading">Tasks</p>
       <p>Create, Read, Update and Delete Your Tasks. Update the status of your task by toggling the button to the left of the task</p>
       <div className="tasks-in-progress dashboard-section">
-        <p className="sub-heading">Pending ({pendingTasks.length})</p>
+        <p className="dashboard-sub-heading">Pending ({pendingTasks.length})</p>
         {pendingTasks.map((task) => (
           <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
         ))}
@@ -49,7 +49,7 @@ function Tasks({ getTasks, loading, completedTasks, pendingTasks, updateTaskStat
       </div>
 
       <div className="tasks-in-progress dashboard-section">
-        <p className="sub-heading">Completed ({completedTasks.length})</p>
+        <p className="dashboard-sub-heading">Completed ({completedTasks.length})</p>
         {completedTasks.map((task) => (
           <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
         ))}

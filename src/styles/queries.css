@@ -1,41 +1,52 @@
 /* Below 1000px */
 @media (max-width: 62.5em) {
+
   .hero-buttons .btn-login,
   .hero-buttons .btn-demo-login {
     width: 25%;
   }
+
   .hero-title,
   .hero-secondary {
     width: 50%;
   }
 }
+
 /* Below 500px */
 @media (max-width: 43.75em) {
+
   .hero-title,
   .hero-secondary {
     width: 90%;
   }
+
   .hero-title {
     font-size: 2.25rem;
     letter-spacing: -2px;
   }
+
   .hero-secondary {
     font-size: 1.1rem;
   }
+
   .hero-buttons .btn-login,
   .hero-buttons .btn-demo-login {
     width: 50%;
   }
+
   .form-background {
     width: 90%;
     margin: 0 auto;
   }
+
   .logo {
     width: 40%;
   }
+
   .navbar {
     padding: 0.7rem;
   }
+
   .dashboard-wrapper {
     padding: 1rem;
   }
@@ -47,15 +58,19 @@
   .dashboard-header {
     padding: 0.8rem 1rem;
   }
+
   .features-section {
     margin-top: 4rem;
   }
+
   .feature {
     text-align: center;
   }
+
   .feature:nth-child(even) {
     flex-direction: column-reverse;
   }
+
   .task-label {
     display: none;
   }
@@ -68,5 +83,23 @@
 @media (min-width: 1400px) {
   .container {
     max-width: 1140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 770px) {
+  .stat-container {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) {
+  .stats-container .col-lg-3 {
+    width: 32%;
   }
 }

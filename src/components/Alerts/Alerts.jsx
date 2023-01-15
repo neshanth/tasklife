@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Alert from "react-bootstrap/Alert";
+import "./alerts.css";
 
 function Alerts({ text, variant, closeHandler }) {
   const [show, setShow] = useState(true);

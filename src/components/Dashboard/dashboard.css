@@ -19,21 +19,15 @@
   margin: 2rem 0;
 }
 
-.heading,
-.sub-heading {
+.dashboard-heading,
+.dashboard-sub-heading {
   font-weight: 600;
 }
 
-.heading {
+.dashboard-heading {
   font-size: 2rem;
 }
 
-.sub-heading {
+.dashboard-sub-heading {
   font-size: 1.25rem;
-}
-
-@media (max-width: 768px) {
-  .dashboard {
-    margin-left: 0 !important;
-  }
 }

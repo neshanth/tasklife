@@ -73,7 +73,7 @@ function Stats() {
 
   return (
     <>
-      <p className="heading">Analytics</p>
+      <p className="dashboard-heading">Analytics</p>
       <p>Track your progress and optimize your productivity with this analytics page. The progress bar and task status cards provide an overview of your task completion and help you stay on track</p>
       <div className="row justify-content-center dashboard-section">
         <div className="col-md-4">
@@ -92,7 +92,7 @@ function Stats() {
       </div>
 
       <div className="recent-tasks dashboard-section">
-        <p className="sub-heading">Recent Tasks</p>
+        <p className="dashboard-sub-heading">Recent Tasks</p>
         {recent.map((r) => (
           <TaskItem key={r.id} taskData={r} label={true} updateTaskStatus={updateTask} deleteTask={deleteTask} />
         ))}
