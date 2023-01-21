@@ -36,4 +36,15 @@ const verifyCookie = async () => {
   handleApiResponse(() => api.get("/sanctum/csrf-cookie"));
 };
 
-export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse, handleApiResponse, verifyCookie };
+const getTags = () => handleApiResponse(() => api.get("/api/tags"));
+
+const displayAllTags = async () => {
+  try {
+    const response = await getTags();
+    console.log(response);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse, handleApiResponse, verifyCookie, getTags };
