@@ -72,7 +72,7 @@ function NewTask() {
       setSelectedOptions(option);
       setError([]);
     } else {
-      setError([{ tags: "Exceed tag limit of 3 tags" }]);
+      setError([{ tags: "Only 3 tags can be added" }]);
     }
   };
 
@@ -108,7 +108,7 @@ function NewTask() {
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts closeHandler={closeHandler} text={error[0].due_date[0]} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="tag">
                 <Form.Label>Tags</Form.Label>
-                <Select value={selectedOptions} onChange={handleChange} options={options} isMulti={true} isLoading={optionsLoader} />
+                <Select isSearchable={false} value={selectedOptions} onChange={handleChange} options={options} isMulti={true} isLoading={optionsLoader} />
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("tags") ? <Alerts closeHandler={closeHandler} text={error[0].tags} variant="danger" /> : ""}
               <div className="my-4 d-grid gap-2">
