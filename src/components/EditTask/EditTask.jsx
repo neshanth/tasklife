@@ -104,7 +104,7 @@ const EditTask = () => {
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
               <Form.Group className="my-4">
                 <Form.Label>Description</Form.Label>
-                <Form.Control as="textarea" name="description" onChange={handleEditTask} value={editTask.description} />
+                <Form.Control as="textarea" name="description" onChange={handleEditTask} value={editTask.description ? editTask.description : ""} />
                 <span className="d-flex justify-content-end count-text">{editTask.description ? editTask.description.length : 0} / 50 </span>
               </Form.Group>
               <Form.Group className="my-4" controlId="status">

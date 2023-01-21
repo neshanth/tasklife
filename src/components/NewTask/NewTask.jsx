@@ -58,7 +58,8 @@ function NewTask() {
     e.preventDefault();
     setLoading(true);
     try {
-      await api.post(`/api/tasks`, { ...newTask, user_id: userId });
+      const response = await api.post(`/api/tasks`, { ...newTask, user_id: userId });
+      await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setNewTask({ task: "", due_date: "", description: "" });
       navigate("/dashboard/tasks", { state: { show: true, msg: "New Task has been Added", className: "notification-added" } });
     } catch (err) {
