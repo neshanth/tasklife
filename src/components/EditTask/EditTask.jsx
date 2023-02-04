@@ -10,6 +10,7 @@ import { Row, Col } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import { handleTaskDeleteResponse } from "../../utils/utils";
+import Select from "react-select";
 
 const EditTask = () => {
   let { id } = useParams();
@@ -19,6 +20,9 @@ const EditTask = () => {
   const [existingEditTask, setExistingEditTask] = useState({});
   const [error, setError] = useState([]);
   const [count, setCount] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [options, setOptions] = useState([]);
+  const [optionsLoader, setOptionsLoader] = useState(false);
 
   useEffect(() => {
     getTask(id);
@@ -28,13 +32,25 @@ const EditTask = () => {
     setLoading(true);
     try {
       const response = await api.get(`/api/tasks/${id}`);
-      const { task, status, due_date, description } = response.data;
+      const { task, status, due_date, description, tags } = response.data;
       setExistingEditTask({ task, status, due_date, description });
       setEditTask({ task, status, due_date, description });
       setLoading(false);
     } catch (err) {
       setLoading(false);
     }
+  };
+
+  const handleChange = (option) => {
+    if (option.length <= 3) {
+      setSelectedOptions(option);
+      setError([]);
+    } else {
+      setError([{ tags: "Only 3 tags can be added" }]);
+    }
+  };
+  const closeHandler = () => {
+    setError([]);
   };
 
   const handleEditTask = (e) => {
@@ -107,6 +123,11 @@ const EditTask = () => {
                 <Form.Control as="textarea" name="description" onChange={handleEditTask} value={editTask.description ? editTask.description : ""} />
                 <span className="d-flex justify-content-end count-text">{editTask.description ? editTask.description.length : 0} / 50 </span>
               </Form.Group>
+              <Form.Group className="my-4" controlId="tag">
+                <Form.Label>Tags</Form.Label>
+                <Select classNamePrefix="react-select" isSearchable={false} value={selectedOptions} onChange={handleChange} options={options} isMulti={true} isLoading={optionsLoader} />
+              </Form.Group>
+              {error.length > 0 && error[0].hasOwnProperty("tags") ? <Alerts closeHandler={closeHandler} text={error[0].tags} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="status">
                 <Form.Check type="checkbox" name="status" checked={editTask.status} onChange={handleEditTask} label="Status" />
               </Form.Group>
