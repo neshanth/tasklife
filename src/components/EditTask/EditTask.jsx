@@ -24,6 +24,7 @@ const EditTask = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [options, setOptions] = useState([]);
   const [optionsLoader, setOptionsLoader] = useState(false);
+  const [prevOptions, setPrevOptions] = useState([]);
 
   useEffect(() => {
     getTask(id);
@@ -31,11 +32,11 @@ const EditTask = () => {
 
   const getTask = async (id) => {
     setLoading(true);
+    setOptionsLoader(true);
     try {
       const response = await api.get(`/api/tasks/${id}`);
       const getTagsForTask = await api.get(`/api/tags/${id}`);
       const allTags = await getTags();
-      console.log(allTags);
       const allOptions = allTags.data.map(({ id, tag_name }) => ({
         value: id,
         label: tag_name,
@@ -48,11 +49,13 @@ const EditTask = () => {
       setExistingEditTask({ task, status, due_date, description });
       setEditTask({ task, status, due_date, description });
       setSelectedOptions(options);
+      setPrevOptions(options);
       setOptions(allOptions);
       setLoading(false);
     } catch (err) {
       setLoading(false);
     }
+    setOptionsLoader(false);
   };
 
   const handleChange = (option) => {
@@ -147,7 +150,7 @@ const EditTask = () => {
                 <Form.Check type="checkbox" name="status" checked={editTask.status} onChange={handleEditTask} label="Status" />
               </Form.Group>
               <div className="my-4 d-flex justify-content-center align-items-baseline">
-                <Button disabled={count === 0 ? true : false} className="btn--primary mx-2" type="submit">
+                <Button disabled={count === 0 && JSON.stringify(prevOptions) === JSON.stringify(selectedOptions) ? true : false} className="btn--primary mx-2" type="submit">
                   Update
                 </Button>
                 <Button className="btn btn-danger btn--delete" onClick={() => handleTaskDelete(id)}>
