@@ -11,6 +11,7 @@ import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import { handleTaskDeleteResponse } from "../../utils/utils";
 import Select from "react-select";
+import { getTags } from "../../utils/utils";
 
 const EditTask = () => {
   let { id } = useParams();
@@ -32,9 +33,22 @@ const EditTask = () => {
     setLoading(true);
     try {
       const response = await api.get(`/api/tasks/${id}`);
-      const { task, status, due_date, description, tags } = response.data;
+      const getTagsForTask = await api.get(`/api/tags/${id}`);
+      const allTags = await getTags();
+      console.log(allTags);
+      const allOptions = allTags.data.map(({ id, tag_name }) => ({
+        value: id,
+        label: tag_name,
+      }));
+      const { task, status, due_date, description } = response.data;
+      const options = getTagsForTask.data.map(({ id, tag_name }) => ({
+        value: id,
+        label: tag_name,
+      }));
       setExistingEditTask({ task, status, due_date, description });
       setEditTask({ task, status, due_date, description });
+      setSelectedOptions(options);
+      setOptions(allOptions);
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -75,6 +89,7 @@ const EditTask = () => {
     setLoading(true);
     try {
       await api.put(`/api/tasks/${id}`, editTask);
+      await api.post(`/api/tags/add/${id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setEditTask({ task: "", due_date: "", status: "", description: "" });
       navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been updated", className: "notification-success" } });
     } catch (err) {
