@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -10,11 +10,35 @@ import { Container } from "react-bootstrap";
 import Alerts from "../Alerts/Alerts";
 import Spinner from "../Spinner/Spinner";
 import useAuthContext from "../../hooks/useAuthContext";
+import Select from "react-select";
+import { getTags } from "../../utils/utils";
 
 function NewTask() {
   const [newTask, setNewTask] = useState({ task: "", due_date: "", description: "" });
   const [error, setError] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [optionsLoader, setOptionsLoader] = useState(false);
+  const [options, setOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  useEffect(() => {
+    displayAllTags();
+  }, []);
+
+  const displayAllTags = async () => {
+    setOptionsLoader(true);
+    try {
+      const response = await getTags();
+      const options = response.data.map(({ id, tag_name }) => ({
+        value: id,
+        label: tag_name,
+      }));
+      setOptions(options);
+    } catch (err) {
+      console.log(err);
+    }
+    setOptionsLoader(false);
+  };
 
   const navigate = useNavigate();
   const { user } = useAuthContext();
@@ -34,13 +58,27 @@ function NewTask() {
     e.preventDefault();
     setLoading(true);
     try {
-      await api.post(`/api/tasks`, { ...newTask, user_id: userId });
+      const response = await api.post(`/api/tasks`, { ...newTask, user_id: userId });
+      await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setNewTask({ task: "", due_date: "", description: "" });
       navigate("/dashboard/tasks", { state: { show: true, msg: "New Task has been Added", className: "notification-added" } });
     } catch (err) {
       setError([...error, err.response.data.errors]);
       setLoading(false);
     }
+  };
+
+  const handleChange = (option) => {
+    if (option.length <= 3) {
+      setSelectedOptions(option);
+      setError([]);
+    } else {
+      setError([{ tags: "Only 3 tags can be added" }]);
+    }
+  };
+
+  const closeHandler = () => {
+    setError([]);
   };
 
   if (loading) {
@@ -58,7 +96,7 @@ function NewTask() {
                 <Form.Label>Task</Form.Label>
                 <Form.Control name="task" placeholder="Task" value={newTask.task} onChange={handleTaskForm} required />
               </Form.Group>
-              {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts text={error[0].task[0]} variant="danger" /> : ""}
+              {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts closeHandler={closeHandler} text={error[0].task[0]} variant="danger" /> : ""}
               <Form.Group className="my-4">
                 <Form.Label>Description</Form.Label>
                 <Form.Control as="textarea" name="description" maxLength={50} onChange={handleTaskForm} value={newTask.description} />
@@ -68,7 +106,12 @@ function NewTask() {
                 <Form.Label>Due Date</Form.Label>
                 <Form.Control type="date" name="due_date" placeholder="Due Date" min={new Date().toISOString().split("T")[0]} onChange={handleTaskForm} value={newTask.due_date} required />
               </Form.Group>
-              {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
+              {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts closeHandler={closeHandler} text={error[0].due_date[0]} variant="danger" /> : ""}
+              <Form.Group className="my-4" controlId="tag">
+                <Form.Label>Tags</Form.Label>
+                <Select classNamePrefix="react-select" isSearchable={false} value={selectedOptions} onChange={handleChange} options={options} isMulti={true} isLoading={optionsLoader} />
+              </Form.Group>
+              {error.length > 0 && error[0].hasOwnProperty("tags") ? <Alerts closeHandler={closeHandler} text={error[0].tags} variant="danger" /> : ""}
               <div className="my-4 d-grid gap-2">
                 <Button className="btn--primary  btn-lg" type="submit">
                   Add

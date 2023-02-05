@@ -10,6 +10,8 @@ import { Row, Col } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import { handleTaskDeleteResponse } from "../../utils/utils";
+import Select from "react-select";
+import { getTags } from "../../utils/utils";
 
 const EditTask = () => {
   let { id } = useParams();
@@ -19,6 +21,10 @@ const EditTask = () => {
   const [existingEditTask, setExistingEditTask] = useState({});
   const [error, setError] = useState([]);
   const [count, setCount] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [options, setOptions] = useState([]);
+  const [optionsLoader, setOptionsLoader] = useState(false);
+  const [prevOptions, setPrevOptions] = useState([]);
 
   useEffect(() => {
     getTask(id);
@@ -26,15 +32,42 @@ const EditTask = () => {
 
   const getTask = async (id) => {
     setLoading(true);
+    setOptionsLoader(true);
     try {
       const response = await api.get(`/api/tasks/${id}`);
+      const getTagsForTask = await api.get(`/api/tags/${id}`);
+      const allTags = await getTags();
+      const allOptions = allTags.data.map(({ id, tag_name }) => ({
+        value: id,
+        label: tag_name,
+      }));
       const { task, status, due_date, description } = response.data;
+      const options = getTagsForTask.data.map(({ id, tag_name }) => ({
+        value: id,
+        label: tag_name,
+      }));
       setExistingEditTask({ task, status, due_date, description });
       setEditTask({ task, status, due_date, description });
+      setSelectedOptions(options);
+      setPrevOptions(options);
+      setOptions(allOptions);
       setLoading(false);
     } catch (err) {
       setLoading(false);
     }
+    setOptionsLoader(false);
+  };
+
+  const handleChange = (option) => {
+    if (option.length <= 3) {
+      setSelectedOptions(option);
+      setError([]);
+    } else {
+      setError([{ tags: "Only 3 tags can be added" }]);
+    }
+  };
+  const closeHandler = () => {
+    setError([]);
   };
 
   const handleEditTask = (e) => {
@@ -59,6 +92,7 @@ const EditTask = () => {
     setLoading(true);
     try {
       await api.put(`/api/tasks/${id}`, editTask);
+      await api.post(`/api/tags/add/${id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setEditTask({ task: "", due_date: "", status: "", description: "" });
       navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been updated", className: "notification-success" } });
     } catch (err) {
@@ -104,14 +138,19 @@ const EditTask = () => {
               {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
               <Form.Group className="my-4">
                 <Form.Label>Description</Form.Label>
-                <Form.Control as="textarea" name="description" onChange={handleEditTask} value={editTask.description} />
+                <Form.Control as="textarea" name="description" onChange={handleEditTask} value={editTask.description ? editTask.description : ""} />
                 <span className="d-flex justify-content-end count-text">{editTask.description ? editTask.description.length : 0} / 50 </span>
               </Form.Group>
+              <Form.Group className="my-4" controlId="tag">
+                <Form.Label>Tags</Form.Label>
+                <Select classNamePrefix="react-select" isSearchable={false} value={selectedOptions} onChange={handleChange} options={options} isMulti={true} isLoading={optionsLoader} />
+              </Form.Group>
+              {error.length > 0 && error[0].hasOwnProperty("tags") ? <Alerts closeHandler={closeHandler} text={error[0].tags} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="status">
                 <Form.Check type="checkbox" name="status" checked={editTask.status} onChange={handleEditTask} label="Status" />
               </Form.Group>
               <div className="my-4 d-flex justify-content-center align-items-baseline">
-                <Button disabled={count === 0 ? true : false} className="btn--primary mx-2" type="submit">
+                <Button disabled={count === 0 && JSON.stringify(prevOptions) === JSON.stringify(selectedOptions) ? true : false} className="btn--primary mx-2" type="submit">
                   Update
                 </Button>
                 <Button className="btn btn-danger btn--delete" onClick={() => handleTaskDelete(id)}>
