@@ -52,14 +52,6 @@
   cursor: pointer;
 }
 
-.task-item-tags {
-  color: var(--primary-color);
-  font-size: 0.8rem;
-  margin-left: 4.375rem;
-  font-weight: 600;
-  display: flex;
-}
-
 .tags {
   margin-right: 2px;
 }

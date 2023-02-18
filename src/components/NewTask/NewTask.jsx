@@ -99,9 +99,10 @@ function NewTask() {
               {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts closeHandler={closeHandler} text={error[0].task[0]} variant="danger" /> : ""}
               <Form.Group className="my-4">
                 <Form.Label>Description</Form.Label>
-                <Form.Control as="textarea" name="description" maxLength={50} onChange={handleTaskForm} value={newTask.description} />
-                <span className="d-flex justify-content-end count-text">{newTask.description.length} / 50 </span>
+                <Form.Control as="textarea" name="description" maxLength={150} onChange={handleTaskForm} value={newTask.description} />
+                <span className={`d-flex justify-content-end count-text ${newTask.description.length === 150 && "count-text-danger"}`}>{newTask.description.length} / 150 </span>
               </Form.Group>
+              {error.length > 0 && error[0].hasOwnProperty("description") ? <Alerts text={error[0].description[0]} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="due_date">
                 <Form.Label>Due Date</Form.Label>
                 <Form.Control type="date" name="due_date" placeholder="Due Date" min={new Date().toISOString().split("T")[0]} onChange={handleTaskForm} value={newTask.due_date} required />
