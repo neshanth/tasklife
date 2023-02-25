@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.e0d3bb86.css",
+    "main.css": "/static/css/main.0fd07767.css",
     "main.js": "/static/js/main.b6c89629.js",
     "static/media/TaskLife-QuickAnalytics.png": "/static/media/TaskLife-QuickAnalytics.c6764cdc266bb0aef1f9.png",
     "static/media/TaskLife-EasyToUse.png": "/static/media/TaskLife-EasyToUse.ceeed6df354d43513fd7.png",
@@ -8,11 +8,11 @@
     "static/media/inter-v12-latin-regular.woff": "/static/media/inter-v12-latin-regular.817c4274293e221c5076.woff",
     "static/media/hero.png": "/static/media/hero.17ff9ae475af1f4a459c.png",
     "index.html": "/index.html",
-    "main.e0d3bb86.css.map": "/static/css/main.e0d3bb86.css.map",
+    "main.0fd07767.css.map": "/static/css/main.0fd07767.css.map",
     "main.b6c89629.js.map": "/static/js/main.b6c89629.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0d3bb86.css",
+    "static/css/main.0fd07767.css",
     "static/js/main.b6c89629.js"
   ]
 }
