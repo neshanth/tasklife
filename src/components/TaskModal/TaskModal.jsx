@@ -1,10 +1,11 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Tags from "../Tags/Tags";
 import "./taskmodal.css";
 
 const TaskModal = ({ show, handleClose, taskData }) => {
-  const { status, task, due_date, tags, description } = taskData;
+  const { status, task, due_date, tags, description, id } = taskData;
   const options = { year: "numeric", month: "long", day: "numeric" };
   let taskDate = due_date.split("-");
   return (
@@ -29,6 +30,11 @@ const TaskModal = ({ show, handleClose, taskData }) => {
         <div className="task-modal-details task-modal-spacing">
           <p className="task-modal-sub-heading">Details</p>
           <p>{description ? description : "None"}</p>
+        </div>
+        <div className="task-modal-btn">
+          <Link className="btn btn--primary task-modal-edit-link" to={`/dashboard/tasks/edit/${id}`}>
+            Edit
+          </Link>
         </div>
       </Modal.Body>
     </Modal>

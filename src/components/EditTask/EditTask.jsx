@@ -26,6 +26,8 @@ const EditTask = () => {
   const [optionsLoader, setOptionsLoader] = useState(false);
   const [prevOptions, setPrevOptions] = useState([]);
 
+  console.log(editTask);
+
   useEffect(() => {
     getTask(id);
   }, []);
@@ -139,7 +141,9 @@ const EditTask = () => {
               <Form.Group className="my-4">
                 <Form.Label>Description</Form.Label>
                 <Form.Control as="textarea" name="description" maxLength={150} onChange={handleEditTask} value={editTask.description ? editTask.description : ""} />
-                <span className={`d-flex justify-content-end count-text ${editTask.description.length === 150 && "count-text-danger"}`}>{editTask.description.length} / 150 </span>
+                <span className={`d-flex justify-content-end count-text ${editTask.description?.length === 150 && "count-text-danger"}`}>
+                  {editTask.description ? editTask.description.length : 0} / 150{" "}
+                </span>
               </Form.Group>
               {error.length > 0 && error[0].hasOwnProperty("description") ? <Alerts text={error[0].description[0]} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="tag">

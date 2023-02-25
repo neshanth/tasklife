@@ -35,3 +35,11 @@
 .task-modal .task-label {
     margin-bottom: 0;
 }
+
+.task-modal-btn {
+    text-align: center;
+}
+
+.task-modal-edit-link {
+    width: 50%;
+}
