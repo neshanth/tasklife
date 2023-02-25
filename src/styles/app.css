@@ -135,6 +135,11 @@ a {
   font-size: 0.8rem;
 }
 
+.count-text-danger {
+  color: tomato;
+  font-weight: 600;
+}
+
 /*------------------------------
      React-select styles
  ------------------------------- */

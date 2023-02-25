@@ -75,6 +75,11 @@
     display: none;
   }
 
+  .task-modal .task-label {
+    display: block;
+    width: 30%;
+  }
+
   .hero-image .img-fluid {
     max-width: 100%;
   }
@@ -102,4 +107,5 @@
   .stats-container .col-lg-3 {
     width: 32%;
   }
+
 }

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import EditIcon from "../../assets/Icons/EditIcon";
+import Tags from "../Tags/Tags";
+import TaskModal from "../TaskModal/TaskModal";
 import "./taskitem.css";
 
 const TaskItem = ({ taskData, updateTaskStatus, label }) => {
   const { task, due_date, id, status, tags } = taskData;
-  const TAG_COLORS = ["#ef92f1", "#108000", "#ffb01c"];
+  const [showModal, setShowModal] = useState(false);
   let todo_date = new Date(due_date);
   let isTaskNameLong = false;
 
@@ -14,9 +16,11 @@ const TaskItem = ({ taskData, updateTaskStatus, label }) => {
     isTaskNameLong = task.length > 10 ? true : false;
   }
 
+  const handleModalClose = () => setShowModal(false);
+
   return (
     <>
-      <div className="task-item  my-3">
+      <div className="task-item  my-3" onClick={() => setShowModal(true)}>
         <div className="task-item-controls d-flex align-items-center">
           <Form.Check type="switch" id="status" className={`mx-2  ${status ? "done" : "in-progress"}`} checked={status} onChange={() => updateTaskStatus(id)} />
           <div className="task">
@@ -32,15 +36,9 @@ const TaskItem = ({ taskData, updateTaskStatus, label }) => {
             </Link>
           </div>
         </div>
-        <div className="task-item-tags">
-          {tags.map((tag, index) => (
-            <span style={{ color: TAG_COLORS[index] }} key={index} className="tags">
-              {tag}
-              {index !== tags.length - 1 ? "," : ""}
-            </span>
-          ))}
-        </div>
+        <Tags tags={tags} />
       </div>
+      <TaskModal taskData={taskData} show={showModal} handleClose={handleModalClose} />
     </>
   );
 };
