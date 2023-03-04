@@ -26,8 +26,6 @@ const EditTask = () => {
   const [optionsLoader, setOptionsLoader] = useState(false);
   const [prevOptions, setPrevOptions] = useState([]);
 
-  console.log(editTask);
-
   useEffect(() => {
     getTask(id);
   }, []);
