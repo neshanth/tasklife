@@ -8,6 +8,7 @@ import "./tasks.css";
 import AddTask from "../AddTask/AddTask";
 
 function Tasks({ getTasks, loading, updateTaskStatus, setShow, setSuccess, show, success, handleTaskDelete, tasks }) {
+  console.log(tasks, "tasks");
   const location = useLocation();
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
