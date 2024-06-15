@@ -7,8 +7,10 @@ import { Toast, ToastContainer } from "react-bootstrap";
 import "./tasks.css";
 import AddTask from "../AddTask/AddTask";
 
-function Tasks({ getTasks, loading, completedTasks, pendingTasks, updateTaskStatus, setShow, setSuccess, show, success, handleTaskDelete }) {
+function Tasks({ getTasks, loading, updateTaskStatus, setShow, setSuccess, show, success, handleTaskDelete, tasks }) {
   const location = useLocation();
+  const pendingTasks = tasks.filter((task) => task.status === 0);
+  const completedTasks = tasks.filter((task) => task.status === 1);
 
   useEffect(() => {
     getTasks();

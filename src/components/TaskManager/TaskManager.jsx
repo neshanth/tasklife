@@ -16,8 +16,6 @@ import useAuthContext from "../../hooks/useAuthContext";
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
-  const [pendingTasks, setPendingTasks] = useState([]);
-  const [completedTasks, setCompletedTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
@@ -45,10 +43,6 @@ const TaskManager = () => {
     getTasksResponse()
       .then((response) => {
         setTasks([...response.data.tasks]);
-        const pendingTasks = response.data.tasks.filter((task) => task.status === 0);
-        const completedTasks = response.data.tasks.filter((task) => task.status === 1);
-        setPendingTasks(pendingTasks);
-        setCompletedTasks(completedTasks);
         setLoading(false);
       })
       .catch((err) => {
@@ -63,8 +57,6 @@ const TaskManager = () => {
     setTasks([...updatedTasks]);
     updateTaskStatusApi(id)
       .then((response) => {
-        setCompletedTasks([...response.data.completed]);
-        setPendingTasks([...response.data.pending]);
         setLoading(false);
       })
       .catch((err) => {
@@ -86,19 +78,7 @@ const TaskManager = () => {
             <Route path="/dashboard/stats" element={<Stats />} />
             <Route
               path="/dashboard/tasks"
-              element={
-                <Tasks
-                  getTasks={getTasks}
-                  loading={loading}
-                  completedTasks={completedTasks}
-                  pendingTasks={pendingTasks}
-                  updateTaskStatus={updateTaskStatus}
-                  setShow={setShow}
-                  setSuccess={setSuccess}
-                  show={show}
-                  success={success}
-                />
-              }
+              element={<Tasks getTasks={getTasks} loading={loading} tasks={tasks} updateTaskStatus={updateTaskStatus} setShow={setShow} setSuccess={setSuccess} show={show} success={success} />}
             />
             <Route path="/dashboard/tasks/edit/:id" element={<EditTask />} />
             <Route path="/dashboard/tasks/new" element={<NewTask />} />
