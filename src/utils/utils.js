@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import api from "../api/api";
 import history from "../history/history";
 
@@ -37,5 +38,18 @@ const verifyCookie = async () => {
 };
 
 const getTags = () => handleApiResponse(() => api.get("/api/tags"));
+const renderErrorToast = (msg, type) => {
+  let classNames = ""
+  if (type === "error") {
+    classNames = "error-toast"
+  }
+  const options = {
+    hideProgressBar: true,
+    className: classNames
+  }
+  if (type === "error") {
+    toast(msg, options)
+  }
+}
 
-export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse, handleApiResponse, verifyCookie, getTags };
+export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse, handleApiResponse, verifyCookie, getTags, renderErrorToast };

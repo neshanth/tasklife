@@ -205,3 +205,8 @@ a {
 .logout-btn {
   margin: 1rem 0;
 }
+
+.error-toast {
+  background-color: #f8d7da;
+  color: #721c24
+}

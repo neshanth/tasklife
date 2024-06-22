@@ -7,16 +7,14 @@ import Col from "react-bootstrap/Col";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
-import Alerts from "../Alerts/Alerts";
 import { useEffect } from "react";
 import "./login.css";
 import Header from "../Header/Header";
 import useAuthContext from "../../hooks/useAuthContext";
-import { verifyCookie } from "../../utils/utils";
+import { renderErrorToast, verifyCookie } from "../../utils/utils";
 
 function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
-  const [status, setStatus] = useState({ msg: "", status: "" });
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
@@ -48,14 +46,13 @@ function Login() {
       const { id, name } = user;
       setLoginDetails({ email: "", password: "" });
       setLoading(false);
-      setStatus({ msg: data, status: "success" });
       setAuth(true);
       setUser({ id, name });
       navigate("/dashboard/tasks", { replace: true });
     } catch (err) {
       console.log(err);
       const { data } = err.response;
-      setStatus({ msg: data, status: "danger" });
+      renderErrorToast(data, "error");
       setAuth(false);
       setLoading(false);
     }
@@ -72,7 +69,6 @@ function Login() {
         <Row className="justify-content-center align-items-center  home-login-form">
           <Col md={4}>
             <div className="form-background login-form-background">
-              {status.msg.length > 0 ? <Alerts text={status.msg} variant={status.status} closeHandler={() => {}} /> : ""}
               <Form className="login-form" onSubmit={handleSubmit}>
                 <h4>Log in to your account</h4>
                 <Form.Group className="my-3" controlId="email">
