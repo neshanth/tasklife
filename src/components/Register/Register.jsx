@@ -8,17 +8,15 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import api from "../../api/api";
-import Alerts from "../Alerts/Alerts";
 import "./register.css";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import { UserContext } from "../../context/context";
+import { renderErrorToast } from "../../utils/utils";
 
 function Register() {
   const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState([]);
-  const [confirmPass, setConfirmPass] = useState("");
   const { auth } = useContext(UserContext);
   let navigate = useNavigate();
 
@@ -41,7 +39,7 @@ function Register() {
     e.preventDefault();
     setLoading(true);
     if (registerDetails.password !== registerDetails.password_confirmation) {
-      setConfirmPass("Passwords Do not Match");
+      renderErrorToast("Passwords do not match", "error");
       setLoading(false);
       return;
     }
@@ -53,13 +51,10 @@ function Register() {
         navigate("/login");
       }
     } catch (err) {
-      setError([err.response.data.errors]);
+      const errorsList = Object.values(err.response.data.errors).flat();
+      errorsList.forEach((err) => renderErrorToast(err, "error"));
       setLoading(false);
     }
-  };
-
-  const closeHandler = () => {
-    setConfirmPass("");
   };
 
   if (loading) {
@@ -79,22 +74,18 @@ function Register() {
                   <Form.Label>Name</Form.Label>
                   <Form.Control type="name" name="name" onChange={handleRegisterDetails} value={registerDetails.name} placeholder="Name" required />
                 </Form.Group>
-                {error.length > 0 && error[0].hasOwnProperty("name") ? <Alerts closeHandler={closeHandler} text={error[0].name[0]} variant="danger" /> : ""}
                 <Form.Group className="my-3" controlId="email">
                   <Form.Label>Email</Form.Label>
                   <Form.Control type="email" name="email" onChange={handleRegisterDetails} value={registerDetails.email} placeholder="Email" required />
                 </Form.Group>
-                {error.length > 0 && error[0].hasOwnProperty("email") ? <Alerts closeHandler={closeHandler} text={error[0].email[0]} variant="danger" /> : ""}
                 <Form.Group className="my-3" controlId="password">
                   <Form.Label>Password</Form.Label>
                   <Form.Control type="password" name="password" onChange={handleRegisterDetails} value={registerDetails.password} placeholder="Password" required />
                 </Form.Group>
-                {error.length > 0 && error[0].hasOwnProperty("password") ? <Alerts closeHandler={closeHandler} text={error[0].password[0]} variant="danger" /> : ""}
                 <Form.Group className="my-3" controlId="password_confirmation">
                   <Form.Label>Confirm Password</Form.Label>
                   <Form.Control type="password" name="password_confirmation" onChange={handleRegisterDetails} value={registerDetails.password_confirmation} placeholder="Confirm Password" required />
                 </Form.Group>
-                {confirmPass.length > 0 ? <Alerts closeHandler={closeHandler} text={confirmPass} variant="danger" /> : ""}
                 <div className="mt-3 d-grid gap-2">
                   <Button className="btn--primary" variant="primary" size="lg" type="submit">
                     Sign Up
