@@ -12,7 +12,7 @@ import "./register.css";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import { UserContext } from "../../context/context";
-import { renderErrorToast } from "../../utils/utils";
+import { renderToast } from "../../utils/utils";
 
 function Register() {
   const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
@@ -39,7 +39,7 @@ function Register() {
     e.preventDefault();
     setLoading(true);
     if (registerDetails.password !== registerDetails.password_confirmation) {
-      renderErrorToast("Passwords do not match", "error");
+      renderToast("Passwords do not match", "error");
       setLoading(false);
       return;
     }
@@ -52,7 +52,7 @@ function Register() {
       }
     } catch (err) {
       const errorsList = Object.values(err.response.data.errors).flat();
-      errorsList.forEach((err) => renderErrorToast(err, "error"));
+      errorsList.forEach((err) => renderToast(err, "error"));
       setLoading(false);
     }
   };

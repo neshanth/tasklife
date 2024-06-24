@@ -4,14 +4,13 @@ import Button from "react-bootstrap/esm/Button";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../Spinner/Spinner";
-import Alerts from "../Alerts/Alerts";
 import { checkObjectChangeCount } from "../../utils/utils";
 import { Row, Col } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import { handleTaskDeleteResponse } from "../../utils/utils";
 import Select from "react-select";
-import { getTags } from "../../utils/utils";
+import { getTags, renderToast } from "../../utils/utils";
 
 const EditTask = () => {
   let { id } = useParams();
@@ -19,7 +18,6 @@ const EditTask = () => {
   const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "", description: "" });
   const [loading, setLoading] = useState(true);
   const [existingEditTask, setExistingEditTask] = useState({});
-  const [error, setError] = useState([]);
   const [count, setCount] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [options, setOptions] = useState([]);
@@ -61,13 +59,9 @@ const EditTask = () => {
   const handleChange = (option) => {
     if (option.length <= 3) {
       setSelectedOptions(option);
-      setError([]);
     } else {
-      setError([{ tags: "Only 3 tags can be added" }]);
+      renderToast("Only 3 tags can be added", "error");
     }
-  };
-  const closeHandler = () => {
-    setError([]);
   };
 
   const handleEditTask = (e) => {
@@ -96,8 +90,8 @@ const EditTask = () => {
       setEditTask({ task: "", due_date: "", status: "", description: "" });
       navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been updated", className: "notification-success" } });
     } catch (err) {
-      console.log(err);
-      setError([...error, err.response.data.errors]);
+      const errorsList = Object.values(err.response.data.errors).flat();
+      errorsList.forEach((err) => renderToast(err, "error"));
       setLoading(false);
     }
   };
@@ -130,12 +124,10 @@ const EditTask = () => {
                 <Form.Label>Task</Form.Label>
                 <Form.Control name="task" placeholder="Task" onChange={handleEditTask} value={editTask.task} required />
               </Form.Group>
-              {error.length > 0 && error[0].hasOwnProperty("task") ? <Alerts text={error[0].task[0]} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="due_date">
                 <Form.Label>Due Date</Form.Label>
                 <Form.Control type="date" min={new Date().toISOString().split("T")[0]} name="due_date" placeholder="Due Date" value={editTask.due_date} onChange={handleEditTask} required />
               </Form.Group>
-              {error.length > 0 && error[0].hasOwnProperty("due_date") ? <Alerts text={error[0].due_date[0]} variant="danger" /> : ""}
               <Form.Group className="my-4">
                 <Form.Label>Description</Form.Label>
                 <Form.Control as="textarea" name="description" maxLength={150} onChange={handleEditTask} value={editTask.description ? editTask.description : ""} />
@@ -143,12 +135,10 @@ const EditTask = () => {
                   {editTask.description ? editTask.description.length : 0} / 150{" "}
                 </span>
               </Form.Group>
-              {error.length > 0 && error[0].hasOwnProperty("description") ? <Alerts text={error[0].description[0]} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="tag">
                 <Form.Label>Tags</Form.Label>
                 <Select classNamePrefix="react-select" isSearchable={false} value={selectedOptions} onChange={handleChange} options={options} isMulti={true} isLoading={optionsLoader} />
               </Form.Group>
-              {error.length > 0 && error[0].hasOwnProperty("tags") ? <Alerts closeHandler={closeHandler} text={error[0].tags} variant="danger" /> : ""}
               <Form.Group className="my-4" controlId="status">
                 <Form.Check type="checkbox" name="status" checked={editTask.status} onChange={handleEditTask} label="Status" />
               </Form.Group>
