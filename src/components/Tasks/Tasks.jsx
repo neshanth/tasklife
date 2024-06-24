@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import TaskItem from "../TaskItem/TaskItem";
 import Spinner from "../Spinner/Spinner";
 import { useLocation } from "react-router-dom";
-import { Toast, ToastContainer } from "react-bootstrap";
 import "./tasks.css";
 import AddTask from "../AddTask/AddTask";
+import { renderToast } from "../../utils/utils";
 
 function Tasks({ getTasks, loading, updateTaskStatus, setShow, setSuccess, show, success, handleTaskDelete, tasks }) {
   const location = useLocation();
@@ -16,7 +16,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, setShow, setSuccess, show,
     getTasks();
     if (location.state !== null) {
       setShow(true);
-      setSuccess(location.state.msg);
+      renderToast(location.state.msg, "success");
     }
   }, []);
 
@@ -26,20 +26,6 @@ function Tasks({ getTasks, loading, updateTaskStatus, setShow, setSuccess, show,
 
   return (
     <>
-      <ToastContainer position="top-end">
-        <Toast
-          className={`${(location.state && location.state.className) || ""}`}
-          onClose={() => {
-            setShow(false);
-            window.history.replaceState({}, document.title);
-          }}
-          show={show}
-          delay={5000}
-          autohide
-        >
-          <Toast.Body> {success}</Toast.Body>
-        </Toast>
-      </ToastContainer>
       <p className="dashboard-heading">Tasks</p>
       <p>Create, Read, Update and Delete Your Tasks. Update the status of your task by toggling the button to the left of the task</p>
       <div className="tasks-in-progress dashboard-section">

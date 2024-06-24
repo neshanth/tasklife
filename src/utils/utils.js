@@ -38,18 +38,18 @@ const verifyCookie = async () => {
 };
 
 const getTags = () => handleApiResponse(() => api.get("/api/tags"));
-const renderErrorToast = (msg, type) => {
+const renderToast = (msg, type) => {
   let classNames = ""
   if (type === "error") {
     classNames = "error-toast"
+  } else if (type === "success") {
+    classNames = "success-toast"
   }
   const options = {
     hideProgressBar: true,
     className: classNames
   }
-  if (type === "error") {
-    toast(msg, options)
-  }
+  toast(msg, options);
 }
 
-export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse, handleApiResponse, verifyCookie, getTags, renderErrorToast };
+export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse, handleApiResponse, verifyCookie, getTags, renderToast };

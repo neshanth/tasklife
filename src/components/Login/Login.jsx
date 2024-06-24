@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import "./login.css";
 import Header from "../Header/Header";
 import useAuthContext from "../../hooks/useAuthContext";
-import { renderErrorToast, verifyCookie } from "../../utils/utils";
+import { renderToast, verifyCookie } from "../../utils/utils";
 
 function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
@@ -52,7 +52,7 @@ function Login() {
     } catch (err) {
       console.log(err);
       const { data } = err.response;
-      renderErrorToast(data, "error");
+      renderToast(data, "error");
       setAuth(false);
       setLoading(false);
     }
