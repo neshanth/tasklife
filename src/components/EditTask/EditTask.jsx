@@ -88,7 +88,8 @@ const EditTask = () => {
       await api.put(`/api/tasks/${id}`, editTask);
       await api.post(`/api/tags/add/${id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setEditTask({ task: "", due_date: "", status: "", description: "" });
-      navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been updated", className: "notification-success" } });
+      navigate("/dashboard/tasks");
+      renderToast("Task has been updated", "success");
     } catch (err) {
       const errorsList = Object.values(err.response.data.errors).flat();
       errorsList.forEach((err) => renderToast(err, "error"));
