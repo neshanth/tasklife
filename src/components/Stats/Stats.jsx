@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import api from "../../api/api";
-import { UserContext } from "../../context/context";
+import React, { useState, useEffect } from "react";
 import { handleTaskDeleteResponse, updateTaskStatusApi } from "../../utils/utils";
 import AddTask from "../AddTask/AddTask";
 import StatCard from "../StatCard/StatCard";
@@ -14,10 +12,8 @@ function Stats({ tasks }) {
     { statName: "Completed", stat: 0 },
     { statName: "Total", stat: 0 },
   ]);
-  const { user } = useContext(UserContext);
 
   useEffect(() => {
-    //fetchData();
     const { completed, pending, total } = getStatsForTasks();
     setStats([
       { statName: "pending", stat: pending },
@@ -35,25 +31,19 @@ function Stats({ tasks }) {
   let gradient = { backgroundImage: "conic-gradient(var(--completed-bg) var(--gradient),var(--pending-bg) 0)" };
 
   const deleteTask = async (id) => {
-    setLoading(true);
     try {
       await handleTaskDeleteResponse(id);
-      await fetchData();
     } catch (err) {
       console.log(err);
     }
-    setLoading(false);
   };
 
   const updateTask = async (id) => {
-    setLoading(true);
     try {
       await updateTaskStatusApi(id);
-      await fetchData();
     } catch (err) {
       console.log(err);
     }
-    setLoading(false);
   };
 
   const getStatsForTasks = () => {
