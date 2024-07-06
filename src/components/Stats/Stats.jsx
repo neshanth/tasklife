@@ -3,13 +3,11 @@ import api from "../../api/api";
 import { UserContext } from "../../context/context";
 import { handleTaskDeleteResponse, updateTaskStatusApi } from "../../utils/utils";
 import AddTask from "../AddTask/AddTask";
-import Spinner from "../Spinner/Spinner";
 import StatCard from "../StatCard/StatCard";
 import TaskItem from "../TaskItem/TaskItem";
 import "./stats.css";
 
-function Stats() {
-  const [loading, setLoading] = useState(true);
+function Stats({ tasks }) {
   const [recent, setRecent] = useState([]);
   const [stats, setStats] = useState([
     { statName: "Pending", stat: 0 },
@@ -19,7 +17,15 @@ function Stats() {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    fetchData();
+    //fetchData();
+    const { completed, pending, total } = getStatsForTasks();
+    setStats([
+      { statName: "pending", stat: pending },
+      { statName: "completed", stat: completed },
+      { statName: "total", stat: total },
+    ]);
+    const recentTasks = tasks.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    setRecent(recentTasks.slice(0, 5));
   }, []);
 
   let root = document.querySelector(":root"); // select root variables
@@ -27,25 +33,6 @@ function Stats() {
   let productivity = isNaN(statCalculation) ? 0 : statCalculation;
   root.style.setProperty("--gradient", productivity.toFixed() + "%");
   let gradient = { backgroundImage: "conic-gradient(var(--completed-bg) var(--gradient),var(--pending-bg) 0)" };
-
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const statsResponse = api.get(`/api/tasks/stats/${user.id}`);
-      const recentTasksResponse = api.get(`/api/tasks/recent/${user.id}`);
-      const [statsData, recentTasksData] = await Promise.all([statsResponse, recentTasksResponse]);
-      const { completed, pending, tasks } = statsData.data;
-      setStats([
-        { statName: "pending", stat: pending },
-        { statName: "completed", stat: completed },
-        { statName: "total", stat: tasks },
-      ]);
-      setRecent(recentTasksData.data.recent);
-    } catch (err) {
-      console.log(err);
-    }
-    setLoading(false);
-  };
 
   const deleteTask = async (id) => {
     setLoading(true);
@@ -69,7 +56,12 @@ function Stats() {
     setLoading(false);
   };
 
-  if (loading) return <Spinner />;
+  const getStatsForTasks = () => {
+    const pending = tasks.filter((t) => t.status === 0).length;
+    const completed = tasks.filter((t) => t.status === 1).length;
+    const total = tasks.length;
+    return { pending, completed, total };
+  };
 
   return (
     <>
