@@ -7,7 +7,7 @@ const handleApiResponse = async (fn) => {
     const reponse = await fn();
     return reponse;
   } catch (err) {
-    console.log(err);
+    throw err
   }
 };
 

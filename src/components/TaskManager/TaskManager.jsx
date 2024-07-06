@@ -10,7 +10,7 @@ import api from "../../api/api";
 import EditTask from "../EditTask/EditTask";
 import NewTask from "../NewTask/NewTask";
 import Stats from "../Stats/Stats.jsx";
-import { getTasksResponse, updateTaskStatusApi } from "../../utils/utils";
+import { getTasksResponse, renderToast, updateTaskStatusApi } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
 import useAuthContext from "../../hooks/useAuthContext";
 
@@ -51,18 +51,17 @@ const TaskManager = () => {
       });
   };
 
-  const updateTaskStatus = (id) => {
-    setLoading(true);
-    const updatedTasks = tasks.map((task) => (task.id === id ? { ...task, status: task.status === 1 ? 0 : 1 } : { ...task }));
-    setTasks([...updatedTasks]);
-    updateTaskStatusApi(id)
-      .then((response) => {
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+  const updateTaskStatus = async (id) => {
+    const taskBeforeUpdate = tasks.find((task) => task.id === id);
+    try {
+      const updatedTasks = tasks.map((task) => (task.id === id ? { ...task, status: task.status === 1 ? 0 : 1 } : { ...task }));
+      setTasks([...updatedTasks]);
+      await updateTaskStatusApi(id);
+    } catch (err) {
+      const updatedTasks = tasks.map((task) => (task.id === id ? { ...task, status: taskBeforeUpdate.status } : { ...task }));
+      setTasks([...updatedTasks]);
+      renderToast(err.response.data.error, "error");
+    }
   };
 
   if (authLoader) return <Spinner />;
