@@ -89,7 +89,7 @@ const EditTask = () => {
       await api.post(`/api/tags/add/${id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setEditTask({ task: "", due_date: "", status: "", description: "" });
       navigate("/dashboard/tasks");
-      renderToast("Task has been updated", "success");
+      renderToast("Task Updated", "success");
     } catch (err) {
       const errorsList = Object.values(err.response.data.errors).flat();
       errorsList.forEach((err) => renderToast(err, "error"));
@@ -102,7 +102,8 @@ const EditTask = () => {
     try {
       const response = await handleTaskDeleteResponse(id);
       if (response.status === 200) {
-        navigate("/dashboard/tasks", { state: { show: true, msg: "Task has been deleted", className: "notification-danger" } }, () => setLoading(false));
+        renderToast("Task Deleted", "error");
+        navigate("/dashboard/tasks", () => setLoading(false));
       }
     } catch (err) {
       console.log(err);
