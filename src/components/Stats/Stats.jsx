@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { handleTaskDeleteResponse, updateTaskStatusApi } from "../../utils/utils";
+import React, { useState, useEffect, useMemo } from "react";
+import { handleTaskDeleteResponse } from "../../utils/utils";
 import AddTask from "../AddTask/AddTask";
 import StatCard from "../StatCard/StatCard";
 import TaskItem from "../TaskItem/TaskItem";
 import "./stats.css";
 
-function Stats({ tasks }) {
-  const [recent, setRecent] = useState([]);
+function Stats({ tasks, updateTaskStatus }) {
   const [stats, setStats] = useState([
     { statName: "Pending", stat: 0 },
     { statName: "Completed", stat: 0 },
@@ -20,9 +19,7 @@ function Stats({ tasks }) {
       { statName: "completed", stat: completed },
       { statName: "total", stat: total },
     ]);
-    const recentTasks = tasks.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-    setRecent(recentTasks.slice(0, 5));
-  }, []);
+  }, [tasks]);
 
   let root = document.querySelector(":root"); // select root variables
   let statCalculation = (stats[1].stat / stats[2].stat) * 100;
@@ -38,20 +35,19 @@ function Stats({ tasks }) {
     }
   };
 
-  const updateTask = async (id) => {
-    try {
-      await updateTaskStatusApi(id);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const getStatsForTasks = () => {
     const pending = tasks.filter((t) => t.status === 0).length;
     const completed = tasks.filter((t) => t.status === 1).length;
     const total = tasks.length;
     return { pending, completed, total };
   };
+
+  const recentTasks = useMemo(() => {
+    return tasks
+      .slice()
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      .slice(0, 5);
+  }, [tasks]);
 
   return (
     <>
@@ -75,8 +71,8 @@ function Stats({ tasks }) {
 
       <div className="recent-tasks dashboard-section">
         <p className="dashboard-sub-heading">Recent Tasks</p>
-        {recent.map((r) => (
-          <TaskItem key={r.id} taskData={r} label={true} updateTaskStatus={updateTask} deleteTask={deleteTask} />
+        {recentTasks.map((r) => (
+          <TaskItem key={r.id} taskData={r} label={true} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} />
         ))}
         <AddTask />
       </div>

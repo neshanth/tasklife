@@ -74,7 +74,7 @@ const TaskManager = () => {
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="/dashboard/stats" element={<Stats tasks={tasks} />} />
+            <Route path="/dashboard/stats" element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route
               path="/dashboard/tasks"
               element={<Tasks getTasks={getTasks} loading={loading} tasks={tasks} updateTaskStatus={updateTaskStatus} setShow={setShow} setSuccess={setSuccess} show={show} success={success} />}
