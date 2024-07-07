@@ -17,10 +17,14 @@ const TaskItem = ({ taskData, updateTaskStatus, label }) => {
   }
 
   const handleModalClose = () => setShowModal(false);
+  const handleClick = (e) => {
+    if (e.target.id === "status") return;
+    setShowModal(true);
+  };
 
   return (
     <>
-      <div className="task-item  my-3" onClick={() => setShowModal(true)}>
+      <div className="task-item  my-3" onClick={handleClick}>
         <div className="task-item-controls d-flex align-items-center">
           <Form.Check type="switch" id="status" className={`mx-2  ${status ? "done" : "in-progress"}`} checked={status} onChange={() => updateTaskStatus(id)} />
           <div className="task">
