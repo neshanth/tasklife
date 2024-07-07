@@ -47,7 +47,7 @@ const renderToast = (msg, type) => {
   }
   const options = {
     hideProgressBar: true,
-    className: classNames
+    className: classNames,
   }
   toast(msg, options);
 }
