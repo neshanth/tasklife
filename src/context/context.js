@@ -7,10 +7,11 @@ const UserProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState({});
   const [authLoader, setAuthLoader] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleSidebarToggle = () => {
     setShow(!show);
   };
-  return <UserContext.Provider value={{ show, setShow, handleSidebarToggle, auth, setAuth, authLoader, setAuthLoader, user, setUser }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ show, setShow, handleSidebarToggle, auth, setAuth, authLoader, setAuthLoader, user, setUser, loading, setLoading }}>{children}</UserContext.Provider>;
 };
 
 export { UserProvider, UserContext };

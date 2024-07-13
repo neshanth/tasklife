@@ -14,11 +14,9 @@ import useAuthContext from "../../hooks/useAuthContext";
 import { renderToast, verifyCookie } from "../../utils/utils";
 
 function Login() {
-  const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
-
-  const { auth, setAuth, setUser } = useAuthContext();
+  const { auth, setAuth, setUser, loading, setLoading } = useAuthContext();
+  const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
 
   useEffect(() => {
     let authStatus = auth;
