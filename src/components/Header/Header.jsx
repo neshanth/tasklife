@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "./header.css";
 import { Link, useLocation } from "react-router-dom";
 import Hamburger from "../Hamburger/Hamburger";
-import { UserContext } from "../../context/context";
 import logo from "../../assets/Images/tasklife__logo.png";
+import useAuthContext from "../../hooks/useAuthContext";
+import "./header.css";
 
 function Header() {
-  const { auth } = useContext(UserContext);
+  const { auth, handleSidebarToggle } = useAuthContext();
   let authStatus = auth;
-  const { handleSidebarToggle } = useContext(UserContext);
   let location = useLocation();
   return (
     <>
