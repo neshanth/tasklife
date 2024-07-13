@@ -16,10 +16,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [success, setSuccess] = useState("");
-  const [show, setShow] = useState(false);
-  const { setAuth, authLoader, setAuthLoader, setUser } = useAuthContext();
+  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading } = useAuthContext();
 
   useEffect(() => {
     checkAuth();
@@ -75,10 +72,7 @@ const TaskManager = () => {
         <Route element={<PrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="/dashboard/stats" element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
-            <Route
-              path="/dashboard/tasks"
-              element={<Tasks getTasks={getTasks} loading={loading} tasks={tasks} updateTaskStatus={updateTaskStatus} setShow={setShow} setSuccess={setSuccess} show={show} success={success} />}
-            />
+            <Route path="/dashboard/tasks" element={<Tasks getTasks={getTasks} loading={loading} tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route path="/dashboard/tasks/edit/:id" element={<EditTask />} />
             <Route path="/dashboard/tasks/new" element={<NewTask />} />
           </Route>

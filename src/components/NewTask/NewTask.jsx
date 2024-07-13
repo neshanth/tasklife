@@ -13,8 +13,8 @@ import Select from "react-select";
 import { getTags, renderToast } from "../../utils/utils";
 
 function NewTask() {
+  const { loading, setLoading } = useAuthContext();
   const [newTask, setNewTask] = useState({ task: "", due_date: "", description: "" });
-  const [loading, setLoading] = useState(false);
   const [optionsLoader, setOptionsLoader] = useState(false);
   const [options, setOptions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);

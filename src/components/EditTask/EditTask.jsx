@@ -11,12 +11,13 @@ import { Link } from "react-router-dom";
 import { handleTaskDeleteResponse } from "../../utils/utils";
 import Select from "react-select";
 import { getTags, renderToast } from "../../utils/utils";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const EditTask = () => {
   let { id } = useParams();
   const navigate = useNavigate();
+  const { loading, setLoading } = useAuthContext();
   const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "", description: "" });
-  const [loading, setLoading] = useState(true);
   const [existingEditTask, setExistingEditTask] = useState({});
   const [count, setCount] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState([]);

@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { UserContext } from "../../context/context";
 import Sidebar from "../Sidebar/Sidebar";
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import "./dashboard.css";
@@ -8,9 +7,10 @@ import api from "../../api/api";
 import history from "../../history/history";
 import Spinner from "../Spinner/Spinner";
 import Footer from "../Footer/Footer";
+import useAuthContext from "../../hooks/useAuthContext";
 
 function Dashboard() {
-  const { show, setShow, setAuth } = useContext(UserContext);
+  const { show, setShow, setAuth } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const handleClose = () => {
     setShow(false);

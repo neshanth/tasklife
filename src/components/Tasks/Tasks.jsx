@@ -7,7 +7,7 @@ import "./tasks.css";
 import AddTask from "../AddTask/AddTask";
 import { renderToast } from "../../utils/utils";
 
-function Tasks({ getTasks, loading, updateTaskStatus, setShow, setSuccess, show, success, handleTaskDelete, tasks }) {
+function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks }) {
   const location = useLocation();
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
@@ -15,7 +15,6 @@ function Tasks({ getTasks, loading, updateTaskStatus, setShow, setSuccess, show,
   useEffect(() => {
     getTasks();
     if (location.state !== null) {
-      setShow(true);
       renderToast(location.state.msg, "success");
     }
   }, []);

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -11,14 +11,13 @@ import api from "../../api/api";
 import "./register.css";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
-import { UserContext } from "../../context/context";
 import { renderToast } from "../../utils/utils";
+import useAuthContext from "../../hooks/useAuthContext";
 
 function Register() {
-  const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
-  const [loading, setLoading] = useState(false);
-  const { auth } = useContext(UserContext);
+  const { auth, loading, setLoading } = useAuthContext();
   let navigate = useNavigate();
+  const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
 
   useEffect(() => {
     let authStatus = auth;

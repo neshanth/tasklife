@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
@@ -12,9 +12,8 @@ import Footer from "../Footer/Footer";
 import { handleApiResponse, verifyCookie } from "../../utils/utils";
 
 function Home() {
-  const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
-  const { auth, setAuth, setUser } = useAuthContext();
+  const { auth, setAuth, setUser, loading, setLoading } = useAuthContext();
 
   useEffect(() => {
     if (auth) {
