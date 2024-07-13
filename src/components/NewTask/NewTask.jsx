@@ -59,7 +59,8 @@ function NewTask() {
       const response = await api.post(`/api/tasks`, { ...newTask, user_id: userId });
       await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setNewTask({ task: "", due_date: "", description: "" });
-      navigate("/dashboard/tasks", { state: { show: true, msg: "New Task Added", className: "notification-added" } });
+      navigate("/dashboard/tasks");
+      renderToast("New Task Added", "success");
     } catch (err) {
       const errorsList = Object.values(err.response.data.errors).flat();
       errorsList.forEach((err) => renderToast(err, "error"));
