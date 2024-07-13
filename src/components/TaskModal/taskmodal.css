@@ -36,10 +36,12 @@
     margin-bottom: 0;
 }
 
-.task-modal-btn {
-    text-align: center;
+.task-modal-btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-.task-modal-edit-link {
+.task-modal-link {
     width: 50%;
 }

@@ -30,7 +30,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
       <div className="tasks-in-progress dashboard-section">
         <p className="dashboard-sub-heading">Pending ({pendingTasks.length})</p>
         {pendingTasks.map((task) => (
-          <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
+          <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
         ))}
         <AddTask />
       </div>
@@ -38,7 +38,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
       <div className="tasks-in-progress dashboard-section">
         <p className="dashboard-sub-heading">Completed ({completedTasks.length})</p>
         {completedTasks.map((task) => (
-          <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} deleteTask={handleTaskDelete} />
+          <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
         ))}
       </div>
     </>

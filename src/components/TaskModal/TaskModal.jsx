@@ -1,10 +1,10 @@
 import React from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Tags from "../Tags/Tags";
 import "./taskmodal.css";
 
-const TaskModal = ({ show, handleClose, taskData }) => {
+const TaskModal = ({ show, handleClose, taskData, handleTaskDelete }) => {
   const { status, task, due_date, tags, description, id } = taskData;
   const options = { year: "numeric", month: "long", day: "numeric" };
   let taskDate = due_date.split("-");
@@ -31,10 +31,13 @@ const TaskModal = ({ show, handleClose, taskData }) => {
           <p className="task-modal-sub-heading">Details</p>
           <p>{description ? description : "None"}</p>
         </div>
-        <div className="task-modal-btn">
-          <Link className="btn btn--primary task-modal-edit-link" to={`/dashboard/tasks/edit/${id}`}>
+        <div className="task-modal-btn-container">
+          <Link className="btn btn--primary task-modal-link" to={`/dashboard/tasks/edit/${id}`}>
             Edit
           </Link>
+          <Button className="btn btn-danger btn--delete task-modal-link" onClick={() => handleTaskDelete(id)}>
+            Delete
+          </Button>
         </div>
       </Modal.Body>
     </Modal>

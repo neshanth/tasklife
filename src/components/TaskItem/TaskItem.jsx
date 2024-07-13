@@ -6,7 +6,7 @@ import Tags from "../Tags/Tags";
 import TaskModal from "../TaskModal/TaskModal";
 import "./taskitem.css";
 
-const TaskItem = ({ taskData, updateTaskStatus, label }) => {
+const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
   const { task, due_date, id, status, tags } = taskData;
   const [showModal, setShowModal] = useState(false);
   let todo_date = new Date(due_date);
@@ -42,7 +42,7 @@ const TaskItem = ({ taskData, updateTaskStatus, label }) => {
         </div>
         <Tags tags={tags} />
       </div>
-      <TaskModal taskData={taskData} show={showModal} handleClose={handleModalClose} />
+      <TaskModal taskData={taskData} show={showModal} handleClose={handleModalClose} handleTaskDelete={handleTaskDelete} />
     </>
   );
 };
