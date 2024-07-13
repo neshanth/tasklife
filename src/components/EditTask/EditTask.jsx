@@ -8,12 +8,11 @@ import { checkObjectChangeCount } from "../../utils/utils";
 import { Row, Col } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import { handleTaskDeleteResponse } from "../../utils/utils";
 import Select from "react-select";
 import { getTags, renderToast } from "../../utils/utils";
 import useAuthContext from "../../hooks/useAuthContext";
 
-const EditTask = () => {
+const EditTask = ({ handleTaskDelete }) => {
   let { id } = useParams();
   const navigate = useNavigate();
   const { loading, setLoading } = useAuthContext();
@@ -94,20 +93,6 @@ const EditTask = () => {
     } catch (err) {
       const errorsList = Object.values(err.response.data.errors).flat();
       errorsList.forEach((err) => renderToast(err, "error"));
-      setLoading(false);
-    }
-  };
-
-  const handleTaskDelete = async (id) => {
-    setLoading(true);
-    try {
-      const response = await handleTaskDeleteResponse(id);
-      if (response.status === 200) {
-        renderToast("Task Deleted", "error");
-        navigate("/dashboard/tasks", () => setLoading(false));
-      }
-    } catch (err) {
-      console.log(err);
       setLoading(false);
     }
   };
