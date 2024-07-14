@@ -17,7 +17,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 const TaskManager = () => {
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
-  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading } = useAuthContext();
+  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData } = useAuthContext();
 
   useEffect(() => {
     checkAuth();
@@ -71,6 +71,7 @@ const TaskManager = () => {
         navigate("/dashboard/tasks");
         setTasks(tasks.filter((task) => task.id !== id));
         setLoading(false);
+        setFetchData(true);
       }
     } catch (err) {
       console.log(err);
