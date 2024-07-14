@@ -15,7 +15,7 @@ import useAuthContext from "../../hooks/useAuthContext";
 const EditTask = ({ handleTaskDelete }) => {
   let { id } = useParams();
   const navigate = useNavigate();
-  const { loading, setLoading } = useAuthContext();
+  const { loading, setLoading, setFetchData } = useAuthContext();
   const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "", description: "" });
   const [existingEditTask, setExistingEditTask] = useState({});
   const [count, setCount] = useState(0);
@@ -88,6 +88,7 @@ const EditTask = ({ handleTaskDelete }) => {
       await api.put(`/api/tasks/${id}`, editTask);
       await api.post(`/api/tags/add/${id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setEditTask({ task: "", due_date: "", status: "", description: "" });
+      setFetchData(true);
       navigate("/dashboard/tasks");
       renderToast("Task Updated", "success");
     } catch (err) {

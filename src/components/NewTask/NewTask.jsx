@@ -13,7 +13,7 @@ import Select from "react-select";
 import { getTags, renderToast } from "../../utils/utils";
 
 function NewTask() {
-  const { loading, setLoading } = useAuthContext();
+  const { loading, setLoading, setFetchData } = useAuthContext();
   const [newTask, setNewTask] = useState({ task: "", due_date: "", description: "" });
   const [optionsLoader, setOptionsLoader] = useState(false);
   const [options, setOptions] = useState([]);
@@ -59,6 +59,7 @@ function NewTask() {
       const response = await api.post(`/api/tasks`, { ...newTask, user_id: userId });
       await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setNewTask({ task: "", due_date: "", description: "" });
+      setFetchData(true);
       navigate("/dashboard/tasks");
       renderToast("New Task Added", "success");
     } catch (err) {
