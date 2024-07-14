@@ -12,10 +12,10 @@ import "./register.css";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import { renderToast } from "../../utils/utils";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 
 function Register() {
-  const { auth, loading, setLoading } = useAuthContext();
+  const { auth, loading, setLoading } = useAppContext();
   let navigate = useNavigate();
   const [registerDetails, setRegisterDetails] = useState({ name: "", email: "", password: "", password_confirmation: "" });
 

@@ -1,10 +1,10 @@
 import React from "react";
 import Hamburger from "../Hamburger/Hamburger";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 import "./dashboardheader.css";
 
 const DashboardHeader = () => {
-  const { handleSidebarToggle, user } = useAuthContext();
+  const { handleSidebarToggle, user } = useAppContext();
   return (
     <div className="d-flex justify-content-between align-items-center dashboard-header border-bottom">
       <Hamburger handleSidebarToggle={handleSidebarToggle} />

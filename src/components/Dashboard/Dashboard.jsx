@@ -7,10 +7,10 @@ import api from "../../api/api";
 import history from "../../history/history";
 import Spinner from "../Spinner/Spinner";
 import Footer from "../Footer/Footer";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 
 function Dashboard() {
-  const { show, setShow, setAuth } = useAuthContext();
+  const { show, setShow, setAuth } = useAppContext();
   const [loading, setLoading] = useState(false);
   const handleClose = () => {
     setShow(false);

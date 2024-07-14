@@ -8,12 +8,12 @@ import api from "../../api/api";
 import { useNavigate, Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Spinner from "../Spinner/Spinner";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 import Select from "react-select";
 import { getTags, renderToast } from "../../utils/utils";
 
 function NewTask() {
-  const { loading, setLoading, setFetchData } = useAuthContext();
+  const { loading, setLoading, setFetchData } = useAppContext();
   const [newTask, setNewTask] = useState({ task: "", due_date: "", description: "" });
   const [optionsLoader, setOptionsLoader] = useState(false);
   const [options, setOptions] = useState([]);
@@ -39,7 +39,7 @@ function NewTask() {
   };
 
   const navigate = useNavigate();
-  const { user } = useAuthContext();
+  const { user } = useAppContext();
   const userId = user.id;
 
   const handleTaskForm = (e) => {
