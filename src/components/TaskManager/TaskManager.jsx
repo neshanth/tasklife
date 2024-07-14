@@ -12,12 +12,12 @@ import NewTask from "../NewTask/NewTask";
 import Stats from "../Stats/Stats.jsx";
 import { getTasksResponse, renderToast, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 
 const TaskManager = () => {
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
-  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData } = useAuthContext();
+  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData } = useAppContext();
 
   useEffect(() => {
     checkAuth();

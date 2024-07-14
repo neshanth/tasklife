@@ -5,11 +5,11 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link, useLocation } from "react-router-dom";
 import Hamburger from "../Hamburger/Hamburger";
 import logo from "../../assets/Images/tasklife__logo.png";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 import "./header.css";
 
 function Header() {
-  const { auth, handleSidebarToggle } = useAuthContext();
+  const { auth, handleSidebarToggle } = useAppContext();
   let authStatus = auth;
   let location = useLocation();
   return (

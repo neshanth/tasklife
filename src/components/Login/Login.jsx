@@ -10,12 +10,12 @@ import Spinner from "../Spinner/Spinner";
 import { useEffect } from "react";
 import "./login.css";
 import Header from "../Header/Header";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 import { renderToast, verifyCookie } from "../../utils/utils";
 
 function Login() {
   let navigate = useNavigate();
-  const { auth, setAuth, setUser, loading, setLoading } = useAuthContext();
+  const { auth, setAuth, setUser, loading, setLoading } = useAppContext();
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
 
   useEffect(() => {

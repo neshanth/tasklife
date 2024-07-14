@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import api from "../../api/api";
 import Header from "../Header/Header";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 import { Figure } from "react-bootstrap";
 import Features from "../Features/Features.jsx";
 import "./home.css";
@@ -13,7 +13,7 @@ import { handleApiResponse, verifyCookie } from "../../utils/utils";
 
 function Home() {
   let navigate = useNavigate();
-  const { auth, setAuth, setUser, loading, setLoading } = useAuthContext();
+  const { auth, setAuth, setUser, loading, setLoading } = useAppContext();
 
   useEffect(() => {
     if (auth) {

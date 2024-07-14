@@ -7,10 +7,10 @@ import "./sidebar.css";
 import LogoutIcon from "../../assets/Icons/LogoutIcon";
 import PieIcon from "../../assets/Icons/PieIcon";
 import ListIcon from "../../assets/Icons/ListIcon";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 
 function Sidebar({ handleClose, logout }) {
-  const { show, setShow } = useAuthContext();
+  const { show, setShow } = useAppContext();
   let location = useLocation();
 
   const handleClick = () => {

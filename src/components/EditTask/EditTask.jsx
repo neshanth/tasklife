@@ -10,12 +10,12 @@ import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 import { getTags, renderToast } from "../../utils/utils";
-import useAuthContext from "../../hooks/useAuthContext";
+import useAppContext from "../../hooks/useAppContext";
 
 const EditTask = ({ handleTaskDelete }) => {
   let { id } = useParams();
   const navigate = useNavigate();
-  const { loading, setLoading, setFetchData } = useAuthContext();
+  const { loading, setLoading, setFetchData } = useAppContext();
   const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "", description: "" });
   const [existingEditTask, setExistingEditTask] = useState({});
   const [count, setCount] = useState(0);
