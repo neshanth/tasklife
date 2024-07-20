@@ -10,7 +10,7 @@ import { Container } from "react-bootstrap";
 import Spinner from "../Spinner/Spinner";
 import useAppContext from "../../hooks/useAppContext";
 import Select from "react-select";
-import { getTags, renderToast } from "../../utils/utils";
+import { getTags, handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 
 function NewTask() {
   const { loading, setLoading, setFetchData } = useAppContext();
@@ -56,6 +56,9 @@ function NewTask() {
     e.preventDefault();
     setLoading(true);
     try {
+      if (newTask.due_date === "") {
+        newTask.due_date = handleDateIfDateIsEmpty();
+      }
       const response = await api.post(`/api/tasks`, { ...newTask, user_id: userId });
       await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setNewTask({ task: "", due_date: "", description: "" });
@@ -63,9 +66,9 @@ function NewTask() {
       navigate("/dashboard/tasks");
       renderToast("New Task Added", "success");
     } catch (err) {
+      setLoading(false);
       const errorsList = Object.values(err.response.data.errors).flat();
       errorsList.forEach((err) => renderToast(err, "error"));
-      setLoading(false);
     }
   };
 
@@ -99,7 +102,7 @@ function NewTask() {
               </Form.Group>
               <Form.Group className="my-4" controlId="due_date">
                 <Form.Label>Due Date</Form.Label>
-                <Form.Control type="date" name="due_date" placeholder="Due Date" min={new Date().toISOString().split("T")[0]} onChange={handleTaskForm} value={newTask.due_date} required />
+                <Form.Control type="date" name="due_date" placeholder="Due Date" min={new Date().toISOString().split("T")[0]} onChange={handleTaskForm} value={newTask.due_date} />
               </Form.Group>
               <Form.Group className="my-4" controlId="tag">
                 <Form.Label>Tags</Form.Label>

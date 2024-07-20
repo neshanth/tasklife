@@ -52,4 +52,10 @@ const renderToast = (msg, type) => {
   toast(msg, options);
 }
 
+export const handleDateIfDateIsEmpty = () => {
+  let currentDate = new Date()
+  // T is the separator between date and time
+  return currentDate.toISOString().split("T")[0]
+}
+
 export { updateTaskStatusApi, getTasksResponse, handleTaskDeleteResponse, handleApiResponse, verifyCookie, getTags, renderToast };
