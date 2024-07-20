@@ -9,6 +9,7 @@ const UserProvider = ({ children }) => {
   const [authLoader, setAuthLoader] = useState(false);
   const [loading, setLoading] = useState(false);
   const [fetchData, setFetchData] = useState(true);
+  const [allTags, setAllTags] = useState([]);
   const handleSidebarToggle = () => {
     setShow(!show);
   };
@@ -26,6 +27,8 @@ const UserProvider = ({ children }) => {
     setLoading,
     fetchData,
     setFetchData,
+    allTags,
+    setAllTags,
   }
   return <UserContext.Provider value={valueObj}>{children}</UserContext.Provider>;
 };
