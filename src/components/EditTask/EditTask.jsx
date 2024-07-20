@@ -12,10 +12,10 @@ import Select from "react-select";
 import { getTags, renderToast } from "../../utils/utils";
 import useAppContext from "../../hooks/useAppContext";
 
-const EditTask = ({ handleTaskDelete }) => {
+const EditTask = ({ handleTaskDelete, tasks }) => {
   let { id } = useParams();
   const navigate = useNavigate();
-  const { loading, setLoading, setFetchData } = useAppContext();
+  const { loading, setLoading, setFetchData, allTags } = useAppContext();
   const [editTask, setEditTask] = useState({ task: "", due_date: "", status: "", description: "" });
   const [existingEditTask, setExistingEditTask] = useState({});
   const [count, setCount] = useState(0);
@@ -24,9 +24,17 @@ const EditTask = ({ handleTaskDelete }) => {
   const [optionsLoader, setOptionsLoader] = useState(false);
   const [prevOptions, setPrevOptions] = useState([]);
 
+  // useEffect(() => {
+  //   getTask(id);
+  // }, []);
+
   useEffect(() => {
-    getTask(id);
-  }, []);
+    const taskToEdit = tasks.find((task) => task.id === parseInt(id));
+    setEditTask(taskToEdit);
+    setSelectedOptions(taskToEdit.tags);
+    setPrevOptions(taskToEdit.tags);
+    setOptions(allTags);
+  }, [id, tasks]);
 
   const getTask = async (id) => {
     setLoading(true);

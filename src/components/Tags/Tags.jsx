@@ -7,7 +7,7 @@ const Tags = ({ tags }) => {
     <div className="task-item-tags">
       {tags.map((tag, index) => (
         <span style={{ color: TAG_COLORS[index] }} key={index} className="tags">
-          {tag}
+          {tag.label}
           {index !== tags.length - 1 ? "," : ""}
         </span>
       ))}

@@ -17,10 +17,11 @@ import useAppContext from "../../hooks/useAppContext";
 const TaskManager = () => {
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
-  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData } = useAppContext();
+  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags } = useAppContext();
 
   useEffect(() => {
     checkAuth();
+    getAllTags();
   }, []);
 
   const checkAuth = async () => {
@@ -47,6 +48,15 @@ const TaskManager = () => {
         setLoading(false);
         console.log(err);
       });
+  };
+
+  const getAllTags = async () => {
+    try {
+      const response = await api.get("/api/tags");
+      setAllTags(response.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const updateTaskStatus = async (id) => {
@@ -91,7 +101,7 @@ const TaskManager = () => {
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="/dashboard/stats" element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route path="/dashboard/tasks" element={<Tasks getTasks={getTasks} loading={loading} tasks={tasks} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />} />
-            <Route path="/dashboard/tasks/edit/:id" element={<EditTask handleTaskDelete={handleTaskDelete} />} />
+            <Route path="/dashboard/tasks/edit/:id" element={<EditTask tasks={tasks} handleTaskDelete={handleTaskDelete} />} />
             <Route path="/dashboard/tasks/new" element={<NewTask />} />
           </Route>
         </Route>

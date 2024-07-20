@@ -13,14 +13,14 @@ import Select from "react-select";
 import { getTags, handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 
 function NewTask() {
-  const { loading, setLoading, setFetchData } = useAppContext();
+  const { loading, setLoading, setFetchData, allTags } = useAppContext();
   const [newTask, setNewTask] = useState({ task: "", due_date: "", description: "" });
   const [optionsLoader, setOptionsLoader] = useState(false);
   const [options, setOptions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   useEffect(() => {
-    displayAllTags();
+    setOptions(allTags);
   }, []);
 
   const displayAllTags = async () => {
