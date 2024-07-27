@@ -35,18 +35,18 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
       <p>Create, Read, Update and Delete Your Tasks. Update the status of your task by toggling the button to the left of the task</p>
       <div className="tasks-in-progress dashboard-section">
         <p className="dashboard-sub-heading">Pending ({pendingTasks.length})</p>
-        {pendingTasks.map((task) => (
+        {tasks.map((task) => (
           <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
         ))}
         <AddTask />
       </div>
 
-      <div className="tasks-in-progress dashboard-section">
+      {/* <div className="tasks-in-progress dashboard-section">
         <p className="dashboard-sub-heading">Completed ({completedTasks.length})</p>
         {completedTasks.map((task) => (
           <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
         ))}
-      </div>
+      </div> */}
     </>
   );
 }
