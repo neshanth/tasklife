@@ -11,9 +11,14 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
   const [showModal, setShowModal] = useState(false);
   let todo_date = new Date(due_date);
   let isTaskNameLong = false;
+  let substringLength;
 
   if (window.innerWidth <= 500) {
-    isTaskNameLong = task.length > 10 ? true : false;
+    substringLength = 10;
+    isTaskNameLong = task.length > substringLength ? true : false;
+  } else {
+    substringLength = 50;
+    isTaskNameLong = task.length > substringLength ? true : false;
   }
 
   const handleModalClose = () => setShowModal(false);
@@ -26,9 +31,9 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
     <>
       <div className="task-item  my-3" onClick={handleClick}>
         <div className="task-item-controls d-flex align-items-center">
-          <Form.Check type="switch" id="status" className={`mx-2  ${status ? "done" : "in-progress"}`} checked={status} onChange={() => updateTaskStatus(id)} />
+          <Form.Check id="status" className={`mx-2  ${status ? "done" : "in-progress"} task-item-status`} checked={status} onChange={() => updateTaskStatus(id)} />
           <div className="task">
-            <p className="mb-0 mx-3">{isTaskNameLong ? `${task.substring(0, 10)}...` : task}</p>
+            <p className="mb-0 mx-3">{isTaskNameLong ? `${task.substring(0, substringLength)}...` : task}</p>
           </div>
           {label && <div className={`task-label mx-3 ${status === 1 ? "completed" : "pending"}`}>{status === 1 ? "Completed" : "Pending"}</div>}
           <div className="due-date flex-grow-1">

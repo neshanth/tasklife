@@ -27,19 +27,25 @@
 }
 
 .task-item .done .form-check-input:checked[type="checkbox"] {
-  background-color: var(--completed-bg);
+  background-color: var(--primary-color);
 }
 
-.task-item .in-progress .form-check-input[type="checkbox"] {
-  background-color: var(--pending-bg);
-}
 
 .task-data {
   width: 60%;
 }
 
-.task-status .form-check-input[type="checkbox"] {
+.task-item-status .form-check-input[type="checkbox"] {
   margin-top: 0;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background-color: var(--grey-2);
+}
+
+.task-item-status .form-check-input:checked[type="checkbox"] {
+  background-color: var(--light-blue);
+  background-image: none;
 }
 
 .btn.btn--link {
