@@ -41,11 +41,11 @@ function Login() {
       let res = await api.post("/api/login", { ...loginDetails });
       const { data } = res;
       const { user } = data;
-      const { id, name } = user;
+      const { id, name, email } = user;
       setLoginDetails({ email: "", password: "" });
       setLoading(false);
       setAuth(true);
-      setUser({ id, name });
+      setUser({ id, name, email });
       navigate("/dashboard/tasks", { replace: true });
     } catch (err) {
       console.log(err);

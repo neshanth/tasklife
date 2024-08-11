@@ -1,0 +1,29 @@
+.tl-sidebar {
+    .account {
+        display: flex;
+        align-items: center;
+        border: 1px solid #E5E7EB;
+        border-radius: var(--tl-spacing-sm-1);
+        gap: var(--tl-spacing-sm-2);
+
+        .profile-img {
+            min-width: 40px;
+            min-height: 40px;
+            background-color: #9CA3AF;
+            border-radius: 50%;
+        }
+
+        .profile-details {
+
+            .profile-name,
+            .profile-email {
+                margin-bottom: 0;
+            }
+
+            .profile-name {
+                font-size: 1.125rem;
+                font-weight: 600;
+            }
+        }
+    }
+}

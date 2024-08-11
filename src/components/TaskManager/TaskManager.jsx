@@ -28,9 +28,10 @@ const TaskManager = () => {
     setAuthLoader(true);
     try {
       const response = await api.get("/api/user");
-      const { id, name } = response.data;
+      console.log(response);
+      const { id, name, email } = response.data;
       setAuth(true);
-      setUser({ id, name });
+      setUser({ id, name, email });
     } catch (err) {
       setAuth(false);
     }

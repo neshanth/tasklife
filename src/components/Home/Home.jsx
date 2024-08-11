@@ -33,10 +33,10 @@ function Home() {
       let response = await handleApiResponse(() => api.post("/api/login", { ...loginDetails }));
       const { data } = response;
       const { user } = data;
-      const { id, name } = user;
+      const { id, name, email } = user;
       setLoading(false);
       setAuth(true);
-      setUser({ id, name });
+      setUser({ id, name, email });
       navigate("/dashboard/tasks", { replace: true });
     } catch (err) {
       console.log(err);

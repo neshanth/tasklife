@@ -1,0 +1,23 @@
+.navigation {
+
+    .sidebar-section-heading {
+        margin-bottom: var(--tl-spacing-sm-1);
+    }
+
+    .navigation-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--tl-spacing-xs);
+        margin-bottom: 0;
+    }
+
+    .add-task {
+        margin-top: var(--tl-spacing-xs);
+    }
+
+    .add-task-text {
+        color: var(--tl-theme-base);
+    }
+}

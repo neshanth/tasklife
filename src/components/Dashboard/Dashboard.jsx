@@ -35,12 +35,13 @@ function Dashboard() {
 
   return (
     <div className={`${show ? "dashboard" : ""}`}>
-      <Sidebar show={show} logout={logout} handleClose={handleClose} />
-      <DashboardHeader />
+      {/* <Sidebar show={show} logout={logout} handleClose={handleClose} /> */}
+      {/* <DashboardHeader /> */}
+      <Sidebar logout={logout} />
       <div className="dashboard-wrapper">
         <Outlet />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
