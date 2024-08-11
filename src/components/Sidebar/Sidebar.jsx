@@ -1,12 +1,6 @@
 import React from "react";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import { NavLink, useLocation } from "react-router-dom";
-import CloseButton from "../../assets/Icons/CloseButton";
 import logo from "../../assets/Images/v2/logo.png";
 import "./sidebar.css";
-import LogoutIcon from "../../assets/Icons/LogoutIcon";
-import PieIcon from "../../assets/Icons/PieIcon";
-import ListIcon from "../../assets/Icons/ListIcon";
 import useAppContext from "../../hooks/useAppContext";
 import Icons from "../Icons/Icons";
 import Navigation from "./Navigation/Navigation";
@@ -14,7 +8,6 @@ import Profile from "./Profile/Profile";
 
 function Sidebar({ handleClose, logout }) {
   const { show, setShow, user } = useAppContext();
-  let location = useLocation();
 
   const handleClick = () => {
     setShow(false);
@@ -28,7 +21,7 @@ function Sidebar({ handleClose, logout }) {
     <aside className="tl-sidebar">
       <img src={logo} alt="logo" width="122px" />
       <Profile user={user} />
-      <Navigation handleSidebarForMobile={handleSidebarForMobile} location={location} logout={logout} />
+      <Navigation handleSidebarForMobile={handleSidebarForMobile} />
       <div className="logout" onClick={logout}>
         <p className="padding logout-text">
           <Icons type="logout" />

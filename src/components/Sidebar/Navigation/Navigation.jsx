@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Icons from "../../Icons/Icons";
 import "./navigation.css";
 
@@ -15,7 +15,8 @@ const navigationLinks = [
     icon: <Icons type="stats" />,
   },
 ];
-const Navigation = ({ handleSidebarForMobile, location, logout }) => {
+const Navigation = ({ handleSidebarForMobile }) => {
+  let location = useLocation();
   return (
     <nav className="navigation">
       <p className="sidebar-section-heading">MENU</p>
