@@ -1,14 +1,15 @@
 import React from "react";
 import Hamburger from "../Hamburger/Hamburger";
 import useAppContext from "../../hooks/useAppContext";
+import logo from "../../assets/Images/v2/logo.png";
 import "./dashboardheader.css";
 
 const DashboardHeader = () => {
-  const { handleSidebarToggle, user } = useAppContext();
+  const { handleSidebarToggle } = useAppContext();
   return (
-    <div className="d-flex justify-content-between align-items-center dashboard-header border-bottom">
+    <div className="tl-mobile-header">
+      <img src={logo} alt="logo" width="122px" />
       <Hamburger handleSidebarToggle={handleSidebarToggle} />
-      <p className="title mb-0">Hi, {user.name}</p>
     </div>
   );
 };

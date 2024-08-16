@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useIsMobile from "../hooks/useIsMobile";
 
 const UserContext = React.createContext();
 
@@ -10,6 +11,7 @@ const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [fetchData, setFetchData] = useState(true);
   const [allTags, setAllTags] = useState([]);
+  const isMobile = useIsMobile()
   const handleSidebarToggle = () => {
     setShow(!show);
   };
@@ -29,6 +31,7 @@ const UserProvider = ({ children }) => {
     setFetchData,
     allTags,
     setAllTags,
+    isMobile
   }
   return <UserContext.Provider value={valueObj}>{children}</UserContext.Provider>;
 };

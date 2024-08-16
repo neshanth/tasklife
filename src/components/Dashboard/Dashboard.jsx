@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 import useAppContext from "../../hooks/useAppContext";
 
 function Dashboard() {
-  const { show, setShow, setAuth } = useAppContext();
+  const { show, setShow, setAuth, isMobile } = useAppContext();
   const [loading, setLoading] = useState(false);
   const handleClose = () => {
     setShow(false);
@@ -34,9 +34,9 @@ function Dashboard() {
   if (loading) return <Spinner />;
 
   return (
-    <div className={`${show ? "dashboard" : ""}`}>
+    <div className={`dashboard ${isMobile ? "dashboard-mobile" : ""}`}>
       {/* <Sidebar show={show} logout={logout} handleClose={handleClose} /> */}
-      {/* <DashboardHeader /> */}
+      {isMobile && <DashboardHeader />}
       <Sidebar logout={logout} />
       <div className="dashboard-wrapper">
         <Outlet />

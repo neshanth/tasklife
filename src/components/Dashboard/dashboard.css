@@ -5,6 +5,10 @@
   gap: 20px;
 }
 
+.dashboard-mobile {
+  grid-template-columns: 1fr;
+}
+
 .dashboard-wrapper {
   background-color: var(--white);
   /* margin-top: 1.5rem; */
