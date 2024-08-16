@@ -3,8 +3,8 @@
         display: flex;
         align-items: center;
         border: 1px solid #E5E7EB;
-        border-radius: var(--tl-spacing-sm-1);
-        gap: var(--tl-spacing-sm-2);
+        border-radius: var(--tl-spacing-xs);
+        gap: var(--tl-spacing-s);
 
         .profile-img {
             min-width: 40px;
@@ -20,9 +20,9 @@
                 margin-bottom: 0;
             }
 
-            .profile-name {
-                font-size: 1.125rem;
-                font-weight: 600;
+            .profile-email {
+                font-size: 0.875rem;
+                color: var(--tl-text-light-2);
             }
         }
     }

@@ -1,7 +1,12 @@
 .navigation {
 
     .sidebar-section-heading {
-        margin-bottom: var(--tl-spacing-sm-1);
+        margin-bottom: var(--tl-spacing-xs);
+        font-weight: 600;
+        font-family: "Inter Display";
+        color: var(--tl-text-light-3);
+        font-size: 0.813rem;
+        letter-spacing: 0.6px;
     }
 
     .navigation-list {
@@ -9,12 +14,19 @@
         padding: 0;
         display: flex;
         flex-direction: column;
-        gap: var(--tl-spacing-xs);
+        gap: var(--tl-spacing-2xs);
         margin-bottom: 0;
+
+        .nav-link {
+            color: var(--tl-text-light-1);
+            font-weight: 500;
+            font-size: 1rem;
+            font-family: "Inter Display";
+        }
     }
 
     .add-task {
-        margin-top: var(--tl-spacing-xs);
+        margin-top: var(--tl-spacing-2xs);
     }
 
     .add-task-text {

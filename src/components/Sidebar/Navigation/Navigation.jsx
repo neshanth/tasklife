@@ -23,7 +23,7 @@ const Navigation = ({ handleSidebarForMobile }) => {
       <ul className="navigation-list">
         {navigationLinks.map((link) => (
           <li className={`navigation-item  ${location.pathname === link.path ? "sidebar-link-active" : ""}`} key={link.name}>
-            <NavLink className={`nav-link padding`} onClick={handleSidebarForMobile} to={link.path}>
+            <NavLink className={`nav-link tl-padding`} onClick={handleSidebarForMobile} to={link.path}>
               {link.icon}
               {link.name}
             </NavLink>
@@ -31,7 +31,7 @@ const Navigation = ({ handleSidebarForMobile }) => {
         ))}
       </ul>
       <div className="add-task">
-        <p className="padding add-task-text">
+        <p className="tl-padding add-task-text">
           <Icons type="plus" />
           Add Task
         </p>

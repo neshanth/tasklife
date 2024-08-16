@@ -18,17 +18,17 @@ function Sidebar({ handleClose, logout }) {
   };
 
   return (
-    <aside className="tl-sidebar">
+    <header className="tl-sidebar">
       <img src={logo} alt="logo" width="122px" />
       <Profile user={user} />
       <Navigation handleSidebarForMobile={handleSidebarForMobile} />
       <div className="logout" onClick={logout}>
-        <p className="padding logout-text">
+        <p className="tl-padding logout-text">
           <Icons type="logout" />
           Logout
         </p>
       </div>
-    </aside>
+    </header>
   );
 
   // return (

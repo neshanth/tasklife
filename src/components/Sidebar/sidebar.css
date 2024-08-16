@@ -9,7 +9,7 @@
   .add-task:hover {
     background-color: var(--tl-neutral-white);
     cursor: pointer;
-    border-radius: var(--tl-spacing-sm-1);
+    border-radius: var(--tl-spacing-xs);
   }
 
   .nav-link,
@@ -17,7 +17,7 @@
   .add-task-text {
     display: flex;
     align-items: center;
-    gap: var(--tl-spacing-sm-2)
+    gap: var(--tl-spacing-s)
   }
 
   /* Logout */

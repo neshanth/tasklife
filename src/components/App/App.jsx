@@ -3,7 +3,7 @@ import TaskManager from "../TaskManager/TaskManager";
 
 function App() {
   return (
-    <main className="tasklife-main">
+    <main className="tl-main">
       <TaskManager />
     </main>
   );
