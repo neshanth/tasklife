@@ -27,7 +27,7 @@ function Sidebar({ handleClose, logout }) {
     <>
       <aside className="tl-sidebar">
         {!isMobile && <DesktopContent {...commonProps} />}
-        {isMobile && <MobileContent {...commonProps} handleMobileNavToggle={handleMobileNavToggle} showMobileNav={showMobileNav} />}
+        {showMobileNav && <MobileContent {...commonProps} handleMobileNavToggle={handleMobileNavToggle} showMobileNav={showMobileNav} />}
       </aside>
     </>
   );
