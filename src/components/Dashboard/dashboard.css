@@ -5,9 +5,14 @@
   gap: 20px;
 }
 
-.dashboard-mobile {
-  grid-template-columns: 1fr;
+
+@media screen and (max-width:1024px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
+
 
 .dashboard-wrapper {
   background-color: var(--white);

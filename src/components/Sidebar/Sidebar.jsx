@@ -5,10 +5,9 @@ import useAppContext from "../../hooks/useAppContext";
 import Icons from "../Icons/Icons";
 import Navigation from "./Navigation/Navigation";
 import Profile from "./Profile/Profile";
-import useIsMobile from "../../hooks/useIsMobile";
 
 function Sidebar({ handleClose, logout }) {
-  const { show, setShow, user, isMobile } = useAppContext();
+  const { showMobileNav, setShow, user, isMobile } = useAppContext();
 
   const handleClick = () => {
     setShow(false);
@@ -20,17 +19,10 @@ function Sidebar({ handleClose, logout }) {
 
   return (
     <>
-      <header className="tl-sidebar">
-        <img src={logo} alt="logo" width="122px" />
-        <Profile user={user} />
-        <Navigation handleSidebarForMobile={handleSidebarForMobile} />
-        <div className="logout" onClick={logout}>
-          <p className="tl-padding logout-text">
-            <Icons type="logout" />
-            Logout
-          </p>
-        </div>
-      </header>
+      <aside className="tl-sidebar">
+        {!isMobile && <DesktopContent user={user} logout={logout} handleSidebarForMobile={handleSidebarForMobile} />}
+        {showMobileNav && <MobileContent user={user} logout={logout} handleSidebarForMobile={handleSidebarForMobile} />}
+      </aside>
     </>
   );
 
@@ -63,5 +55,39 @@ function Sidebar({ handleClose, logout }) {
   //   // </>
   // );
 }
+
+const DesktopContent = ({ logout, user, handleSidebarForMobile }) => {
+  return (
+    <>
+      <img src={logo} alt="logo" width="122px" />
+      <Profile user={user} />
+      <Navigation handleSidebarForMobile={handleSidebarForMobile} />
+      <Logout logout={logout} />
+    </>
+  );
+};
+
+const MobileContent = ({ logout, user, handleSidebarForMobile }) => {
+  return (
+    <div className="sidebar-mobile">
+      <div className="sidebar-mobile-profile">
+        <Profile user={user} />
+      </div>
+      <Navigation handleSidebarForMobile={handleSidebarForMobile} />
+      <Logout logout={logout} />
+    </div>
+  );
+};
+
+const Logout = ({ logout }) => {
+  return (
+    <div className="logout" onClick={logout}>
+      <p className="tl-padding logout-text">
+        <Icons type="logout" />
+        Logout
+      </p>
+    </div>
+  );
+};
 
 export default Sidebar;

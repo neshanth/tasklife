@@ -34,10 +34,10 @@ function Dashboard() {
   if (loading) return <Spinner />;
 
   return (
-    <div className={`dashboard ${isMobile ? "dashboard-mobile" : ""}`}>
+    <div className={`dashboard`}>
       {/* <Sidebar show={show} logout={logout} handleClose={handleClose} /> */}
       {isMobile && <DashboardHeader />}
-      <Sidebar logout={logout} />
+      {<Sidebar logout={logout} />}
       <div className="dashboard-wrapper">
         <Outlet />
       </div>

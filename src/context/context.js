@@ -4,7 +4,7 @@ import useIsMobile from "../hooks/useIsMobile";
 const UserContext = React.createContext();
 
 const UserProvider = ({ children }) => {
-  const [show, setShow] = useState(true);
+  const [showMobileNav, setShowMobileNav] = useState(false);
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState({});
   const [authLoader, setAuthLoader] = useState(false);
@@ -12,13 +12,13 @@ const UserProvider = ({ children }) => {
   const [fetchData, setFetchData] = useState(true);
   const [allTags, setAllTags] = useState([]);
   const isMobile = useIsMobile()
-  const handleSidebarToggle = () => {
-    setShow(!show);
+  const handleMobileNavToggle = () => {
+    setShowMobileNav(!showMobileNav);
   };
   const valueObj = {
-    show,
-    setShow,
-    handleSidebarToggle,
+    showMobileNav,
+    setShowMobileNav,
+    handleMobileNavToggle,
     auth,
     setAuth,
     authLoader,
