@@ -7,7 +7,7 @@ import Navigation from "./Navigation/Navigation";
 import Profile from "./Profile/Profile";
 
 function Sidebar({ handleClose, logout }) {
-  const { showMobileNav, setShow, user, isMobile } = useAppContext();
+  const { showMobileNav, setShow, user, isMobile, handleMobileNavToggle } = useAppContext();
 
   const handleClick = () => {
     setShow(false);
@@ -17,11 +17,17 @@ function Sidebar({ handleClose, logout }) {
     window.innerWidth <= 1024 ? setShow(false) : setShow(true);
   };
 
+  const commonProps = {
+    user,
+    logout,
+    handleSidebarForMobile,
+  };
+
   return (
     <>
       <aside className="tl-sidebar">
-        {!isMobile && <DesktopContent user={user} logout={logout} handleSidebarForMobile={handleSidebarForMobile} />}
-        {showMobileNav && <MobileContent user={user} logout={logout} handleSidebarForMobile={handleSidebarForMobile} />}
+        {!isMobile && <DesktopContent {...commonProps} />}
+        {showMobileNav && <MobileContent {...commonProps} handleMobileNavToggle={handleMobileNavToggle} />}
       </aside>
     </>
   );
@@ -67,11 +73,14 @@ const DesktopContent = ({ logout, user, handleSidebarForMobile }) => {
   );
 };
 
-const MobileContent = ({ logout, user, handleSidebarForMobile }) => {
+const MobileContent = ({ logout, user, handleSidebarForMobile, handleMobileNavToggle }) => {
   return (
     <div className="sidebar-mobile">
       <div className="sidebar-mobile-profile">
         <Profile user={user} />
+        <div className="sidebar-mobile-close" onClick={handleMobileNavToggle}>
+          <Icons type="close" />
+        </div>
       </div>
       <Navigation handleSidebarForMobile={handleSidebarForMobile} />
       <Logout logout={logout} />

@@ -57,6 +57,42 @@ const Icons = ({ type }) => {
           </g>
         </svg>
       );
+    case "close":
+      return (
+        <svg width="14" xmlns="http://www.w3.org/2000/svg" height="14" fill="none">
+          <g data-testid="close">
+            <g class="fills">
+              <rect
+                width="14"
+                height="14"
+                class="frame-background"
+                style={{
+                  fill: "rgb(255, 255, 255)",
+                  fillOpacity: 1,
+                }}
+                ry="6"
+                rx="6"
+              />
+            </g>
+            <g data-testid="icon-close" class="frame-children">
+              <path d="M14 0 0 14m14 0L0 0" class="fills" />
+              <g class="strokes">
+                <path
+                  d="M14 0 0 14m14 0L0 0"
+                  style={{
+                    fill: "none",
+                    strokeWidth: 2.5,
+                    stroke: "rgb(55, 65, 81)",
+                    strokeOpacity: 1,
+                    strokeLinecap: "round",
+                  }}
+                  class="stroke-shape"
+                />
+              </g>
+            </g>
+          </g>
+        </svg>
+      );
 
     default:
       return null;

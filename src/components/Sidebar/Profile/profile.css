@@ -24,6 +24,19 @@
                 font-size: 0.875rem;
                 color: var(--tl-text-light-2);
             }
+
+            @media screen and (max-width: 1024px) {
+                .profile-email {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:1024px) {
+        .account {
+            padding: 0;
+            border: none;
         }
     }
 }

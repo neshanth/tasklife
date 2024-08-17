@@ -39,6 +39,9 @@
 
     .sidebar-mobile-profile {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--tl-spacing-xs);
     }
   }
 
