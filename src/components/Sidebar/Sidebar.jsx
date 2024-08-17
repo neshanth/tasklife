@@ -7,7 +7,7 @@ import Navigation from "./Navigation/Navigation";
 import Profile from "./Profile/Profile";
 
 function Sidebar({ handleClose, logout }) {
-  const { showMobileNav, setShow, user, isMobile, handleMobileNavToggle } = useAppContext();
+  const { setShow, user, isMobile, handleMobileNavToggle, showMobileNav } = useAppContext();
 
   const handleClick = () => {
     setShow(false);
@@ -27,7 +27,7 @@ function Sidebar({ handleClose, logout }) {
     <>
       <aside className="tl-sidebar">
         {!isMobile && <DesktopContent {...commonProps} />}
-        {showMobileNav && <MobileContent {...commonProps} handleMobileNavToggle={handleMobileNavToggle} />}
+        {<MobileContent {...commonProps} handleMobileNavToggle={handleMobileNavToggle} showMobileNav={showMobileNav} />}
       </aside>
     </>
   );
@@ -73,9 +73,9 @@ const DesktopContent = ({ logout, user, handleSidebarForMobile }) => {
   );
 };
 
-const MobileContent = ({ logout, user, handleSidebarForMobile, handleMobileNavToggle }) => {
+const MobileContent = ({ logout, user, handleSidebarForMobile, handleMobileNavToggle, showMobileNav }) => {
   return (
-    <div className="sidebar-mobile">
+    <div className={`sidebar-mobile ${showMobileNav ? "visible" : "hidden"}`}>
       <div className="sidebar-mobile-profile">
         <Profile user={user} />
         <div className="sidebar-mobile-close" onClick={handleMobileNavToggle}>

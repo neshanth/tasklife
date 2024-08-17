@@ -37,6 +37,8 @@
   /* 32px */
   --tl-neutral-white: #ffffff;
   --tl-theme-base: #2563EB;
+  --tl-theme-bg: #F3F4F6;
+  --tl-theme-border: #E5E7EB;
   --tl-text-light-1: #374151;
   --tl-text-light-2: #6B7280;
   --tl-text-light-3: #9CA3AF;

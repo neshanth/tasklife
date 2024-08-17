@@ -33,3 +33,17 @@
         color: var(--tl-theme-base);
     }
 }
+
+@media screen and (max-width:1024px) {
+    .navigation {
+        padding: 0 var(--tl-spacing-md);
+    }
+
+    .navigation-list {
+        border-bottom: 1px solid var(--tl-theme-border);
+    }
+
+    .navigation-list .navigation-item:last-child {
+        margin-bottom: var(--tl-spacing-l);
+    }
+}
