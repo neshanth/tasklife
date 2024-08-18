@@ -52,7 +52,7 @@
     z-index: 2;
     background-color: #fff;
     height: 100%;
-    width: 360px;
+    width: 0px;
     border-radius: var(--tl-spacing-xl) 0px 0px var(--tl-spacing-xl);
     box-shadow: -8px 0px 16px 0px #E5E7EB;
     display: flex;
@@ -72,6 +72,11 @@
 
     &.hidden {
       width: 0;
+      left: -360px;
+    }
+
+    &.visible {
+      width: 360px;
 
     }
   }

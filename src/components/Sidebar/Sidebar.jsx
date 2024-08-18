@@ -27,7 +27,7 @@ function Sidebar({ handleClose, logout }) {
     <>
       <aside className="tl-sidebar">
         {!isMobile && <DesktopContent {...commonProps} />}
-        {showMobileNav && <MobileContent {...commonProps} handleMobileNavToggle={handleMobileNavToggle} showMobileNav={showMobileNav} />}
+        {<MobileContent {...commonProps} handleMobileNavToggle={handleMobileNavToggle} showMobileNav={showMobileNav} />}
       </aside>
     </>
   );
@@ -75,7 +75,7 @@ const DesktopContent = ({ logout, user, handleSidebarForMobile }) => {
 
 const MobileContent = ({ logout, user, handleSidebarForMobile, handleMobileNavToggle, showMobileNav }) => {
   return (
-    <div className={`sidebar-mobile`}>
+    <div className={`sidebar-mobile ${showMobileNav ? "visible" : "hidden"}`}>
       <div className="sidebar-mobile-profile">
         <Profile user={user} />
         <div className="sidebar-mobile-close" onClick={handleMobileNavToggle}>
