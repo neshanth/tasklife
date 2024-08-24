@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
-import DashboardHeader from "../DashboardHeader/DashboardHeader";
-import "./dashboard.css";
 import api from "../../api/api";
 import history from "../../history/history";
 import Spinner from "../Spinner/Spinner";
 import Footer from "../Footer/Footer";
 import useAppContext from "../../hooks/useAppContext";
+import MobileHeader from "../MobileHeader/MobileHeader";
+import "./mainContent.scss";
 
-function Dashboard() {
+function MainContent() {
   const { show, setShow, setAuth, isMobile } = useAppContext();
   const [loading, setLoading] = useState(false);
   const handleClose = () => {
@@ -34,11 +34,11 @@ function Dashboard() {
   if (loading) return <Spinner />;
 
   return (
-    <div className={`dashboard`}>
+    <div className="main-content">
       {/* <Sidebar show={show} logout={logout} handleClose={handleClose} /> */}
-      {isMobile && <DashboardHeader />}
+      {isMobile && <MobileHeader />}
       {<Sidebar logout={logout} />}
-      <div className="dashboard-wrapper">
+      <div className="content-wrapper">
         <Outlet />
       </div>
       {/* <Footer /> */}
@@ -46,4 +46,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default MainContent;

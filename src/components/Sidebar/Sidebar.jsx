@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/Images/v2/logo.png";
-import "./sidebar.css";
+import "./sidebar.scss";
 import useAppContext from "../../hooks/useAppContext";
 import Icons from "../Icons/Icons";
 import Navigation from "./Navigation/Navigation";

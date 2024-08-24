@@ -3,7 +3,7 @@ import Home from "../Home/Home";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-import Dashboard from "../Dashboard/Dashboard";
+import MainContent from "../MainContent/MainContent.jsx";
 import Tasks from "../Tasks/Tasks";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import api from "../../api/api";
@@ -100,7 +100,7 @@ const TaskManager = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoutes />}>
-          <Route path={appPath} element={<Dashboard />}>
+          <Route path={appPath} element={<MainContent />}>
             <Route path={`${appPath}/tasks`} element={<Tasks getTasks={getTasks} loading={loading} tasks={tasks} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />} />
             <Route path={`${appPath}/stats`} element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route path={`${appPath}/tasks/edit/:id`} element={<EditTask tasks={tasks} handleTaskDelete={handleTaskDelete} />} />

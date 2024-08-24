@@ -1,0 +1,39 @@
+.main-content {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .content-wrapper {
+    background-color: var(--white);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    min-height: 100vh;
+  }
+
+  .container {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .dashboard-section {
+    margin: 2rem 0;
+  }
+}
+
+.dashboard-heading,
+.dashboard-sub-heading {
+  font-weight: 600;
+}
+
+.dashboard-heading {
+  font-size: 2rem;
+}
+
+.dashboard-sub-heading {
+  font-size: 1.25rem;
+}

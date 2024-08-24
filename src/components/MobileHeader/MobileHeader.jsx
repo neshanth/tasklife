@@ -1,10 +1,10 @@
 import React from "react";
 import useAppContext from "../../hooks/useAppContext";
 import logo from "../../assets/Images/v2/logo.png";
-import "./dashboardheader.css";
 import Icons from "../Icons/Icons";
+import "./mobileHeader.scss";
 
-const DashboardHeader = () => {
+const MobileHeader = () => {
   const { handleMobileNavToggle } = useAppContext();
   return (
     <div className="tl-mobile-header">
@@ -16,4 +16,4 @@ const DashboardHeader = () => {
   );
 };
 
-export default DashboardHeader;
+export default MobileHeader;
