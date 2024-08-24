@@ -1,0 +1,16 @@
+.content-container {
+  padding: 1.25rem 2rem;
+  .content-info-container {
+    padding-top: 1rem;
+    .content-info__section-heading {
+      font-size: 2.25rem;
+      font-weight: 600;
+      font-family: "Inter Display";
+      color: var(--tl-text-base);
+    }
+    .content-info__section-info {
+      font-size: 1.125rem;
+      color: var(--tl-text-light-2);
+    }
+  }
+}

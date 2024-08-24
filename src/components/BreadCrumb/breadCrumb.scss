@@ -1,0 +1,13 @@
+.tl-tasks__breadcrumb {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-bottom: 1px solid var(--tl-theme-border);
+  .tl-tasks__breadcrumb-item-app-name {
+    color: var(--tl-text-light-3);
+  }
+  .tl-tasks__breadcrumb-item-page {
+    color: var(--tl-text-light-1);
+  }
+}
