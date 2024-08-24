@@ -2,6 +2,9 @@
   padding: 1.25rem 2rem;
   .content-info-container {
     padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--tl-spacing-2xs);
     .content-info__section-heading {
       font-size: 2.25rem;
       font-weight: 600;

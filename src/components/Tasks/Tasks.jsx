@@ -37,8 +37,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
       <BreadCrumb page="Tasks" />
       <div className="content-container">
         <ContentInfo sectionHeading="Tasks" sectionInfo="Overview of All the Pending Tasks" />
-        <div className="tasks-in-progress dashboard-section">
-          <p className="dashboard-sub-heading">Pending ({pendingTasks.length})</p>
+        <div className="tl-tasks__in-progress">
           {tasks.map((task) => (
             <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
           ))}
