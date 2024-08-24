@@ -3,15 +3,17 @@ import { NavLink, useLocation } from "react-router-dom";
 import Icons from "../../Icons/Icons";
 import "./navigation.css";
 
+const appPath = "/app";
+
 const navigationLinks = [
   {
-    name: "Dashboard",
-    path: "/dashboard/tasks",
+    name: "Tasks",
+    path: `${appPath}/tasks`,
     icon: <Icons type="house" />,
   },
   {
     name: "Stats",
-    path: "/dashboard/stats",
+    path: `${appPath}/stats`,
     icon: <Icons type="stats" />,
   },
 ];

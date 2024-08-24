@@ -8,7 +8,7 @@ const StatCard = ({ statName, stat }) => {
         <p className="stat-name">{statName}</p>
         <p className="stat mx-1">({stat})</p>
       </div>
-      <Link to="/dashboard/tasks" className="stat-link d-inline-block mt-2">
+      <Link to="/app/tasks" className="stat-link d-inline-block mt-2">
         View {statName === "total" ? "All" : statName} tasks
       </Link>
     </div>

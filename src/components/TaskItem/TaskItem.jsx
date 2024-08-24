@@ -40,7 +40,7 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
             <p className="mb-0">{todo_date.toLocaleDateString("default", { day: "numeric", month: "short" })}</p>
           </div>
           <div className="task-item-icons">
-            <Link to={`/dashboard/tasks/edit/${id}`}>
+            <Link to={`/app/tasks/edit/${id}`}>
               <EditIcon />
             </Link>
           </div>

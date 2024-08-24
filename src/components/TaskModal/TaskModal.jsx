@@ -32,7 +32,7 @@ const TaskModal = ({ show, handleClose, taskData, handleTaskDelete }) => {
           <p>{description ? description : "None"}</p>
         </div>
         <div className="task-modal-btn-container">
-          <Link className="btn btn--primary task-modal-link" to={`/dashboard/tasks/edit/${id}`}>
+          <Link className="btn btn--primary task-modal-link" to={`/app/tasks/edit/${id}`}>
             Edit
           </Link>
           <Button className="btn btn-danger btn--delete task-modal-link" onClick={() => handleTaskDelete(id)}>

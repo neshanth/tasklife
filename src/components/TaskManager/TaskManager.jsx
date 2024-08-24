@@ -17,6 +17,7 @@ import useAppContext from "../../hooks/useAppContext";
 const TaskManager = () => {
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
+  const appPath = "/app";
   const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags } = useAppContext();
 
   useEffect(() => {
@@ -79,7 +80,7 @@ const TaskManager = () => {
       const response = await handleTaskDeleteResponse(id);
       if (response.status === 200) {
         renderToast("Task Deleted", "error");
-        navigate("/dashboard/tasks");
+        navigate(`${appPath}/tasks`);
         setTasks(tasks.filter((task) => task.id !== id));
         setLoading(false);
         setFetchData(true);
@@ -99,11 +100,11 @@ const TaskManager = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoutes />}>
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="/dashboard/stats" element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
-            <Route path="/dashboard/tasks" element={<Tasks getTasks={getTasks} loading={loading} tasks={tasks} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />} />
-            <Route path="/dashboard/tasks/edit/:id" element={<EditTask tasks={tasks} handleTaskDelete={handleTaskDelete} />} />
-            <Route path="/dashboard/tasks/new" element={<NewTask />} />
+          <Route path={appPath} element={<Dashboard />}>
+            <Route path={`${appPath}/tasks`} element={<Tasks getTasks={getTasks} loading={loading} tasks={tasks} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />} />
+            <Route path={`${appPath}/stats`} element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
+            <Route path={`${appPath}/tasks/edit/:id`} element={<EditTask tasks={tasks} handleTaskDelete={handleTaskDelete} />} />
+            <Route path={`${appPath}/tasks/new`} element={<NewTask />} />
           </Route>
         </Route>
         <Route path="*" element={<Navigate to="/" replace={true} />} />

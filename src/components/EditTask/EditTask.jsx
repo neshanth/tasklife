@@ -97,7 +97,7 @@ const EditTask = ({ handleTaskDelete, tasks }) => {
       await api.post(`/api/tags/add/${id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setEditTask({ task: "", due_date: "", status: "", description: "" });
       setFetchData(true);
-      navigate("/dashboard/tasks");
+      navigate("/app/tasks");
       renderToast("Task Updated", "success");
     } catch (err) {
       const errorsList = Object.values(err.response.data.errors).flat();

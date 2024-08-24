@@ -17,7 +17,7 @@ function Home() {
 
   useEffect(() => {
     if (auth) {
-      navigate("/dashboard/tasks");
+      navigate("/app/tasks");
     }
   }, []);
 
@@ -37,7 +37,7 @@ function Home() {
       setLoading(false);
       setAuth(true);
       setUser({ id, name, email });
-      navigate("/dashboard/tasks", { replace: true });
+      navigate("/app/tasks", { replace: true });
     } catch (err) {
       console.log(err);
       setAuth(false);

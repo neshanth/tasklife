@@ -63,7 +63,7 @@ function NewTask() {
       await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedOptions.map((option) => option.value) });
       setNewTask({ task: "", due_date: "", description: "" });
       setFetchData(true);
-      navigate("/dashboard/tasks");
+      navigate("/app/tasks");
       renderToast("New Task Added", "success");
     } catch (err) {
       setLoading(false);

@@ -7,7 +7,7 @@ const AddTask = () => {
   return (
     <div className="task-item add-new-task">
       <PlusIcon />
-      <Link to="/dashboard/tasks/new" className="add-new-task-link">
+      <Link to="/app/tasks/new" className="add-new-task-link">
         Add new task
       </Link>
     </div>

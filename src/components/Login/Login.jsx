@@ -21,7 +21,7 @@ function Login() {
   useEffect(() => {
     let authStatus = auth;
     if (authStatus === "true") {
-      navigate("/dashboard/tasks");
+      navigate("/app/tasks");
     }
   }, []);
 
@@ -46,7 +46,7 @@ function Login() {
       setLoading(false);
       setAuth(true);
       setUser({ id, name, email });
-      navigate("/dashboard/tasks", { replace: true });
+      navigate("/app/tasks", { replace: true });
     } catch (err) {
       console.log(err);
       const { data } = err.response;

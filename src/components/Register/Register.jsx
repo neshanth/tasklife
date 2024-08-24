@@ -22,7 +22,7 @@ function Register() {
   useEffect(() => {
     let authStatus = auth;
     if (authStatus === "true") {
-      navigate("/dashboard/tasks");
+      navigate("app/tasks");
     }
   }, []);
 
