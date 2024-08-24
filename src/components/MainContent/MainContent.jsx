@@ -6,7 +6,7 @@ import history from "../../history/history";
 import Spinner from "../Spinner/Spinner";
 import Footer from "../Footer/Footer";
 import useAppContext from "../../hooks/useAppContext";
-import MobileHeader from "../MobileHeader/MobileHeader";
+import MobileHeader from "../DashboardHeader/MobileHeader";
 import "./mainContent.scss";
 
 function MainContent() {

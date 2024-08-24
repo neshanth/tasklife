@@ -1,15 +1,15 @@
 import React from "react";
-import "./profile.css";
+import "./profile.scss";
 
 const Profile = ({ user }) => {
   return (
-    <section className="account tl-padding">
-      <div className="profile-img">
+    <section className="tl-profile tl-padding">
+      <div className="tl-profile__img">
         <div></div>
       </div>
-      <div className="profile-details">
-        <p className="profile-name tl-heading">{user.name}</p>
-        <p className="profile-email">{user.email}</p>
+      <div className="tl-profile__details">
+        <p className="tl-profile__name tl-heading">{user.name}</p>
+        <p className="tl-profile__email">{user.email}</p>
       </div>
     </section>
   );

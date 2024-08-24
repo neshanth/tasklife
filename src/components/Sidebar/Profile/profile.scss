@@ -1,0 +1,41 @@
+.tl-sidebar {
+  .tl-profile {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--tl-spacing-xs);
+    gap: var(--tl-spacing-s);
+
+    .tl-profile__img {
+      min-width: 40px;
+      min-height: 40px;
+      background-color: #9ca3af;
+      border-radius: 50%;
+    }
+
+    .tl-profile__details {
+      .tl-profile__name,
+      .tl-profile__email {
+        margin-bottom: 0;
+      }
+
+      .tl-profile__email {
+        font-size: 0.875rem;
+        color: var(--tl-text-light-2);
+      }
+
+      @media screen and (max-width: 1024px) {
+        .tl-profile__email {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .tl-profile {
+      padding: 0;
+      border: none;
+    }
+  }
+}

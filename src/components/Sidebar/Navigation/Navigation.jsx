@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Icons from "../../Icons/Icons";
-import "./navigation.css";
+import "./navigation.scss";
 
 const appPath = "/app";
 
@@ -17,15 +17,15 @@ const navigationLinks = [
     icon: <Icons type="stats" />,
   },
 ];
-const Navigation = ({ handleSidebarForMobile }) => {
+const Navigation = () => {
   let location = useLocation();
   return (
-    <nav className="navigation">
-      <p className="sidebar-section-heading">MENU</p>
-      <ul className="navigation-list">
+    <nav className="tl-navigation">
+      <p className="tl-navigation__sidebar-section-heading">MENU</p>
+      <ul className="tl-navigation__navigation-list">
         {navigationLinks.map((link) => (
-          <li className={`navigation-item  ${location.pathname === link.path ? "sidebar-link-active" : ""}`} key={link.name}>
-            <NavLink className={`nav-link tl-padding`} to={link.path}>
+          <li className={`tl-navigation__navigation-item  ${location.pathname === link.path ? "sidebar-link-active" : ""}`} key={link.name}>
+            <NavLink className="tl-navigation__nav-link tl-padding" to={link.path}>
               {link.icon}
               {link.name}
             </NavLink>

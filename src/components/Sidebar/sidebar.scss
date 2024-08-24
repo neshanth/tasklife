@@ -4,7 +4,7 @@
   gap: var(--tl-spacing-xl);
 
   .sidebar-link-active,
-  .navigation-item,
+  .tl-navigation__navigation-item,
   .logout,
   .add-task {
     &:hover,
@@ -16,7 +16,7 @@
   }
 
   @media screen and (max-width: 1024px) {
-    .navigation-item,
+    .tl-navigation__navigation-item,
     .logout,
     .add-task {
       &:hover,
@@ -26,7 +26,7 @@
     }
   }
 
-  .nav-link,
+  .tl-navigation__nav-link,
   .logout-text,
   .add-task-text {
     display: flex;
