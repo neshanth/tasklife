@@ -6,7 +6,7 @@
   .sidebar-link-active,
   .tl-navigation__navigation-item,
   .logout,
-  .add-task {
+  .tl-add-task {
     &:hover,
     &.sidebar-link-active {
       background-color: var(--tl-neutral-white);
@@ -18,7 +18,7 @@
   @media screen and (max-width: 1024px) {
     .tl-navigation__navigation-item,
     .logout,
-    .add-task {
+    .tl-add-task {
       &:hover,
       &.sidebar-link-active {
         background-color: var(--tl-theme-bg);
@@ -28,7 +28,7 @@
 
   .tl-navigation__nav-link,
   .logout-text,
-  .add-task-text {
+  .add-task__text {
     display: flex;
     align-items: center;
     gap: var(--tl-spacing-s);
@@ -44,7 +44,7 @@
       padding: 0 var(--tl-spacing-md);
     }
 
-    .add-task {
+    .tl-add-task {
       display: none;
     }
   }

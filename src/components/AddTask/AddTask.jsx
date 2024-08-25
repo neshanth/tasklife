@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PlusIcon from "../../assets/Icons/PlusIcon";
-import "./addtask.css";
+import "./addtask.scss";
+import Icons from "../Icons/Icons";
 
 const AddTask = () => {
   return (
-    <div className="task-item add-new-task">
-      <PlusIcon />
-      <Link to="/app/tasks/new" className="add-new-task-link">
-        Add new task
-      </Link>
+    <div className="tl-add-task">
+      <p className="tl-add-task__text tl-padding">
+        <Icons type="plus" />
+        <span>Add Task</span>
+      </p>
     </div>
   );
 };

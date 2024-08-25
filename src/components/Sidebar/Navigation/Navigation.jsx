@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Icons from "../../Icons/Icons";
 import "./navigation.scss";
+import AddTask from "../../AddTask/AddTask";
 
 const appPath = "/app";
 
@@ -32,12 +33,7 @@ const Navigation = () => {
           </li>
         ))}
       </ul>
-      <div className="add-task">
-        <p className="tl-padding add-task-text">
-          <Icons type="plus" />
-          Add Task
-        </p>
-      </div>
+      <AddTask />
     </nav>
   );
 };
