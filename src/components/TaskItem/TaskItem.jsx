@@ -30,7 +30,7 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
   };
 
   return (
-    <div className="tl-task-item" onMouseOver={() => setShowTaskOptions(true)} onMouseLeave={() => setShowTaskOptions(false)}>
+    <div className={`tl-task-item`} onMouseOver={() => setShowTaskOptions(true)} onMouseLeave={() => setShowTaskOptions(false)}>
       <div className="tl-task-item__checkbox">
         {status ? (
           <div className="tl-task-item__done" onClick={() => updateTaskStatus(id)}>
@@ -45,7 +45,7 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
       </div>
       <div className="tl-task-item__task">
         <div className="tl-task-item__info-options">
-          <p className="tl-task-item__task-name">{isTaskNameLong ? `${task.substring(0, substringLength)}...` : task}</p>
+          <p className={`tl-task-item__task-name ${status ? "task-completed" : "task-pending"}`}>{isTaskNameLong ? `${task.substring(0, substringLength)}...` : task}</p>
           {showTaskOptions && (
             <div className="tl-task-item__options">
               <div className="tl-task-item__edit">
@@ -58,7 +58,7 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
           )}
         </div>
         <div className="tl-task-item__info">
-          <p className="tl-task-item__due-date">{todo_date.toLocaleDateString("default", { day: "numeric", month: "short" })}</p>
+          <p className={`tl-task-item__due-date ${status ? "task-completed" : "task-pending"}`}>{todo_date.toLocaleDateString("default", { day: "numeric", month: "short" })}</p>
           <Tags tags={tags} />
         </div>
       </div>

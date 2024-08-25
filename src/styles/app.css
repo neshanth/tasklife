@@ -136,6 +136,10 @@ p {
   font-size: 1.125rem;
 }
 
+.grey-out {
+  color: var(--tl-text-light-2);
+}
+
 
 
 /*------------------------------

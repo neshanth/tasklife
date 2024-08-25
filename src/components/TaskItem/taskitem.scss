@@ -18,20 +18,12 @@
     }
   }
 
-  .tl-task-item__task {
-    border-bottom: 1px solid var(--tl-theme-border);
-    flex-grow: 1;
-  }
-
   .tl-task-item__checkbox-input {
     width: var(--tl-spacing-md);
     height: var(--tl-spacing-md);
     appearance: none;
     border-radius: 50%;
     border: 2px solid var(--tl-theme-border);
-    &:checked {
-      background-color: skyblue;
-    }
   }
   .tl-task-item__info-options {
     display: flex;
@@ -44,6 +36,18 @@
       font-weight: 500;
       font-family: "Inter Display";
       color: var(--tl-text-base);
+      &.task-completed {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  .tl-task-item__task {
+    border-bottom: 1px solid var(--tl-theme-border);
+    flex-grow: 1;
+
+    .task-completed {
+      color: var(--tl-text-light-2);
     }
   }
   .tl-task-item__due-date {
