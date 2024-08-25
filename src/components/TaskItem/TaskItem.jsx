@@ -50,6 +50,7 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
         </div>
         <div className="tl-task-item__info">
           <p className="tl-task-item__due-date">{todo_date.toLocaleDateString("default", { day: "numeric", month: "short" })}</p>
+          <Tags tags={tags} />
         </div>
       </div>
 

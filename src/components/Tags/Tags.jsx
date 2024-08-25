@@ -1,15 +1,17 @@
 import React from "react";
-import "./tags.css";
+import "./tags.scss";
+import Icons from "../Icons/Icons";
 
 const Tags = ({ tags }) => {
-  const TAG_COLORS = ["#ef92f1", "#108000", "#ffb01c"];
   return (
-    <div className="task-item-tags">
+    <div className="tl-task-item-tags">
       {tags.map((tag, index) => (
-        <span style={{ color: TAG_COLORS[index] }} key={index} className="tags">
-          {tag.label}
-          {index !== tags.length - 1 ? "," : ""}
-        </span>
+        <>
+          <span key={index} className="tl-task-item-tags__tag">
+            <Icons type="tag" />
+            {tag.label}
+          </span>
+        </>
       ))}
     </div>
   );

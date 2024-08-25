@@ -41,6 +41,10 @@
     color: var(--tl-theme-base);
     font-size: 0.875rem;
   }
+  .tl-task-item__info {
+    display: flex;
+    gap: 0.75rem;
+  }
 }
 
 // .task-item {
