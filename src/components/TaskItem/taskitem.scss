@@ -13,6 +13,9 @@
   .tl-task-item__pending {
     display: flex;
     margin-top: var(--tl-spacing-2xs);
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .tl-task-item__task {
