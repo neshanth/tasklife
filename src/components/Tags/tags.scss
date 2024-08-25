@@ -1,10 +1,10 @@
 .tl-task-item-tags {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--tl-spacing-s);
   .tl-task-item-tags__tag {
     font-size: 0.875rem;
     display: flex;
-    gap: 0.25rem;
+    gap: var(--tl-spacing-2xs);
     align-items: center;
     color: var(--tl-text-light-2);
     text-transform: lowercase;

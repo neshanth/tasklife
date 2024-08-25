@@ -3,6 +3,6 @@
 }
 
 .form-logo {
-  margin: 1.5rem auto;
+  margin: var(--tl-spacing-xl) auto;
   display: block;
 }

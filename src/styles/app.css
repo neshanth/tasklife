@@ -13,8 +13,8 @@
   --secondary-color: #ebebeb;
   --primary-text-color: #333333;
   --padding-0: 0.5rem;
-  --padding-1: 1rem;
-  --padding-2: 1.5rem;
+  --padding-1: var(--tl-spacing-md);
+  --padding-2: var(--tl-spacing-xl);
   --padding-3: 3rem;
   --border-color: #ebebeb;
   --pending-bg: #f1c78e;
@@ -83,7 +83,7 @@
 
 body {
   font-family: "Inter";
-  font-size: 1rem;
+  font-size: var(--tl-spacing-md);
   color: var(--primary-text-color);
   letter-spacing: -0.2px;
   overflow-x: hidden;
@@ -143,7 +143,7 @@ p {
 .btn--primary {
   background-color: var(--primary-color);
   color: var(--white);
-  font-size: 1rem;
+  font-size: var(--tl-spacing-md);
   border: none;
   font-weight: 600;
 }
@@ -156,7 +156,7 @@ p {
 .btn--secondary {
   background-color: var(--secondary-color);
   color: var(--black);
-  font-size: 1rem;
+  font-size: var(--tl-spacing-md);
   border: none;
   font-weight: 600;
 }
@@ -175,7 +175,7 @@ p {
  ------------------------------- */
 .form-background {
   box-shadow: var(--form-shadow);
-  padding: 2rem;
+  padding: var(--tl-spacing-xl);
   border-radius: var(--radius);
   background-color: var(--white);
 }
@@ -193,7 +193,7 @@ p {
 .login-form input:focus,
 .custom-form input:focus,
 .register-form input:focus {
-  box-shadow: 0 0 0 0.25rem rgb(41 64 211 / 25%);
+  box-shadow: 0 0 0 var(--tl-spacing-2xs) rgb(41 64 211 / 25%);
 }
 
 .count-text {
@@ -267,7 +267,7 @@ p {
 
 /* Logout Button */
 .logout-btn {
-  margin: 1rem 0;
+  margin: var(--tl-spacing-md) 0;
 }
 
 /* Toast Styles */

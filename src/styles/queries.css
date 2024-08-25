@@ -26,7 +26,7 @@
   }
 
   .hero-secondary {
-    font-size: 1.1rem;
+    font-size: 1.var(--tl-spacing-md);
   }
 
   .hero-buttons .btn-login,
@@ -48,7 +48,7 @@
   }
 
   .dashboard-wrapper {
-    padding: 1rem;
+    padding: var(--tl-spacing-md);
   }
 
   .modal-open .dashboard-wrapper {
@@ -56,7 +56,7 @@
   }
 
   .dashboard-header {
-    padding: 0.8rem 1rem;
+    padding: 0.8rem var(--tl-spacing-md);
   }
 
   .features-section {

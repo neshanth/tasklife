@@ -1,11 +1,12 @@
 .feature-img {
-  padding: 11rem;
+  padding: 1var(--tl-spacing-md);
   background-size: contain;
   background-repeat: no-repeat;
   background-color: var(--light-blue);
   box-shadow: 0 15px 45px 0px var(--light-blue);
   border-radius: var(--radius);
 }
+
 .feature .feature-img {
   width: 400px;
 }
@@ -13,10 +14,11 @@
 .features-section .feature {
   margin: 2.5rem 0;
 }
+
 .feature-title {
   font-size: 1.75rem;
   font-weight: 600;
-  margin-top: 1rem;
+  margin-top: var(--tl-spacing-md);
   letter-spacing: -0.9px;
 }
 
@@ -24,6 +26,7 @@
   background-image: url("../../assets/Images/features/TaskLife-EasyToUse.png");
   background-position: left;
 }
+
 .feature-2 {
   background-image: url("../../assets/Images/features/TaskLife-QuickAnalytics.png");
   background-position: right;

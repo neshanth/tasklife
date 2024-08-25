@@ -17,7 +17,7 @@
   border-radius: 50%;
   background-color: #ececec;
   color: var(--primary-text-color);
-  font-size: 1.5rem;
+  font-size: var(--tl-spacing-xl);
 }
 
 .stat-container {
@@ -27,12 +27,12 @@
 }
 
 .prod-percent {
-  font-size: 2rem;
+  font-size: var(--tl-spacing-xl);
   font-weight: 600;
 }
 
 .prod-title {
-  font-size: 1rem;
+  font-size: var(--tl-spacing-md);
 }
 
 .prod-percent,

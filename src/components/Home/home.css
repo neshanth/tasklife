@@ -37,13 +37,13 @@
 .hero-secondary {
   color: var(--black);
   width: 50%;
-  margin: 2rem auto;
+  margin: var(--tl-spacing-xl) auto;
 }
 
 .hero-buttons .btn-login,
 .hero-buttons .btn-demo-login {
-  margin: 0.5rem auto;
-  padding: 1rem 0.5rem;
+  margin: var(--tl-spacing-xs) auto;
+  padding: var(--tl-spacing-md) var(--tl-spacing-xs);
   width: 20%;
 }
 

@@ -19,7 +19,7 @@
     .tl-navigation__nav-link {
       color: var(--tl-text-light-1);
       font-weight: 500;
-      font-size: 1rem;
+      font-size: var(--tl-spacing-md);
       font-family: "Inter Display";
     }
   }

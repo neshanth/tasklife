@@ -1,10 +1,16 @@
 .tl-add-task {
-  font-size: 1rem;
+  font-size: var(--tl-spacing-md);
   .tl-add-task__text {
     color: var(--tl-theme-base);
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--tl-spacing-s);
     font-weight: 500;
+  }
+}
+.tl-tasks__in-progress {
+  .tl-add-task__text {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }

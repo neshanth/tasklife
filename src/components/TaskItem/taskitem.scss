@@ -1,18 +1,18 @@
 .tl-task-item {
   display: flex;
-  gap: 0.75rem;
-  border-bottom: 0.25rem;
-  margin-bottom: 0.25rem;
+  gap: var(--tl-spacing-s);
+  border-bottom: var(--tl-spacing-2xs);
+  margin-bottom: var(--tl-spacing-2xs);
 
   .tl-task-item__checkbox,
   .tl-task-item__task {
-    padding: 1rem 0;
+    padding: var(--tl-spacing-md) 0;
   }
 
   .tl-task-item__done,
   .tl-task-item__pending {
     display: flex;
-    margin-top: 0.25rem;
+    margin-top: var(--tl-spacing-2xs);
   }
 
   .tl-task-item__task {
@@ -21,8 +21,8 @@
   }
 
   .tl-task-item__checkbox-input {
-    width: 1rem;
-    height: 1rem;
+    width: var(--tl-spacing-md);
+    height: var(--tl-spacing-md);
     appearance: none;
     border-radius: 50%;
     border: 2px solid var(--tl-theme-border);
@@ -32,10 +32,10 @@
   }
   .tl-task-item__info-options {
     display: flex;
-    gap: 1.5rem;
+    gap: var(--tl-spacing-xl);
     .tl-task-item__options {
       display: flex;
-      gap: 1rem;
+      gap: var(--tl-spacing-md);
     }
     .tl-task-item__task-name {
       font-weight: 500;
@@ -49,7 +49,7 @@
   }
   .tl-task-item__info {
     display: flex;
-    gap: 0.75rem;
+    gap: var(--tl-spacing-s);
   }
 }
 

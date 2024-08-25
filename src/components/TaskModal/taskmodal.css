@@ -3,14 +3,14 @@
 }
 
 .task-modal-title {
-    margin: 1rem 0;
+    margin: var(--tl-spacing-md) 0;
 }
 
 .task-modal-sub-heading {
     color: #878a9e;
     text-transform: uppercase;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--tl-spacing-xs);
     font-size: 0.8rem;
 }
 
@@ -23,11 +23,11 @@
 }
 
 .task-modal-spacing {
-    margin: 1rem 0;
+    margin: var(--tl-spacing-md) 0;
 }
 
 .task-modal-heading {
-    font-size: 1.5rem;
+    font-size: var(--tl-spacing-xl);
     font-weight: 600;
     margin-bottom: 0.8rem;
 }
@@ -39,7 +39,7 @@
 .task-modal-btn-container {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--tl-spacing-md);
 }
 
 .task-modal-link {

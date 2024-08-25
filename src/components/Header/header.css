@@ -4,7 +4,7 @@
 }
 
 .navbar .header-cta {
-  padding: 0.5rem 1rem;
+  padding: var(--tl-spacing-xs) var(--tl-spacing-md);
   display: inline-block;
   background: none;
   border: 2px solid var(--primary-color);

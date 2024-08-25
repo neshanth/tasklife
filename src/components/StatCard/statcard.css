@@ -13,11 +13,11 @@
 }
 
 .stat-container {
-  margin: 0 0.2rem;
+  margin: 0 0.var(--tl-spacing-xl);
 }
 
 .dashboard-wrapper .stat-card {
-  padding: 1.5rem;
+  padding: var(--tl-spacing-xl);
 }
 
 .stat-link {

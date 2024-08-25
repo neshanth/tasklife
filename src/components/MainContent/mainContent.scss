@@ -10,7 +10,7 @@
 
   .content-wrapper {
     background-color: var(--white);
-    // padding: 0 2rem;
+    // padding: 0 var(--tl-spacing-xl);
     border-radius: 12px;
     min-height: 100vh;
     border: 1px solid var(--tl-theme-border);
@@ -23,7 +23,7 @@
   }
 
   .dashboard-section {
-    margin: 2rem 0;
+    margin: var(--tl-spacing-xl) 0;
   }
 }
 
@@ -33,9 +33,9 @@
 }
 
 .dashboard-heading {
-  font-size: 2rem;
+  font-size: var(--tl-spacing-xl);
 }
 
 .dashboard-sub-heading {
-  font-size: 1.25rem;
+  font-size: var(--tl-spacing-l);
 }

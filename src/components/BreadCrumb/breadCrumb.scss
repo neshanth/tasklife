@@ -1,8 +1,8 @@
 .tl-tasks__breadcrumb {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-top: var(--tl-spacing-md);
+  padding-bottom: var(--tl-spacing-md);
+  padding-left: var(--tl-spacing-xl);
+  padding-right: var(--tl-spacing-xl);
   border-bottom: 1px solid var(--tl-theme-border);
   .tl-tasks__breadcrumb-item-app-name {
     color: var(--tl-text-light-3);

@@ -1,7 +1,7 @@
 .content-container {
-  padding: 1.25rem 2rem;
+  padding: var(--tl-spacing-l) var(--tl-spacing-2xl);
   .content-info-container {
-    padding-top: 1rem;
+    padding-top: var(--tl-spacing-md);
     display: flex;
     flex-direction: column;
     gap: var(--tl-spacing-2xs);
