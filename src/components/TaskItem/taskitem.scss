@@ -9,6 +9,12 @@
     padding: 1rem 0;
   }
 
+  .tl-task-item__done,
+  .tl-task-item__pending {
+    display: flex;
+    margin-top: 0.25rem;
+  }
+
   .tl-task-item__task {
     border-bottom: 1px solid var(--tl-theme-border);
     flex-grow: 1;

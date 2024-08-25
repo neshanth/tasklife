@@ -111,6 +111,26 @@ const Icons = ({ type }) => {
           <path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63Zm-96,96L48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"></path>
         </svg>
       );
+    case "circle-filled":
+      return (
+        <svg width="16" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="324 301.01 16 16" fill="none">
+          <path
+            d="M332 301.01a8 8 0 1 0 8 8 8.01 8.01 0 0 0-8-8Zm3.512 6.589-4.307 4.308a.619.619 0 0 1-.871 0l-1.846-1.846a.615.615 0 1 1 .87-.871l1.411 1.412 3.873-3.874a.616.616 0 0 1 .87.871Z"
+            style={{
+              fill: "rgb(58, 186, 37)",
+              fillOpacity: 1,
+            }}
+            className="fills"
+            data-testid="circle-check-filled"
+          />
+        </svg>
+      );
+    case "circle":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" viewBox="0 0 256 256">
+          <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"></path>
+        </svg>
+      );
 
     default:
       return null;
