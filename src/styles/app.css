@@ -240,9 +240,14 @@ p {
 /*------------------------------
      GLOBAL CLASSES
  ------------------------------- */
+.tl-border {
+  border: 1px solid var(--tl-theme-border);
+}
+
 .border-bottom {
   border-bottom: 1px solid var(--border-color);
 }
+
 
 .delete-icon {
   cursor: pointer;

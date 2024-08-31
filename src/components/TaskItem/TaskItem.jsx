@@ -34,11 +34,11 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
       <div className="tl-task-item__checkbox">
         {status ? (
           <div className="tl-task-item__done" onClick={() => updateTaskStatus(id)}>
-            <Icons type="circle-filled" />
+            <Icons type="circle-filled" w="20" h="20" />
           </div>
         ) : (
           <div className="tl-task-item__pending" onClick={() => updateTaskStatus(id)}>
-            <Icons type="circle" />
+            <Icons type="circle" w="20" h="20" />
           </div>
         )}
         {/* <input type="checkbox" className="tl-task-item__checkbox-input" checked={status} onChange={() => updateTaskStatus(id)} /> */}
@@ -49,10 +49,10 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
           {showTaskOptions && (
             <div className="tl-task-item__options">
               <div className="tl-task-item__edit">
-                <Icons type="pencil" />
+                <Icons type="pencil" w="16" h="16" />
               </div>
               <div className="tl-task-item__delete">
-                <Icons type="trash" />
+                <Icons type="trash" w="16" h="16" />
               </div>
             </div>
           )}

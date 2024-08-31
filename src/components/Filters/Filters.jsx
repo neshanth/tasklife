@@ -1,5 +1,6 @@
 import "./filters.scss";
 import useAppContext from "../../hooks/useAppContext";
+import Icons from "../Icons/Icons";
 
 const Filters = ({ pendingTasks, completedTasks }) => {
   const { filters, setFilters } = useAppContext();
@@ -22,19 +23,21 @@ const Filters = ({ pendingTasks, completedTasks }) => {
     <section className="tl-filters">
       <div className="tl-filters__options">
         <div className="tl-filters__status-button">
-          <div onClick={() => handleStatusChange("pending")} className={`tl-filters__btn-pending ${filters.status === "pending" ? "tl-filters--active" : ""}`}>
+          <div className={`tl-filters__btn-pending filters-padding ${filters.status === "pending" ? "tl-filters--active" : ""}`} onClick={() => handleStatusChange("pending")}>
             <button>Pending</button>
             <span>{pendingTasks.length}</span>
           </div>
-          <div onClick={() => handleStatusChange("completed")} className={`tl-filters__btn-completed  ${filters.status === "completed" ? "tl-filters--active" : ""}`}>
+          <div className={`tl-filters__btn-completed filters-padding  ${filters.status === "completed" ? "tl-filters--active" : ""}`} onClick={() => handleStatusChange("completed")}>
             <button>Completed</button>
             <span>{completedTasks.length}</span>
           </div>
         </div>
-        <div className="tl-filters__date">
-          <input type="date" />
+        <div className="tl-filters__date tl-border filters-padding">
+          <Icons type="calendar" w="20" h="20" />
+          <button>Date</button>
         </div>
-        <div className="tl-fitlers__tags">
+        <div className="tl-filters__tags tl-border filters-padding">
+          <Icons type="tag" w="20" h="20" />
           <button>Tags</button>
         </div>
       </div>
