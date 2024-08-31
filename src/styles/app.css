@@ -21,6 +21,8 @@
   --completed-bg: #9efdc7;
   --light-blue: #eceeff;
   /* New Vars */
+  --tl-spacing-1xs: 0.125rem;
+  /* 2px */
   --tl-spacing-2xs: 0.25rem;
   /* 4px */
   --tl-spacing-xs: 0.5rem;
@@ -35,6 +37,8 @@
   /* 24px */
   --tl-spacing-2xl: 2rem;
   /* 32px */
+  --tl-spacing-3xl: 2.25rem;
+  /*36px */
   --tl-neutral-white: #ffffff;
   --tl-text-base: #1f2937;
   --tl-theme-base: #2563EB;

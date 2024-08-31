@@ -11,6 +11,11 @@ const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [fetchData, setFetchData] = useState(true);
   const [allTags, setAllTags] = useState([]);
+  const [filters, setFilters] = useState({
+    status: "pending",
+    date: "",
+    tags: []
+  })
   const isMobile = useIsMobile()
   const handleMobileNavToggle = () => {
     setShowMobileNav(!showMobileNav);
@@ -31,7 +36,9 @@ const UserProvider = ({ children }) => {
     setFetchData,
     allTags,
     setAllTags,
-    isMobile
+    isMobile,
+    filters,
+    setFilters
   }
   return <UserContext.Provider value={valueObj}>{children}</UserContext.Provider>;
 };

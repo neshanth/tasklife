@@ -9,6 +9,7 @@ import { renderToast } from "../../utils/utils";
 import useAppContext from "../../hooks/useAppContext";
 import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
+import Filters from "../Filters/Filters";
 
 function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks }) {
   const location = useLocation();
@@ -37,6 +38,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
       <BreadCrumb page="Tasks" />
       <div className="content-container">
         <ContentInfo sectionHeading="Tasks" sectionInfo="Overview of All the Pending Tasks" />
+        <Filters pendingTasks={pendingTasks} completedTasks={completedTasks} />
         <div className="tl-tasks__in-progress">
           {tasks.map((task) => (
             <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
