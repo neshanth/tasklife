@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import TaskItem from "../TaskItem/TaskItem";
 import Spinner from "../Spinner/Spinner";
 import { useLocation } from "react-router-dom";
@@ -10,13 +10,14 @@ import useAppContext from "../../hooks/useAppContext";
 import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import Filters from "../Filters/Filters";
+import TaskForm from "../TaskForm/TaskForm";
 
 function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks }) {
   const location = useLocation();
-
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
   const { fetchData, setFetchData } = useAppContext();
+  const [showTaskForm, setShowTaskForm] = useState(false);
 
   useEffect(() => {
     if (fetchData) {
@@ -28,6 +29,10 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
       renderToast(location.state.msg, "success");
     }
   }, []);
+
+  const handleTaskForm = (e) => {
+    setShowTaskForm(!showTaskForm);
+  };
 
   if (loading) {
     return <Spinner />;
@@ -43,7 +48,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
           {tasks.map((task) => (
             <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
           ))}
-          <AddTask />
+          {showTaskForm ? <TaskForm handleTaskForm={handleTaskForm} /> : <AddTask handleTaskForm={handleTaskForm} />}
         </div>
       </div>
 

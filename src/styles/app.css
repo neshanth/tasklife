@@ -47,6 +47,7 @@
   --tl-text-light-1: #374151;
   --tl-text-light-2: #6B7280;
   --tl-text-light-3: #9CA3AF;
+  --tl-text-light-4: #BFDBFE;
   --tl-theme-light-5: #E5F0FF;
 }
 
@@ -144,9 +145,22 @@ p {
   color: var(--tl-text-light-2);
 }
 
-input {
+input,
+textarea {
   border: none;
   outline: none;
+  width: 100%;
+  padding: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 

@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import PlusIcon from "../../assets/Icons/PlusIcon";
 import "./addtask.scss";
 import Icons from "../Icons/Icons";
 
-const AddTask = () => {
+const AddTask = ({ handleTaskForm }) => {
   return (
-    <div className="tl-add-task">
+    <div className="tl-add-task" onClick={handleTaskForm}>
       <p className="tl-add-task__text tl-padding">
         <Icons type="plus" />
         <span>Add Task</span>
