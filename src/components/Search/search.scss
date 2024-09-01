@@ -1,0 +1,9 @@
+.tl__search {
+  border-radius: var(--tl-spacing-xs);
+  .tl__search-container {
+    padding: var(--tl-spacing-s);
+    display: flex;
+    gap: var(--tl-spacing-s);
+    align-items: center;
+  }
+}

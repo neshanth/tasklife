@@ -144,6 +144,11 @@ p {
   color: var(--tl-text-light-2);
 }
 
+input {
+  border: none;
+  outline: none;
+}
+
 
 
 /*------------------------------

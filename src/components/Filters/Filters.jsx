@@ -1,6 +1,7 @@
 import "./filters.scss";
 import useAppContext from "../../hooks/useAppContext";
 import Icons from "../Icons/Icons";
+import Search from "../Search/Search";
 
 const Filters = ({ pendingTasks, completedTasks }) => {
   const { filters, setFilters } = useAppContext();
@@ -41,6 +42,7 @@ const Filters = ({ pendingTasks, completedTasks }) => {
           <button>Tags</button>
         </div>
       </div>
+      <Search />
     </section>
   );
 };
