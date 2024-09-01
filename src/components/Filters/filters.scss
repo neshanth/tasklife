@@ -59,6 +59,9 @@
       display: flex;
       gap: var(--tl-spacing-xs);
       align-items: center;
+      button {
+        color: var(--tl-text-light-2);
+      }
     }
   }
 }
