@@ -1,7 +1,7 @@
 .tl-task__form-wrapper {
   border-top-left-radius: var(--tl-spacing-xl);
   position: fixed;
-  top: 75px;
+  top: 0px;
   right: 0;
   height: 100vh;
   background-color: #fff;
@@ -69,6 +69,7 @@
     padding: var(--tl-spacing-xl) var(--tl-spacing-2xl);
     background-color: var(--tl-theme-bg);
     gap: var(--tl-spacing-s);
+    margin-top: auto;
 
     .tl-task__form-cancel {
       background-color: var(--tl-neutral-white);
