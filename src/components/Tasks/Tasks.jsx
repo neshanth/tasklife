@@ -30,7 +30,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
     }
   }, []);
 
-  const handleTaskForm = (e) => {
+  const handleTaskForm = () => {
     setShowTaskForm(!showTaskForm);
   };
 
@@ -48,7 +48,8 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
           {tasks.map((task) => (
             <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
           ))}
-          {showTaskForm ? <TaskForm handleTaskForm={handleTaskForm} /> : <AddTask handleTaskForm={handleTaskForm} />}
+          {<AddTask handleTaskForm={handleTaskForm} />}
+          {showTaskForm && <TaskForm handleTaskForm={handleTaskForm} />}
         </div>
       </div>
 

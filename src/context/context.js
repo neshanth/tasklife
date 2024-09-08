@@ -38,7 +38,7 @@ const UserProvider = ({ children }) => {
     setAllTags,
     isMobile,
     filters,
-    setFilters
+    setFilters,
   }
   return <UserContext.Provider value={valueObj}>{children}</UserContext.Provider>;
 };
