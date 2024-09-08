@@ -13,6 +13,7 @@
     display: flex;
     gap: var(--tl-spacing-s);
     align-items: center;
+    flex-wrap: wrap;
     .tl-filters__status-button {
       cursor: pointer;
       display: flex;
