@@ -49,7 +49,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
             <TaskItem key={task.id} taskData={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
           ))}
           {<AddTask handleTaskForm={handleTaskForm} />}
-          {showTaskForm && <TaskForm handleTaskForm={handleTaskForm} />}
+          {showTaskForm && <TaskForm handleTaskForm={handleTaskForm} getTasks={getTasks} />}
         </div>
       </div>
 

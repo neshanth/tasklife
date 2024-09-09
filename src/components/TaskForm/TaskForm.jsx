@@ -6,12 +6,18 @@ import "./taskform.scss";
 import Icons from "../Icons/Icons";
 import "react-datepicker/dist/react-datepicker.css";
 import useAppContext from "../../hooks/useAppContext";
-import { renderToast } from "../../utils/utils";
-const TaskForm = ({ handleTaskForm }) => {
-  const { allTags } = useAppContext();
+import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
+import api from "../../api/api";
+const TaskForm = ({ handleTaskForm, getTasks }) => {
+  const { allTags, setLoading, user } = useAppContext();
   const [startDate, setStartDate] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [newTask, setNewTask] = useState({
+    task: "",
+    description: "",
+    due_date: "",
+  });
   const DateInput = forwardRef(({ className, onClick, placeholder, value }, ref) => (
     <div className={className} ref={ref} onClick={onClick}>
       <Icons w="25px" h="25px" type="calendar" />
@@ -25,9 +31,38 @@ const TaskForm = ({ handleTaskForm }) => {
 
   const handleChange = (option) => {
     if (option.length <= 3) {
-      setSelectedOptions(option);
+      setSelectedTags(option);
     } else {
       renderToast("Only 3 tags can be added", "error");
+    }
+  };
+
+  const handleTaskFormChange = (e) => {
+    const { name, value } = e.target;
+    const newTaskObj = { ...newTask, [name]: value };
+    setNewTask(newTaskObj);
+  };
+
+  const handleDatePicker = (date) => {
+    setStartDate(date);
+  };
+
+  const handleNewTask = async () => {
+    setLoading(true);
+    try {
+      if (startDate === null) {
+        newTask.due_date = handleDateIfDateIsEmpty();
+      } else {
+        newTask.due_date = startDate.toISOString().split("T")[0];
+      }
+      const response = await api.post(`/api/tasks`, { ...newTask, user_id: user.id });
+      await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedTags.map((tag) => tag.value) });
+      renderToast("New Task Added", "success");
+      getTasks();
+    } catch (err) {
+      setLoading(false);
+      const errorsList = Object.values(err.response.data.errors).flat();
+      errorsList.forEach((err) => renderToast(err, "error"));
     }
   };
 
@@ -72,26 +107,19 @@ const TaskForm = ({ handleTaskForm }) => {
         <div className="tl-task__form-container">
           <div className="tl-task__form-name-desc tl-border">
             <div className="tl-task__form-task-name">
-              <input type="text" placeholder="Name of the Task" ref={inputRef} />
+              <input value={newTask.task} onChange={handleTaskFormChange} name="task" type="text" placeholder="Name of the Task" ref={inputRef} />
             </div>
             <div className="tl-task__form-task-desc">
-              <input type="text" placeholder="Description of the Task" />
+              <input value={newTask.description} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />
             </div>
           </div>
           <div className="tl-task__form-info">
             <div className="tl-task__form-due-date">
-              <DatePicker
-                isClearable
-                dateFormat="MMM d"
-                customInput={<DateInput className="tl-task__form-due-date" />}
-                placeholderText="Due Date"
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-              />
+              <DatePicker isClearable dateFormat="MMM d" customInput={<DateInput className="tl-task__form-due-date" />} placeholderText="Due Date" selected={startDate} onChange={handleDatePicker} />
             </div>
             <div className="tl-task__form-tags" onClick={() => setOpenDropdown(!openDropdown)}>
               <Icons w="25px" h="25px" type="tag" />
-              <Select closeMenuOnSelect={false} styles={customStyles} placeholder="Tags" onChange={handleChange} isSearchable={false} value={selectedOptions} isMulti={true} options={allTags} />
+              <Select closeMenuOnSelect={false} styles={customStyles} placeholder="Tags" onChange={handleChange} isSearchable={false} value={selectedTags} isMulti={true} options={allTags} />
             </div>
           </div>
         </div>
@@ -100,7 +128,9 @@ const TaskForm = ({ handleTaskForm }) => {
         <button className="tl-task__form-cancel tl-btn" onClick={handleTaskForm}>
           Cancel
         </button>
-        <button className="tl-task__form-save tl-btn">Save</button>
+        <button className="tl-task__form-save tl-btn" onClick={handleNewTask}>
+          Add
+        </button>
       </div>
     </div>
   );
