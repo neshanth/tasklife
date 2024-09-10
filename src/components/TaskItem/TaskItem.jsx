@@ -6,11 +6,13 @@ import Tags from "../Tags/Tags";
 import TaskModal from "../TaskModal/TaskModal";
 import "./taskitem.scss";
 import Icons from "../Icons/Icons";
+import useAppContext from "../../hooks/useAppContext";
 
-const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
-  const { task, due_date, id, status, tags } = taskData;
+const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm }) => {
+  const { task, due_date, id, status, tags, description } = taskInfo;
   const [showModal, setShowModal] = useState(false);
   const [showTaskOptions, setShowTaskOptions] = useState(false);
+  const { taskData, setTaskData, setTaskFormAction } = useAppContext();
   let todo_date = new Date(due_date);
   let isTaskNameLong = false;
   let substringLength;
@@ -27,6 +29,20 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
   const handleClick = (e) => {
     if (e.target.id === "status") return;
     setShowModal(true);
+  };
+
+  const handleTaskEdit = () => {
+    handleTaskForm();
+    setTaskData({
+      ...taskData,
+      task,
+      due_date,
+      description,
+      tags,
+      id,
+      status,
+    });
+    setTaskFormAction("edit");
   };
 
   return (
@@ -48,7 +64,7 @@ const TaskItem = ({ taskData, updateTaskStatus, label, handleTaskDelete }) => {
           <p className={`tl-task-item__task-name ${status ? "task-completed" : "task-pending"}`}>{isTaskNameLong ? `${task.substring(0, substringLength)}...` : task}</p>
           {showTaskOptions && (
             <div className="tl-task-item__options">
-              <div className="tl-task-item__edit">
+              <div className="tl-task-item__edit" onClick={handleTaskEdit}>
                 <Icons type="pencil" w="16" h="16" />
               </div>
               <div className="tl-task-item__delete">

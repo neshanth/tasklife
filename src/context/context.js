@@ -16,6 +16,15 @@ const UserProvider = ({ children }) => {
     date: "",
     tags: []
   })
+  const [taskData, setTaskData] = useState({
+    task: "",
+    description: "",
+    due_date: "",
+    tags: [],
+    id: "",
+    status: 0
+  })
+  const [taskFormAction, setTaskFormAction] = useState('create')
   const isMobile = useIsMobile()
   const handleMobileNavToggle = () => {
     setShowMobileNav(!showMobileNav);
@@ -39,6 +48,10 @@ const UserProvider = ({ children }) => {
     isMobile,
     filters,
     setFilters,
+    taskData,
+    setTaskData,
+    taskFormAction,
+    setTaskFormAction
   }
   return <UserContext.Provider value={valueObj}>{children}</UserContext.Provider>;
 };

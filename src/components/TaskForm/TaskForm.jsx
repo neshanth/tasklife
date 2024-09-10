@@ -9,15 +9,10 @@ import useAppContext from "../../hooks/useAppContext";
 import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
 const TaskForm = ({ handleTaskForm, getTasks }) => {
-  const { allTags, setLoading, user } = useAppContext();
-  const [startDate, setStartDate] = useState(null);
+  const { allTags, setLoading, user, taskData, setTaskData, taskFormAction } = useAppContext();
+  const [startDate, setStartDate] = useState(taskData.due_date ? new Date(taskData.due_date) : null);
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [newTask, setNewTask] = useState({
-    task: "",
-    description: "",
-    due_date: "",
-  });
+  const [selectedTags, setSelectedTags] = useState(taskData.tags ? taskData.tags : []);
   const DateInput = forwardRef(({ className, onClick, placeholder, value }, ref) => (
     <div className={className} ref={ref} onClick={onClick}>
       <Icons w="25px" h="25px" type="calendar" />
@@ -39,29 +34,37 @@ const TaskForm = ({ handleTaskForm, getTasks }) => {
 
   const handleTaskFormChange = (e) => {
     const { name, value } = e.target;
-    const newTaskObj = { ...newTask, [name]: value };
-    setNewTask(newTaskObj);
+    const newTaskObj = { ...taskData, [name]: value };
+    setTaskData(newTaskObj);
   };
 
   const handleDatePicker = (date) => {
     setStartDate(date);
   };
 
-  const handleNewTask = async () => {
+  const handleTask = async () => {
     setLoading(true);
     try {
       if (startDate === null) {
-        newTask.due_date = handleDateIfDateIsEmpty();
+        taskData.due_date = handleDateIfDateIsEmpty();
       } else {
-        newTask.due_date = startDate.toISOString().split("T")[0];
+        taskData.due_date = startDate.toISOString().split("T")[0];
       }
-      const response = await api.post(`/api/tasks`, { ...newTask, user_id: user.id });
-      await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedTags.map((tag) => tag.value) });
-      renderToast("New Task Added", "success");
+      const selectedTagsForTask = selectedTags ? selectedTags.map((tag) => tag.value) : [];
+      const taskObj = { ...taskData, user_id: user.id, tags: selectedTagsForTask };
+      const response = taskFormAction === "create" ? await api.post(`/api/tasks`, taskObj) : await api.put(`/api/tasks/${taskData.id}`, taskObj);
+      await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedTagsForTask });
+      const toastMsg = taskFormAction === "create" ? "New Task Added" : "Task Updated";
+      renderToast(toastMsg, "success");
+      setTaskData({
+        task: "",
+        description: "",
+        due_date: "",
+      });
       getTasks();
     } catch (err) {
       setLoading(false);
-      const errorsList = Object.values(err.response.data.errors).flat();
+      const errorsList = Object.values(err.response.data.errors || err).flat();
       errorsList.forEach((err) => renderToast(err, "error"));
     }
   };
@@ -107,10 +110,10 @@ const TaskForm = ({ handleTaskForm, getTasks }) => {
         <div className="tl-task__form-container">
           <div className="tl-task__form-name-desc tl-border">
             <div className="tl-task__form-task-name">
-              <input value={newTask.task} onChange={handleTaskFormChange} name="task" type="text" placeholder="Name of the Task" ref={inputRef} />
+              <input value={taskData.task} onChange={handleTaskFormChange} name="task" type="text" placeholder="Name of the Task" ref={inputRef} />
             </div>
             <div className="tl-task__form-task-desc">
-              <input value={newTask.description} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />
+              <input value={taskData.description} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />
             </div>
           </div>
           <div className="tl-task__form-info">
@@ -128,8 +131,8 @@ const TaskForm = ({ handleTaskForm, getTasks }) => {
         <button className="tl-task__form-cancel tl-btn" onClick={handleTaskForm}>
           Cancel
         </button>
-        <button className="tl-task__form-save tl-btn" onClick={handleNewTask}>
-          Add
+        <button className="tl-task__form-save tl-btn" onClick={handleTask}>
+          {taskFormAction === "create" ? "Add" : "Update"}
         </button>
       </div>
     </div>
