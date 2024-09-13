@@ -8,7 +8,7 @@ import "./taskitem.scss";
 import Icons from "../Icons/Icons";
 import useAppContext from "../../hooks/useAppContext";
 
-const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm }) => {
+const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete }) => {
   const { task, due_date, id, status, tags, description } = taskInfo;
   const [showModal, setShowModal] = useState(false);
   const [showTaskOptions, setShowTaskOptions] = useState(false);
@@ -67,7 +67,7 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm }) => {
               <div className="tl-task-item__edit" onClick={handleTaskEdit}>
                 <Icons type="pencil" w="16" h="16" />
               </div>
-              <div className="tl-task-item__delete">
+              <div className="tl-task-item__delete" onClick={() => handleTaskDelete(id)}>
                 <Icons type="trash" w="16" h="16" />
               </div>
             </div>

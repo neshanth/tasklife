@@ -46,7 +46,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
         <Filters pendingTasks={pendingTasks} completedTasks={completedTasks} />
         <div className="tl-tasks__in-progress">
           {tasks.map((task) => (
-            <TaskItem handleTaskForm={handleTaskForm} key={task.id} taskInfo={task} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />
+            <TaskItem handleTaskForm={handleTaskForm} handleTaskDelete={handleTaskDelete} key={task.id} taskInfo={task} updateTaskStatus={updateTaskStatus} />
           ))}
           {<AddTask handleTaskForm={handleTaskForm} />}
           {showTaskForm && <TaskForm handleTaskForm={handleTaskForm} getTasks={getTasks} />}
