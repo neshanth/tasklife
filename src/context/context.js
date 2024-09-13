@@ -4,6 +4,14 @@ import useIsMobile from "../hooks/useIsMobile";
 const UserContext = React.createContext();
 
 const UserProvider = ({ children }) => {
+  const TASK_DATA = {
+    task: "",
+    description: "",
+    due_date: "",
+    tags: [],
+    id: "",
+    status: 0
+  }
   const [showMobileNav, setShowMobileNav] = useState(false);
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState({});
@@ -16,19 +24,15 @@ const UserProvider = ({ children }) => {
     date: "",
     tags: []
   })
-  const [taskData, setTaskData] = useState({
-    task: "",
-    description: "",
-    due_date: "",
-    tags: [],
-    id: "",
-    status: 0
-  })
+  const [taskData, setTaskData] = useState(TASK_DATA)
   const [taskFormAction, setTaskFormAction] = useState('create')
   const isMobile = useIsMobile()
   const handleMobileNavToggle = () => {
     setShowMobileNav(!showMobileNav);
   };
+  const resetTaskData = () => {
+    setTaskData(TASK_DATA)
+  }
   const valueObj = {
     showMobileNav,
     setShowMobileNav,
@@ -51,7 +55,8 @@ const UserProvider = ({ children }) => {
     taskData,
     setTaskData,
     taskFormAction,
-    setTaskFormAction
+    setTaskFormAction,
+    resetTaskData
   }
   return <UserContext.Provider value={valueObj}>{children}</UserContext.Provider>;
 };

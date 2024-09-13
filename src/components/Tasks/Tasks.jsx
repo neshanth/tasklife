@@ -16,7 +16,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
   const location = useLocation();
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
-  const { fetchData, setFetchData } = useAppContext();
+  const { fetchData, setFetchData, resetTaskData } = useAppContext();
   const [showTaskForm, setShowTaskForm] = useState(false);
 
   useEffect(() => {
@@ -32,6 +32,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
 
   const handleTaskForm = () => {
     setShowTaskForm(!showTaskForm);
+    resetTaskData();
   };
 
   if (loading) {
