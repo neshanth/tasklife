@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import TaskItem from "../TaskItem/TaskItem";
 import Spinner from "../Spinner/Spinner";
 import { useLocation } from "react-router-dom";
-import "./tasks.css";
+import "./tasks.scss";
 import AddTask from "../AddTask/AddTask";
 import { renderToast } from "../../utils/utils";
 import useAppContext from "../../hooks/useAppContext";
@@ -45,13 +45,13 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
       <div className="content-container">
         <ContentInfo sectionHeading="Tasks" sectionInfo="Overview of All the Pending Tasks" />
         <Filters pendingTasks={pendingTasks} completedTasks={completedTasks} />
-        <div className="tl-tasks__in-progress">
+        <div className="tl-tasks__container">
           {tasks.map((task) => (
             <TaskItem handleTaskForm={handleTaskForm} handleTaskDelete={handleTaskDelete} key={task.id} taskInfo={task} updateTaskStatus={updateTaskStatus} />
           ))}
-          {<AddTask handleTaskForm={handleTaskForm} />}
           {showTaskForm && <TaskForm handleTaskForm={handleTaskForm} getTasks={getTasks} />}
         </div>
+        {<AddTask handleTaskForm={handleTaskForm} />}
       </div>
 
       {/* <div className="tasks-in-progress dashboard-section">

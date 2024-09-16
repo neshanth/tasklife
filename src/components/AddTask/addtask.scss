@@ -6,17 +6,23 @@
     align-items: center;
     gap: var(--tl-spacing-s);
     font-weight: 500;
-  }
-}
-.tl-tasks__in-progress {
-  .tl-add-task__text {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-  .tl-add-task {
-    cursor: pointer;
-    &:hover {
-      background-color: var(--tl-theme-light-5);
-    }
+  cursor: pointer;
+  &:hover {
+    background-color: var(--tl-theme-light-5);
   }
 }
+// .tl-tasks__in-progress {
+//   .tl-add-task__text {
+//     padding-left: 1.5rem;
+//     padding-right: 1.5rem;
+//   }
+//   .tl-add-task {
+//     cursor: pointer;
+//     &:hover {
+//       background-color: var(--tl-theme-light-5);
+//     }
+//   }
+// }
