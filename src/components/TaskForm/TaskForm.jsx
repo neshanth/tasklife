@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAppContext from "../../hooks/useAppContext";
 import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
-const TaskForm = ({ handleTaskForm, getTasks }) => {
+const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks }) => {
   const { allTags, setLoading, user, taskData, setTaskData, taskFormAction } = useAppContext();
   const [startDate, setStartDate] = useState(taskData.due_date ? new Date(taskData.due_date) : null);
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -43,29 +43,42 @@ const TaskForm = ({ handleTaskForm, getTasks }) => {
   };
 
   const handleTask = async () => {
-    setLoading(true);
+    // setLoading(true);
+    // store a copy of existing tasks;
+    const tasksCopy = [...tasks];
     try {
       if (startDate === null) {
         taskData.due_date = handleDateIfDateIsEmpty();
       } else {
         taskData.due_date = startDate.toISOString().split("T")[0];
       }
+
+      // if task name is empty return
+      if (!taskData.task) {
+        renderToast("Task name cannot be empty", "error");
+        return;
+      }
+
       const selectedTagsForTask = selectedTags ? selectedTags.map((tag) => tag.value) : [];
       const taskObj = { ...taskData, user_id: user.id, tags: selectedTagsForTask };
-      const response = taskFormAction === "create" ? await api.post(`/api/tasks`, taskObj) : await api.put(`/api/tasks/${taskData.id}`, taskObj);
-      await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedTagsForTask });
-      const toastMsg = taskFormAction === "create" ? "New Task Added" : "Task Updated";
-      renderToast(toastMsg, "success");
+      setTasks((prevTasks) => [taskObj, ...prevTasks]);
+      setShowTaskForm(false);
       setTaskData({
         task: "",
         description: "",
         due_date: "",
       });
-      getTasks();
+      const response = taskFormAction === "create" ? await api.post(`/api/tasks`, taskObj) : await api.put(`/api/tasks/${taskData.id}`, taskObj);
+      await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedTagsForTask });
+      const toastMsg = taskFormAction === "create" ? "New Task Added" : "Task Updated";
+      renderToast(toastMsg, "success");
+      getTasks(false);
     } catch (err) {
       setLoading(false);
-      const errorsList = Object.values(err.response.data.errors || err).flat();
-      errorsList.forEach((err) => renderToast(err, "error"));
+      setTasks(tasksCopy);
+      // const errorsList = Object.values(err.response.data.errors || err).flat();
+      // errorsList.forEach((err) => renderToast(err, "error"));
+      renderToast(err.message, "error");
     }
   };
 

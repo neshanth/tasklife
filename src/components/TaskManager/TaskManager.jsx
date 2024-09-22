@@ -38,8 +38,8 @@ const TaskManager = () => {
     setAuthLoader(false);
   };
 
-  const getTasks = () => {
-    setLoading(true);
+  const getTasks = (loading = true) => {
+    setLoading(loading);
     getTasksResponse()
       .then((response) => {
         setTasks([...response.data.tasks]);
@@ -100,7 +100,10 @@ const TaskManager = () => {
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoutes />}>
           <Route path={appPath} element={<MainContent />}>
-            <Route path={`${appPath}/tasks`} element={<Tasks getTasks={getTasks} loading={loading} tasks={tasks} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />} />
+            <Route
+              path={`${appPath}/tasks`}
+              element={<Tasks tasks={tasks} setTasks={setTasks} getTasks={getTasks} loading={loading} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />}
+            />
             <Route path={`${appPath}/stats`} element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route path={`${appPath}/tasks/edit/:id`} element={<EditTask tasks={tasks} handleTaskDelete={handleTaskDelete} />} />
             <Route path={`${appPath}/tasks/new`} element={<NewTask />} />

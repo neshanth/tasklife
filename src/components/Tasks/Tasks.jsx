@@ -12,7 +12,7 @@ import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import Filters from "../Filters/Filters";
 import TaskForm from "../TaskForm/TaskForm";
 
-function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks }) {
+function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, setTasks }) {
   const location = useLocation();
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
@@ -49,7 +49,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks })
           {tasks.map((task) => (
             <TaskItem handleTaskForm={handleTaskForm} handleTaskDelete={handleTaskDelete} key={task.id} taskInfo={task} updateTaskStatus={updateTaskStatus} />
           ))}
-          {showTaskForm && <TaskForm handleTaskForm={handleTaskForm} getTasks={getTasks} />}
+          {showTaskForm && <TaskForm tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}
         </div>
         {<AddTask handleTaskForm={handleTaskForm} />}
       </div>
