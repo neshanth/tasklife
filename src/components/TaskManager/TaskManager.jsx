@@ -74,19 +74,18 @@ const TaskManager = () => {
   };
 
   const handleTaskDelete = async (id) => {
-    setLoading(true);
+    const tasksCopy = [...tasks];
+    setTasks(tasks.filter((task) => task.id !== id));
     try {
       const response = await handleTaskDeleteResponse(id);
       if (response.status === 200) {
         renderToast("Task Deleted", "error");
-        navigate(`${appPath}/tasks`);
-        setTasks(tasks.filter((task) => task.id !== id));
-        setLoading(false);
         setFetchData(true);
+        getTasks(false);
       }
     } catch (err) {
-      console.log(err);
-      setLoading(false);
+      renderToast(err.response.data, "error");
+      setTasks(tasksCopy);
     }
   };
 

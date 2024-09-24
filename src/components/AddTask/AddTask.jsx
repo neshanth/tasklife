@@ -10,7 +10,7 @@ const AddTask = ({ handleTaskForm }) => {
     setTaskFormAction("create");
   };
   return (
-    <div className="tl-add-task" onClick={handleTaskForm}>
+    <div className="tl-add-task" onClick={handleAddTaskButton}>
       <p className="tl-add-task__text tl-padding">
         <Icons type="plus" />
         <span>Add Task</span>
