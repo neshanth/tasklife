@@ -61,7 +61,18 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks }
 
       const selectedTagsForTask = selectedTags ? selectedTags.map((tag) => tag.value) : [];
       const taskObj = { ...taskData, user_id: user.id, tags: selectedTagsForTask };
-      setTasks((prevTasks) => [taskObj, ...prevTasks]);
+      if (taskFormAction === "create") {
+        setTasks((prevTasks) => [taskObj, ...prevTasks]);
+      } else {
+        const newTasks = tasksCopy.map((task) => {
+          if (task.id === taskData.id) {
+            return taskObj;
+          }
+          return task;
+        });
+        setTasks(newTasks);
+      }
+
       setShowTaskForm(false);
       setTaskData({
         task: "",
