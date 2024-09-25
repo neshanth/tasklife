@@ -2,20 +2,15 @@
   display: flex;
   gap: var(--tl-spacing-s);
   border-bottom: var(--tl-spacing-2xs);
-  margin-bottom: var(--tl-spacing-2xs);
+  margin-bottom: var(--tl-spacing-xs);
+  &:hover {
+    cursor: pointer;
+  }
 
   .tl-task-item__checkbox,
   .tl-task-item__task {
-    padding: var(--tl-spacing-md) 0;
-  }
-
-  .tl-task-item__done,
-  .tl-task-item__pending {
-    display: flex;
-    margin-top: var(--tl-spacing-2xs);
-    &:hover {
-      cursor: pointer;
-    }
+    padding-top: var(--tl-spacing-md);
+    padding-bottom: var(--tl-spacing-s);
   }
 
   .tl-task-item__checkbox-input {
@@ -49,15 +44,6 @@
 
     .task-completed {
       color: var(--tl-text-light-2);
-    }
-
-    .tl-task-item__options {
-      .tl-task-item__edit,
-      .tl-task-item__delete {
-        &:hover {
-          cursor: pointer;
-        }
-      }
     }
   }
   .tl-task-item__due-date {

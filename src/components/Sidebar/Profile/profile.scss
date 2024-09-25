@@ -7,10 +7,14 @@
     gap: var(--tl-spacing-s);
 
     .tl-profile__img {
-      min-width: 40px;
-      min-height: 40px;
+      min-width: 2.5rem;
+      min-height: 2.5rem;
       background-color: #9ca3af;
       border-radius: 50%;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .tl-profile__details {

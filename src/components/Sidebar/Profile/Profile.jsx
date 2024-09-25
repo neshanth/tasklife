@@ -5,7 +5,7 @@ const Profile = ({ user }) => {
   return (
     <section className="tl-profile tl-padding">
       <div className="tl-profile__img">
-        <div></div>
+        <div>{user.name[0].toUpperCase()}</div>
       </div>
       <div className="tl-profile__details">
         <p className="tl-profile__name tl-heading">{user.name}</p>
