@@ -21,6 +21,8 @@
       .tl-profile__name,
       .tl-profile__email {
         margin-bottom: 0;
+        min-width: 90%;
+        word-break: break-all;
       }
 
       .tl-profile__email {

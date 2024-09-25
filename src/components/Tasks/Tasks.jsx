@@ -19,10 +19,8 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, s
   const { fetchData, setFetchData } = useAppContext();
 
   useEffect(() => {
-    if (fetchData) {
-      getTasks();
-      setFetchData(false);
-    }
+    getTasks();
+    setFetchData(false);
 
     if (location.state !== null) {
       renderToast(location.state.msg, "success");

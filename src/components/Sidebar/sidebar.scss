@@ -12,6 +12,7 @@
     height: 100%;
     padding-top: var(--tl-spacing-2xl);
     padding-bottom: var(--tl-spacing-2xl);
+    width: 15rem;
     .sidebar-link-active,
     .tl-navigation__navigation-item,
     .logout,
@@ -65,10 +66,12 @@
     &.hidden {
       width: 0;
       left: -360px;
+      visibility: hidden;
     }
 
     &.visible {
       width: 360px;
+      visibility: visible;
     }
   }
 
