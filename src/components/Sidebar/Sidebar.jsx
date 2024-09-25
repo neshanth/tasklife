@@ -64,12 +64,12 @@ function Sidebar({ handleClose, logout }) {
 
 const DesktopContent = ({ logout, user, handleSidebarForMobile }) => {
   return (
-    <>
+    <div className="sidebar-desktop">
       <img src={logo} alt="logo" width="122px" />
       <Profile user={user} />
       <Navigation handleSidebarForMobile={handleSidebarForMobile} />
       <Logout logout={logout} />
-    </>
+    </div>
   );
 };
 

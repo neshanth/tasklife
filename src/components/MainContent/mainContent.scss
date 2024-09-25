@@ -1,11 +1,9 @@
 .main-content {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 20px;
-
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    gap: 0;
+  // display: grid;
+  // grid-template-columns: 240px 1fr;
+  // gap: 20px;
+  @media screen and (min-width: 1024px) {
+    margin-left: 16.25rem;
   }
 
   .content-wrapper {

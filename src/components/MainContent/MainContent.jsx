@@ -37,7 +37,7 @@ function MainContent() {
     <div className="main-content">
       {/* <Sidebar show={show} logout={logout} handleClose={handleClose} /> */}
       {isMobile && <MobileHeader />}
-      {<Sidebar logout={logout} />}
+      {/* {<Sidebar logout={logout} />} */}
       <div className="content-wrapper tl-border">
         <Outlet />
       </div>
