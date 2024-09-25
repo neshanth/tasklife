@@ -30,6 +30,7 @@
 
   .tl-add-task__text {
     color: var(--tl-theme-base);
+    padding-left: 1rem !important;
   }
 
   @media screen and (max-width: 1024px) {
