@@ -19,10 +19,10 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete
   let substringLength;
 
   if (window.innerWidth <= 500) {
-    substringLength = 10;
+    substringLength = 100;
     isTaskNameLong = task.length > substringLength ? true : false;
   } else {
-    substringLength = 50;
+    substringLength = 150;
     isTaskNameLong = task.length > substringLength ? true : false;
   }
 

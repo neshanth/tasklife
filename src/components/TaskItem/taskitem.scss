@@ -35,6 +35,7 @@
     .tl-task-item__task-name {
       font-weight: 500;
       font-family: "Inter Display";
+      max-width: 80%;
       color: var(--tl-text-base);
       &.task-completed {
         text-decoration: line-through;
