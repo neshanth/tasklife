@@ -42,7 +42,8 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks }
     setStartDate(date);
   };
 
-  const handleTask = async () => {
+  const handleTaskAddOrUpdate = async (e) => {
+    e.preventDefault();
     // setLoading(true);
     // store a copy of existing tasks;
     const tasksCopy = [...tasks];
@@ -128,7 +129,7 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks }
     }),
   };
   return (
-    <div className="tl-task__form-wrapper">
+    <form className="tl-task__form-wrapper">
       <div className="tl-task__form">
         <BreadCrumb page={taskFormAction === "create" ? "Add Task" : "Edit Task"} />
         <div className="tl-task__form-container">
@@ -152,14 +153,14 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks }
         </div>
       </div>
       <div className="tl-task__form-submit">
-        <button className="tl-task__form-cancel tl-btn" onClick={handleTaskForm}>
+        <button type="button" className="tl-task__form-cancel tl-btn" onClick={handleTaskForm}>
           Cancel
         </button>
-        <button className="tl-task__form-save tl-btn" onClick={handleTask}>
+        <button type="submit" className="tl-task__form-save tl-btn" onClick={handleTaskAddOrUpdate}>
           {taskFormAction === "create" ? "Add" : "Update"}
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 export default TaskForm;
