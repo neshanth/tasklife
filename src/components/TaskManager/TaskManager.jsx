@@ -17,8 +17,9 @@ import useAppContext from "../../hooks/useAppContext";
 const TaskManager = () => {
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
+  const [showTaskForm, setShowTaskForm] = useState(false);
   const appPath = "/app";
-  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags } = useAppContext();
+  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, resetTaskData } = useAppContext();
 
   useEffect(() => {
     checkAuth();
@@ -89,6 +90,11 @@ const TaskManager = () => {
     }
   };
 
+  const handleTaskForm = () => {
+    setShowTaskForm(!showTaskForm);
+    resetTaskData();
+  };
+
   if (authLoader) return <Spinner />;
 
   return (
@@ -101,7 +107,19 @@ const TaskManager = () => {
           <Route path={appPath} element={<MainContent />}>
             <Route
               path={`${appPath}/tasks`}
-              element={<Tasks tasks={tasks} setTasks={setTasks} getTasks={getTasks} loading={loading} updateTaskStatus={updateTaskStatus} handleTaskDelete={handleTaskDelete} />}
+              element={
+                <Tasks
+                  handleTaskForm={handleTaskForm}
+                  tasks={tasks}
+                  setTasks={setTasks}
+                  getTasks={getTasks}
+                  loading={loading}
+                  updateTaskStatus={updateTaskStatus}
+                  handleTaskDelete={handleTaskDelete}
+                  showTaskForm={showTaskForm}
+                  setShowTaskForm={setShowTaskForm}
+                />
+              }
             />
             <Route path={`${appPath}/stats`} element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route path={`${appPath}/tasks/edit/:id`} element={<EditTask tasks={tasks} handleTaskDelete={handleTaskDelete} />} />

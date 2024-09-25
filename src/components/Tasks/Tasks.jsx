@@ -12,12 +12,11 @@ import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import Filters from "../Filters/Filters";
 import TaskForm from "../TaskForm/TaskForm";
 
-function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, setTasks }) {
+function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, setTasks, handleTaskForm, showTaskForm, setShowTaskForm }) {
   const location = useLocation();
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
-  const { fetchData, setFetchData, resetTaskData } = useAppContext();
-  const [showTaskForm, setShowTaskForm] = useState(false);
+  const { fetchData, setFetchData } = useAppContext();
 
   useEffect(() => {
     if (fetchData) {
@@ -29,11 +28,6 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, s
       renderToast(location.state.msg, "success");
     }
   }, []);
-
-  const handleTaskForm = () => {
-    setShowTaskForm(!showTaskForm);
-    resetTaskData();
-  };
 
   if (loading) {
     return <Spinner />;
