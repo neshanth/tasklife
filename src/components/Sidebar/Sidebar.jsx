@@ -6,7 +6,7 @@ import Icons from "../Icons/Icons";
 import Navigation from "./Navigation/Navigation";
 import Profile from "./Profile/Profile";
 
-function Sidebar({ handleClose, logout }) {
+function Sidebar({ logout, handleTaskForm }) {
   const { setShow, user, isMobile, handleMobileNavToggle, showMobileNav } = useAppContext();
 
   const handleClick = () => {
@@ -21,6 +21,7 @@ function Sidebar({ handleClose, logout }) {
     user,
     logout,
     handleSidebarForMobile,
+    handleTaskForm,
   };
 
   return (
@@ -62,18 +63,18 @@ function Sidebar({ handleClose, logout }) {
   // );
 }
 
-const DesktopContent = ({ logout, user, handleSidebarForMobile }) => {
+const DesktopContent = ({ logout, user, handleSidebarForMobile, handleTaskForm }) => {
   return (
     <div className="sidebar-desktop">
       <img src={logo} alt="logo" width="122px" />
       <Profile user={user} />
-      <Navigation handleSidebarForMobile={handleSidebarForMobile} />
+      <Navigation handleTaskForm={handleTaskForm} handleSidebarForMobile={handleSidebarForMobile} />
       <Logout logout={logout} />
     </div>
   );
 };
 
-const MobileContent = ({ logout, user, handleSidebarForMobile, handleMobileNavToggle, showMobileNav }) => {
+const MobileContent = ({ logout, user, handleSidebarForMobile, handleMobileNavToggle, showMobileNav, handleTaskForm }) => {
   return (
     <div className={`sidebar-mobile ${showMobileNav ? "visible" : "hidden"}`}>
       <div className="sidebar-mobile-profile">
@@ -82,7 +83,7 @@ const MobileContent = ({ logout, user, handleSidebarForMobile, handleMobileNavTo
           <Icons type="close" />
         </div>
       </div>
-      <Navigation handleSidebarForMobile={handleSidebarForMobile} />
+      <Navigation handleTaskForm={handleTaskForm} handleSidebarForMobile={handleSidebarForMobile} />
       <Logout logout={logout} />
     </div>
   );

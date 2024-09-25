@@ -18,7 +18,7 @@ const navigationLinks = [
     icon: <Icons type="stats" />,
   },
 ];
-const Navigation = () => {
+const Navigation = ({ handleTaskForm }) => {
   let location = useLocation();
   return (
     <nav className="tl-navigation">
@@ -33,7 +33,7 @@ const Navigation = () => {
           </li>
         ))}
       </ul>
-      <AddTask />
+      <AddTask handleTaskForm={handleTaskForm} />
     </nav>
   );
 };

@@ -13,13 +13,15 @@ import Stats from "../Stats/Stats.jsx";
 import { getTasksResponse, renderToast, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
 import useAppContext from "../../hooks/useAppContext";
+import Sidebar from "../Sidebar/Sidebar.jsx";
+import history from "../../history/history.js";
 
 const TaskManager = () => {
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [showTaskForm, setShowTaskForm] = useState(false);
   const appPath = "/app";
-  const { setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, resetTaskData } = useAppContext();
+  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, resetTaskData } = useAppContext();
 
   useEffect(() => {
     checkAuth();
@@ -95,6 +97,21 @@ const TaskManager = () => {
     resetTaskData();
   };
 
+  const logout = async () => {
+    setLoading(true);
+    try {
+      let response = await api.post("/api/logout", {});
+      if (response.status === 200) {
+        setAuth(false);
+        setLoading(false);
+        history.push("/");
+      }
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  };
+
   if (authLoader) return <Spinner />;
 
   return (
@@ -128,6 +145,7 @@ const TaskManager = () => {
         </Route>
         <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Routes>
+      {auth && <Sidebar handleTaskForm={handleTaskForm} logout={logout} />}
     </>
   );
 };
