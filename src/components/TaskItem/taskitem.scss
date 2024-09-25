@@ -49,6 +49,15 @@
     .task-completed {
       color: var(--tl-text-light-2);
     }
+
+    .tl-task-item__options {
+      .tl-task-item__edit,
+      .tl-task-item__delete {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
   .tl-task-item__due-date {
     color: var(--tl-theme-base);

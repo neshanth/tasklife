@@ -130,7 +130,7 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks }
   return (
     <div className="tl-task__form-wrapper">
       <div className="tl-task__form">
-        <BreadCrumb page="Add Task" />
+        <BreadCrumb page={taskFormAction === "create" ? "Add Task" : "Edit Task"} />
         <div className="tl-task__form-container">
           <div className="tl-task__form-name-desc tl-border">
             <div className="tl-task__form-task-name">

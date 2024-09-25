@@ -12,6 +12,7 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete
   const { task, due_date, id, status, tags, description } = taskInfo;
   const [showModal, setShowModal] = useState(false);
   const [showTaskOptions, setShowTaskOptions] = useState(false);
+  const [checkBoxHover, setCheckBoxHover] = useState(false);
   const { taskData, setTaskData, setTaskFormAction } = useAppContext();
   let todo_date = new Date(due_date);
   let isTaskNameLong = false;
@@ -47,8 +48,8 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete
 
   return (
     <div className={`tl-task-item`} onMouseOver={() => setShowTaskOptions(true)} onMouseLeave={() => setShowTaskOptions(false)}>
-      <div className="tl-task-item__checkbox">
-        {status ? (
+      <div className="tl-task-item__checkbox" onMouseOver={() => setCheckBoxHover(true)} onMouseLeave={() => setCheckBoxHover(false)}>
+        {checkBoxHover || status ? (
           <div className="tl-task-item__done" onClick={() => updateTaskStatus(id)}>
             <Icons type="circle-filled" w="20" h="20" />
           </div>
