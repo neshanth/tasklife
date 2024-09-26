@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAppContext from "../../hooks/useAppContext";
 import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
-const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks }) => {
+const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus }) => {
   const { allTags, setLoading, user, taskData, setTaskData, taskFormAction } = useAppContext();
   const [startDate, setStartDate] = useState(taskData.due_date ? new Date(taskData.due_date) : null);
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -142,6 +142,19 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks }
             </div>
           </div>
           <div className="tl-task__form-info">
+            <div className="tl-task__form-task-status">
+              {taskData.status ? (
+                <div className="tl-task__form-task-done" onClick={() => updateTaskStatus(taskData.id)}>
+                  <Icons type="circle-filled" w="20" h="20" />
+                  <span className="tl-task__form-task-status-text">Completed</span>
+                </div>
+              ) : (
+                <div className="tl-task__form-task-pending" onClick={() => updateTaskStatus(taskData.id)}>
+                  <Icons type="circle" w="20" h="20" />
+                  <span className="tl-task__form-task-status-text">Pending</span>
+                </div>
+              )}
+            </div>
             <div className="tl-task__form-due-date">
               <DatePicker isClearable dateFormat="MMM d" customInput={<DateInput className="tl-task__form-due-date" />} placeholderText="Due Date" selected={startDate} onChange={handleDatePicker} />
             </div>

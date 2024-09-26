@@ -41,7 +41,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, s
           {tasks.map((task) => (
             <TaskItem handleTaskForm={handleTaskForm} handleTaskDelete={handleTaskDelete} key={task.id} taskInfo={task} updateTaskStatus={updateTaskStatus} />
           ))}
-          {showTaskForm && <TaskForm tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}
+          {showTaskForm && <TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}
         </div>
         {<AddTask handleTaskForm={handleTaskForm} />}
       </div>
