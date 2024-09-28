@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Home from "../Home/Home";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-dom";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import MainContent from "../MainContent/MainContent.jsx";
@@ -15,8 +15,12 @@ import Spinner from "../Spinner/Spinner";
 import useAppContext from "../../hooks/useAppContext";
 import Sidebar from "../Sidebar/Sidebar.jsx";
 import history from "../../history/history.js";
+import TaskItem from "../TaskItem/TaskItem.jsx";
+import TaskForm from "../TaskForm/TaskForm.jsx";
 
 const TaskManager = () => {
+  const location = useLocation();
+  const previousLocation = location.state?.previousLocation;
   const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [showTaskForm, setShowTaskForm] = useState(false);
@@ -116,7 +120,7 @@ const TaskManager = () => {
 
   return (
     <>
-      <Routes>
+      <Routes location={previousLocation || location}>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -139,12 +143,22 @@ const TaskManager = () => {
               }
             />
             <Route path={`${appPath}/stats`} element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
-            <Route path={`${appPath}/tasks/edit/:id`} element={<EditTask tasks={tasks} handleTaskDelete={handleTaskDelete} />} />
-            <Route path={`${appPath}/tasks/new`} element={<NewTask />} />
           </Route>
         </Route>
         <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Routes>
+      {previousLocation && (
+        <Routes>
+          <Route
+            path={`${appPath}/tasks/add`}
+            element={<TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}
+          />
+          <Route
+            path={`${appPath}/tasks/edit/:id`}
+            element={<TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}
+          />
+        </Routes>
+      )}
       {auth && <Sidebar handleTaskForm={handleTaskForm} logout={logout} />}
     </>
   );

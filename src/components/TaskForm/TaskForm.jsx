@@ -8,17 +8,40 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAppContext from "../../hooks/useAppContext";
 import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
-const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus }) => {
-  const { allTags, setLoading, user, taskData, setTaskData, taskFormAction } = useAppContext();
-  const [startDate, setStartDate] = useState(taskData.due_date ? new Date(taskData.due_date) : null);
+import { useNavigate, useParams } from "react-router-dom";
+const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus }) => {
+  const TASK_DATA = {
+    task: "",
+    description: "",
+    due_date: "",
+    tags: [],
+    id: "",
+    status: 0,
+  };
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { allTags, setLoading, user } = useAppContext();
+  const [taskData, setTaskData] = useState(TASK_DATA);
+  const [startDate, setStartDate] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [selectedTags, setSelectedTags] = useState(taskData.tags ? taskData.tags : []);
+  const [taskFormAction] = useState(id ? "edit" : "create");
+
+  useEffect(() => {
+    if (id) {
+      const taskData = tasks.find((task) => task.id === parseInt(id));
+      setTaskData(taskData);
+      setStartDate(taskData?.due_date ? new Date(taskData.due_date) : null);
+    }
+  }, [id]);
+
   const DateInput = forwardRef(({ className, onClick, placeholder, value }, ref) => (
     <div className={className} ref={ref} onClick={onClick}>
       <Icons w="25px" h="25px" type="calendar" />
       <input className="tl-task__form-date-input" type="text" placeholder={placeholder} value={value} readOnly />
     </div>
   ));
+
   const inputRef = useRef();
   useEffect(() => {
     inputRef.current.focus();
@@ -44,8 +67,6 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks, 
 
   const handleTaskAddOrUpdate = async (e) => {
     e.preventDefault();
-    // setLoading(true);
-    // store a copy of existing tasks;
     const tasksCopy = [...tasks];
     try {
       if (startDate === null) {
@@ -73,13 +94,9 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks, 
         });
         setTasks(newTasks);
       }
-
       setShowTaskForm(false);
-      setTaskData({
-        task: "",
-        description: "",
-        due_date: "",
-      });
+      setTaskData(TASK_DATA);
+      setStartDate(null);
       const response = taskFormAction === "create" ? await api.post(`/api/tasks`, taskObj) : await api.put(`/api/tasks/${taskData.id}`, taskObj);
       await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedTagsForTask });
       const toastMsg = taskFormAction === "create" ? "New Task Added" : "Task Updated";
@@ -88,10 +105,12 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks, 
     } catch (err) {
       setLoading(false);
       setTasks(tasksCopy);
-      // const errorsList = Object.values(err.response.data.errors || err).flat();
-      // errorsList.forEach((err) => renderToast(err, "error"));
       renderToast(err.message, "error");
     }
+  };
+
+  const handleCancelButton = () => {
+    navigate(-1);
   };
 
   // Custom styles to remove the border
@@ -166,7 +185,7 @@ const TaskForm = ({ handleTaskForm, getTasks, setTasks, setShowTaskForm, tasks, 
         </div>
       </div>
       <div className="tl-task__form-submit">
-        <button type="button" className="tl-task__form-cancel tl-btn" onClick={handleTaskForm}>
+        <button type="button" className="tl-task__form-cancel tl-btn" onClick={handleCancelButton}>
           Cancel
         </button>
         <button type="submit" className="tl-task__form-save tl-btn" onClick={handleTaskAddOrUpdate}>

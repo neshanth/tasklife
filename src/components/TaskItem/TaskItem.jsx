@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import EditIcon from "../../assets/Icons/EditIcon";
 import Tags from "../Tags/Tags";
 import TaskModal from "../TaskModal/TaskModal";
@@ -9,7 +9,9 @@ import Icons from "../Icons/Icons";
 import useAppContext from "../../hooks/useAppContext";
 
 const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete }) => {
+  const appPath = "/app";
   const { task, due_date, id, status, tags, description } = taskInfo;
+  const location = useLocation();
   const [showModal, setShowModal] = useState(false);
   const [showTaskOptions, setShowTaskOptions] = useState(false);
   const [checkBoxHover, setCheckBoxHover] = useState(false);
@@ -65,8 +67,10 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete
           <p className={`tl-task-item__task-name ${status ? "task-completed" : "task-pending"}`}>{isTaskNameLong ? `${task.substring(0, substringLength)}...` : task}</p>
           {showTaskOptions && (
             <div className="tl-task-item__options">
-              <div className="tl-task-item__edit" onClick={handleTaskEdit}>
-                <Icons type="pencil" w="16" h="16" />
+              <div className="tl-task-item__edit">
+                <Link to={`${appPath}/tasks/edit/${id}`} state={{ previousLocation: location }}>
+                  <Icons type="pencil" w="16" h="16" />
+                </Link>
               </div>
               <div className="tl-task-item__delete" onClick={() => handleTaskDelete(id)}>
                 <Icons type="trash" w="16" h="16" />

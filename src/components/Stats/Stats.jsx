@@ -72,7 +72,7 @@ function Stats({ tasks, updateTaskStatus }) {
       <div className="recent-tasks dashboard-section">
         <p className="dashboard-sub-heading">Recent Tasks</p>
         {recentTasks.map((r) => (
-          <TaskItem key={r.id} taskData={r} label={true} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} />
+          <TaskItem key={r.id} taskInfo={r} label={true} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} />
         ))}
         <AddTask />
       </div>
