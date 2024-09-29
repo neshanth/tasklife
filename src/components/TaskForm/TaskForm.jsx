@@ -169,38 +169,30 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
             </div>
           </div>
           <div className="tl-task__form-info">
-            <div className="tl-task__form-task-status">
-              {taskData.status ? <Icons type="circle-filled" w="20" h="20" /> : <Icons type="circle" w="20" h="20" />}
-              <Select
-                value={taskData.status ? { value: 1, label: "Completed" } : { value: 0, label: "Pending" }}
-                name="status"
-                onChange={handleTaskFormChange}
-                options={[
-                  {
-                    value: 1,
-                    label: "Completed",
-                    type: "status",
-                  },
-                  {
-                    value: 0,
-                    label: "Pending",
-                    type: "status",
-                  },
-                ]}
-                styles={customStyles}
-              />
-              {/* {taskData.status ? (
-                <div className="tl-task__form-task-done" onClick={() => updateTaskStatus(taskData.id)}>
-                  <Icons type="circle-filled" w="20" h="20" />
-                  <span className="tl-task__form-task-status-text">Completed</span>
-                </div>
-              ) : (
-                <div className="tl-task__form-task-pending" onClick={() => updateTaskStatus(taskData.id)}>
-                  <Icons type="circle" w="20" h="20" />
-                  <span className="tl-task__form-task-status-text">Pending</span>
-                </div>
-              )} */}
-            </div>
+            {taskFormAction !== "create" && (
+              <div className="tl-task__form-task-status">
+                {taskData.status ? <Icons type="circle-filled" w="20" h="20" /> : <Icons type="circle" w="20" h="20" />}
+                <Select
+                  value={taskData.status ? { value: 1, label: "Completed" } : { value: 0, label: "Pending" }}
+                  name="status"
+                  onChange={handleTaskFormChange}
+                  options={[
+                    {
+                      value: 1,
+                      label: "Completed",
+                      type: "status",
+                    },
+                    {
+                      value: 0,
+                      label: "Pending",
+                      type: "status",
+                    },
+                  ]}
+                  styles={customStyles}
+                />
+              </div>
+            )}
+
             <div className="tl-task__form-due-date">
               <DatePicker isClearable dateFormat="MMM d" customInput={<DateInput className="tl-task__form-due-date" />} placeholderText="Due Date" selected={startDate} onChange={handleDatePicker} />
             </div>
