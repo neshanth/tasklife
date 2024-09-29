@@ -32,6 +32,7 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
       const taskData = tasks.find((task) => task.id === parseInt(id));
       setTaskData(taskData);
       setStartDate(taskData?.due_date ? new Date(taskData.due_date) : null);
+      setSelectedTags(taskData?.tags ? taskData.tags : []);
     }
   }, [id]);
 
