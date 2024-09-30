@@ -1,27 +1,24 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import EditIcon from "../../assets/Icons/EditIcon";
+import { Link, useLocation } from "react-router-dom";
 import Tags from "../Tags/Tags";
-import TaskModal from "../TaskModal/TaskModal";
-import "./taskitem.scss";
 import Icons from "../Icons/Icons";
-import useAppContext from "../../hooks/useAppContext";
+import useIsMobile from "../../hooks/useIsMobile";
+import "./taskitem.scss";
 
-const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete }) => {
+const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskDelete }) => {
   const appPath = "/app";
-  const { task, due_date, id, status, tags, description } = taskInfo;
-  console.log(tags);
-
+  const { task, due_date, id, status, tags } = taskInfo;
   const location = useLocation();
-  const [showModal, setShowModal] = useState(false);
+  const isMobile = useIsMobile();
   const [showTaskOptions, setShowTaskOptions] = useState(false);
   const [checkBoxHover, setCheckBoxHover] = useState(false);
-  const { taskData, setTaskData, setTaskFormAction } = useAppContext();
   let todo_date = new Date(due_date);
   let isTaskNameLong = false;
   let substringLength;
 
+  /*------------------------------
+    Handle a Task name that is too long
+  --------------------------------*/
   if (window.innerWidth <= 500) {
     substringLength = 100;
     isTaskNameLong = task.length > substringLength ? true : false;
@@ -29,26 +26,6 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete
     substringLength = 150;
     isTaskNameLong = task.length > substringLength ? true : false;
   }
-
-  const handleModalClose = () => setShowModal(false);
-  const handleClick = (e) => {
-    if (e.target.id === "status") return;
-    setShowModal(true);
-  };
-
-  const handleTaskEdit = () => {
-    handleTaskForm();
-    setTaskData({
-      ...taskData,
-      task,
-      due_date,
-      description,
-      tags,
-      id,
-      status,
-    });
-    setTaskFormAction("edit");
-  };
 
   return (
     <div className={`tl-task-item`} onMouseOver={() => setShowTaskOptions(true)} onMouseLeave={() => setShowTaskOptions(false)}>
@@ -67,7 +44,7 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete
       <div className="tl-task-item__task">
         <div className="tl-task-item__info-options">
           <p className={`tl-task-item__task-name ${status ? "task-completed" : "task-pending"}`}>{isTaskNameLong ? `${task.substring(0, substringLength)}...` : task}</p>
-          {showTaskOptions && (
+          {(showTaskOptions || isMobile) && (
             <div className="tl-task-item__options">
               <div className="tl-task-item__edit">
                 <Link to={`${appPath}/tasks/edit/${id}`} state={{ previousLocation: location }}>
