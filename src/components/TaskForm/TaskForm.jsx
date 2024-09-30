@@ -9,6 +9,7 @@ import useAppContext from "../../hooks/useAppContext";
 import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
+import useIsMobile from "../../hooks/useIsMobile";
 const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus }) => {
   const TASK_DATA = {
     task: "",
@@ -20,6 +21,7 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
   };
   const navigate = useNavigate();
   const { id } = useParams();
+  const isMobile = useIsMobile();
   const { allTags, setLoading, user } = useAppContext();
   const [taskData, setTaskData] = useState(TASK_DATA);
   const [startDate, setStartDate] = useState(null);
@@ -94,6 +96,9 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
       const taskObj = { ...taskData, user_id: user.id, tags: selectedTagsForTask };
       if (taskFormAction === "create") {
         setTasks((prevTasks) => [taskObj, ...prevTasks]);
+        if (isMobile) {
+          navigate(-1);
+        }
       } else {
         const newTasks = tasksCopy.map((task) => {
           if (task.id === taskData.id) {
@@ -104,7 +109,6 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
         setTasks(newTasks);
         navigate(-1);
       }
-      setShowTaskForm(false);
       setTaskData(TASK_DATA);
       setStartDate(null);
       setSelectedTags([]);
