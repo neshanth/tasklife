@@ -11,6 +11,8 @@ import useAppContext from "../../hooks/useAppContext";
 const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskForm, handleTaskDelete }) => {
   const appPath = "/app";
   const { task, due_date, id, status, tags, description } = taskInfo;
+  console.log(tags);
+
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
   const [showTaskOptions, setShowTaskOptions] = useState(false);

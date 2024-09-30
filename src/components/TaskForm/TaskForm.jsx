@@ -89,7 +89,8 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
         return;
       }
 
-      const selectedTagsForTask = selectedTags ? selectedTags.map((tag) => tag.value) : [];
+      const selectedTagValuesForTask = selectedTags ? selectedTags.map((tag) => tag.value) : [];
+      const selectedTagsForTask = selectedTags || [];
       const taskObj = { ...taskData, user_id: user.id, tags: selectedTagsForTask };
       if (taskFormAction === "create") {
         setTasks((prevTasks) => [taskObj, ...prevTasks]);
@@ -106,13 +107,13 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
       setShowTaskForm(false);
       setTaskData(TASK_DATA);
       setStartDate(null);
+      setSelectedTags([]);
       const response = taskFormAction === "create" ? await api.post(`/api/tasks`, taskObj) : await api.put(`/api/tasks/${taskData.id}`, taskObj);
-      await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedTagsForTask });
+      await api.post(`/api/tags/add/${response.data.id}`, { tagIds: selectedTagValuesForTask });
       const toastMsg = taskFormAction === "create" ? "New Task Added" : "Task Updated";
       renderToast(toastMsg, "success");
       getTasks(false);
     } catch (err) {
-      setLoading(false);
       setTasks(tasksCopy);
       renderToast(err.message, "error");
     }

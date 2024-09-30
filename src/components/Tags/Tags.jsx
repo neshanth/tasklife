@@ -3,6 +3,7 @@ import "./tags.scss";
 import Icons from "../Icons/Icons";
 
 const Tags = ({ tags }) => {
+  console.log(tags);
   return (
     <div className="tl-task-item-tags">
       {tags.map((tag) => (
