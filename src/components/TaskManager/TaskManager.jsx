@@ -80,7 +80,8 @@ const TaskManager = () => {
     }
   };
 
-  const handleTaskDelete = async (id) => {
+  const handleTaskDelete = async (e, id) => {
+    e.stopPropagation();
     const tasksCopy = [...tasks];
     setTasks(tasks.filter((task) => task.id !== id));
     try {
@@ -149,6 +150,10 @@ const TaskManager = () => {
       </Routes>
       {previousLocation && (
         <Routes>
+          <Route
+            path={`${appPath}/tasks/:id`}
+            element={<TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}
+          />
           <Route
             path={`${appPath}/tasks/add`}
             element={<TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}

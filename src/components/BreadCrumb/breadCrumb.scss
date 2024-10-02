@@ -4,10 +4,16 @@
   padding-left: var(--tl-spacing-xl);
   padding-right: var(--tl-spacing-xl);
   border-bottom: 1px solid var(--tl-theme-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   .tl-tasks__breadcrumb-item-app-name {
     color: var(--tl-text-light-3);
   }
   .tl-tasks__breadcrumb-item-page {
     color: var(--tl-text-light-1);
+  }
+  .tl-tasks__breadcrumb-close {
+    cursor: pointer;
   }
 }

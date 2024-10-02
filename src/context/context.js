@@ -16,6 +16,7 @@ const UserProvider = ({ children }) => {
     date: "",
     tags: []
   })
+  const [taskFormAction, setTaskFormAction] = useState("create");
   const isMobile = useIsMobile()
   const handleMobileNavToggle = () => {
     setShowMobileNav(!showMobileNav);
@@ -39,6 +40,8 @@ const UserProvider = ({ children }) => {
     isMobile,
     filters,
     setFilters,
+    taskFormAction,
+    setTaskFormAction
   }
   return <UserContext.Provider value={valueObj}>{children}</UserContext.Provider>;
 };

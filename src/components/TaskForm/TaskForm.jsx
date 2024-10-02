@@ -10,7 +10,7 @@ import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
 import useIsMobile from "../../hooks/useIsMobile";
-const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus }) => {
+const TaskForm = ({ getTasks, setTasks, tasks }) => {
   const TASK_DATA = {
     task: "",
     description: "",
@@ -22,12 +22,11 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
   const navigate = useNavigate();
   const { id } = useParams();
   const isMobile = useIsMobile();
-  const { allTags, setLoading, user } = useAppContext();
+  const { allTags, user, taskFormAction } = useAppContext();
   const [taskData, setTaskData] = useState(TASK_DATA);
   const [startDate, setStartDate] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [selectedTags, setSelectedTags] = useState(taskData.tags ? taskData.tags : []);
-  const [taskFormAction] = useState(id ? "edit" : "create");
 
   useEffect(() => {
     if (id) {
@@ -36,7 +35,7 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
       setStartDate(taskData?.due_date ? new Date(taskData.due_date) : null);
       setSelectedTags(taskData?.tags ? taskData.tags : []);
     }
-  }, [id]);
+  }, [id, tasks]);
 
   const DateInput = forwardRef(({ className, onClick, placeholder, value }, ref) => (
     <div className={className} ref={ref} onClick={onClick}>
@@ -161,10 +160,13 @@ const TaskForm = ({ getTasks, setTasks, setShowTaskForm, tasks, updateTaskStatus
       display: "none",
     }),
   };
+  const taskFormTitle = taskFormAction === "create" ? "New" : taskFormAction === "edit" ? "Edit" : "View";
   return (
     <form className="tl-task__form-wrapper">
       <div className="tl-task__form">
-        <BreadCrumb page={taskFormAction === "create" ? "Add Task" : "Edit Task"} />
+        <div className="tl-task__form-title-container">
+          <BreadCrumb page={taskFormTitle} showClose={true} />
+        </div>
         <div className="tl-task__form-container">
           <div className="tl-task__form-name-desc tl-border">
             <div className="tl-task__form-task-name">
