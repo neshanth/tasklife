@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAppContext from "../../hooks/useAppContext";
 import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useIsMobile from "../../hooks/useIsMobile";
 const TaskForm = ({ getTasks, setTasks, tasks }) => {
   const TASK_DATA = {
@@ -27,6 +27,7 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
   const [startDate, setStartDate] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [selectedTags, setSelectedTags] = useState(taskData.tags ? taskData.tags : []);
+  const location = useLocation();
 
   useEffect(() => {
     if (id) {
@@ -123,7 +124,7 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
   };
 
   const handleCancelButton = () => {
-    navigate(-1);
+    navigate(location.state?.previousLocation?.pathname || -1);
   };
 
   // Custom styles to remove the border
