@@ -99,13 +99,21 @@
       background-color: var(--tl-neutral-white);
       color: var(--tl-text-light-1);
     }
-    .tl-task__form-save {
+    .tl-task__form-save,
+    .tl-task__form-edit {
       background-color: var(--tl-theme-base);
       color: var(--tl-neutral-white);
     }
 
+    .tl-task__form-delete {
+      background-color: tomato;
+      color: var(--tl-neutral-white);
+    }
+
     .tl-task__form-cancel,
-    .tl-task__form-save {
+    .tl-task__form-save,
+    .tl-task__form-edit,
+    .tl-task__form-delete {
       width: 100%;
     }
 

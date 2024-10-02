@@ -10,7 +10,7 @@ import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useIsMobile from "../../hooks/useIsMobile";
-const TaskForm = ({ getTasks, setTasks, tasks }) => {
+const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   const TASK_DATA = {
     task: "",
     description: "",
@@ -22,7 +22,7 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const isMobile = useIsMobile();
-  const { allTags, user, taskFormAction } = useAppContext();
+  const { allTags, user, taskFormAction, setTaskFormAction } = useAppContext();
   const [taskData, setTaskData] = useState(TASK_DATA);
   const [startDate, setStartDate] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -36,7 +36,7 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
       setStartDate(taskData?.due_date ? new Date(taskData.due_date) : null);
       setSelectedTags(taskData?.tags ? taskData.tags : []);
     }
-  }, [id, tasks]);
+  }, [id]);
 
   const DateInput = forwardRef(({ className, onClick, placeholder, value }, ref) => (
     <div className={className} ref={ref} onClick={onClick}>
@@ -50,7 +50,7 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, [id]);
+  }, [id, taskFormAction]);
 
   const handleChange = (option) => {
     if (option.length <= 3) {
@@ -126,6 +126,15 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
   };
 
   const handleCancelButton = () => {
+    navigate(location.state?.previousLocation?.pathname || -1);
+  };
+
+  const handleTaskEditFromView = () => {
+    setTaskFormAction("edit");
+  };
+
+  const handleTaskDeleteFromView = (e, id) => {
+    handleTaskDelete(e, id);
     navigate(location.state?.previousLocation?.pathname || -1);
   };
 
@@ -235,14 +244,42 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
         </div>
       </div>
       <div className="tl-task__form-submit">
-        <button type="button" className="tl-task__form-cancel tl-btn" onClick={handleCancelButton}>
-          Cancel
-        </button>
-        <button type="submit" className="tl-task__form-save tl-btn" onClick={handleTaskAddOrUpdate}>
-          {taskFormAction === "create" ? "Add" : "Update"}
-        </button>
+        <TaskActionButtons
+          taskFormAction={taskFormAction}
+          handleCancelButton={handleCancelButton}
+          handleTaskAddOrUpdate={handleTaskAddOrUpdate}
+          handleTaskEditFromView={handleTaskEditFromView}
+          handleTaskDeleteFromView={handleTaskDeleteFromView}
+          id={id}
+        />
       </div>
     </form>
   );
 };
 export default TaskForm;
+
+const TaskActionButtons = ({ taskFormAction, handleCancelButton, handleTaskAddOrUpdate, handleTaskEditFromView, handleTaskDeleteFromView, id }) => {
+  return (
+    <>
+      {taskFormAction !== "view" ? (
+        <>
+          <button type="button" className="tl-task__form-cancel tl-btn" onClick={handleCancelButton}>
+            Cancel
+          </button>
+          <button type="submit" className="tl-task__form-save tl-btn" onClick={handleTaskAddOrUpdate}>
+            {taskFormAction === "create" ? "Add" : "Update"}
+          </button>
+        </>
+      ) : (
+        <>
+          <button type="button" className="tl-task__form-edit tl-btn" onClick={(e) => handleTaskEditFromView(e, id)}>
+            Edit
+          </button>
+          <button type="button" className="tl-task__form-delete tl-btn" onClick={(e) => handleTaskDeleteFromView(e, id)}>
+            Delete
+          </button>
+        </>
+      )}
+    </>
+  );
+};

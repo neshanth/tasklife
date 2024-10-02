@@ -83,7 +83,7 @@ const TaskManager = () => {
   const handleTaskDelete = async (e, id) => {
     e.stopPropagation();
     const tasksCopy = [...tasks];
-    setTasks(tasks.filter((task) => task.id !== id));
+    setTasks(tasks.filter((task) => task.id !== Number(id)));
     try {
       const response = await handleTaskDeleteResponse(id);
       if (response.status === 200) {
@@ -152,15 +152,45 @@ const TaskManager = () => {
         <Routes>
           <Route
             path={`${appPath}/tasks/:id`}
-            element={<TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}
+            element={
+              <TaskForm
+                handleTaskDelete={handleTaskDelete}
+                updateTaskStatus={updateTaskStatus}
+                tasks={tasks}
+                setShowTaskForm={setShowTaskForm}
+                handleTaskForm={handleTaskForm}
+                getTasks={getTasks}
+                setTasks={setTasks}
+              />
+            }
           />
           <Route
             path={`${appPath}/tasks/add`}
-            element={<TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}
+            element={
+              <TaskForm
+                handleTaskDelete={handleTaskDelete}
+                updateTaskStatus={updateTaskStatus}
+                tasks={tasks}
+                setShowTaskForm={setShowTaskForm}
+                handleTaskForm={handleTaskForm}
+                getTasks={getTasks}
+                setTasks={setTasks}
+              />
+            }
           />
           <Route
             path={`${appPath}/tasks/edit/:id`}
-            element={<TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />}
+            element={
+              <TaskForm
+                handleTaskDelete={handleTaskDelete}
+                updateTaskStatus={updateTaskStatus}
+                tasks={tasks}
+                setShowTaskForm={setShowTaskForm}
+                handleTaskForm={handleTaskForm}
+                getTasks={getTasks}
+                setTasks={setTasks}
+              />
+            }
           />
         </Routes>
       )}
