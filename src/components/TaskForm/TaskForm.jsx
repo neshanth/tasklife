@@ -26,7 +26,7 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
   const [taskData, setTaskData] = useState(TASK_DATA);
   const [startDate, setStartDate] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [selectedTags, setSelectedTags] = useState(taskData.tags ? taskData.tags : []);
+  const [selectedTags, setSelectedTags] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
