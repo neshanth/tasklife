@@ -47,8 +47,10 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
 
   const inputRef = useRef();
   useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [id]);
 
   const handleChange = (option) => {
     if (option.length <= 3) {
@@ -163,18 +165,20 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
   };
   const taskFormTitle = taskFormAction === "create" ? "New" : taskFormAction === "edit" ? "Edit" : "View";
   return (
-    <form className="tl-task__form-wrapper">
+    <form className={`tl-task__form-wrapper`}>
       <div className="tl-task__form">
         <div className="tl-task__form-title-container">
           <BreadCrumb page={taskFormTitle} showClose={true} />
         </div>
-        <div className="tl-task__form-container">
-          <div className="tl-task__form-name-desc tl-border">
+        <div className={`tl-task__form-container`}>
+          <div className={`tl-task__form-name-desc ${taskFormAction !== "view" ? "tl-border" : ""} ${taskFormAction}-mode`}>
             <div className="tl-task__form-task-name">
-              <input value={taskData.task} onChange={handleTaskFormChange} name="task" type="text" placeholder="Name of the Task" ref={inputRef} />
+              {taskFormAction === "view" && <p>{taskData.task}</p>}
+              {taskFormAction !== "view" && <input value={taskData.task} onChange={handleTaskFormChange} name="task" type="text" placeholder="Name of the Task" ref={inputRef} />}
             </div>
             <div className="tl-task__form-task-desc">
-              <input value={taskData.description} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />
+              {taskFormAction === "view" && taskData.description && <p>{taskData.description}</p>}
+              {taskFormAction !== "view" && <input value={taskData.description} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />}
             </div>
           </div>
           <div className="tl-task__form-info">
@@ -198,16 +202,34 @@ const TaskForm = ({ getTasks, setTasks, tasks }) => {
                     },
                   ]}
                   styles={customStyles}
+                  components={taskFormAction === "view" && { DropdownIndicator: () => null }}
                 />
               </div>
             )}
 
             <div className="tl-task__form-due-date">
-              <DatePicker isClearable dateFormat="MMM d" customInput={<DateInput className="tl-task__form-due-date" />} placeholderText="Due Date" selected={startDate} onChange={handleDatePicker} />
+              <DatePicker
+                isClearable={taskFormAction !== "view" ? true : false}
+                dateFormat="MMM d"
+                customInput={<DateInput className="tl-task__form-due-date" />}
+                placeholderText="Due Date"
+                selected={startDate}
+                onChange={handleDatePicker}
+              />
             </div>
             <div className="tl-task__form-tags" onClick={() => setOpenDropdown(!openDropdown)}>
               <Icons w="25px" h="25px" type="tag" />
-              <Select closeMenuOnSelect={false} styles={customStyles} placeholder="Tags" onChange={handleChange} isSearchable={false} value={selectedTags} isMulti={true} options={allTags} />
+              <Select
+                components={taskFormAction === "view" && { DropdownIndicator: () => null, ClearIndicator: () => null, MultiValueRemove: () => null }}
+                closeMenuOnSelect={false}
+                styles={customStyles}
+                placeholder="Tags"
+                onChange={handleChange}
+                isSearchable={false}
+                value={selectedTags}
+                isMulti={true}
+                options={allTags}
+              />
             </div>
           </div>
         </div>

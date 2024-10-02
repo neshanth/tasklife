@@ -32,6 +32,12 @@
         font-weight: 500;
         font-family: "Inter Display";
       }
+      .tl-task__form-task-desc {
+        color: var(--tl-text-light-2);
+      }
+      &.view-mode {
+        padding: 0;
+      }
     }
     .tl-task__form-info {
       width: 100%;
