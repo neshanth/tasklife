@@ -6,8 +6,10 @@ import TaskItem from "../TaskItem/TaskItem";
 import "./stats.css";
 import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
+import useAppContext from "../../hooks/useAppContext";
 
 function Stats({ tasks, updateTaskStatus }) {
+  const { isMobile } = useAppContext();
   const [stats, setStats] = useState([
     { statName: "Pending", stat: 0 },
     { statName: "Completed", stat: 0 },
@@ -81,7 +83,7 @@ function Stats({ tasks, updateTaskStatus }) {
             {recentTasks.map((r) => (
               <TaskItem key={r.id} taskInfo={r} label={true} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} />
             ))}
-            <AddTask />
+            {!isMobile && <AddTask />}
           </div>
         </div>
       </div>
