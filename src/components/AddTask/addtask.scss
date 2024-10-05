@@ -23,7 +23,8 @@
     text-align: center;
     border-radius: var(--tl-spacing-xs);
     margin-top: var(--tl-spacing-l);
-    margin-bottom: var(--tl-spacing-s);
+    position: sticky;
+    bottom: 10px;
     padding: var(--tl-spacing-md) var(--tl-spacing-xl);
     .tl-add-task__text {
       color: var(--tl-neutral-white);
