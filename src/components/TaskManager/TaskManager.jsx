@@ -67,7 +67,8 @@ const TaskManager = () => {
     }
   };
 
-  const updateTaskStatus = async (id) => {
+  const updateTaskStatus = async (e, id) => {
+    e.stopPropagation();
     const taskBeforeUpdate = tasks.find((task) => task.id === id);
     try {
       const updatedTasks = tasks.map((task) => (task.id === id ? { ...task, status: task.status === 1 ? 0 : 1 } : { ...task }));

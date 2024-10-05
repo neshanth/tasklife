@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Tags from "../Tags/Tags";
 import Icons from "../Icons/Icons";
 import useIsMobile from "../../hooks/useIsMobile";
-import "./taskitem.scss";
 import useAppContext from "../../hooks/useAppContext";
+import "./taskitem.scss";
 
 const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskDelete }) => {
   const appPath = "/app";
@@ -45,11 +45,11 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskDelete }) => {
     <div onClick={handleTaskItemClick} className={`tl-task-item`} onMouseOver={() => setShowTaskOptions(true)} onMouseLeave={() => setShowTaskOptions(false)}>
       <div className="tl-task-item__checkbox" onMouseOver={() => setCheckBoxHover(true)} onMouseLeave={() => setCheckBoxHover(false)}>
         {checkBoxHover || status ? (
-          <div className="tl-task-item__done" onClick={() => updateTaskStatus(id)}>
+          <div className="tl-task-item__done" onClick={(e) => updateTaskStatus(e, id)}>
             <Icons type="circle-filled" w="20" h="20" />
           </div>
         ) : (
-          <div className="tl-task-item__pending" onClick={() => updateTaskStatus(id)}>
+          <div className="tl-task-item__pending" onClick={(e) => updateTaskStatus(e, id)}>
             <Icons type="circle" w="20" h="20" />
           </div>
         )}
@@ -74,26 +74,6 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskDelete }) => {
           <Tags tags={tags} />
         </div>
       </div>
-
-      {/* <div className="task-item  my-3" onClick={handleClick}>
-        <div className="task-item-controls d-flex align-items-center">
-          <Form.Check id="status" className={`mx-2  ${status ? "done" : "in-progress"} task-item-status`} checked={status} onChange={() => updateTaskStatus(id)} />
-          <div className="task">
-            <p className="mb-0 mx-3">{isTaskNameLong ? `${task.substring(0, substringLength)}...` : task}</p>
-          </div>
-          {label && <div className={`task-label mx-3 ${status === 1 ? "completed" : "pending"}`}>{status === 1 ? "Completed" : "Pending"}</div>}
-          <div className="due-date flex-grow-1">
-            <p className="mb-0">{todo_date.toLocaleDateString("default", { day: "numeric", month: "short" })}</p>
-          </div>
-          <div className="task-item-icons">
-            <Link to={`/app/tasks/edit/${id}`}>
-              <EditIcon />
-            </Link>
-          </div>
-        </div>
-        <Tags tags={tags} />
-      </div>
-      <TaskModal taskData={taskData} show={showModal} handleClose={handleModalClose} handleTaskDelete={handleTaskDelete} /> */}
     </div>
   );
 };
