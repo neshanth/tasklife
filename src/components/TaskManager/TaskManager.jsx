@@ -14,6 +14,7 @@ import Spinner from "../Spinner/Spinner";
 import Sidebar from "../Sidebar/Sidebar.jsx";
 import history from "../../history/history.js";
 import TaskForm from "../TaskForm/TaskForm.jsx";
+import Inbox from "../Inbox/Inbox.jsx";
 
 const TaskManager = () => {
   const location = useLocation();
@@ -22,6 +23,8 @@ const TaskManager = () => {
   const [showTaskForm, setShowTaskForm] = useState(false);
   const appPath = "/app";
   const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, resetTaskData } = useAppContext();
+  const pendingTasks = tasks.filter((task) => task.status === 0);
+  const completedTasks = tasks.filter((task) => task.status === 1);
 
   useEffect(() => {
     checkAuth();
@@ -137,10 +140,23 @@ const TaskManager = () => {
                   handleTaskDelete={handleTaskDelete}
                   showTaskForm={showTaskForm}
                   setShowTaskForm={setShowTaskForm}
+                  pendingTasks={pendingTasks}
+                  completedTasks={completedTasks}
                 />
               }
             />
             <Route path={`${appPath}/stats`} element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
+            <Route
+              path={`${appPath}/inbox`}
+              element={
+                <Inbox
+                  pendingTasks={pendingTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
+                  completedTasks={completedTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
+                  handleTaskDelete={handleTaskDelete}
+                  updateTaskStatus={updateTaskStatus}
+                />
+              }
+            />
           </Route>
         </Route>
         <Route path="*" element={<Navigate to="/" replace={true} />} />

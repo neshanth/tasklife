@@ -17,6 +17,11 @@ const navigationLinks = [
     path: `${appPath}/stats`,
     icon: <Icons type="stats" />,
   },
+  {
+    name: "Inbox",
+    path: `${appPath}/inbox`,
+    icon: <Icons type="inbox" />,
+  },
 ];
 const Navigation = ({ handleTaskForm }) => {
   let location = useLocation();

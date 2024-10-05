@@ -11,10 +11,8 @@ import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import Filters from "../Filters/Filters";
 import "./tasks.scss";
 
-function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, setTasks, handleTaskForm, showTaskForm, setShowTaskForm }) {
+function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, pendingTasks, completedTasks }) {
   const location = useLocation();
-  const pendingTasks = tasks.filter((task) => task.status === 0);
-  const completedTasks = tasks.filter((task) => task.status === 1);
   const { setFetchData, isMobile } = useAppContext();
 
   useEffect(() => {
@@ -39,7 +37,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, s
           <Filters pendingTasks={pendingTasks} completedTasks={completedTasks} />
           <div className="tl-tasks__container">
             {tasks.map((task) => (
-              <TaskItem handleTaskForm={handleTaskForm} handleTaskDelete={handleTaskDelete} key={task.id} taskInfo={task} updateTaskStatus={updateTaskStatus} />
+              <TaskItem handleTaskDelete={handleTaskDelete} key={task.id} taskInfo={task} updateTaskStatus={updateTaskStatus} />
             ))}
             {/* {showTaskForm && <TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />} */}
           </div>
