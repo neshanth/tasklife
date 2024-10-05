@@ -1,27 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { getTasksResponse, renderToast, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
+import useAppContext from "../../hooks/useAppContext";
+import api from "../../api/api";
 import Home from "../Home/Home";
-import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-dom";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import MainContent from "../MainContent/MainContent.jsx";
 import Tasks from "../Tasks/Tasks";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
-import api from "../../api/api";
-import EditTask from "../EditTask/EditTask";
-import NewTask from "../NewTask/NewTask";
 import Stats from "../Stats/Stats.jsx";
-import { getTasksResponse, renderToast, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
-import useAppContext from "../../hooks/useAppContext";
 import Sidebar from "../Sidebar/Sidebar.jsx";
 import history from "../../history/history.js";
-import TaskItem from "../TaskItem/TaskItem.jsx";
 import TaskForm from "../TaskForm/TaskForm.jsx";
 
 const TaskManager = () => {
   const location = useLocation();
   const previousLocation = location.state?.previousLocation;
-  const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [showTaskForm, setShowTaskForm] = useState(false);
   const appPath = "/app";
