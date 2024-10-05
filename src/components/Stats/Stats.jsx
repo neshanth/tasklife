@@ -4,6 +4,8 @@ import AddTask from "../AddTask/AddTask";
 import StatCard from "../StatCard/StatCard";
 import TaskItem from "../TaskItem/TaskItem";
 import "./stats.css";
+import BreadCrumb from "../BreadCrumb/BreadCrumb";
+import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 
 function Stats({ tasks, updateTaskStatus }) {
   const [stats, setStats] = useState([
@@ -51,30 +53,37 @@ function Stats({ tasks, updateTaskStatus }) {
 
   return (
     <>
-      <p className="dashboard-heading">Analytics</p>
-      <p>Track your progress and optimize your productivity with this analytics page. The progress bar and task status cards provide an overview of your task completion and help you stay on track</p>
-      <div className="row justify-content-center dashboard-section">
-        <div className="col-md-4">
-          <div className="rounded-bar mx-auto" style={gradient}>
-            <div className="inner-number">
-              <p className="prod-percent">{productivity.toFixed()}%</p>
-              <p className="prod-title">Productivity</p>
+      <div className="tl-stats">
+        <BreadCrumb page="Stats" />
+        <div className="content-container">
+          <ContentInfo
+            sectionHeading="Stats"
+            sectionInfo="Track your progress and optimize your productivity with this analytics page. The progress bar and task status cards provide an overview of your task completion and help you stay on track"
+          />
+          <div className="row justify-content-center dashboard-section">
+            <div className="col-md-4">
+              <div className="rounded-bar mx-auto" style={gradient}>
+                <div className="inner-number">
+                  <p className="prod-percent">{productivity.toFixed()}%</p>
+                  <p className="prod-title">Productivity</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="row dashboard-section stats-container justify-content-between">
-        {stats.map((stat, index) => {
-          return <StatCard key={index} statName={stat.statName} stat={stat.stat} />;
-        })}
-      </div>
+          <div className="row dashboard-section stats-container justify-content-between">
+            {stats.map((stat, index) => {
+              return <StatCard key={index} statName={stat.statName} stat={stat.stat} />;
+            })}
+          </div>
 
-      <div className="recent-tasks dashboard-section">
-        <p className="dashboard-sub-heading">Recent Tasks</p>
-        {recentTasks.map((r) => (
-          <TaskItem key={r.id} taskInfo={r} label={true} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} />
-        ))}
-        <AddTask />
+          <div className="recent-tasks dashboard-section">
+            <p className="dashboard-sub-heading">Recent Tasks</p>
+            {recentTasks.map((r) => (
+              <TaskItem key={r.id} taskInfo={r} label={true} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} />
+            ))}
+            <AddTask />
+          </div>
+        </div>
       </div>
     </>
   );
