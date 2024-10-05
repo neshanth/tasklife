@@ -23,8 +23,10 @@
     text-align: center;
     border-radius: var(--tl-spacing-xs);
     margin-top: var(--tl-spacing-l);
+    padding: var(--tl-spacing-md) var(--tl-spacing-xl);
     .tl-add-task__text {
       color: var(--tl-neutral-white);
+      padding: 0;
     }
   }
 }
