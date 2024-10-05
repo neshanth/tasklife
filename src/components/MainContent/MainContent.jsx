@@ -20,7 +20,7 @@ function MainContent() {
           <Outlet />
         </div>
       </div>
-      {isMobile && <AddTask />}
+      {/* {isMobile && <AddTask />} */}
     </>
   );
 }

@@ -43,7 +43,7 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, s
             ))}
             {/* {showTaskForm && <TaskForm updateTaskStatus={updateTaskStatus} tasks={tasks} setShowTaskForm={setShowTaskForm} handleTaskForm={handleTaskForm} getTasks={getTasks} setTasks={setTasks} />} */}
           </div>
-          {!isMobile && <AddTask />}
+          {<AddTask />}
         </div>
       </div>
     </>
