@@ -3,10 +3,12 @@ import Icons from "../Icons/Icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAppContext from "../../hooks/useAppContext";
 import "./addtask.scss";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const AddTask = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   const { setTaskFormAction } = useAppContext();
   const appPath = "/app";
   const handleClick = () => {
@@ -16,7 +18,7 @@ const AddTask = () => {
   return (
     <div className="tl-add-task" onClick={handleClick}>
       <p className="tl-add-task__text tl-padding">
-        <Icons type="plus" />
+        <Icons type="plus" fill={`${isMobile ? "var(--tl-neutral-white)" : "var(--tl-theme-base)"}`} />
         <span>Add Task</span>
       </p>
     </div>

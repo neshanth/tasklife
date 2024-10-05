@@ -2,7 +2,9 @@
   font-size: var(--tl-spacing-md);
 }
 
-// .tl-tasks__container {
-//   max-height: 300px;
-//   overflow: auto;
-// }
+@media screen and (max-width: 1024px) {
+  .tl-tasks__container {
+    max-height: 300px;
+    overflow: auto;
+  }
+}

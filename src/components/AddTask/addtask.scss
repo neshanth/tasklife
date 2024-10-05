@@ -14,15 +14,17 @@
     background-color: var(--tl-theme-light-5);
   }
 }
-// .tl-tasks__in-progress {
-//   .tl-add-task__text {
-//     padding-left: 1.5rem;
-//     padding-right: 1.5rem;
-//   }
-//   .tl-add-task {
-//     cursor: pointer;
-//     &:hover {
-//       background-color: var(--tl-theme-light-5);
-//     }
-//   }
-// }
+
+@media screen and (max-width: 1024px) {
+  .tl-add-task {
+    display: flex;
+    justify-content: center;
+    background-color: var(--tl-theme-base);
+    text-align: center;
+    border-radius: var(--tl-spacing-xs);
+    margin-top: var(--tl-spacing-l);
+    .tl-add-task__text {
+      color: var(--tl-neutral-white);
+    }
+  }
+}
