@@ -245,6 +245,17 @@ button {
 }
 
 /*------------------------------
+     React-Datepicker styles
+ ------------------------------- */
+.react-datepicker__close-icon::after {
+  content: "X";
+  width: var(--tl-spacing-xl);
+  height: var(--tl-spacing-xl);
+  background-color: var(--tl-theme-base);
+  font-weight: 600;
+}
+
+/*------------------------------
     ICON STYLES
  ------------------------------- */
 .logout-icon,
