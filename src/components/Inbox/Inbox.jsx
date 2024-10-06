@@ -1,7 +1,8 @@
 import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import Filters from "../Filters/Filters";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
-import TaskItem from "../TaskItem/TaskItem";
+import InboxContent from "./InboxContent";
+import "./inbox.scss";
 
 const Inbox = ({ pendingTasks, completedTasks, handleTaskDelete, updateTaskStatus }) => {
   return (
@@ -11,18 +12,8 @@ const Inbox = ({ pendingTasks, completedTasks, handleTaskDelete, updateTaskStatu
         <div className="content-container">
           <ContentInfo sectionHeading="Inbox" sectionInfo="Overview of the tasks in your inbox" />
           <Filters pendingTasks={pendingTasks} completedTasks={completedTasks} />
-          <div className="tl-inbox__completed">
-            <p className="tl-inbox__heading">Completed</p>
-            {completedTasks.map((task) => (
-              <TaskItem key={task.id} handleTaskDelete={handleTaskDelete} taskInfo={task} updateTaskStatus={updateTaskStatus} />
-            ))}
-          </div>
-          <div className="tl-inbox__pending">
-            <p className="tl-inbox__heading">Pending</p>
-            {pendingTasks.map((task) => (
-              <TaskItem key={task.id} handleTaskDelete={handleTaskDelete} taskInfo={task} updateTaskStatus={updateTaskStatus} />
-            ))}
-          </div>
+          <InboxContent heading="Pending" tasks={pendingTasks} handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} />
+          <InboxContent heading="Completed" tasks={completedTasks} handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} />
         </div>
       </div>
     </>
