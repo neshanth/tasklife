@@ -6,13 +6,12 @@ import Icons from "../Icons/Icons";
 import Navigation from "./Navigation/Navigation";
 import Profile from "./Profile/Profile";
 
-function Sidebar({ logout, handleTaskForm }) {
+function Sidebar({ logout }) {
   const { user, isMobile, handleMobileNavToggle, showMobileNav } = useAppContext();
 
   const commonProps = {
     user,
     logout,
-    handleTaskForm,
   };
 
   return (
@@ -25,18 +24,18 @@ function Sidebar({ logout, handleTaskForm }) {
   );
 }
 
-const DesktopContent = ({ logout, user, handleTaskForm }) => {
+const DesktopContent = ({ logout, user }) => {
   return (
     <div className="sidebar-desktop">
       <img src={logo} alt="logo" width="122px" />
       <Profile user={user} />
-      <Navigation handleMobileNavToggle={() => {}} handleTaskForm={handleTaskForm} />
+      <Navigation handleMobileNavToggle={() => {}} />
       <Logout logout={logout} />
     </div>
   );
 };
 
-const MobileContent = ({ logout, user, handleMobileNavToggle, showMobileNav, handleTaskForm }) => {
+const MobileContent = ({ logout, user, handleMobileNavToggle, showMobileNav }) => {
   return (
     <div className={`sidebar-mobile ${showMobileNav ? "visible" : "hidden"}`}>
       <div className="sidebar-mobile-profile">

@@ -20,7 +20,6 @@ const TaskManager = () => {
   const location = useLocation();
   const previousLocation = location.state?.previousLocation;
   const [tasks, setTasks] = useState([]);
-  const [showTaskForm, setShowTaskForm] = useState(false);
   const appPath = "/app";
   const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, resetTaskData } = useAppContext();
   const pendingTasks = tasks.filter((task) => task.status === 0);
@@ -97,11 +96,6 @@ const TaskManager = () => {
     }
   };
 
-  const handleTaskForm = () => {
-    setShowTaskForm(!showTaskForm);
-    resetTaskData();
-  };
-
   const logout = async () => {
     setLoading(true);
     try {
@@ -131,15 +125,12 @@ const TaskManager = () => {
               path={`${appPath}/tasks`}
               element={
                 <Tasks
-                  handleTaskForm={handleTaskForm}
                   tasks={tasks}
                   setTasks={setTasks}
                   getTasks={getTasks}
                   loading={loading}
                   updateTaskStatus={updateTaskStatus}
                   handleTaskDelete={handleTaskDelete}
-                  showTaskForm={showTaskForm}
-                  setShowTaskForm={setShowTaskForm}
                   pendingTasks={pendingTasks}
                   completedTasks={completedTasks}
                 />
@@ -163,51 +154,15 @@ const TaskManager = () => {
       </Routes>
       {previousLocation && (
         <Routes>
-          <Route
-            path={`${appPath}/tasks/:id`}
-            element={
-              <TaskForm
-                handleTaskDelete={handleTaskDelete}
-                updateTaskStatus={updateTaskStatus}
-                tasks={tasks}
-                setShowTaskForm={setShowTaskForm}
-                handleTaskForm={handleTaskForm}
-                getTasks={getTasks}
-                setTasks={setTasks}
-              />
-            }
-          />
-          <Route
-            path={`${appPath}/tasks/add`}
-            element={
-              <TaskForm
-                handleTaskDelete={handleTaskDelete}
-                updateTaskStatus={updateTaskStatus}
-                tasks={tasks}
-                setShowTaskForm={setShowTaskForm}
-                handleTaskForm={handleTaskForm}
-                getTasks={getTasks}
-                setTasks={setTasks}
-              />
-            }
-          />
+          <Route path={`${appPath}/tasks/:id`} element={<TaskForm handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} tasks={tasks} getTasks={getTasks} setTasks={setTasks} />} />
+          <Route path={`${appPath}/tasks/add`} element={<TaskForm handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} tasks={tasks} getTasks={getTasks} setTasks={setTasks} />} />
           <Route
             path={`${appPath}/tasks/edit/:id`}
-            element={
-              <TaskForm
-                handleTaskDelete={handleTaskDelete}
-                updateTaskStatus={updateTaskStatus}
-                tasks={tasks}
-                setShowTaskForm={setShowTaskForm}
-                handleTaskForm={handleTaskForm}
-                getTasks={getTasks}
-                setTasks={setTasks}
-              />
-            }
+            element={<TaskForm handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} tasks={tasks} getTasks={getTasks} setTasks={setTasks} />}
           />
         </Routes>
       )}
-      {auth && <Sidebar handleTaskForm={handleTaskForm} logout={logout} />}
+      {auth && <Sidebar logout={logout} />}
     </>
   );
 };
