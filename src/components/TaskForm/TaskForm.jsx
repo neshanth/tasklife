@@ -9,7 +9,7 @@ import useAppContext from "../../hooks/useAppContext";
 import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import useIsMobile from "../../hooks/useIsMobile";
+
 const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   const TASK_DATA = {
     task: "",
@@ -21,8 +21,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   };
   const navigate = useNavigate();
   const { id } = useParams();
-  const isMobile = useIsMobile();
-  const { allTags, user, taskFormAction, setTaskFormAction } = useAppContext();
+  const { allTags, user, taskFormAction, setTaskFormAction, isMobile } = useAppContext();
   const [taskData, setTaskData] = useState(TASK_DATA);
   const [startDate, setStartDate] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);

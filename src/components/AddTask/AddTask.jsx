@@ -3,13 +3,11 @@ import Icons from "../Icons/Icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAppContext from "../../hooks/useAppContext";
 import "./addtask.scss";
-import useIsMobile from "../../hooks/useIsMobile";
 
 const AddTask = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const isMobile = useIsMobile();
-  const { setTaskFormAction } = useAppContext();
+  const { setTaskFormAction, isMobile } = useAppContext();
   const appPath = "/app";
   const handleClick = () => {
     navigate(`${appPath}/tasks/add`, { state: { previousLocation: location } });

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Tags from "../Tags/Tags";
 import Icons from "../Icons/Icons";
-import useIsMobile from "../../hooks/useIsMobile";
 import useAppContext from "../../hooks/useAppContext";
 import "./taskitem.scss";
 
@@ -10,9 +9,8 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskDelete }) => {
   const appPath = "/app";
   const { task, due_date, id, status, tags } = taskInfo;
   const location = useLocation();
-  const isMobile = useIsMobile();
   const navigate = useNavigate();
-  const { setTaskFormAction } = useAppContext();
+  const { setTaskFormAction, isMobile } = useAppContext();
   const [showTaskOptions, setShowTaskOptions] = useState(false);
   const [checkBoxHover, setCheckBoxHover] = useState(false);
   let todo_date = new Date(due_date);

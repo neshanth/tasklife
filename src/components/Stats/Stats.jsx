@@ -1,16 +1,12 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { handleTaskDeleteResponse } from "../../utils/utils";
-import AddTask from "../AddTask/AddTask";
 import StatCard from "../StatCard/StatCard";
-import TaskItem from "../TaskItem/TaskItem";
-import "./stats.css";
 import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
-import useAppContext from "../../hooks/useAppContext";
 import TaskContainer from "../TaskContainer/TaskContainer";
+import "./stats.css";
 
 function Stats({ tasks, updateTaskStatus }) {
-  const { isMobile } = useAppContext();
   const [stats, setStats] = useState([
     { statName: "Pending", stat: 0 },
     { statName: "Completed", stat: 0 },
