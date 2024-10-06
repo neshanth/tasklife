@@ -7,6 +7,7 @@ import "./stats.css";
 import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import useAppContext from "../../hooks/useAppContext";
+import TaskContainer from "../TaskContainer/TaskContainer";
 
 function Stats({ tasks, updateTaskStatus }) {
   const { isMobile } = useAppContext();
@@ -80,10 +81,7 @@ function Stats({ tasks, updateTaskStatus }) {
 
           <div className="recent-tasks dashboard-section">
             <p className="dashboard-sub-heading">Recent Tasks</p>
-            {recentTasks.map((r) => (
-              <TaskItem key={r.id} taskInfo={r} label={true} updateTaskStatus={updateTaskStatus} deleteTask={deleteTask} />
-            ))}
-            {!isMobile && <AddTask />}
+            <TaskContainer tasks={recentTasks} handleTaskDelete={deleteTask} updateTaskStatus={updateTaskStatus} />
           </div>
         </div>
       </div>

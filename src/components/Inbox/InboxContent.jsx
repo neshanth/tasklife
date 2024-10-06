@@ -1,5 +1,5 @@
 import Icons from "../Icons/Icons";
-import TaskItem from "../TaskItem/TaskItem";
+import TaskContainer from "../TaskContainer/TaskContainer";
 
 const InboxContent = ({ tasks, handleTaskDelete, updateTaskStatus, heading }) => {
   return (
@@ -13,9 +13,7 @@ const InboxContent = ({ tasks, handleTaskDelete, updateTaskStatus, heading }) =>
           <span className={`tl-inbox__count ${heading?.toLowerCase()}`}>{tasks.length}</span>
         </p>
       </div>
-      {tasks.map((task) => (
-        <TaskItem key={task.id} handleTaskDelete={handleTaskDelete} taskInfo={task} updateTaskStatus={updateTaskStatus} />
-      ))}
+      <TaskContainer tasks={tasks} handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} />
     </div>
   );
 };
