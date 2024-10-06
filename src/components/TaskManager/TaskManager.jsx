@@ -21,7 +21,7 @@ const TaskManager = () => {
   const previousLocation = location.state?.previousLocation;
   const [tasks, setTasks] = useState([]);
   const appPath = "/app";
-  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, resetTaskData } = useAppContext();
+  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags } = useAppContext();
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
 
@@ -111,6 +111,14 @@ const TaskManager = () => {
     }
   };
 
+  const taskFormProps = {
+    getTasks,
+    tasks,
+    setTasks,
+    updateTaskStatus,
+    handleTaskDelete,
+  };
+
   if (authLoader) return <Spinner />;
 
   return (
@@ -154,12 +162,9 @@ const TaskManager = () => {
       </Routes>
       {previousLocation && (
         <Routes>
-          <Route path={`${appPath}/tasks/:id`} element={<TaskForm handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} tasks={tasks} getTasks={getTasks} setTasks={setTasks} />} />
-          <Route path={`${appPath}/tasks/add`} element={<TaskForm handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} tasks={tasks} getTasks={getTasks} setTasks={setTasks} />} />
-          <Route
-            path={`${appPath}/tasks/edit/:id`}
-            element={<TaskForm handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} tasks={tasks} getTasks={getTasks} setTasks={setTasks} />}
-          />
+          <Route path={`${appPath}/tasks/:id`} element={<TaskForm {...taskFormProps} />} />
+          <Route path={`${appPath}/tasks/add`} element={<TaskForm {...taskFormProps} />} />
+          <Route path={`${appPath}/tasks/edit/:id`} element={<TaskForm {...taskFormProps} />} />
         </Routes>
       )}
       {auth && <Sidebar logout={logout} />}
