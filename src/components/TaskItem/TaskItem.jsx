@@ -41,13 +41,13 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskDelete }) => {
 
   return (
     <div onClick={handleTaskItemClick} className={`tl-task-item`} onMouseOver={() => setShowTaskOptions(true)} onMouseLeave={() => setShowTaskOptions(false)}>
-      <div className="tl-task-item__checkbox" onMouseOver={() => setCheckBoxHover(true)} onMouseLeave={() => setCheckBoxHover(false)}>
+      <div className="tl-task-item__checkbox" onClick={(e) => updateTaskStatus(e, id)} onMouseOver={() => setCheckBoxHover(true)} onMouseLeave={() => setCheckBoxHover(false)}>
         {checkBoxHover || status ? (
-          <div className="tl-task-item__done" onClick={(e) => updateTaskStatus(e, id)}>
+          <div className="tl-task-item__done">
             <Icons type="circle-filled" w="20" h="20" />
           </div>
         ) : (
-          <div className="tl-task-item__pending" onClick={(e) => updateTaskStatus(e, id)}>
+          <div className="tl-task-item__pending">
             <Icons type="circle" w="20" h="20" />
           </div>
         )}
