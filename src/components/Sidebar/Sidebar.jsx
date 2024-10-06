@@ -7,20 +7,11 @@ import Navigation from "./Navigation/Navigation";
 import Profile from "./Profile/Profile";
 
 function Sidebar({ logout, handleTaskForm }) {
-  const { setShow, user, isMobile, handleMobileNavToggle, showMobileNav } = useAppContext();
-
-  const handleClick = () => {
-    setShow(false);
-  };
-
-  const handleSidebarForMobile = () => {
-    window.innerWidth <= 1024 ? setShow(false) : setShow(true);
-  };
+  const { user, isMobile, handleMobileNavToggle, showMobileNav } = useAppContext();
 
   const commonProps = {
     user,
     logout,
-    handleSidebarForMobile,
     handleTaskForm,
   };
 
@@ -32,49 +23,20 @@ function Sidebar({ logout, handleTaskForm }) {
       </aside>
     </>
   );
-
-  // return (
-  //   // <>
-  //   //   <Offcanvas className="sidebar" show={show} tabIndex="" onHide={handleClose} backdrop={false}>
-  //   //     <Offcanvas.Header className="border-bottom">
-  //   //       <img alt="logo" src={logo} className="logo" />
-  //   //       <CloseButton handleClick={handleClick} />
-  //   //     </Offcanvas.Header>
-  //   //     <Offcanvas.Body>
-  //   //       <div className={`d-flex text-white align-items-center sidebar-link ${location.pathname === "/dashboard/stats" ? "sidebar-link-active" : ""}`}>
-  //   //         <NavLink onClick={handleSidebarForMobile} to="/dashboard/stats">
-  //   //           <PieIcon />
-  //   //           Stats
-  //   //         </NavLink>
-  //   //       </div>
-  //   //       <div className={`d-flex text-white align-items-center sidebar-link ${location.pathname === "/dashboard/tasks" ? "sidebar-link-active" : ""}`}>
-  //   //         <NavLink onClick={handleSidebarForMobile} to="/dashboard/tasks">
-  //   //           <ListIcon />
-  //   //           My Tasks
-  //   //         </NavLink>
-  //   //       </div>
-  //   //       <div className="d-flex text-white align-items-center logout-menu" onClick={logout}>
-  //   //         <LogoutIcon />
-  //   //         <p className="mb-0">Logout</p>
-  //   //       </div>
-  //   //     </Offcanvas.Body>
-  //   //   </Offcanvas>
-  //   // </>
-  // );
 }
 
-const DesktopContent = ({ logout, user, handleSidebarForMobile, handleTaskForm }) => {
+const DesktopContent = ({ logout, user, handleTaskForm }) => {
   return (
     <div className="sidebar-desktop">
       <img src={logo} alt="logo" width="122px" />
       <Profile user={user} />
-      <Navigation handleTaskForm={handleTaskForm} handleSidebarForMobile={handleSidebarForMobile} />
+      <Navigation handleMobileNavToggle={() => {}} handleTaskForm={handleTaskForm} />
       <Logout logout={logout} />
     </div>
   );
 };
 
-const MobileContent = ({ logout, user, handleSidebarForMobile, handleMobileNavToggle, showMobileNav, handleTaskForm }) => {
+const MobileContent = ({ logout, user, handleMobileNavToggle, showMobileNav, handleTaskForm }) => {
   return (
     <div className={`sidebar-mobile ${showMobileNav ? "visible" : "hidden"}`}>
       <div className="sidebar-mobile-profile">
@@ -83,7 +45,7 @@ const MobileContent = ({ logout, user, handleSidebarForMobile, handleMobileNavTo
           <Icons type="close" />
         </div>
       </div>
-      <Navigation handleTaskForm={handleTaskForm} handleSidebarForMobile={handleSidebarForMobile} />
+      <Navigation handleMobileNavToggle={handleMobileNavToggle} />
       <Logout logout={logout} />
     </div>
   );
