@@ -54,6 +54,7 @@
     .tl-filters__status-button,
     .tl-filters__date {
       border-radius: var(--tl-spacing-xs);
+      cursor: pointer;
     }
     .tl-filters__date,
     .tl-filters__tags {

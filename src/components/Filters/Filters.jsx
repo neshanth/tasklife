@@ -9,9 +9,10 @@ const Filters = ({ pendingTasks, completedTasks }) => {
   const { filters, setFilters } = useAppContext();
   const [startDate, setStartDate] = useState(null);
   const DatePickerInput = forwardRef(({ value, onClick, className }, ref) => (
-    <button className={className} onClick={onClick} ref={ref}>
-      {value ? value : "Date"}
-    </button>
+    <div className="tl-filters__date tl-border filters-padding" onClick={onClick} ref={ref}>
+      <Icons type="calendar" w="20" h="20" />
+      <button className={className}>{value ? value : "Date"}</button>
+    </div>
   ));
 
   const handleFilterChange = (type, value) => {
@@ -33,18 +34,15 @@ const Filters = ({ pendingTasks, completedTasks }) => {
             <span>{completedTasks.length}</span>
           </div>
         </div>
-        <div className="tl-filters__date tl-border filters-padding">
-          <Icons type="calendar" w="20" h="20" />
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => {
-              setStartDate(date);
-              handleFilterChange("date", date);
-            }}
-            customInput={<DatePickerInput />}
-            isClearable
-          />
-        </div>
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => {
+            setStartDate(date);
+            handleFilterChange("date", date);
+          }}
+          customInput={<DatePickerInput />}
+          isClearable
+        />
         <div className="tl-filters__tags tl-border filters-padding">
           <Icons type="tag" w="20" h="20" />
           <button>Tags</button>
