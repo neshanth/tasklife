@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useIsMobile from "../hooks/useIsMobile";
+import { FILTER } from "../constants/constants";
 
 const UserContext = React.createContext();
 
@@ -11,16 +12,13 @@ const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [fetchData, setFetchData] = useState(true);
   const [allTags, setAllTags] = useState([]);
-  const [filters, setFilters] = useState({
-    status: "pending",
-    date: "",
-    tags: []
-  })
+  const [filters, setFilters] = useState(FILTER);
   const [taskFormAction, setTaskFormAction] = useState("create");
   const isMobile = useIsMobile()
   const handleMobileNavToggle = () => {
     setShowMobileNav(!showMobileNav);
   };
+
   const valueObj = {
     showMobileNav,
     setShowMobileNav,
@@ -39,9 +37,9 @@ const UserProvider = ({ children }) => {
     setAllTags,
     isMobile,
     filters,
-    setFilters,
     taskFormAction,
-    setTaskFormAction
+    setTaskFormAction,
+    setFilters
   }
   return <UserContext.Provider value={valueObj}>{children}</UserContext.Provider>;
 };

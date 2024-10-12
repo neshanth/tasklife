@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { getTasksResponse, renderToast, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
+import { getTasksResponse, renderToast, updateTaskStatusApi, handleTaskDeleteResponse, deepEqual } from "../../utils/utils";
 import useAppContext from "../../hooks/useAppContext";
 import api from "../../api/api";
 import Home from "../Home/Home";
@@ -15,13 +15,15 @@ import Sidebar from "../Sidebar/Sidebar.jsx";
 import history from "../../history/history.js";
 import TaskForm from "../TaskForm/TaskForm.jsx";
 import Inbox from "../Inbox/Inbox.jsx";
+import { FILTER } from "../../constants/constants.js";
 
 const TaskManager = () => {
+  const appPath = "/app";
   const location = useLocation();
   const previousLocation = location.state?.previousLocation;
   const [tasks, setTasks] = useState([]);
-  const appPath = "/app";
-  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags } = useAppContext();
+  const [filteredTasks, setFilteredTasks] = useState([]);
+  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, filters } = useAppContext();
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
 
@@ -29,6 +31,26 @@ const TaskManager = () => {
     checkAuth();
     getAllTags();
   }, []);
+
+  useEffect(() => {
+    let currentTasks = [...tasks];
+    // Status Filter
+    if (filters.status === "pending") {
+      currentTasks = currentTasks.filter((task) => task.status === 0);
+    } else {
+      currentTasks = currentTasks.filter((task) => task.status === 1);
+    }
+    // Date Filter
+    if (filters.date) {
+      const filterDate = new Date(filters.date.getTime() - filters.date.getTimezoneOffset() * 60000).toISOString().split("T")[0];
+      currentTasks = currentTasks.filter((task) => {
+        const taskDate = task.due_date;
+        return taskDate === filterDate;
+      });
+    }
+
+    setFilteredTasks(currentTasks);
+  }, [filters, tasks]);
 
   const checkAuth = async () => {
     setAuthLoader(true);
@@ -133,7 +155,7 @@ const TaskManager = () => {
               path={`${appPath}/tasks`}
               element={
                 <Tasks
-                  tasks={tasks}
+                  tasks={filteredTasks}
                   setTasks={setTasks}
                   getTasks={getTasks}
                   loading={loading}
