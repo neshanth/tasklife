@@ -198,6 +198,14 @@ button {
   border: none;
 }
 
+.tl-btn {
+  border-radius: var(--tl-spacing-xs);
+  padding: var(--tl-spacing-xs) var(--tl-spacing-s);
+  font-size: var(--tl-spacing-md);
+  font-weight: 500;
+  font-family: "Inter Display";
+}
+
 /*------------------------------
      FORM STYLES
  ------------------------------- */

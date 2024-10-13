@@ -9,7 +9,7 @@ import useAppContext from "../../hooks/useAppContext";
 import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-
+import TLModal from "../TLModal/TLModal";
 const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   const TASK_DATA = {
     task: "",
@@ -172,87 +172,116 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
     }),
   };
   const taskFormTitle = taskFormAction === "create" ? "New" : taskFormAction === "edit" ? "Edit" : "View";
+
+  let taskFormActionButtons = [];
+  if (taskFormAction !== "view") {
+    taskFormActionButtons = [
+      {
+        label: "Cancel",
+        action: handleCancelButton,
+        className: "tl-task__form-cancel",
+      },
+      {
+        label: "Save",
+        action: handleTaskAddOrUpdate,
+        className: "tl-task__form-save",
+      },
+    ];
+  } else {
+    taskFormActionButtons = [
+      {
+        label: "Edit",
+        action: handleTaskEditFromView,
+        className: "tl-task__form-edit",
+      },
+      {
+        label: "Delete",
+        action: (e) => handleTaskDeleteFromView(e, id),
+        className: "tl-task__form-delete",
+      },
+    ];
+  }
+
   return (
-    <form className={`tl-task__form-wrapper`}>
-      <div className="tl-task__form">
-        <div className="tl-task__form-title-container">
-          <BreadCrumb page={taskFormTitle} showClose={true} />
-        </div>
-        <div className={`tl-task__form-container`}>
-          <div className={`tl-task__form-name-desc ${taskFormAction !== "view" ? "tl-border" : ""} ${taskFormAction}-mode`}>
-            <div className="tl-task__form-task-name">
-              {taskFormAction === "view" && <p>{taskData.task}</p>}
-              {taskFormAction !== "view" && <input value={taskData.task} onChange={handleTaskFormChange} name="task" type="text" placeholder="Name of the Task" ref={inputRef} />}
+    <TLModal page={taskFormTitle} showClose={true} buttons={taskFormActionButtons} onCancel={handleCancelButton} onSave={handleTaskAddOrUpdate}>
+      <form className="tl-task__form-wrapper">
+        <div className="tl-task__form">
+          <div className={`tl-task__form-container`}>
+            <div className={`tl-task__form-name-desc ${taskFormAction !== "view" ? "tl-border" : ""} ${taskFormAction}-mode`}>
+              <div className="tl-task__form-task-name">
+                {taskFormAction === "view" && <p>{taskData.task}</p>}
+                {taskFormAction !== "view" && <input value={taskData.task} onChange={handleTaskFormChange} name="task" type="text" placeholder="Name of the Task" ref={inputRef} />}
+              </div>
+              <div className="tl-task__form-task-desc">
+                {taskFormAction === "view" && taskData.description && <p>{taskData.description}</p>}
+                {taskFormAction !== "view" && <input value={taskData.description} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />}
+              </div>
             </div>
-            <div className="tl-task__form-task-desc">
-              {taskFormAction === "view" && taskData.description && <p>{taskData.description}</p>}
-              {taskFormAction !== "view" && <input value={taskData.description} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />}
-            </div>
-          </div>
-          <div className="tl-task__form-info">
-            {taskFormAction !== "create" && (
-              <div className="tl-task__form-task-status">
-                {taskData.status ? <Icons type="circle-filled" w="20" h="20" /> : <Icons type="circle" w="20" h="20" />}
-                <Select
-                  value={taskData.status ? { value: 1, label: "Completed" } : { value: 0, label: "Pending" }}
-                  name="status"
-                  onChange={handleTaskFormChange}
-                  options={[
-                    {
-                      value: 1,
-                      label: "Completed",
-                      type: "status",
-                    },
-                    {
-                      value: 0,
-                      label: "Pending",
-                      type: "status",
-                    },
-                  ]}
-                  styles={customStyles}
-                  components={taskFormAction === "view" && { DropdownIndicator: () => null }}
+            <div className="tl-task__form-info">
+              {taskFormAction !== "create" && (
+                <div className="tl-task__form-task-status">
+                  {taskData.status ? <Icons type="circle-filled" w="20" h="20" /> : <Icons type="circle" w="20" h="20" />}
+                  <Select
+                    value={taskData.status ? { value: 1, label: "Completed" } : { value: 0, label: "Pending" }}
+                    name="status"
+                    onChange={handleTaskFormChange}
+                    options={[
+                      {
+                        value: 1,
+                        label: "Completed",
+                        type: "status",
+                      },
+                      {
+                        value: 0,
+                        label: "Pending",
+                        type: "status",
+                      },
+                    ]}
+                    styles={customStyles}
+                    components={taskFormAction === "view" && { DropdownIndicator: () => null }}
+                  />
+                </div>
+              )}
+
+              <div className="tl-task__form-due-date">
+                <DatePicker
+                  isClearable={taskFormAction !== "view" ? true : false}
+                  dateFormat="MMM d"
+                  customInput={<DateInput className="tl-task__form-due-date" />}
+                  placeholderText="Due Date"
+                  selected={startDate}
+                  onChange={handleDatePicker}
                 />
               </div>
-            )}
-
-            <div className="tl-task__form-due-date">
-              <DatePicker
-                isClearable={taskFormAction !== "view" ? true : false}
-                dateFormat="MMM d"
-                customInput={<DateInput className="tl-task__form-due-date" />}
-                placeholderText="Due Date"
-                selected={startDate}
-                onChange={handleDatePicker}
-              />
-            </div>
-            <div className="tl-task__form-tags" onClick={() => setOpenDropdown(!openDropdown)}>
-              <Icons w="25px" h="25px" type="tag" />
-              <Select
-                components={taskFormAction === "view" && { DropdownIndicator: () => null, ClearIndicator: () => null, MultiValueRemove: () => null }}
-                closeMenuOnSelect={false}
-                styles={customStyles}
-                placeholder="Tags"
-                onChange={handleChange}
-                isSearchable={false}
-                value={selectedTags}
-                isMulti={true}
-                options={allTags}
-              />
+              <div className="tl-task__form-tags" onClick={() => setOpenDropdown(!openDropdown)}>
+                <Icons w="25px" h="25px" type="tag" />
+                <Select
+                  components={taskFormAction === "view" && { DropdownIndicator: () => null, ClearIndicator: () => null, MultiValueRemove: () => null }}
+                  closeMenuOnSelect={false}
+                  styles={customStyles}
+                  placeholder="Tags"
+                  onChange={handleChange}
+                  isSearchable={false}
+                  value={selectedTags}
+                  isMulti={true}
+                  options={allTags}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="tl-task__form-submit">
-        <TaskActionButtons
-          taskFormAction={taskFormAction}
-          handleCancelButton={handleCancelButton}
-          handleTaskAddOrUpdate={handleTaskAddOrUpdate}
-          handleTaskEditFromView={handleTaskEditFromView}
-          handleTaskDeleteFromView={handleTaskDeleteFromView}
-          id={id}
-        />
-      </div>
-    </form>
+        {/* <div className="tl-task__form-submit">
+          <TaskActionButtons
+            taskFormAction={taskFormAction}
+            handleCancelButton={handleCancelButton}
+            handleTaskAddOrUpdate={handleTaskAddOrUpdate}
+            handleTaskEditFromView={handleTaskEditFromView}
+            handleTaskDeleteFromView={handleTaskDeleteFromView}
+            id={id}
+          />
+        </div> */}
+      </form>
+    </TLModal>
   );
 };
 export default TaskForm;

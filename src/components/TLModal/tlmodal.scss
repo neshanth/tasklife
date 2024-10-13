@@ -1,0 +1,34 @@
+.tl-modal {
+  border-top-left-radius: var(--tl-spacing-xl);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: #fff;
+  width: 100%;
+  z-index: 999;
+  box-shadow: -8px 0px 16px 0px #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  .tl-modal__body {
+    padding: var(--tl-spacing-2xl) var(--tl-spacing-xl);
+    flex-grow: 1;
+  }
+  .tl-modal__footer {
+    display: flex;
+    flex-direction: row;
+    padding: var(--tl-spacing-xl) var(--tl-spacing-2xl);
+    background-color: var(--tl-theme-bg);
+    gap: var(--tl-spacing-s);
+    .tl-modal__btn {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tl-modal {
+    width: 400px;
+    top: 0;
+  }
+}
