@@ -51,9 +51,9 @@ const Icons = ({ type, w, h, fill }) => {
         <svg width="20" xmlns="http://www.w3.org/2000/svg" height="16" fill="none">
           <g data-testid="menu">
             <g className="fills">
-              <rect width="20" height="16" class="frame-background" style={{ fill: "rgb(255, 255, 255)", fillOpacity: "1" }} ry="6" rx="6" />
+              <rect width="20" height="16" className="frame-background" style={{ fill: "rgb(255, 255, 255)", fillOpacity: "1" }} ry="6" rx="6" />
             </g>
-            <g data-testid="icon-list" class="frame-children">
+            <g data-testid="icon-list" className="frame-children">
               <path
                 d="M20 8c0 .491-.373.889-.833.889H.833C.373 8.889 0 8.491 0 8s.373-.889.833-.889h18.334c.46 0 .833.398.833.889ZM.833 1.778h18.334c.46 0 .833-.398.833-.889S19.627 0 19.167 0H.833C.373 0 0 .398 0 .889s.373.889.833.889Zm18.334 12.444H.833c-.46 0-.833.398-.833.889S.373 16 .833 16h18.334c.46 0 .833-.398.833-.889s-.373-.889-.833-.889Z"
                 style={{

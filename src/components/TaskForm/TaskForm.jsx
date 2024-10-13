@@ -38,7 +38,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   }, [id]);
 
   const DateInput = forwardRef(({ className, onClick, placeholder, value }, ref) => (
-    <div className={className} ref={ref} onClick={onClick}>
+    <div className={className} ref={ref} onClick={taskFormAction === "view" ? () => {} : onClick}>
       <Icons w="25px" h="25px" type="calendar" />
       <input className="tl-task__form-date-input" type="text" placeholder={placeholder} value={value} readOnly />
     </div>
@@ -137,6 +137,10 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
     navigate(location.state?.previousLocation?.pathname || -1);
   };
 
+  const handleTagsDropdown = () => {
+    if (taskFormAction !== "view") setOpenDropdown(!openDropdown);
+  };
+
   // Custom styles to remove the border
   const customStyles = {
     menu: (provided) => ({
@@ -147,8 +151,9 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
       ...provided,
       width: "100%",
     }),
-    control: (provided) => ({
+    control: (provided, state) => ({
       ...provided,
+      backgroundColor: state.isDisabled ? "transparent" : provided.backgroundColor,
       border: "none",
       borderBottom: "1px solid var(--tl-theme-border)",
       padding: 0,
@@ -214,7 +219,9 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
               </div>
               <div className="tl-task__form-task-desc">
                 {taskFormAction === "view" && taskData.description && <p>{taskData.description}</p>}
-                {taskFormAction !== "view" && <input value={taskData.description} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />}
+                {taskFormAction !== "view" && (
+                  <input value={taskData.description ? taskData.description : ""} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />
+                )}
               </div>
             </div>
             <div className="tl-task__form-info">
@@ -239,6 +246,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
                     ]}
                     styles={customStyles}
                     components={taskFormAction === "view" && { DropdownIndicator: () => null }}
+                    isDisabled={taskFormAction === "view"}
                   />
                 </div>
               )}
@@ -253,7 +261,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
                   onChange={handleDatePicker}
                 />
               </div>
-              <div className="tl-task__form-tags" onClick={() => setOpenDropdown(!openDropdown)}>
+              <div className="tl-task__form-tags">
                 <Icons w="25px" h="25px" type="tag" />
                 <Select
                   components={taskFormAction === "view" && { DropdownIndicator: () => null, ClearIndicator: () => null, MultiValueRemove: () => null }}
@@ -265,6 +273,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
                   value={selectedTags}
                   isMulti={true}
                   options={allTags}
+                  isDisabled={taskFormAction === "view"}
                 />
               </div>
             </div>
