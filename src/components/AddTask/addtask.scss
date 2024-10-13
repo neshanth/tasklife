@@ -6,8 +6,8 @@
     align-items: center;
     gap: var(--tl-spacing-s);
     font-weight: 500;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: var(--tl-spacing-xs);
+    padding-right: var(--tl-spacing-xs);
   }
   cursor: pointer;
   &:hover {
@@ -25,7 +25,8 @@
     margin-top: var(--tl-spacing-l);
     position: sticky;
     bottom: 10px;
-    padding: var(--tl-spacing-md) var(--tl-spacing-xl);
+    // padding: var(--tl-spacing-md) var(--tl-spacing-xl);
+    padding: var(--tl-spacing-xs);
     .tl-add-task__text {
       color: var(--tl-neutral-white);
       padding: 0;
