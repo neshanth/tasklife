@@ -1,0 +1,14 @@
+.tl-task__date {
+  .react-datepicker-wrapper {
+    width: 100%;
+    .tl-task__date-input-container {
+      display: flex;
+      gap: var(--tl-spacing-xs);
+      padding: var(--tl-spacing-2xs) 0;
+    }
+    .tl-task__date-input {
+      border-bottom: 1px solid var(--tl-theme-border);
+      padding-bottom: var(--tl-spacing-2xs);
+    }
+  }
+}

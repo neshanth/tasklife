@@ -1,6 +1,4 @@
-import BreadCrumb from "../BreadCrumb/BreadCrumb";
-import { forwardRef, useEffect, useRef, useState } from "react";
-import DatePicker from "react-datepicker";
+import { useEffect, useRef, useState } from "react";
 import Select from "react-select";
 import "./taskform.scss";
 import Icons from "../Icons/Icons";
@@ -10,6 +8,7 @@ import { handleDateIfDateIsEmpty, renderToast } from "../../utils/utils";
 import api from "../../api/api";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import TLModal from "../TLModal/TLModal";
+import DatePickerWrapper from "../DatePickerWrapper/DatePickerWrapper";
 const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   const TASK_DATA = {
     task: "",
@@ -25,7 +24,6 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   const { allTags, user, taskFormAction, setTaskFormAction, isMobile } = useAppContext();
   const [taskData, setTaskData] = useState(TASK_DATA);
   const [startDate, setStartDate] = useState(null);
-  const [openDropdown, setOpenDropdown] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
@@ -36,13 +34,6 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
       setSelectedTags(taskData?.tags ? taskData.tags : []);
     }
   }, [id]);
-
-  const DateInput = forwardRef(({ className, onClick, placeholder, value }, ref) => (
-    <div className={className} ref={ref} onClick={taskFormAction === "view" ? () => {} : onClick}>
-      <Icons w="25px" h="25px" type="calendar" />
-      <input className="tl-task__form-date-input" type="text" placeholder={placeholder} value={value} readOnly />
-    </div>
-  ));
 
   const inputRef = useRef();
   useEffect(() => {
@@ -252,16 +243,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
                 </div>
               )}
 
-              <div className="tl-task__form-due-date">
-                <DatePicker
-                  isClearable={taskFormAction !== "view" ? true : false}
-                  dateFormat="MMM d"
-                  customInput={<DateInput className="tl-task__form-due-date" />}
-                  placeholderText="Due Date"
-                  selected={startDate}
-                  onChange={handleDatePicker}
-                />
-              </div>
+              <DatePickerWrapper isClearable={taskFormAction !== "view" ? true : false} startDate={startDate} handleDatePicker={handleDatePicker} taskFormAction={taskFormAction} />
               <div className="tl-task__form-tags">
                 <Icons w="25px" h="25px" type="tag" />
                 <Select
