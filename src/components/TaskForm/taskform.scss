@@ -52,31 +52,14 @@
           border-bottom: 1px solid var(--tl-theme-border);
         }
       }
-
-      .tl-task__form-due-date,
-      .tl-task__form-tags {
-        display: flex;
-        gap: var(--tl-spacing-xs);
-        padding: var(--tl-spacing-2xs) 0;
-        width: 100%;
-      }
-
-      .tl-task__form-due-date {
-        .react-datepicker-wrapper {
-          width: 100%;
-          .tl-task__form-date-input {
-            border-bottom: 1px solid var(--tl-theme-border);
-            padding-bottom: var(--tl-spacing-2xs);
-          }
-        }
-      }
-
-      .tl-task__form-tags {
-        color: var(--tl-text-light-1);
-        align-items: center;
-        position: relative;
-      }
     }
+  }
+
+  .tl-task__form-tags-wrapper {
+    display: flex;
+    gap: var(--tl-spacing-xs);
+    padding: var(--tl-spacing-2xs) 0;
+    align-items: center;
   }
 }
 

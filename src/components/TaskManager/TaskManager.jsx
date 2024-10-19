@@ -48,6 +48,10 @@ const TaskManager = () => {
         return taskDate === filterDate;
       });
     }
+    // Tag Filter
+    if (filters.tag) {
+      currentTasks = currentTasks.filter((task) => task.tags.includes(filters.tag));
+    }
 
     setFilteredTasks(currentTasks);
   }, [filters, tasks]);

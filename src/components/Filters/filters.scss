@@ -57,15 +57,6 @@
       border-radius: var(--tl-spacing-xs);
       cursor: pointer;
     }
-    .tl-filters__date,
-    .tl-filters__tags {
-      display: flex;
-      gap: var(--tl-spacing-xs);
-      align-items: center;
-      button {
-        color: var(--tl-text-light-2);
-      }
-    }
   }
   .tl-filters__wrapper {
     display: flex;
@@ -73,6 +64,12 @@
     gap: var(--tl-spacing-2xs);
     .react-datepicker-wrapper {
       width: 100%;
+    }
+    .tl-filters__wrapper-tags {
+      display: flex;
+      align-items: center;
+      gap: var(--tl-spacing-xs);
+      padding: var(--tl-spacing-2xs) 0;
     }
   }
 }

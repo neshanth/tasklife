@@ -9,6 +9,7 @@ import api from "../../api/api";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import TLModal from "../TLModal/TLModal";
 import DatePickerWrapper from "../DatePickerWrapper/DatePickerWrapper";
+import SelectWrapper from "../SelectWrapper/SelectWrapper";
 const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   const TASK_DATA = {
     task: "",
@@ -134,40 +135,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   };
 
   // Custom styles to remove the border
-  const customStyles = {
-    menu: (provided) => ({
-      ...provided,
-      width: "100%", // Ensure the dropdown menu is also 100% width
-    }),
-    container: (provided) => ({
-      ...provided,
-      width: "100%",
-    }),
-    control: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isDisabled ? "transparent" : provided.backgroundColor,
-      border: "none",
-      borderBottom: "1px solid var(--tl-theme-border)",
-      padding: 0,
-      boxShadow: "none",
-      "&:hover": {
-        border: "none",
-        borderBottom: "1px solid var(--tl-theme-border)",
-      },
-    }),
-    valueContainer: (provided) => ({
-      ...provided,
-      padding: 0,
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-      margin: 0,
-    }),
-    indicatorSeparator: (provided) => ({
-      ...provided,
-      display: "none",
-    }),
-  };
+
   const taskFormTitle = taskFormAction === "create" ? "New" : taskFormAction === "edit" ? "Edit" : "View";
 
   let taskFormActionButtons = [];
@@ -220,6 +188,25 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
               {taskFormAction !== "create" && (
                 <div className="tl-task__form-task-status">
                   {taskData.status ? <Icons type="circle-filled" w="20" h="20" /> : <Icons type="circle" w="20" h="20" />}
+                  {/* <SelectWrapper
+                    components={taskFormAction === "view" && { DropdownIndicator: () => null }}
+                    styles={customStyles}
+                    onChange={handleTaskFormChange}
+                    value={taskData.status ? { value: 1, label: "Completed" } : { value: 0, label: "Pending" }}
+                    options={[
+                      {
+                        value: 1,
+                        label: "Completed",
+                        type: "status",
+                      },
+                      {
+                        value: 0,
+                        label: "Pending",
+                        type: "status",
+                      },
+                    ]}
+                    isDisabled={taskFormAction === "view"}
+                  /> */}
                   <Select
                     value={taskData.status ? { value: 1, label: "Completed" } : { value: 0, label: "Pending" }}
                     name="status"
@@ -236,7 +223,6 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
                         type: "status",
                       },
                     ]}
-                    styles={customStyles}
                     components={taskFormAction === "view" && { DropdownIndicator: () => null }}
                     isDisabled={taskFormAction === "view"}
                   />
@@ -244,17 +230,12 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
               )}
 
               <DatePickerWrapper isClearable={taskFormAction !== "view" ? true : false} startDate={startDate} handleDatePicker={handleDatePicker} taskFormAction={taskFormAction} />
-              <div className="tl-task__form-tags">
+              <div className="tl-task__form-tags-wrapper">
                 <Icons w="25px" h="25px" type="tag" />
-                <Select
+                <SelectWrapper
                   components={taskFormAction === "view" && { DropdownIndicator: () => null, ClearIndicator: () => null, MultiValueRemove: () => null }}
-                  closeMenuOnSelect={false}
-                  styles={customStyles}
-                  placeholder="Tags"
                   onChange={handleChange}
-                  isSearchable={false}
                   value={selectedTags}
-                  isMulti={true}
                   options={allTags}
                   isDisabled={taskFormAction === "view"}
                 />

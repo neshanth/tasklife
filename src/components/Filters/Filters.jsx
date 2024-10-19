@@ -5,11 +5,14 @@ import Search from "../Search/Search";
 import { useState } from "react";
 import TLModal from "../TLModal/TLModal";
 import DatePickerWrapper from "../DatePickerWrapper/DatePickerWrapper";
+import SelectWrapper from "../SelectWrapper/SelectWrapper";
 
 const Filters = ({ pendingTasks, completedTasks }) => {
   const { filters, setFilters } = useAppContext();
   const [startDate, setStartDate] = useState(null);
   const [showFilters, setShowFilters] = useState(false);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const { allTags } = useAppContext();
 
   const handleFilterChange = (type, value) => {
     const currentFilters = { ...filters };
@@ -24,6 +27,11 @@ const Filters = ({ pendingTasks, completedTasks }) => {
   const handleDatePicker = (date) => {
     setStartDate(date);
     handleFilterChange("date", date);
+  };
+
+  const handleTags = (option) => {
+    handleFilterChange("tags", selectedTags);
+    setSelectedTags(option);
   };
 
   return (
@@ -50,9 +58,9 @@ const Filters = ({ pendingTasks, completedTasks }) => {
           <TLModal page="Filters" showClose={true} handleCloseBtnClick={handleFilterClose}>
             <div className="tl-filters__wrapper">
               <DatePickerWrapper startDate={startDate} isClearable={true} handleDatePicker={handleDatePicker} />
-              <div className="tl-filters__tags tl-border filters-padding">
-                <Icons type="tag" w="20" h="20" />
-                <button>Tags</button>
+              <div className="tl-filters__wrapper-tags">
+                <Icons type="tag" w="25" h="25" />
+                <SelectWrapper onChange={handleTags} value={selectedTags} options={allTags} isDisabled={false} />
               </div>
             </div>
           </TLModal>
