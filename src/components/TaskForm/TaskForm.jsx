@@ -20,13 +20,13 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
     status: 0,
   };
   const navigate = useNavigate();
+  const location = useLocation();
   const { id } = useParams();
   const { allTags, user, taskFormAction, setTaskFormAction, isMobile } = useAppContext();
   const [taskData, setTaskData] = useState(TASK_DATA);
   const [startDate, setStartDate] = useState(null);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
-  const location = useLocation();
 
   useEffect(() => {
     if (id) {
@@ -137,8 +137,9 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
     navigate(location.state?.previousLocation?.pathname || -1);
   };
 
-  const handleTagsDropdown = () => {
-    if (taskFormAction !== "view") setOpenDropdown(!openDropdown);
+  const handleFormClose = () => {
+    const path = location?.state?.previousLocation?.pathname || -1;
+    navigate(path);
   };
 
   // Custom styles to remove the border
@@ -208,7 +209,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   }
 
   return (
-    <TLModal page={taskFormTitle} showClose={true} buttons={taskFormActionButtons} onCancel={handleCancelButton} onSave={handleTaskAddOrUpdate}>
+    <TLModal handleCloseBtnClick={handleFormClose} page={taskFormTitle} showClose={true} buttons={taskFormActionButtons} onCancel={handleCancelButton} onSave={handleTaskAddOrUpdate}>
       <form className="tl-task__form-wrapper">
         <div className="tl-task__form">
           <div className={`tl-task__form-container`}>

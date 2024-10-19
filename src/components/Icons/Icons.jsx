@@ -46,6 +46,14 @@ const Icons = ({ type, w, h, fill }) => {
           <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
         </SvgIcon>
       );
+    case "filter":
+      return (
+        <SvgIcon w={22} h={22} viewBox="0 0 22 20" stroke="var(--tl-text-light-2)">
+          <path d="M4 4h16v4l-6 6v6l-4-2v-4l-6-6V4z" />
+        </SvgIcon>
+
+        // <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" id="filter">
+      );
     case "hamburger":
       return (
         <svg width="20" xmlns="http://www.w3.org/2000/svg" height="16" fill="none">
