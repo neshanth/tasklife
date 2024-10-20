@@ -1,7 +1,7 @@
 import Select from "react-select";
 import Icons from "../Icons/Icons";
 import "./selectWrapper.scss";
-const SelectWrapper = ({ components, onChange, value, options, isDisabled }) => {
+const SelectWrapper = ({ components, onChange, value, options, isDisabled, name, isMulti = false }) => {
   const customStyles = {
     menu: (provided) => ({
       ...provided,
@@ -46,9 +46,10 @@ const SelectWrapper = ({ components, onChange, value, options, isDisabled }) => 
         onChange={onChange}
         isSearchable={false}
         value={value}
-        isMulti={true}
+        isMulti={isMulti}
         options={options}
         isDisabled={isDisabled}
+        name={name}
       />
     </div>
   );

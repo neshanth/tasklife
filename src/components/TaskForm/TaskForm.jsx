@@ -207,7 +207,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
                     ]}
                     isDisabled={taskFormAction === "view"}
                   /> */}
-                  <Select
+                  {/* <Select
                     value={taskData.status ? { value: 1, label: "Completed" } : { value: 0, label: "Pending" }}
                     name="status"
                     onChange={handleTaskFormChange}
@@ -225,6 +225,25 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
                     ]}
                     components={taskFormAction === "view" && { DropdownIndicator: () => null }}
                     isDisabled={taskFormAction === "view"}
+                  /> */}
+                  <SelectWrapper
+                    components={taskFormAction === "view" && { DropdownIndicator: () => null }}
+                    isDisabled={taskFormAction === "view"}
+                    onChange={handleTaskFormChange}
+                    value={taskData.status ? { value: 1, label: "Completed" } : { value: 0, label: "Pending" }}
+                    options={[
+                      {
+                        value: 1,
+                        label: "Completed",
+                        type: "status",
+                      },
+                      {
+                        value: 0,
+                        label: "Pending",
+                        type: "status",
+                      },
+                    ]}
+                    name="status"
                   />
                 </div>
               )}
