@@ -49,8 +49,8 @@ const TaskManager = () => {
       });
     }
     // Tag Filter
-    if (filters.tag) {
-      currentTasks = currentTasks.filter((task) => task.tags.includes(filters.tag));
+    if (filters.tags.length > 0) {
+      currentTasks = currentTasks.filter((task) => task.tags.some((tag) => filters.tags.includes(tag.label)));
     }
 
     setFilteredTasks(currentTasks);

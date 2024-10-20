@@ -30,8 +30,11 @@ const Filters = ({ pendingTasks, completedTasks }) => {
   };
 
   const handleTags = (option) => {
-    handleFilterChange("tags", selectedTags);
     setSelectedTags(option);
+    handleFilterChange(
+      "tags",
+      option.map((option) => option.label)
+    );
   };
 
   return (
