@@ -133,10 +133,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
     navigate(path);
   };
 
-  // Custom styles to remove the border
-
   const taskFormTitle = taskFormAction === "create" ? "New" : taskFormAction === "edit" ? "Edit" : "View";
-
   let taskFormActionButtons = [];
   if (taskFormAction !== "view") {
     taskFormActionButtons = [
@@ -166,6 +163,20 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
     ];
   }
 
+  // Status Options
+  const statusOptions = [
+    {
+      value: 1,
+      label: "Completed",
+      type: "status",
+    },
+    {
+      value: 0,
+      label: "Pending",
+      type: "status",
+    },
+  ];
+
   return (
     <TLModal handleCloseBtnClick={handleFormClose} page={taskFormTitle} showClose={true} buttons={taskFormActionButtons} onCancel={handleCancelButton} onSave={handleTaskAddOrUpdate}>
       <form className="tl-task__form-wrapper">
@@ -192,18 +203,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
                     isDisabled={taskFormAction === "view"}
                     onChange={handleTaskFormChange}
                     value={taskData.status ? { value: 1, label: "Completed" } : { value: 0, label: "Pending" }}
-                    options={[
-                      {
-                        value: 1,
-                        label: "Completed",
-                        type: "status",
-                      },
-                      {
-                        value: 0,
-                        label: "Pending",
-                        type: "status",
-                      },
-                    ]}
+                    options={statusOptions}
                     name="status"
                   />
                 </div>
