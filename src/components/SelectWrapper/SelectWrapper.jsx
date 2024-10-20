@@ -1,5 +1,4 @@
 import Select from "react-select";
-import Icons from "../Icons/Icons";
 import "./selectWrapper.scss";
 const SelectWrapper = ({ components, onChange, value, options, isDisabled, name, isMulti = false }) => {
   const customStyles = {

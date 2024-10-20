@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { getTasksResponse, renderToast, updateTaskStatusApi, handleTaskDeleteResponse, deepEqual } from "../../utils/utils";
+import { getTasksResponse, renderToast, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
 import useAppContext from "../../hooks/useAppContext";
 import api from "../../api/api";
 import Home from "../Home/Home";
@@ -15,7 +15,6 @@ import Sidebar from "../Sidebar/Sidebar.jsx";
 import history from "../../history/history.js";
 import TaskForm from "../TaskForm/TaskForm.jsx";
 import Inbox from "../Inbox/Inbox.jsx";
-import { FILTER } from "../../constants/constants.js";
 
 const TaskManager = () => {
   const appPath = "/app";
