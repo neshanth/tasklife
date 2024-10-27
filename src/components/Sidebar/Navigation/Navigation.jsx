@@ -18,8 +18,8 @@ const navigationLinks = [
     icon: <Icons type="house" />,
   },
   {
-    name: "Inbox",
-    path: `${appPath}/inbox`,
+    name: "Today",
+    path: `${appPath}/today`,
     icon: <Icons type="inbox" />,
   },
 ];

@@ -14,7 +14,7 @@ import Spinner from "../Spinner/Spinner";
 import Sidebar from "../Sidebar/Sidebar.jsx";
 import history from "../../history/history.js";
 import TaskForm from "../TaskForm/TaskForm.jsx";
-import Inbox from "../Inbox/Inbox.jsx";
+import Today from "../Today/Today.jsx";
 
 const TaskManager = () => {
   const appPath = "/app";
@@ -159,6 +159,8 @@ const TaskManager = () => {
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoutes />}>
           <Route path={appPath} element={<MainContent />}>
+            <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} updateTaskStatus={updateTaskStatus} />} />{" "}
+            <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route
               path={`${appPath}/tasks`}
               element={
@@ -174,11 +176,10 @@ const TaskManager = () => {
                 />
               }
             />
-            <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route
-              path={`${appPath}/inbox`}
+              path={`${appPath}/today`}
               element={
-                <Inbox
+                <Today
                   pendingTasks={pendingTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
                   completedTasks={completedTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
                   handleTaskDelete={handleTaskDelete}

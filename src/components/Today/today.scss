@@ -1,5 +1,5 @@
-.tl-inbox {
-  .tl-inbox__heading {
+.tl-today {
+  .tl-today__heading {
     background-color: var(--tl-theme-bg);
     padding: var(--tl-spacing-s) var(--tl-spacing-md);
     color: var(--tl-text-base);
@@ -10,9 +10,9 @@
     gap: var(--tl-spacing-xs);
     font-size: 1.125rem;
   }
-  .tl-inbox__content {
+  .tl-today__content {
     margin-bottom: var(--tl-spacing-l);
-    .tl-inbox__count {
+    .tl-today__count {
       border-radius: 6px;
       padding: var(--tl-spacing-2xs) 0.375rem;
       font-size: 0.875rem;
