@@ -62,10 +62,7 @@ function Dashboard({ tasks, updateTaskStatus }) {
       <div className="tl-dashboard">
         <BreadCrumb page="Dashboard" />
         <div className="content-container">
-          <ContentInfo
-            sectionHeading="Dashboard"
-            sectionInfo="Track your progress and optimize your productivity with this analytics page. The progress bar and task status cards provide an overview of your task completion and help you stay on track"
-          />
+          <ContentInfo sectionHeading="Dashboard" sectionInfo="Track your progress and optimize your productivity with this analytics page." />
           <div className="tl-dashboard__stats-container">
             {stats.map((stat, index) => {
               return <StatCard key={index} statInfo={stat} />;
