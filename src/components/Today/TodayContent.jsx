@@ -7,12 +7,16 @@ const TodayContent = ({ tasks, handleTaskDelete, updateTaskStatus, heading }) =>
   const handleContentOpen = () => {
     setShow(!show);
   };
+  const styleObj = {
+    transform: `${!show ? "rotate(-90deg)" : "rotate(0deg)"}`,
+    transition: "transform 0.5s ease-in-out",
+  };
   return (
     <div className="tl-today__content" onClick={handleContentOpen}>
       <div className="tl-today__content-header">
         <p className="tl-today__heading">
           <span>
-            <Icons className="right" type="down" w="20" h="20" style={!show ? { transform: "rotate(-90deg)" } : {}} />
+            <Icons className="right" type="down" w="20" h="20" style={styleObj} />
           </span>
           {heading}
           <span className={`tl-today__count ${heading?.toLowerCase()}`}>{tasks.length}</span>
