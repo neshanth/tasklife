@@ -8,7 +8,7 @@ const SvgIcon = ({ w = "32", h = "32", fill = "var(--tl-text-light-2)", viewBox 
   );
 };
 
-const Icons = ({ type, w, h, fill }) => {
+const Icons = ({ type, w, h, fill, ...rest }) => {
   switch (type) {
     case "house":
       return (
@@ -42,7 +42,7 @@ const Icons = ({ type, w, h, fill }) => {
       );
     case "down":
       return (
-        <SvgIcon w={w} h={h}>
+        <SvgIcon w={w} h={h} {...rest}>
           <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
         </SvgIcon>
       );
