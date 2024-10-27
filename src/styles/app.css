@@ -17,9 +17,8 @@
   --padding-2: var(--tl-spacing-xl);
   --padding-3: 3rem;
   --border-color: #ebebeb;
-  --pending-bg: #f1c78e;
-  --completed-bg: #9efdc7;
   --light-blue: #eceeff;
+
   /* New Vars */
   --tl-spacing-1xs: 0.125rem;
   /* 2px */
@@ -276,6 +275,29 @@ button {
 }
 
 /*------------------------------
+    TASK STATUS STYLES
+ ------------------------------- */
+.completed {
+  background-color: #EDFFEA;
+  color: #31b71b;
+}
+
+.pending {
+  background-color: #FFEDE5;
+  color: #eb6025;
+}
+
+.total {
+  background-color: var(--tl-theme-bg);
+  color: var(--tl-text-light-1);
+}
+
+.productivity {
+  background-color: var(--tl-theme-light-5);
+  color: var(--tl-theme-base);
+}
+
+/*------------------------------
      GLOBAL CLASSES
  ------------------------------- */
 .tl-border {
@@ -294,22 +316,6 @@ button {
 .sidebar {
   margin-top: 66px;
   background-color: var(--black);
-}
-
-/* Task status Styles */
-.completed {
-  background-color: #9efdc7;
-  color: #0c321d;
-}
-
-.pending {
-  background-color: #f1c78e;
-  color: #4c3105;
-}
-
-.total {
-  background-color: #ececec;
-  color: #777777;
 }
 
 /* Navabr and Dashboard */

@@ -8,9 +8,19 @@
   .stat-card__name {
     font-size: 0.875rem;
     font-weight: 600;
+    align-self: flex-start;
+    padding: var(--tl-spacing-1xs) var(--tl-spacing-2xs);
+    border-radius: 0.375rem;
   }
   .stat-card__stat {
     padding-top: var(--tl-spacing-md);
-    font-size: var(--tl-spacing-3xl);
+    font-size: 2.25rem;
+    font-weight: 600;
+    font-family: "Inter Display";
+    color: var(--tl-text-base);
+  }
+  .stat-card__text {
+    color: var(--tl-text-light-2);
+    font-weight: 400;
   }
 }
