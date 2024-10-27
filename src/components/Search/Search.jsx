@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Icons from "../Icons/Icons";
 import "./search.scss";
-const Search = () => {
+const Search = ({ search, handleSearch }) => {
   const inputFocusRef = useRef();
   const handleInputFocus = () => {
     inputFocusRef.current.focus();
@@ -10,7 +10,7 @@ const Search = () => {
     <div className="tl__search tl-border" onClick={handleInputFocus}>
       <div className="tl__search-container">
         <Icons type="search" />
-        <input ref={inputFocusRef} type="text" placeholder="Search Tasks" />
+        <input value={search} onChange={handleSearch} ref={inputFocusRef} type="text" placeholder="Search..." />
       </div>
     </div>
   );

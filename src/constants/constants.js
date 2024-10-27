@@ -1,5 +1,6 @@
 export const FILTER = {
     status: "pending",
     date: "",
-    tags: []
+    tags: [],
+    search: ""
 }

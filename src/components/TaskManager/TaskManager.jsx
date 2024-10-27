@@ -52,6 +52,11 @@ const TaskManager = () => {
       currentTasks = currentTasks.filter((task) => task.tags.some((tag) => filters.tags.includes(tag.label)));
     }
 
+    //Search
+    if (filters.search) {
+      currentTasks = currentTasks.filter((task) => task.task.toLowerCase().includes(filters.search.toLowerCase()));
+    }
+
     setFilteredTasks(currentTasks);
   }, [filters, tasks]);
 

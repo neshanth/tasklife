@@ -12,6 +12,7 @@ const Filters = ({ pendingTasks, completedTasks }) => {
   const [startDate, setStartDate] = useState(null);
   const [showFilters, setShowFilters] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [search, setSearch] = useState("");
   const { allTags } = useAppContext();
 
   const handleFilterChange = (type, value) => {
@@ -35,6 +36,11 @@ const Filters = ({ pendingTasks, completedTasks }) => {
       "tags",
       option.map((option) => option.label)
     );
+  };
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    handleFilterChange("search", e.target.value);
   };
 
   return (
@@ -69,7 +75,7 @@ const Filters = ({ pendingTasks, completedTasks }) => {
           </TLModal>
         )}
       </div>
-      <Search />
+      <Search search={search} handleSearch={handleSearch} />
     </section>
   );
 };
