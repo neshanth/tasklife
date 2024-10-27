@@ -8,6 +8,12 @@
     border: none;
     padding: 0;
     background: none;
+    display: flex;
+    gap: var(--tl-spacing-xs);
+    color: var(--tl-text-light-2);
+    font-weight: 500;
+    font-family: "Inter Display";
+    letter-spacing: 0.2px;
   }
   .tl-filters__options {
     display: flex;
