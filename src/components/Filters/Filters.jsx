@@ -69,7 +69,7 @@ const Filters = ({ pendingTasks, completedTasks }) => {
               <DatePickerWrapper startDate={startDate} isClearable={true} handleDatePicker={handleDatePicker} />
               <div className="tl-filters__wrapper-tags">
                 <Icons type="tag" w="25" h="25" />
-                <SelectWrapper onChange={handleTags} value={selectedTags} options={allTags} isDisabled={false} />
+                <SelectWrapper onChange={handleTags} value={selectedTags} options={allTags} isDisabled={false} isMulti={true} />
               </div>
             </div>
           </TLModal>
