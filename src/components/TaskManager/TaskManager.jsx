@@ -7,7 +7,7 @@ import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import MainContent from "../MainContent/MainContent.jsx";
-import Tasks from "../Tasks/Tasks";
+import Inbox from "../Inbox/Inbox.jsx";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import Dashboard from "../Dashboard/Dashboard.jsx";
 import Spinner from "../Spinner/Spinner";
@@ -162,9 +162,9 @@ const TaskManager = () => {
             <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} updateTaskStatus={updateTaskStatus} />} />{" "}
             <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route
-              path={`${appPath}/tasks`}
+              path={`${appPath}/inbox`}
               element={
-                <Tasks
+                <Inbox
                   tasks={filteredTasks}
                   setTasks={setTasks}
                   getTasks={getTasks}

@@ -8,9 +8,9 @@ import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import Filters from "../Filters/Filters";
 import TaskContainer from "../TaskContainer/TaskContainer";
-import "./tasks.scss";
+import "./inbox.scss";
 
-function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, pendingTasks, completedTasks }) {
+function Inbox({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, pendingTasks, completedTasks }) {
   const location = useLocation();
   const { setFetchData } = useAppContext();
 
@@ -29,10 +29,10 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, p
 
   return (
     <>
-      <div className="tl-tasks">
-        <BreadCrumb page="Tasks" />
+      <div className="tl-inbox">
+        <BreadCrumb page="Inbox" />
         <div className="content-container">
-          <ContentInfo sectionHeading="Tasks" sectionInfo="Overview of All the Pending Tasks" />
+          <ContentInfo sectionHeading="Inbox" sectionInfo="Overview of All the Tasks" />
           <Filters pendingTasks={pendingTasks} completedTasks={completedTasks} />
           <TaskContainer tasks={tasks} handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} />
         </div>
@@ -41,4 +41,4 @@ function Tasks({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, p
   );
 }
 
-export default Tasks;
+export default Inbox;

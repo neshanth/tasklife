@@ -13,13 +13,13 @@ const navigationLinks = [
     icon: <Icons type="stats" />,
   },
   {
-    name: "Tasks",
-    path: `${appPath}/tasks`,
+    name: "Today",
+    path: `${appPath}/today`,
     icon: <Icons type="house" />,
   },
   {
-    name: "Today",
-    path: `${appPath}/today`,
+    name: "Inbox",
+    path: `${appPath}/inbox`,
     icon: <Icons type="inbox" />,
   },
 ];
