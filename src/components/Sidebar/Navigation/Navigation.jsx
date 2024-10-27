@@ -8,14 +8,14 @@ const appPath = "/app";
 
 const navigationLinks = [
   {
+    name: "Dashboard",
+    path: `${appPath}/dashboard`,
+    icon: <Icons type="stats" />,
+  },
+  {
     name: "Tasks",
     path: `${appPath}/tasks`,
     icon: <Icons type="house" />,
-  },
-  {
-    name: "Stats",
-    path: `${appPath}/stats`,
-    icon: <Icons type="stats" />,
   },
   {
     name: "Inbox",

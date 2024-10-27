@@ -4,9 +4,9 @@ import StatCard from "../StatCard/StatCard";
 import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import TaskContainer from "../TaskContainer/TaskContainer";
-import "./stats.css";
+import "./dashboard.scss";
 
-function Stats({ tasks, updateTaskStatus }) {
+function Dashboard({ tasks, updateTaskStatus }) {
   const [stats, setStats] = useState([
     { statName: "Pending", stat: 0 },
     { statName: "Completed", stat: 0 },
@@ -53,10 +53,10 @@ function Stats({ tasks, updateTaskStatus }) {
   return (
     <>
       <div className="tl-stats">
-        <BreadCrumb page="Stats" />
+        <BreadCrumb page="Dashboard" />
         <div className="content-container">
           <ContentInfo
-            sectionHeading="Stats"
+            sectionHeading="Dashboard"
             sectionInfo="Track your progress and optimize your productivity with this analytics page. The progress bar and task status cards provide an overview of your task completion and help you stay on track"
           />
           <div className="row justify-content-center dashboard-section">
@@ -85,4 +85,4 @@ function Stats({ tasks, updateTaskStatus }) {
   );
 }
 
-export default Stats;
+export default Dashboard;

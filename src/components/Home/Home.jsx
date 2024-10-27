@@ -17,7 +17,7 @@ function Home() {
 
   useEffect(() => {
     if (auth) {
-      navigate("/app/tasks");
+      navigate("/app/dashboard");
     }
   }, []);
 

@@ -9,7 +9,7 @@ import Register from "../Register/Register";
 import MainContent from "../MainContent/MainContent.jsx";
 import Tasks from "../Tasks/Tasks";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
-import Stats from "../Stats/Stats.jsx";
+import Dashboard from "../Dashboard/Dashboard.jsx";
 import Spinner from "../Spinner/Spinner";
 import Sidebar from "../Sidebar/Sidebar.jsx";
 import history from "../../history/history.js";
@@ -174,7 +174,7 @@ const TaskManager = () => {
                 />
               }
             />
-            <Route path={`${appPath}/stats`} element={<Stats tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
+            <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route
               path={`${appPath}/inbox`}
               element={
