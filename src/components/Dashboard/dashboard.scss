@@ -1,3 +1,11 @@
+.tl-dashboard {
+  .tl-dashboard__stats-container {
+    padding-top: var(--tl-spacing-l);
+    display: flex;
+    gap: var(--tl-spacing-xl);
+  }
+}
+
 .rounded-bar {
   width: 200px;
   height: 200px;

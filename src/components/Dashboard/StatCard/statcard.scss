@@ -1,0 +1,16 @@
+.stat-card {
+  padding: var(--tl-spacing-md);
+  border-radius: var(--tl-spacing-s);
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tl-spacing-2xs);
+  .stat-card__name {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .stat-card__stat {
+    padding-top: var(--tl-spacing-md);
+    font-size: var(--tl-spacing-3xl);
+  }
+}

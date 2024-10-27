@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { handleTaskDeleteResponse } from "../../utils/utils";
-import StatCard from "../StatCard/StatCard";
+import StatCard from "./StatCard/StatCard";
 import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import TaskContainer from "../TaskContainer/TaskContainer";
@@ -8,25 +8,39 @@ import "./dashboard.scss";
 
 function Dashboard({ tasks, updateTaskStatus }) {
   const [stats, setStats] = useState([
-    { statName: "Pending", stat: 0 },
-    { statName: "Completed", stat: 0 },
-    { statName: "Total", stat: 0 },
+    { statName: "Productivity", stat: 0, text: "Your daily productivity" },
+    { statName: "Pending", stat: 0, text: "Tasks are pending" },
+    { statName: "Completed", stat: 0, text: "Tasks are completed" },
+    { statName: "Total", stat: 0, text: "Total tasks" },
   ]);
 
   useEffect(() => {
-    const { completed, pending, total } = getStatsForTasks();
-    setStats([
-      { statName: "pending", stat: pending },
-      { statName: "completed", stat: completed },
-      { statName: "total", stat: total },
-    ]);
+    function getStatsForTasks() {
+      const pending = tasks.filter((t) => t.status === 0).length;
+      const completed = tasks.filter((t) => t.status === 1).length;
+      const total = tasks.length;
+      const statCalculation = (completed / total) * 100;
+      const productivity = isNaN(statCalculation) ? 0 : statCalculation;
+      return { pending, completed, total, productivity };
+    }
+    const { completed, pending, total, productivity } = getStatsForTasks();
+    setStats((prevStats) =>
+      prevStats.map((item) => {
+        switch (item.statName) {
+          case "Pending":
+            return { ...item, stat: pending };
+          case "Completed":
+            return { ...item, stat: completed };
+          case "Total":
+            return { ...item, stat: total };
+          case "Productivity":
+            return { ...item, stat: `${productivity.toFixed()}%` };
+          default:
+            return item;
+        }
+      })
+    );
   }, [tasks]);
-
-  let root = document.querySelector(":root"); // select root variables
-  let statCalculation = (stats[1].stat / stats[2].stat) * 100;
-  let productivity = isNaN(statCalculation) ? 0 : statCalculation;
-  root.style.setProperty("--gradient", productivity.toFixed() + "%");
-  let gradient = { backgroundImage: "conic-gradient(var(--completed-bg) var(--gradient),var(--pending-bg) 0)" };
 
   const deleteTask = async (id) => {
     try {
@@ -34,13 +48,6 @@ function Dashboard({ tasks, updateTaskStatus }) {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const getStatsForTasks = () => {
-    const pending = tasks.filter((t) => t.status === 0).length;
-    const completed = tasks.filter((t) => t.status === 1).length;
-    const total = tasks.length;
-    return { pending, completed, total };
   };
 
   const recentTasks = useMemo(() => {
@@ -52,26 +59,16 @@ function Dashboard({ tasks, updateTaskStatus }) {
 
   return (
     <>
-      <div className="tl-stats">
+      <div className="tl-dashboard">
         <BreadCrumb page="Dashboard" />
         <div className="content-container">
           <ContentInfo
             sectionHeading="Dashboard"
             sectionInfo="Track your progress and optimize your productivity with this analytics page. The progress bar and task status cards provide an overview of your task completion and help you stay on track"
           />
-          <div className="row justify-content-center dashboard-section">
-            <div className="col-md-4">
-              <div className="rounded-bar mx-auto" style={gradient}>
-                <div className="inner-number">
-                  <p className="prod-percent">{productivity.toFixed()}%</p>
-                  <p className="prod-title">Productivity</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row dashboard-section stats-container justify-content-between">
+          <div className="tl-dashboard__stats-container">
             {stats.map((stat, index) => {
-              return <StatCard key={index} statName={stat.statName} stat={stat.stat} />;
+              return <StatCard key={index} statInfo={stat} />;
             })}
           </div>
 
