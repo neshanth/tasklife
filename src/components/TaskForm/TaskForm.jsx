@@ -218,6 +218,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
                   value={selectedTags}
                   options={allTags}
                   isDisabled={taskFormAction === "view"}
+                  isMulti={true}
                 />
               </div>
             </div>
