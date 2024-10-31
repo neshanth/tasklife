@@ -3,7 +3,7 @@ import Icons from "../Icons/Icons";
 import TaskContainer from "../TaskContainer/TaskContainer";
 
 const TodayContent = ({ tasks, handleTaskDelete, updateTaskStatus, heading }) => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const handleContentOpen = () => {
     setShow(!show);
   };

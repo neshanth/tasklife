@@ -15,7 +15,7 @@ function Inbox({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, p
   const { setFetchData } = useAppContext();
 
   useEffect(() => {
-    getTasks();
+    // getTasks();
     setFetchData(false);
 
     if (location.state !== null) {

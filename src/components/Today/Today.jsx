@@ -4,7 +4,9 @@ import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import TodayContent from "./TodayContent";
 import "./today.scss";
 
-const Today = ({ pendingTasks, completedTasks, handleTaskDelete, updateTaskStatus }) => {
+const Today = ({ tasks, handleTaskDelete, updateTaskStatus }) => {
+  const pendingTasks = tasks.filter((task) => task.status === 0);
+  const completedTasks = tasks.filter((task) => task.status === 1);
   return (
     <>
       <div className="tl-today">

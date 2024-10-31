@@ -20,9 +20,9 @@ const TaskManager = () => {
   const appPath = "/app";
   const location = useLocation();
   const previousLocation = location.state?.previousLocation;
+  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, filters } = useAppContext();
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
-  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, filters } = useAppContext();
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
 
@@ -67,6 +67,7 @@ const TaskManager = () => {
       const { id, name, email } = response.data;
       setAuth(true);
       setUser({ id, name, email });
+      getTasks();
     } catch (err) {
       setAuth(false);
     }
@@ -159,7 +160,6 @@ const TaskManager = () => {
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoutes />}>
           <Route path={appPath} element={<MainContent />}>
-            <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} updateTaskStatus={updateTaskStatus} />} />{" "}
             <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
             <Route
               path={`${appPath}/inbox`}
@@ -180,10 +180,11 @@ const TaskManager = () => {
               path={`${appPath}/today`}
               element={
                 <Today
-                  pendingTasks={pendingTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
-                  completedTasks={completedTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
+                  // pendingTasks={pendingTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
+                  // completedTasks={completedTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
                   handleTaskDelete={handleTaskDelete}
                   updateTaskStatus={updateTaskStatus}
+                  tasks={tasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
                 />
               }
             />
