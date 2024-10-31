@@ -20,7 +20,7 @@ const TaskManager = () => {
   const appPath = "/app";
   const location = useLocation();
   const previousLocation = location.state?.previousLocation;
-  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, filters } = useAppContext();
+  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, filters, setFilters } = useAppContext();
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const pendingTasks = tasks.filter((task) => task.status === 0);
@@ -36,7 +36,7 @@ const TaskManager = () => {
     // Status Filter
     if (filters.status === "pending") {
       currentTasks = currentTasks.filter((task) => task.status === 0);
-    } else {
+    } else if (filters.status === "completed") {
       currentTasks = currentTasks.filter((task) => task.status === 1);
     }
     // Date Filter
@@ -59,6 +59,15 @@ const TaskManager = () => {
 
     setFilteredTasks(currentTasks);
   }, [filters, tasks]);
+
+  useEffect(() => {
+    const pathName = location.pathname;
+    if (pathName === `${appPath}/today`) {
+      setFilters({ ...filters, status: "", date: new Date() });
+    } else if (pathName === `${appPath}/inbox`) {
+      setFilters({ ...filters, status: "pending", date: "" });
+    }
+  }, [location]);
 
   const checkAuth = async () => {
     setAuthLoader(true);
@@ -184,7 +193,7 @@ const TaskManager = () => {
                   // completedTasks={completedTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
                   handleTaskDelete={handleTaskDelete}
                   updateTaskStatus={updateTaskStatus}
-                  tasks={tasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
+                  tasks={filteredTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
                 />
               }
             />

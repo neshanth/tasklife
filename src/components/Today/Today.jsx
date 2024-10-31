@@ -13,7 +13,7 @@ const Today = ({ tasks, handleTaskDelete, updateTaskStatus }) => {
         <BreadCrumb page="Today" />
         <div className="content-container">
           <ContentInfo sectionHeading="Today" sectionInfo="Overview of today's tasks" />
-          <Filters pendingTasks={pendingTasks} completedTasks={completedTasks} statusFilters={false} />
+          <Filters pendingTasks={pendingTasks} completedTasks={completedTasks} statusFilters={false} dateFilter={false} />
           <TodayContent heading="Pending" tasks={pendingTasks} handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} />
           <TodayContent heading="Completed" tasks={completedTasks} handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} />
         </div>

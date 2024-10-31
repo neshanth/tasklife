@@ -7,7 +7,7 @@ import TLModal from "../TLModal/TLModal";
 import DatePickerWrapper from "../DatePickerWrapper/DatePickerWrapper";
 import SelectWrapper from "../SelectWrapper/SelectWrapper";
 
-const Filters = ({ pendingTasks, completedTasks, statusFilters = true }) => {
+const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilter = true }) => {
   const { filters, setFilters } = useAppContext();
   const [startDate, setStartDate] = useState(null);
   const [showFilters, setShowFilters] = useState(false);
@@ -69,7 +69,7 @@ const Filters = ({ pendingTasks, completedTasks, statusFilters = true }) => {
         {showFilters && (
           <TLModal page="Filters" showClose={true} handleCloseBtnClick={handleFilterClose}>
             <div className="tl-filters__wrapper">
-              <DatePickerWrapper startDate={startDate} isClearable={true} handleDatePicker={handleDatePicker} />
+              {dateFilter && <DatePickerWrapper startDate={startDate} isClearable={true} handleDatePicker={handleDatePicker} />}
               <div className="tl-filters__wrapper-tags">
                 <Icons type="tag" w="25" h="25" />
                 <SelectWrapper onChange={handleTags} value={selectedTags} options={allTags} isDisabled={false} isMulti={true} />
