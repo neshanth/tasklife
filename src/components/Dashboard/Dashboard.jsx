@@ -5,6 +5,8 @@ import BreadCrumb from "../BreadCrumb/BreadCrumb";
 import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
 import TaskContainer from "../TaskContainer/TaskContainer";
 import "./dashboard.scss";
+import useAppContext from "../../hooks/useAppContext";
+import Spinner from "../Spinner/Spinner";
 
 function Dashboard({ tasks, updateTaskStatus }) {
   const [stats, setStats] = useState([
@@ -13,6 +15,7 @@ function Dashboard({ tasks, updateTaskStatus }) {
     { statName: "Completed", stat: 0, text: "Tasks are completed" },
     { statName: "Total", stat: 0, text: "Total tasks" },
   ]);
+  const { loading } = useAppContext();
 
   useEffect(() => {
     function getStatsForTasks() {
@@ -56,6 +59,8 @@ function Dashboard({ tasks, updateTaskStatus }) {
       .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
       .slice(0, 5);
   }, [tasks]);
+
+  if (loading) return <Spinner />;
 
   return (
     <>
