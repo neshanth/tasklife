@@ -59,10 +59,10 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskDelete }) => {
           {(showTaskOptions || isMobile) && (
             <div className="tl-task-item__options">
               <div className="tl-task-item__edit" onClick={(e) => handleTaskEdit(e)}>
-                <Icons type="pencil" w="16" h="16" />
+                <Icons type="pencil" w="20" h="20" className="tl-task-item__edit-icon" />
               </div>
               <div className="tl-task-item__delete" onClick={(e) => handleTaskDelete(e, id)}>
-                <Icons type="trash" w="16" h="16" />
+                <Icons type="trash" w="20" h="20" className="tl-task-item__delete-icon" />
               </div>
             </div>
           )}

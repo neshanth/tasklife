@@ -3,6 +3,7 @@
   gap: var(--tl-spacing-s);
   border-bottom: var(--tl-spacing-2xs);
   margin-bottom: var(--tl-spacing-xs);
+  align-items: baseline;
   &:hover {
     cursor: pointer;
   }
@@ -23,9 +24,26 @@
   .tl-task-item__info-options {
     display: flex;
     gap: var(--tl-spacing-xl);
+    align-items: center;
     .tl-task-item__options {
       display: flex;
       gap: var(--tl-spacing-md);
+      .tl-task-item__edit {
+        &:hover {
+          .tl-task-item__edit-icon path {
+            stroke: var(--tl-theme-base);
+            stroke-width: 10;
+          }
+        }
+      }
+      .tl-task-item__delete {
+        &:hover {
+          .tl-task-item__delete-icon path {
+            stroke: var(--tl-theme-dark-red);
+            stroke-width: 10;
+          }
+        }
+      }
     }
     .tl-task-item__task-name {
       font-weight: 500;
