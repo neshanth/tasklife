@@ -59,8 +59,8 @@ const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilte
           </div>
         )}
 
-        <div className="tl-filters__btn tl-border filters-padding">
-          <button onClick={() => setShowFilters(!showFilters)}>
+        <div className="tl-filters__btn tl-border filters-padding" onClick={() => setShowFilters(!showFilters)}>
+          <button>
             <Icons type="filter" w="20" h="20" />
             Filter
           </button>
