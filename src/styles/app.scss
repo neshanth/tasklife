@@ -119,7 +119,7 @@ p {
 }
 
 .tl-main {
-  background-color: #f3f4f6;
+  background-color: var(--tl-theme-bg);
   padding: var(--tl-spacing-2xl);
 }
 
