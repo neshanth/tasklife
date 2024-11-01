@@ -40,14 +40,15 @@
   /*36px */
   --tl-neutral-white: #ffffff;
   --tl-text-base: #1f2937;
-  --tl-theme-base: #2563EB;
-  --tl-theme-bg: #F3F4F6;
-  --tl-theme-border: #E5E7EB;
+  --tl-theme-base: #2563eb;
+  --tl-theme-bg: #f3f4f6;
+  --tl-theme-border: #e5e7eb;
   --tl-text-light-1: #374151;
-  --tl-text-light-2: #6B7280;
-  --tl-text-light-3: #9CA3AF;
-  --tl-text-light-4: #BFDBFE;
-  --tl-theme-light-5: #E5F0FF;
+  --tl-text-light-2: #6b7280;
+  --tl-text-light-3: #9ca3af;
+  --tl-text-light-4: #bfdbfe;
+  --tl-theme-light-5: #e5f0ff;
+  --tl-theme-dark-red: #df3131;
 }
 
 /*------------------------------
@@ -80,7 +81,6 @@
   font-weight: 600;
   font-style: normal;
 }
-
 
 /*------------------------------
      GLOBALS    
@@ -119,9 +119,8 @@ p {
 }
 
 .tl-main {
-  background-color: #F3F4F6;
+  background-color: #f3f4f6;
   padding: var(--tl-spacing-2xl);
-
 }
 
 @media screen and (max-width: 1024px) {
@@ -162,8 +161,6 @@ button {
   padding: 0;
 }
 
-
-
 /*------------------------------
      BUTTONS
  ------------------------------- */
@@ -203,6 +200,34 @@ button {
   font-size: var(--tl-spacing-md);
   font-weight: 500;
   font-family: "Inter Display";
+}
+
+.tl-btn__save,
+.tl-btn__edit {
+  background-color: var(--tl-theme-base);
+  color: var(--tl-neutral-white);
+  border: 1px solid var(--tl-theme-base);
+  box-shadow: 0px 1px 2px 0px #93c5fd;
+  &:hover {
+    background-color: #1d4ed8;
+  }
+}
+.tl-btn__cancel {
+  background-color: var(--tl-neutral-white);
+  color: var(--tl-text-light-1);
+  border: 1px solid var(--tl-theme-border);
+  &:hover {
+    background-color: var(--tl-theme-border);
+  }
+}
+
+.tl-btn__delete {
+  background-color: var(--tl-theme-dark-red);
+  color: var(--tl-neutral-white);
+  border: 1px solid var(--tl-theme-dark-red);
+  &:hover {
+    background-color: #ca2828;
+  }
 }
 
 /*------------------------------
@@ -278,12 +303,12 @@ button {
     TASK STATUS STYLES
  ------------------------------- */
 .completed {
-  background-color: #EDFFEA;
+  background-color: #edffea;
   color: #31b71b;
 }
 
 .pending {
-  background-color: #FFEDE5;
+  background-color: #ffede5;
   color: #eb6025;
 }
 
@@ -308,7 +333,6 @@ button {
   border-bottom: 1px solid var(--border-color);
 }
 
-
 .delete-icon {
   cursor: pointer;
 }
@@ -332,7 +356,7 @@ button {
 
 .error-toast {
   background-color: #f8d7da;
-  color: #721c24
+  color: #721c24;
 }
 
 .success-toast {
@@ -355,7 +379,6 @@ button {
   margin: 0 auto;
   z-index: 9999;
 }
-
 
 /*------------------------------
     Overlay Styles

@@ -140,12 +140,12 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
       {
         label: "Cancel",
         action: handleCancelButton,
-        className: "tl-task__form-cancel",
+        className: "tl-task__form-cancel tl-btn__cancel",
       },
       {
         label: "Save",
         action: handleTaskAddOrUpdate,
-        className: "tl-task__form-save",
+        className: "tl-task__form-save tl-btn__save",
       },
     ];
   } else {
@@ -153,12 +153,12 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
       {
         label: "Edit",
         action: handleTaskEditFromView,
-        className: "tl-task__form-edit",
+        className: "tl-task__form-edit tl-btn__edit",
       },
       {
         label: "Delete",
         action: (e) => handleTaskDeleteFromView(e, id),
-        className: "tl-task__form-delete",
+        className: "tl-task__form-delete tl-btn__delete",
       },
     ];
   }
