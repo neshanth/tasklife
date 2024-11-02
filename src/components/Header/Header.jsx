@@ -1,37 +1,22 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { Link, useLocation } from "react-router-dom";
-import Hamburger from "../Hamburger/Hamburger";
-import logo from "../../assets/Images/tasklife__logo.png";
-import useAppContext from "../../hooks/useAppContext";
-import "./header.css";
+import { Link } from "react-router-dom";
+import logo from "../../assets/Images/v2/logo.png";
+import "./header.scss";
 
 function Header() {
-  const { auth, handleSidebarToggle } = useAppContext();
-  let authStatus = auth;
-  let location = useLocation();
   return (
-    <>
-      <Navbar>
-        <Container>
-          <Link to="/">
-            <img className="logo" src={logo} alt="Logo" />
+    <header className="tl-header">
+      <div className="tl-header__container">
+        <Link to="/">
+          <img className="logo" src={logo} alt="Logo" />
+        </Link>
+        <div className="tl-header__cta">
+          <Link to="/login" className="tl-btn tl-btn--primary tl-btn--login-cta">
+            Login
           </Link>
-          <Nav className="mr-auto">
-            {authStatus === "true" ? (
-              <>{location.pathname !== "/" && <Hamburger handleSidebarToggle={handleSidebarToggle} />}</>
-            ) : (
-              <Link to="/login" className="btn btn--primary header-cta">
-                Login
-              </Link>
-            )}
-          </Nav>
-        </Container>
-      </Navbar>
-    </>
+        </div>
+      </div>
+    </header>
   );
 }
-
 export default Header;

@@ -145,7 +145,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
       {
         label: "Save",
         action: handleTaskAddOrUpdate,
-        className: "tl-task__form-save tl-btn__save",
+        className: "tl-task__form-save tl-btn--primary",
       },
     ];
   } else {
@@ -153,7 +153,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
       {
         label: "Edit",
         action: handleTaskEditFromView,
-        className: "tl-task__form-edit tl-btn__edit",
+        className: "tl-task__form-edit tl-btn--primary",
       },
       {
         label: "Delete",

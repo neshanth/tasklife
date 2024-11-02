@@ -92,6 +92,7 @@ body {
   color: var(--primary-text-color);
   letter-spacing: -0.2px;
   overflow-x: hidden;
+  background-color: var(--tl-theme-bg);
 }
 
 body.modal-open {
@@ -202,8 +203,7 @@ button {
   font-family: "Inter Display";
 }
 
-.tl-btn__save,
-.tl-btn__edit {
+.tl-btn--primary {
   background-color: var(--tl-theme-base);
   color: var(--tl-neutral-white);
   border: 1px solid var(--tl-theme-base);

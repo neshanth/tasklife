@@ -1,0 +1,27 @@
+// .navbar {
+//   box-shadow: var(--shadow);
+//   padding: var(--padding-0);
+// }
+
+// .navbar .header-cta {
+//   padding: var(--tl-spacing-xs) var(--tl-spacing-md);
+//   display: inline-block;
+//   background: none;
+//   border: 2px solid var(--primary-color);
+//   color: var(--primary-color);
+// }
+
+// .disabled-link {
+//   pointer-events: none;
+// }
+
+.tl-header {
+  .tl-header__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 40%;
+  }
+}
