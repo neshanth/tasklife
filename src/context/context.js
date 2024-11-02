@@ -5,6 +5,7 @@ import { FILTER } from "../constants/constants";
 const UserContext = React.createContext();
 
 const UserProvider = ({ children }) => {
+  const [tasks, setTasks] = useState([]);
   const [showMobileNav, setShowMobileNav] = useState(false);
   const [auth, setAuth] = useState(false);
   const [user, setUser] = useState({});
@@ -39,7 +40,9 @@ const UserProvider = ({ children }) => {
     filters,
     taskFormAction,
     setTaskFormAction,
-    setFilters
+    setFilters,
+    tasks,
+    setTasks,
   }
   return <UserContext.Provider value={valueObj}>{children}</UserContext.Provider>;
 };

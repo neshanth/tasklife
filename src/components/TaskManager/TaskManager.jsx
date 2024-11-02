@@ -20,8 +20,7 @@ const TaskManager = () => {
   const appPath = "/app";
   const location = useLocation();
   const previousLocation = location.state?.previousLocation;
-  const { auth, setAuth, authLoader, setAuthLoader, setUser, loading, setLoading, setFetchData, setAllTags, filters, setFilters } = useAppContext();
-  const [tasks, setTasks] = useState([]);
+  const { auth, setAuth, authLoader, setAuthLoader, tasks, setTasks, setUser, loading, setLoading, setFetchData, setAllTags, filters, setFilters } = useAppContext();
   const [filteredTasks, setFilteredTasks] = useState([]);
   const pendingTasks = tasks.filter((task) => task.status === 0);
   const completedTasks = tasks.filter((task) => task.status === 1);
@@ -30,6 +29,12 @@ const TaskManager = () => {
     checkAuth();
     getAllTags();
   }, []);
+
+  useEffect(() => {
+    if (auth) {
+      getTasks();
+    }
+  }, [auth]);
 
   useEffect(() => {
     let currentTasks = [...tasks];
@@ -76,7 +81,7 @@ const TaskManager = () => {
       const { id, name, email } = response.data;
       setAuth(true);
       setUser({ id, name, email });
-      getTasks();
+      //getTasks();
     } catch (err) {
       setAuth(false);
     }
