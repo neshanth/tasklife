@@ -10,9 +10,11 @@ function Feature({ title, text, alt, label, id, img }) {
         <div className="tl-feature__feature-text">
           <p className="tl-feature__feature-title">{title}</p>
           <p>{text}</p>
-          <Link to="/login" className="tl-btn tl-btn--primary">
-            Get Started
-          </Link>
+          <div className="tl-feature__feature-btn">
+            <Link to="/login" className="tl-btn tl-btn--primary">
+              Get Started
+            </Link>
+          </div>
         </div>
       </div>
     </>
