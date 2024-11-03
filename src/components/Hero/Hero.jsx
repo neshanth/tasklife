@@ -21,9 +21,6 @@ const Hero = ({ handleDemoLogin }) => {
         <div className="tl-hero__hero-content-img-wrapper">
           <div className="tl-hero__hero-content-img"></div>
         </div>
-
-        {/* <img src={heroImg} alt="Hero" /> */}
-        {/* <Figure.Image alt="Hero Image" src={require("../../assets/Images/hero.png")} /> */}
       </section>
     </div>
   );

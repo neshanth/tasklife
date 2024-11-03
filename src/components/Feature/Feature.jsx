@@ -1,27 +1,20 @@
 import React from "react";
-import "./feature.css";
+import "./feature.scss";
+import { Link } from "react-router-dom";
 
-function Feature({ title, text, alt, label }) {
+function Feature({ title, text, alt, label, id, img }) {
   return (
     <>
-      {alt && (
-        <div className="feature row justify-content-around">
-          <div className={`feature-img col-md-5 ${label}`}></div>
-          <div className="feature-text align-self-center col-md-5">
-            <p className="feature-title">{title}</p>
-            <p>{text}</p>
-          </div>
+      <div className="tl-feature" key={id}>
+        <img className={label} src={img} alt={alt} />
+        <div className="tl-feature__feature-text">
+          <p className="tl-feature__feature-title">{title}</p>
+          <p>{text}</p>
+          <Link to="/login" className="tl-btn tl-btn--primary">
+            Get Started
+          </Link>
         </div>
-      )}
-      {!alt && (
-        <div className="feature row justify-content-around">
-          <div className="feature-text align-self-center col-md-5">
-            <p className="feature-title">{title}</p>
-            <p>{text}</p>
-          </div>
-          <div className={`feature-img col-md-5 ${label}`}></div>
-        </div>
-      )}
+      </div>
     </>
   );
 }

@@ -6,7 +6,7 @@ function Features() {
   return (
     <>
       {featuresData.map((feature) => (
-        <Feature key={feature.id} text={feature.text} title={feature.title} alt={feature.alt} label={feature.label} />
+        <Feature {...feature} />
       ))}
     </>
   );

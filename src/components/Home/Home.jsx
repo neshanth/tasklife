@@ -58,11 +58,9 @@ function Home() {
           </div>
         </div>
       </section>
-      <Container>
-        <section className="features-section">
-          <Features />
-        </section>
-      </Container>
+      <section className="tl-home-section__features">
+        <Features />
+      </section>
       <Footer />
     </>
   );

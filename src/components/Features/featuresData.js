@@ -1,10 +1,11 @@
 const featuresData = [
   {
     id: 1,
-    title: "Easy Interface for anyone to use",
-    text: "TaskLife makes it easy for you to add and manage your tasks with our intuitive interface. Simply input your task and set a due date, and TaskLife will keep track of everything for you",
+    title: "Experience a user-friendly interface that anyone can use",
+    text: "Tasklife makes it easy for you to add and manage your tasks with our intuitive interface. Simply input your task and set a due date, and the app will keep track of everything for you.",
     alt: false,
     label: "feature-1",
+    img: require("../../assets/Images/features/feature-1.png")
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const featuresData = [
     text: "Our productivity stats feature allows you to see how you're progressing on your tasks over time. You can view your completed tasks and see how many tasks are still pending, giving you a clear picture of your productivity.",
     alt: true,
     label: "feature-2",
+    img: require("../../assets/Images/features/feature-2.png")
   },
 ];
 

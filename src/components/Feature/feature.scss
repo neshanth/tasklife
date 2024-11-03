@@ -1,0 +1,25 @@
+.tl-feature {
+  display: flex;
+  justify-content: space-between;
+  gap: 6rem;
+  margin-bottom: 6rem;
+  .tl-feature__feature-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    gap: var(--tl-spacing-xl);
+    .tl-feature__feature-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .tl-btn {
+      width: 30%;
+      text-align: center;
+    }
+  }
+  .feature-1 {
+    order: 1;
+  }
+}
