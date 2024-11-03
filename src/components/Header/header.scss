@@ -19,6 +19,14 @@
   .tl-header__container {
     display: flex;
     justify-content: space-between;
+    .tl-btn--login-cta {
+      background-color: transparent;
+      color: var(--tl-theme-base);
+      &:hover {
+        background-color: var(--tl-theme-base);
+        color: var(--tl-neutral-white);
+      }
+    }
   }
 
   .logo {
