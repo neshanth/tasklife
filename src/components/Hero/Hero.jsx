@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import heroImg from "../../assets/Images/hero.png";
+import heroImg from "../../assets/Images/v2/hero.png";
 import "./hero.scss";
 
 const Hero = ({ handleDemoLogin }) => {
@@ -18,8 +18,11 @@ const Hero = ({ handleDemoLogin }) => {
             </button>
           </div>
         </div>
+        <div className="tl-hero__hero-content-img-wrapper">
+          <div className="tl-hero__hero-content-img"></div>
+        </div>
 
-        <img src={heroImg} alt="Hero" />
+        {/* <img src={heroImg} alt="Hero" /> */}
         {/* <Figure.Image alt="Hero Image" src={require("../../assets/Images/hero.png")} /> */}
       </section>
     </div>

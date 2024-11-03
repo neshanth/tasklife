@@ -40,6 +40,16 @@
         justify-content: center;
       }
     }
+    .tl-hero__hero-content-img-wrapper {
+      width: 85%;
+      margin: 0 auto;
+      .tl-hero__hero-content-img {
+        background-image: url("../../assets/Images/v2/hero.png");
+        background-repeat: no-repeat;
+        height: 500px;
+        background-size: cover;
+      }
+    }
   }
 }
 
