@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8c0f545a.css",
-    "main.js": "/static/js/main.efb3169e.js",
+    "main.css": "/static/css/main.298cdc89.css",
+    "main.js": "/static/js/main.b44e1406.js",
     "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.9c1163dc5cc2a1c9b55b.woff2",
     "static/media/InterDisplay-SemiBold.woff2": "/static/media/InterDisplay-SemiBold.54b6be6a7edc5b3cbdd6.woff2",
     "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.76224c7fa303861462e7.woff2",
@@ -9,11 +9,11 @@
     "static/media/TaskLife-EasyToUse.png": "/static/media/TaskLife-EasyToUse.ceeed6df354d43513fd7.png",
     "static/media/hero.png": "/static/media/hero.17ff9ae475af1f4a459c.png",
     "index.html": "/index.html",
-    "main.8c0f545a.css.map": "/static/css/main.8c0f545a.css.map",
-    "main.efb3169e.js.map": "/static/js/main.efb3169e.js.map"
+    "main.298cdc89.css.map": "/static/css/main.298cdc89.css.map",
+    "main.b44e1406.js.map": "/static/js/main.b44e1406.js.map"
   },
   "entrypoints": [
-    "static/css/main.8c0f545a.css",
-    "static/js/main.efb3169e.js"
+    "static/css/main.298cdc89.css",
+    "static/js/main.b44e1406.js"
   ]
 }
