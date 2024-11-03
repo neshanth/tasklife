@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.8e93ecfc.css",
-    "main.js": "/static/js/main.204df836.js",
+    "main.css": "/static/css/main.cd886202.css",
+    "main.js": "/static/js/main.e6e887e1.js",
     "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.9c1163dc5cc2a1c9b55b.woff2",
     "static/media/InterDisplay-SemiBold.woff2": "/static/media/InterDisplay-SemiBold.54b6be6a7edc5b3cbdd6.woff2",
     "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.76224c7fa303861462e7.woff2",
     "static/media/hero.png": "/static/media/hero.9935f9f5f116994c0d21.png",
-    "static/media/TaskLife-QuickAnalytics.png": "/static/media/TaskLife-QuickAnalytics.c6764cdc266bb0aef1f9.png",
-    "static/media/TaskLife-EasyToUse.png": "/static/media/TaskLife-EasyToUse.ceeed6df354d43513fd7.png",
+    "static/media/feature-2.png": "/static/media/feature-2.2e96170d81458cfb60bb.png",
+    "static/media/feature-1.png": "/static/media/feature-1.b2a193230c3681b6a574.png",
     "index.html": "/index.html",
-    "main.8e93ecfc.css.map": "/static/css/main.8e93ecfc.css.map",
-    "main.204df836.js.map": "/static/js/main.204df836.js.map"
+    "main.cd886202.css.map": "/static/css/main.cd886202.css.map",
+    "main.e6e887e1.js.map": "/static/js/main.e6e887e1.js.map"
   },
   "entrypoints": [
-    "static/css/main.8e93ecfc.css",
-    "static/js/main.204df836.js"
+    "static/css/main.cd886202.css",
+    "static/js/main.e6e887e1.js"
   ]
 }
