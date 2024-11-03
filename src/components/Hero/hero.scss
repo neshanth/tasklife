@@ -20,6 +20,9 @@
         color: var(--tl-text-base);
         font-weight: 600;
         font-family: "Inter Display";
+        @media (max-width: 64em) {
+          font-size: 2.5rem;
+        }
       }
       .tl-hero__hero-title,
       .tl-hero__hero-text {
@@ -47,7 +50,7 @@
       @media (max-width: 64em) {
         .tl-hero__hero-title,
         .tl-hero__hero-text {
-          width: 90%;
+          width: 100%;
         }
       }
     }
