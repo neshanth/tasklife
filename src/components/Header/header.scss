@@ -1,35 +1,11 @@
-// .navbar {
-//   box-shadow: var(--shadow);
-//   padding: var(--padding-0);
-// }
-
-// .navbar .header-cta {
-//   padding: var(--tl-spacing-xs) var(--tl-spacing-md);
-//   display: inline-block;
-//   background: none;
-//   border: 2px solid var(--primary-color);
-//   color: var(--primary-color);
-// }
-
-// .disabled-link {
-//   pointer-events: none;
-// }
-
 .tl-header {
+  margin: var(--tl-spacing-xl) 0;
   .tl-header__container {
     display: flex;
     justify-content: space-between;
-    .tl-btn--login-cta {
-      background-color: transparent;
-      color: var(--tl-theme-base);
-      &:hover {
-        background-color: var(--tl-theme-base);
-        color: var(--tl-neutral-white);
-      }
-    }
   }
 
-  .logo {
+  .tl-header__logo {
     width: 40%;
   }
 }

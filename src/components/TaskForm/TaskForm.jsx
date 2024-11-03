@@ -140,7 +140,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
       {
         label: "Cancel",
         action: handleCancelButton,
-        className: "tl-task__form-cancel tl-btn__cancel",
+        className: "tl-task__form-cancel tl-btn--secondary",
       },
       {
         label: "Save",

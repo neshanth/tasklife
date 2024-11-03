@@ -111,8 +111,11 @@ h6 {
 
 a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--tl-neutral-white);
   font-weight: 600;
+}
+a:hover {
+  color: var(--tl-neutral-white);
 }
 
 p {
@@ -197,7 +200,7 @@ button {
 
 .tl-btn {
   border-radius: var(--tl-spacing-xs);
-  padding: var(--tl-spacing-xs) var(--tl-spacing-s);
+  padding: var(--tl-spacing-s) var(--tl-spacing-md);
   font-size: var(--tl-spacing-md);
   font-weight: 500;
   font-family: "Inter Display";
@@ -212,7 +215,7 @@ button {
     background-color: #1d4ed8;
   }
 }
-.tl-btn__cancel {
+.tl-btn--secondary {
   background-color: var(--tl-neutral-white);
   color: var(--tl-text-light-1);
   border: 1px solid var(--tl-theme-border);

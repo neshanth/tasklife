@@ -8,10 +8,10 @@ function Header() {
     <header className="tl-header">
       <div className="tl-header__container">
         <Link to="/">
-          <img className="logo" src={logo} alt="Logo" />
+          <img className="tl-header__logo" src={logo} alt="Logo" />
         </Link>
         <div className="tl-header__cta">
-          <Link to="/login" className="tl-btn tl-btn--primary tl-btn--login-cta">
+          <Link to="/login" className="tl-btn tl-btn--primary">
             Login
           </Link>
         </div>
