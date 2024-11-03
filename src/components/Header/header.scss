@@ -1,5 +1,7 @@
 .tl-header {
-  margin: var(--tl-spacing-xl) 0;
+  @media (max-width: 64em) {
+    margin-top: var(--tl-spacing-2xl);
+  }
   .tl-header__container {
     display: flex;
     justify-content: space-between;
