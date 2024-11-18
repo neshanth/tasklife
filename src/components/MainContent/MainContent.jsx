@@ -13,7 +13,7 @@ function MainContent() {
   if (loading) return <Spinner />;
 
   return (
-    <>
+    <div className="tl-app-wrapper">
       <div className="main-content">
         {isMobile && <MobileHeader />}
         <div className="content-wrapper tl-border">
@@ -21,7 +21,7 @@ function MainContent() {
         </div>
       </div>
       {isMobile && <AddTask />}
-    </>
+    </div>
   );
 }
 

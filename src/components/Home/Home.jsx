@@ -50,14 +50,12 @@ function Home() {
 
   return (
     <>
-      <section className="tl-home-section">
-        <Header />
-        <div className="tl-home-section__home-wrapper">
-          <div className="tl-home-section__hero-wrapper">
-            <Hero handleDemoLogin={handleDemoLogin} />
-          </div>
+      <Header />
+      <div className="tl-home-section__home-wrapper">
+        <div className="tl-home-section__hero-wrapper">
+          <Hero handleDemoLogin={handleDemoLogin} />
         </div>
-      </section>
+      </div>
       <section className="tl-home-section__features">
         <Features />
       </section>

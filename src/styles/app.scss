@@ -133,6 +133,11 @@ p {
   }
 }
 
+.tl-home {
+  padding: 0;
+  background-color: var(--tl-neutral-white);
+}
+
 .tl-padding {
   padding: var(--tl-spacing-s) var(--tl-spacing-md);
 }

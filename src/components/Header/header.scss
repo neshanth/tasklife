@@ -5,6 +5,7 @@
   .tl-header__container {
     display: flex;
     justify-content: space-between;
+    padding: var(--tl-spacing-xl) var(--tl-spacing-2xl);
   }
 
   .tl-header__logo {
