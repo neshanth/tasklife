@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   gap: 6rem;
-  margin-bottom: 6rem;
   @media (max-width: 64em) {
     flex-direction: column;
   }
@@ -10,12 +9,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 40%;
+    width: 50%;
     gap: var(--tl-spacing-xl);
-    @media (max-width: 64em) {
-      width: 100%;
-      text-align: center;
-    }
     .tl-feature__feature-title {
       font-size: 1.75rem;
       font-weight: 600;
@@ -29,6 +24,18 @@
       @media (max-width: 64em) {
         margin: 0 auto;
       }
+    }
+  }
+  .tl-feature__feature-img {
+    width: 50%;
+  }
+
+  .tl-feature__feature-text,
+  .tl-feature__feature-img {
+    @media (max-width: 64em) {
+      width: 95%;
+      text-align: center;
+      margin: 0 auto;
     }
   }
   .feature-1 {

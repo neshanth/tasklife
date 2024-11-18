@@ -51,12 +51,12 @@ function Home() {
   return (
     <>
       <Header />
-      <div className="tl-home-section__home-wrapper">
-        <div className="tl-home-section__hero-wrapper">
+      <section className="tl-section tl-home__wrapper">
+        <div className="tl-wrapper tl-home__hero-wrapper">
           <Hero handleDemoLogin={handleDemoLogin} />
         </div>
-      </div>
-      <section className="tl-home-section__features">
+      </section>
+      <section className="tl-section tl-home__features">
         <Features />
       </section>
       <Footer />

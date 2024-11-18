@@ -3,7 +3,6 @@
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  padding-top: 6em;
 
   .tl-hero__hero-content {
     .tl-hero__text-content {
@@ -43,14 +42,14 @@
         justify-content: center;
 
         @media (max-width: 64em) {
-          width: 90%;
+          width: 95%;
         }
       }
 
       @media (max-width: 64em) {
         .tl-hero__hero-title,
         .tl-hero__hero-text {
-          width: 100%;
+          width: 95%;
         }
       }
     }

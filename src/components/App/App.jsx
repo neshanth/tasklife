@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 function App() {
   const location = useLocation();
   return (
-    <main className={`tl-main ${location.pathname !== "/app" ? "tl-home" : ""}`}>
+    <main className={`tl-main ${!location.pathname.includes("/app") ? "tl-home" : ""}`}>
       <TaskManager />
     </main>
   );
