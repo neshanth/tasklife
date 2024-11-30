@@ -6,7 +6,7 @@ import "./header.scss";
 function Header() {
   return (
     <header className="tl-header">
-      <div className="tl-header__container">
+      <div className="tl-header__container tl-wrapper">
         <Link to="/">
           <img className="tl-header__logo" src={logo} alt="Logo" />
         </Link>

@@ -56,11 +56,11 @@
     .tl-hero__hero-content-img-wrapper {
       width: 85%;
       margin: 0 auto;
+      text-align: center;
       .tl-hero__hero-content-img {
-        background-image: url("../../assets/Images/v2/hero.png");
-        background-repeat: no-repeat;
-        height: 500px;
-        background-size: cover;
+        width: 100%;
+        height: 100%;
+        max-width: 800px;
       }
 
       @media (max-width: 64em) {
