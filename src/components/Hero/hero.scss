@@ -59,8 +59,10 @@
       text-align: center;
       .tl-hero__hero-content-img {
         width: 100%;
-        height: 100%;
-        max-width: 800px;
+        height: 600px;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 16px 16px 0 0;
       }
 
       @media (max-width: 64em) {
