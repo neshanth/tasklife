@@ -28,8 +28,13 @@
     .tl-task-item__options {
       display: flex;
       gap: var(--tl-spacing-md);
+      .tl-task-item__edit,
+      .tl-task-item__delete {
+        border-radius: 0.375rem;
+      }
       .tl-task-item__edit {
         &:hover {
+          background-color: var(--tl-theme-light-5);
           .tl-task-item__edit-icon path {
             stroke: var(--tl-theme-base);
             stroke-width: 10;
@@ -38,6 +43,7 @@
       }
       .tl-task-item__delete {
         &:hover {
+          background-color: #ff9292;
           .tl-task-item__delete-icon path {
             stroke: var(--tl-theme-dark-red);
             stroke-width: 10;
