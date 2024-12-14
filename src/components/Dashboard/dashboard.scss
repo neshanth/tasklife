@@ -1,7 +1,16 @@
 .tl-dashboard {
   .tl-dashboard__stats-container {
     padding-top: var(--tl-spacing-l);
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--tl-spacing-xl);
+
+    @media (max-width: 64em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 48em) {
+      grid-template-columns: 1fr;
+    }
   }
 }
