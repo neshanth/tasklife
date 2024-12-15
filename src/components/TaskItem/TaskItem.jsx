@@ -56,16 +56,16 @@ const TaskItem = ({ taskInfo, updateTaskStatus, handleTaskDelete }) => {
       <div className="tl-task-item__task">
         <div className="tl-task-item__info-options">
           <p className={`tl-task-item__task-name ${status ? "task-completed" : "task-pending"}`}>{isTaskNameLong ? `${task.substring(0, substringLength)}...` : task}</p>
-          {(showTaskOptions || isMobile) && (
-            <div className="tl-task-item__options">
-              <div className="tl-task-item__edit" onClick={(e) => handleTaskEdit(e)}>
-                <Icons type="pencil" w="20" h="20" className="tl-task-item__edit-icon" />
-              </div>
-              <div className="tl-task-item__delete" onClick={(e) => handleTaskDelete(e, id)}>
-                <Icons type="trash" w="20" h="20" className="tl-task-item__delete-icon" />
-              </div>
+          {/* {(showTaskOptions || isMobile) && ( */}
+          <div className="tl-task-item__options" style={{ visibility: showTaskOptions || isMobile ? "visible" : "hidden" }}>
+            <div className="tl-task-item__edit" onClick={(e) => handleTaskEdit(e)}>
+              <Icons type="pencil" w="20" h="20" className="tl-task-item__edit-icon" />
             </div>
-          )}
+            <div className="tl-task-item__delete" onClick={(e) => handleTaskDelete(e, id)}>
+              <Icons type="trash" w="20" h="20" className="tl-task-item__delete-icon" />
+            </div>
+          </div>
+          {/* )} */}
         </div>
         <div className="tl-task-item__info">
           <p className={`tl-task-item__due-date ${status ? "task-completed" : "task-pending"}`}>{todo_date.toLocaleDateString("default", { day: "numeric", month: "short" })}</p>

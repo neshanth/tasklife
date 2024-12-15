@@ -27,10 +27,11 @@
     align-items: center;
     .tl-task-item__options {
       display: flex;
-      gap: var(--tl-spacing-md);
+      gap: 1.125rem;
       .tl-task-item__edit,
       .tl-task-item__delete {
         border-radius: 0.375rem;
+        padding: 0.375rem;
       }
       .tl-task-item__edit {
         &:hover {
