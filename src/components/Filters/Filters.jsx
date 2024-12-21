@@ -43,6 +43,11 @@ const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilte
     handleFilterChange("search", e.target.value);
   };
 
+  const isFilterActive = () => {
+    if ((filters.date !== "" && filters.date !== null) || filters.search !== "" || filters.tags.length > 0) return true;
+    else return false;
+  };
+
   return (
     <section className="tl-filters">
       <div className="tl-filters__options">
@@ -59,7 +64,7 @@ const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilte
           </div>
         )}
 
-        <div className="tl-filters__btn tl-border filters-padding" onClick={() => setShowFilters(!showFilters)}>
+        <div className={`tl-filters__btn tl-border filters-padding ${isFilterActive() ? "tl-filters--active" : ""}`} onClick={() => setShowFilters(!showFilters)}>
           <button>
             <Icons type="filter" w="20" h="20" />
             Filter

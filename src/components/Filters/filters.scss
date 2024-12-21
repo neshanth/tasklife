@@ -3,6 +3,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .tl-filters__btn {
+    &.tl-filters--active {
+      background-color: var(--tl-theme-bg);
+    }
+  }
   button {
     border: none;
     padding: 0;
