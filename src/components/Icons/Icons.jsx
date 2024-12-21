@@ -190,7 +190,7 @@ const Icons = ({ type, w, h, fill, ...rest }) => {
       );
     case "search":
       return (
-        <SvgIcon w="18" h="18" viewBox="1171 234.01 18 18" fill="none">
+        <SvgIcon w={w} h={h} viewBox="1171 234.01 18 18" fill={fill}>
           <g data-testid="magnifying-glass">
             <path
               d="m1187.82 249.96-3.848-3.847a6.77 6.77 0 1 0-.869.869l3.847 3.848a.616.616 0 0 0 .87-.87Zm-14.574-8.171a5.533 5.533 0 1 1 5.533 5.532 5.539 5.539 0 0 1-5.533-5.532Z"
