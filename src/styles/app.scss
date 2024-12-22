@@ -51,6 +51,12 @@
   --tl-theme-dark-red: #df3131;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /*------------------------------
      FONT FAMILY     
  ------------------------------- */
@@ -138,6 +144,10 @@ p {
   background-color: var(--tl-neutral-white);
 }
 
+.tl-auth {
+  height: 100vh;
+}
+
 .tl-padding {
   padding: var(--tl-spacing-s) var(--tl-spacing-md);
 }
@@ -209,6 +219,7 @@ button {
   font-size: var(--tl-spacing-md);
   font-weight: 500;
   font-family: "Inter Display";
+  cursor: pointer;
 }
 
 .tl-btn--primary {
@@ -241,6 +252,46 @@ button {
 /*------------------------------
      FORM STYLES
  ------------------------------- */
+.tl-form {
+  width: 30%;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  box-shadow: var(--form-shadow);
+  border-radius: var(--radius);
+
+  h4 {
+    letter-spacing: -0.9px;
+    font-weight: 600;
+    font-family: "Inter Display";
+    font-size: var(--tl-spacing-2xl);
+  }
+
+  p {
+    a {
+      color: var(--primary-color);
+    }
+  }
+
+  .tl-form__field {
+    margin: var(--tl-spacing-md) 0;
+    .tl-form__field-label {
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      font-family: "Inter Display";
+    }
+
+    .tl-form__field-input {
+      padding: 0.5rem;
+      border: 2px solid var(--tl-theme-border);
+      border-radius: 4px;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 80%;
+  }
+}
+
 .form-background {
   box-shadow: var(--form-shadow);
   padding: var(--tl-spacing-xl);

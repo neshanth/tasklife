@@ -63,7 +63,32 @@ function Login() {
   return (
     <>
       <Header />
-      <Container>
+      <div className="tl-form">
+        <h4>Log in to your account</h4>
+        <form className="tl-form__auth" onSubmit={handleSubmit}>
+          <div className="tl-form__field">
+            <label className="tl-form__field-label" htmlFor="email">
+              Email
+            </label>
+            <input type="email" name="email" className="tl-form__field-input " placeholder="Email" onChange={handleLoginDetails} value={loginDetails.email} required />
+          </div>
+          <div className="tl-form__field">
+            <label className="tl-form__field-label" htmlFor="password">
+              Password
+            </label>
+            <input type="password" name="password" className="tl-form__field-input " placeholder="Password" onChange={handleLoginDetails} value={loginDetails.password} required />
+          </div>
+          <div className="tl-form__field">
+            <button className="tl-btn tl-btn--primary" type="submit">
+              Login
+            </button>
+          </div>
+          <p>
+            New to Tasklife? <Link to="/register">Sign up</Link>
+          </p>
+        </form>
+      </div>
+      {/* <Container>
         <Row className="justify-content-center align-items-center  home-login-form">
           <Col md={4}>
             <div className="form-background login-form-background">
@@ -89,7 +114,7 @@ function Login() {
             </div>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </>
   );
 }

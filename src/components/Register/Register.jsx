@@ -63,7 +63,52 @@ function Register() {
   return (
     <>
       <Header />
-      <Container>
+      <div className="tl-form">
+        <h4>Create an Account</h4>
+        <form className="tl-form__auth" onSubmit={handleSubmit}>
+          <div className="tl-form__field">
+            <label className="tl-form__field-label" htmlFor="name">
+              Name
+            </label>
+            <input className="tl-form__field-input" type="name" name="name" onChange={handleRegisterDetails} value={registerDetails.name} placeholder="Name" required />
+          </div>
+          <div className="tl-form__field">
+            <label className="tl-form__field-label" htmlFor="email">
+              Email
+            </label>
+            <input className="tl-form__field-input" type="email" name="email" onChange={handleRegisterDetails} value={registerDetails.email} placeholder="Email" required />
+          </div>
+          <div className="tl-form__field">
+            <label className="tl-form__field-label" htmlFor="password">
+              Password
+            </label>
+            <input className="tl-form__field-input" type="password" name="password" onChange={handleRegisterDetails} value={registerDetails.password} placeholder="Password" required />
+          </div>
+          <div className="tl-form__field">
+            <label className="tl-form__field-label" htmlFor="password_confirmation">
+              Confirm Password
+            </label>
+            <input
+              className="tl-form__field-input"
+              type="password"
+              name="password_confirmation"
+              onChange={handleRegisterDetails}
+              value={registerDetails.password_confirmation}
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+          <div className="tl-form__field">
+            <button className="tl-btn tl-btn--primary" type="submit">
+              Sign Up
+            </button>
+          </div>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </form>
+      </div>
+      {/* <Container>
         <Row className="justify-content-center align-items-center home-register-form">
           <Col md={4}>
             <div className="form-background">
@@ -97,7 +142,7 @@ function Register() {
             </div>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </>
   );
 }

@@ -5,8 +5,10 @@ import { useLocation } from "react-router-dom";
 
 function App() {
   const location = useLocation();
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
+  const isAppPage = location.pathname.includes("/app");
   return (
-    <main className={`tl-main ${!location.pathname.includes("/app") ? "tl-home" : ""}`}>
+    <main className={`tl-main ${!isAppPage ? "tl-home" : ""} ${isAuthPage ? "tl-auth" : ""}`}>
       <TaskManager />
     </main>
   );
