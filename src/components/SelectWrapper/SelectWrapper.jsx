@@ -1,5 +1,6 @@
 import Select from "react-select";
 import "./selectWrapper.scss";
+
 const SelectWrapper = ({ components, onChange, value, options, isDisabled, name, isMulti = false }) => {
   const customStyles = {
     menu: (provided) => ({
@@ -33,6 +34,10 @@ const SelectWrapper = ({ components, onChange, value, options, isDisabled, name,
     indicatorSeparator: (provided) => ({
       ...provided,
       display: "none",
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#1f2937",
     }),
   };
   return (

@@ -14,6 +14,11 @@
     padding-bottom: var(--tl-spacing-s);
   }
 
+  .tl-task-item__checkbox {
+    position: relative;
+    top: 4px;
+  }
+
   .tl-task-item__checkbox-input {
     width: var(--tl-spacing-md);
     height: var(--tl-spacing-md);
