@@ -344,8 +344,8 @@ button {
  ------------------------------- */
 .react-datepicker__close-icon::after {
   content: "X";
-  width: var(--tl-spacing-xl);
-  height: var(--tl-spacing-xl);
+  width: var(--tl-spacing-md);
+  height: var(--tl-spacing-md);
   background-color: var(--tl-theme-base);
   font-weight: 600;
   display: flex;
