@@ -5,9 +5,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--tl-spacing-2xl);
-    .tl-task__form-date-input {
-      width: 100%;
-    }
   }
   .tl-task__form {
     // flex-grow: 1;
@@ -17,13 +14,22 @@
       display: flex;
       flex-direction: column;
       gap: var(--tl-spacing-xs);
+      // input {
+      //   color: var(--tl-text-light-3);
+      // }
       .tl-task__form-task-name {
-        font-size: 1.125rem;
-        font-weight: 500;
-        font-family: "Inter Display";
+        input {
+          font-size: 1.125rem;
+          font-weight: 500;
+          font-family: "Inter Display";
+        }
       }
       .tl-task__form-task-desc {
-        color: var(--tl-text-light-2);
+        input {
+          font-size: 1rem;
+          font-weight: 400;
+          font-family: "Inter Display";
+        }
       }
       &.view-mode {
         padding: 0;

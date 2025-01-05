@@ -1,5 +1,10 @@
 .tl__search {
   border-radius: var(--tl-spacing-xs);
+
+  input {
+    font-size: 1rem;
+  }
+
   .tl__search-container {
     padding: var(--tl-spacing-s);
     display: flex;

@@ -3,7 +3,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
   .tl-filters__btn {
+    button {
+      font-size: 1rem;
+      align-items: center;
+    }
     &.tl-filters--active {
       background-color: var(--tl-theme-bg);
     }
