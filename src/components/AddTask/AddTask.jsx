@@ -9,7 +9,8 @@ const AddTask = () => {
   const navigate = useNavigate();
   const { setTaskFormAction, isMobile } = useAppContext();
   const appPath = "/app";
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
     navigate(`${appPath}/tasks/add`, { state: { previousLocation: location } });
     setTaskFormAction("create");
   };
