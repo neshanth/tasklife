@@ -198,6 +198,7 @@ const TaskManager = () => {
                   // completedTasks={completedTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
                   handleTaskDelete={handleTaskDelete}
                   updateTaskStatus={updateTaskStatus}
+                  isToday={true}
                   tasks={filteredTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
                 />
               }

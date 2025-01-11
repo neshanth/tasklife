@@ -7,13 +7,19 @@ import TLModal from "../TLModal/TLModal";
 import DatePickerWrapper from "../DatePickerWrapper/DatePickerWrapper";
 import SelectWrapper from "../SelectWrapper/SelectWrapper";
 
-const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilter = true }) => {
+const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilter = true, isToday = false }) => {
   const { filters, setFilters } = useAppContext();
   const [startDate, setStartDate] = useState(null);
   const [showFilters, setShowFilters] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
   const [search, setSearch] = useState("");
   const { allTags, isMobile } = useAppContext();
+  const date = isToday
+    ? new Date().toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      })
+    : null;
 
   const handleFilterChange = (type, value) => {
     const currentFilters = { ...filters };
@@ -81,7 +87,7 @@ const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilte
                   <Search search={search} handleSearch={handleSearch} isMobile={isMobile} />
                 </div>
               )} */}
-              {dateFilter && <DatePickerWrapper startDate={startDate} isClearable={true} handleDatePicker={handleDatePicker} />}
+              {dateFilter && <DatePickerWrapper disabled={isToday} startDate={isToday ? date : startDate} isClearable={isToday ? false : true} handleDatePicker={handleDatePicker} />}
               <div className="tl-filters__wrapper-tags">
                 <Icons type="tag" w="25" h="25" />
                 <SelectWrapper onChange={handleTags} value={selectedTags} options={allTags} isDisabled={false} isMulti={true} />
