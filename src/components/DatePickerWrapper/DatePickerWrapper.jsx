@@ -19,6 +19,7 @@ const DatePickerWrapper = ({ isClearable, startDate, handleDatePicker, taskFormA
         placeholderText="Due Date"
         selected={startDate}
         onChange={handleDatePicker}
+        showPopperArrow={false}
       />
     </div>
   );
