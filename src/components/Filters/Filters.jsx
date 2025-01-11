@@ -74,12 +74,13 @@ const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilte
         {showFilters && (
           <TLModal page="Filters" showClose={true} handleCloseBtnClick={handleFilterClose}>
             <div className="tl-filters__wrapper">
-              {isMobile && (
+              {isMobile && <Search search={search} handleSearch={handleSearch} isMobile={isMobile} />}
+              {/* {isMobile && (
                 <div className="tl-filters__wrapper-search">
                   <Icons type="search" w="25" h="25" />
                   <Search search={search} handleSearch={handleSearch} isMobile={isMobile} />
                 </div>
-              )}
+              )} */}
               {dateFilter && <DatePickerWrapper startDate={startDate} isClearable={true} handleDatePicker={handleDatePicker} />}
               <div className="tl-filters__wrapper-tags">
                 <Icons type="tag" w="25" h="25" />

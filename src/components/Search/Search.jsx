@@ -7,7 +7,7 @@ const Search = ({ search, handleSearch, isMobile = false }) => {
     inputFocusRef.current.focus();
   };
   return (
-    <div className="tl__search tl-border" onClick={handleInputFocus}>
+    <div className={`tl__search tl-border ${isMobile && "tl__search--mobile"}`} onClick={handleInputFocus}>
       <div className="tl__search-container">
         {!isMobile && <Icons type="search" w="25" h="25" />}
 
