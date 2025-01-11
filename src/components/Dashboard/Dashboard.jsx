@@ -8,7 +8,7 @@ import "./dashboard.scss";
 import useAppContext from "../../hooks/useAppContext";
 import Spinner from "../Spinner/Spinner";
 
-function Dashboard({ tasks, updateTaskStatus }) {
+function Dashboard({ tasks, updateTaskStatus, handleTaskDelete }) {
   const [stats, setStats] = useState([
     { statName: "Productivity", stat: 0, text: "Your daily productivity" },
     { statName: "Pending", stat: 0, text: "Tasks are pending" },
@@ -45,14 +45,6 @@ function Dashboard({ tasks, updateTaskStatus }) {
     );
   }, [tasks]);
 
-  const deleteTask = async (id) => {
-    try {
-      await handleTaskDeleteResponse(id);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const recentTasks = useMemo(() => {
     return tasks
       .slice()
@@ -76,7 +68,7 @@ function Dashboard({ tasks, updateTaskStatus }) {
 
           <div className="recent-tasks dashboard-section">
             <p className="dashboard-sub-heading">Recent Tasks</p>
-            <TaskContainer tasks={recentTasks} handleTaskDelete={deleteTask} updateTaskStatus={updateTaskStatus} />
+            <TaskContainer tasks={recentTasks} handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} />
           </div>
         </div>
       </div>

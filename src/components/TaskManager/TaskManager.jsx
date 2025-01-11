@@ -174,7 +174,7 @@ const TaskManager = () => {
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoutes />}>
           <Route path={appPath} element={<MainContent />}>
-            <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} updateTaskStatus={updateTaskStatus} />} />
+            <Route path={`${appPath}/dashboard`} element={<Dashboard tasks={tasks} handleTaskDelete={handleTaskDelete} updateTaskStatus={updateTaskStatus} />} />
             <Route
               path={`${appPath}/inbox`}
               element={
