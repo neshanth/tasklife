@@ -15,7 +15,7 @@ const TodayContent = ({ tasks, handleTaskDelete, updateTaskStatus, heading }) =>
     <div className="tl-today__content" onClick={handleContentOpen}>
       <div className="tl-today__content-header">
         <p className="tl-today__heading">
-          <span>
+          <span className="tl-today__arrow">
             <Icons className="right" type="down" w="20" h="20" style={styleObj} />
           </span>
           {heading}

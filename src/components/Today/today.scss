@@ -9,6 +9,10 @@
     align-items: center;
     gap: var(--tl-spacing-xs);
     font-size: 1.125rem;
+    .tl-today__arrow {
+      position: relative;
+      top: 0.25rem;
+    }
   }
   .tl-today__content {
     margin-bottom: var(--tl-spacing-l);
