@@ -22,6 +22,7 @@ const SelectWrapper = ({ components, onChange, value, options, isDisabled, name,
         border: "none",
         borderBottom: "1px solid var(--tl-theme-border)",
       },
+      cursor: "pointer",
     }),
     valueContainer: (provided) => ({
       ...provided,
