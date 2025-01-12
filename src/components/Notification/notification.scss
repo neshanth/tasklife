@@ -1,0 +1,16 @@
+.tl-notification__container {
+  display: flex;
+  margin-top: var(--tl-spacing-2xl);
+  gap: 0.625rem;
+  border-radius: var(--tl-spacing-xs);
+  background-color: var(--tl-theme-light-5);
+  padding: var(--tl-spacing-xs) 0;
+  padding-left: var(--tl-spacing-s);
+  padding-right: var(--tl-spacing-md);
+  align-items: flex-start;
+  .tl-notification__text {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--tl-theme-dark);
+  }
+}

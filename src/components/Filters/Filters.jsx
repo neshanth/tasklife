@@ -6,6 +6,7 @@ import { useState } from "react";
 import TLModal from "../TLModal/TLModal";
 import DatePickerWrapper from "../DatePickerWrapper/DatePickerWrapper";
 import SelectWrapper from "../SelectWrapper/SelectWrapper";
+import Notification from "../Notification/Notification";
 
 const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilter = true, isToday = false }) => {
   const { filters, setFilters } = useAppContext();
@@ -92,6 +93,7 @@ const Filters = ({ pendingTasks, completedTasks, statusFilters = true, dateFilte
                 <Icons type="tag" w="25" h="25" />
                 <SelectWrapper onChange={handleTags} value={selectedTags} options={allTags} isDisabled={false} isMulti={true} />
               </div>
+              {isToday && <Notification text="You cannot change the date because it has already been set to Today." />}
             </div>
           </TLModal>
         )}

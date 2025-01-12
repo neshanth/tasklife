@@ -49,6 +49,7 @@
   --tl-text-light-4: #bfdbfe;
   --tl-theme-light-5: #e5f0ff;
   --tl-theme-dark-red: #df3131;
+  --tl-theme-dark: #1d4ed8;
 }
 
 * {
@@ -232,7 +233,7 @@ button {
   border: 1px solid var(--tl-theme-base);
   box-shadow: 0px 1px 2px 0px #93c5fd;
   &:hover {
-    background-color: #1d4ed8;
+    background-color: var(--tl-theme-dark);
   }
 }
 .tl-btn--secondary {
