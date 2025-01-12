@@ -21,11 +21,12 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams();
-  const inputRef = useRef();
+  const taskInputRef = useRef();
   const { allTags, user, taskFormAction, setTaskFormAction, isMobile } = useAppContext();
   const [taskData, setTaskData] = useState(TASK_DATA);
   const [startDate, setStartDate] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [inputFocus, setInputFocus] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -37,8 +38,9 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   }, [id]);
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+    if (taskInputRef.current) {
+      taskInputRef.current.focus();
+      setInputFocus(true);
     }
   }, [id, taskFormAction]);
 
@@ -182,15 +184,34 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
       <form className="tl-task__form-wrapper">
         <div className="tl-task__form">
           <div className={`tl-task__form-container`}>
-            <div className={`tl-task__form-name-desc ${taskFormAction !== "view" ? "tl-border" : ""} ${taskFormAction}-mode`}>
+            <div className={`tl-task__form-name-desc ${taskFormAction !== "view" ? "tl-border" : ""} ${taskFormAction}-mode ${inputFocus ? "tl__focused" : ""}`}>
               <div className="tl-task__form-task-name">
                 {taskFormAction === "view" && <p className="tl-task__form-task-name--view">{taskData.task}</p>}
-                {taskFormAction !== "view" && <input value={taskData.task} onChange={handleTaskFormChange} name="task" type="text" placeholder="Name of the Task" ref={inputRef} />}
+                {taskFormAction !== "view" && (
+                  <input
+                    onBlur={() => setInputFocus(false)}
+                    onFocus={() => setInputFocus(true)}
+                    value={taskData.task}
+                    onChange={handleTaskFormChange}
+                    name="task"
+                    type="text"
+                    placeholder="Name of the Task"
+                    ref={taskInputRef}
+                  />
+                )}
               </div>
               <div className="tl-task__form-task-desc">
                 {taskFormAction === "view" && taskData.description && <p className="tl-task__form-task-desc--view">{taskData.description}</p>}
                 {taskFormAction !== "view" && (
-                  <input value={taskData.description ? taskData.description : ""} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />
+                  <input
+                    onFocus={() => setInputFocus(true)}
+                    onBlur={() => setInputFocus(false)}
+                    value={taskData.description ? taskData.description : ""}
+                    onChange={handleTaskFormChange}
+                    name="description"
+                    type="text"
+                    placeholder="Description of the Task"
+                  />
                 )}
               </div>
             </div>
