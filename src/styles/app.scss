@@ -185,6 +185,11 @@ button {
   font-size: 1rem;
 }
 
+.tl__focused {
+  box-shadow: 0 0 0 3px #e5f0ff;
+  border-radius: var(--tl-spacing-xs);
+}
+
 /*------------------------------
      BUTTONS
  ------------------------------- */

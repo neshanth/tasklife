@@ -21,6 +21,7 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams();
+  const inputRef = useRef();
   const { allTags, user, taskFormAction, setTaskFormAction, isMobile } = useAppContext();
   const [taskData, setTaskData] = useState(TASK_DATA);
   const [startDate, setStartDate] = useState(null);
@@ -35,7 +36,6 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
     }
   }, [id]);
 
-  const inputRef = useRef();
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();

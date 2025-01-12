@@ -12,7 +12,7 @@ const Search = ({ search, handleSearch, isMobile = false }) => {
     setIsInputFocused(false);
   };
   return (
-    <div tabIndex={0} className={`tl__search tl-border ${isMobile ? "tl__search--mobile" : ""} ${isInputFocused ? "tl__search--focused" : ""}`} onClick={handleInputFocus}>
+    <div tabIndex={0} className={`tl__search tl-border ${isMobile ? "tl__search--mobile" : ""} ${isInputFocused ? "tl__focused" : ""}`} onClick={handleInputFocus}>
       <div className="tl__search-container">
         {!isMobile && <Icons type="search" w="25" h="25" />}
 
