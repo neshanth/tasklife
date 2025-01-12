@@ -184,11 +184,11 @@ const TaskForm = ({ getTasks, setTasks, tasks, handleTaskDelete }) => {
           <div className={`tl-task__form-container`}>
             <div className={`tl-task__form-name-desc ${taskFormAction !== "view" ? "tl-border" : ""} ${taskFormAction}-mode`}>
               <div className="tl-task__form-task-name">
-                {taskFormAction === "view" && <p>{taskData.task}</p>}
+                {taskFormAction === "view" && <p className="tl-task__form-task-name--view">{taskData.task}</p>}
                 {taskFormAction !== "view" && <input value={taskData.task} onChange={handleTaskFormChange} name="task" type="text" placeholder="Name of the Task" ref={inputRef} />}
               </div>
               <div className="tl-task__form-task-desc">
-                {taskFormAction === "view" && taskData.description && <p>{taskData.description}</p>}
+                {taskFormAction === "view" && taskData.description && <p className="tl-task__form-task-desc--view">{taskData.description}</p>}
                 {taskFormAction !== "view" && (
                   <input value={taskData.description ? taskData.description : ""} onChange={handleTaskFormChange} name="description" type="text" placeholder="Description of the Task" />
                 )}

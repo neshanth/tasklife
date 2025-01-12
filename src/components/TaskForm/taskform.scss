@@ -60,6 +60,20 @@
         }
       }
     }
+    .tl-task__form-task-name--view {
+      font-size: 1.125rem;
+      font-weight: 500;
+      font-family: "Inter Display";
+      color: var(--tl-text-base);
+      letter-spacing: 1.2;
+    }
+    .tl-task__form-task-desc--view {
+      font-size: var(--tl-spacing-md);
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: -0.2;
+      color: var(--tl-text-light-2);
+    }
   }
 
   .tl-task__form-tags-wrapper {
