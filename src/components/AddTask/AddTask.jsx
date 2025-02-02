@@ -15,9 +15,9 @@ const AddTask = () => {
     setTaskFormAction("create");
   };
   return (
-    <div className="tl-add-task" onClick={handleClick}>
+    <div className={`tl-add-task ${isMobile ? "tl-add-task--mobile" : ""}`} onClick={handleClick}>
       <p className="tl-add-task__text tl-padding">
-        <Icons type="plus" fill={`${isMobile ? "var(--tl-neutral-white)" : "var(--tl-theme-base)"}`} />
+        <Icons type="plus" />
         <span>Add Task</span>
       </p>
     </div>
