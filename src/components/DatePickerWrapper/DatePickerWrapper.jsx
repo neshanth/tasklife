@@ -5,7 +5,7 @@ import "./datePickerWrapper.scss";
 const DatePickerWrapper = ({ isClearable, startDate, handleDatePicker, taskFormAction, disabled = false }) => {
   const DateInput = forwardRef(({ onClick, placeholder, value }, ref) => (
     <div className="tl-task__date-input-container" ref={ref} onClick={taskFormAction === "view" ? () => {} : onClick}>
-      <Icons w="25px" h="25px" type="calendar" />
+      <Icons w="25px" h="25px" type="calendar-dots" />
       <input className="tl-task__date-input" type="text" placeholder={placeholder} value={disabled ? `${value} (Today)` : value} readOnly={disabled} />
     </div>
   ));
