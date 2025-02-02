@@ -10,17 +10,17 @@ const navigationLinks = [
   {
     name: "Dashboard",
     path: `${appPath}/dashboard`,
-    icon: <Icons type="stats" />,
+    icon: <Icons type="house" />,
   },
   {
     name: "Today",
     path: `${appPath}/today`,
-    icon: <Icons type="house" />,
+    icon: <Icons type="calendar-star" />,
   },
   {
     name: "Inbox",
     path: `${appPath}/inbox`,
-    icon: <Icons type="inbox" />,
+    icon: <Icons type="tray" />,
   },
 ];
 const Navigation = ({ handleMobileNavToggle }) => {
