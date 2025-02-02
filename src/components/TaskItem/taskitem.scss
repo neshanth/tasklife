@@ -46,18 +46,18 @@
       .tl-task-item__edit {
         &:hover {
           background-color: var(--tl-theme-light-5);
-          .tl-task-item__edit-icon path {
-            stroke: var(--tl-theme-base);
-            stroke-width: 10;
+          .stroke-shape-edit {
+            stroke: var(--tl-theme-base) !important;
           }
         }
       }
       .tl-task-item__delete {
         &:hover {
           background-color: #ffd6d6;
-          .tl-task-item__delete-icon path {
-            stroke: var(--tl-theme-dark-red);
-            stroke-width: 10;
+          .tl-task-item__delete-icon {
+            .stroke-shape-delete {
+              stroke: var(--tl-theme-dark-red) !important;
+            }
           }
         }
       }
