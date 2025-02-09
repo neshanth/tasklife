@@ -3,7 +3,7 @@ name: Generate a build and push to another branch
 on:
   push:
     branches:
-      - develop
+      - master
 env:
   REACT_APP_BASE_URL: https://api.tasklife.in
   REACT_APP_DEMO_EMAIL: demouser@demo.com
