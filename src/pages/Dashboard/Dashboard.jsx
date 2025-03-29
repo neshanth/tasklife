@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { handleTaskDeleteResponse } from "../../utils/utils";
-import StatCard from "./StatCard/StatCard";
-import BreadCrumb from "../BreadCrumb/BreadCrumb";
-import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
-import TaskContainer from "../TaskContainer/TaskContainer";
-import "./dashboard.scss";
+import StatCard from "../../components/StatCard/StatCard";
+import BreadCrumb from "../../components/BreadCrumb/BreadCrumb";
+import ContentInfo from "../../components/MainContent/ContentInfo/ContentInfo";
+import TaskContainer from "../../components/TaskContainer/TaskContainer";
 import useAppContext from "../../hooks/useAppContext";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../components/Spinner/Spinner";
+import "./dashboard.scss";
 
 function Dashboard({ tasks, updateTaskStatus, handleTaskDelete }) {
   const [stats, setStats] = useState([

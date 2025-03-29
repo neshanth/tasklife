@@ -1,16 +1,8 @@
-import React from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Spinner from "../Spinner/Spinner";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import Spinner from "../../components/Spinner/Spinner";
 import api from "../../api/api";
-import "./register.css";
-import { Link } from "react-router-dom";
-import Header from "../Header/Header";
+import Header from "../../components/Header/Header";
 import { renderToast } from "../../utils/utils";
 import useAppContext from "../../hooks/useAppContext";
 

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import Spinner from "../Spinner/Spinner";
-import api from "../../api/api";
-import Header from "../Header/Header";
-import useAppContext from "../../hooks/useAppContext";
+import Spinner from "../../components/Spinner/Spinner.jsx";
+import api from "../../api/api.js";
+import Header from "../../components/Header/Header.jsx";
+import useAppContext from "../../hooks/useAppContext.js";
 import { Figure } from "react-bootstrap";
-import Features from "../Features/Features.jsx";
+import Features from "../../components/Features/Features.jsx";
 import "./home.scss";
-import Footer from "../Footer/Footer";
-import { handleApiResponse, verifyCookie } from "../../utils/utils";
-import Hero from "../Hero/Hero.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
+import { handleApiResponse, verifyCookie } from "../../utils/utils.js";
+import Hero from "../../components/Hero/Hero.jsx";
 
 function Home() {
   let navigate = useNavigate();
