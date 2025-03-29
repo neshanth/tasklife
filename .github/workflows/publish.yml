@@ -5,9 +5,9 @@ on:
     branches:
       - master
 env:
-  REACT_APP_BASE_URL: https://api.tasklife.in
-  REACT_APP_DEMO_EMAIL: demouser@demo.com
-  REACT_APP_DEMO_PASSWORD: demo1882
+  VITE_BASE_URL: https://api.tasklife.in
+  VITE_DEMO_EMAIL: demouser@demo.com
+  VITE_DEMO_PASSWORD: demo1882
 
 jobs:
   build:

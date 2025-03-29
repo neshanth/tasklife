@@ -88,14 +88,14 @@
       align-items: center;
       gap: var(--tl-spacing-xs);
       .tl__search {
-        .tl__search-container {
-          padding: 0;
-        }
         width: 100%;
         border: none;
         border-radius: 0;
         border-bottom: 1px solid var(--tl-theme-border);
         padding: var(--tl-spacing-2xs) 0;
+        .tl__search-container {
+          padding: 0;
+        }
       }
     }
 
