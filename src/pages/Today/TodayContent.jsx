@@ -15,8 +15,8 @@ const TodayContent = ({ tasks, handleTaskDelete, updateTaskStatus, heading }) =>
     <div className="tl-today__content" onClick={handleContentOpen}>
       <div className="tl-today__content-header">
         <p className="tl-today__heading">
-          <span className="tl-today__arrow">
-            <Icons className="right" type="down" w="20" h="20" style={styleObj} />
+          <span className={`tl-today__arrow ${!show ? "tl-today__arrow--rotate" : ""}`} style={styleObj}>
+            <Icons className="right" type="down" w="20" h="20" />
           </span>
           {heading}
           <span className={`tl-today__count ${heading?.toLowerCase()}`}>{tasks.length}</span>

@@ -12,6 +12,10 @@
     .tl-today__arrow {
       position: relative;
       top: 0.25rem;
+      &.tl-today__arrow--rotate {
+        position: relative;
+        top: 0;
+      }
     }
   }
   .tl-today__content {
