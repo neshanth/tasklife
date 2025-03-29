@@ -5,11 +5,10 @@ import App from "./components/App/App.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/app.scss";
 import "./styles/queries.css";
-import { UserProvider } from "./context/context";
+import { UserProvider } from "./context/context.jsx";
 import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
-import history from "./history/history";
-import { ToastContainer } from 'react-toastify';
-
+import history from "./history/history.js";
+import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
