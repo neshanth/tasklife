@@ -1,6 +1,6 @@
-import BreadCrumb from "../BreadCrumb/BreadCrumb";
-import Filters from "../Filters/Filters";
-import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
+import BreadCrumb from "../../components/BreadCrumb/BreadCrumb";
+import Filters from "../../components/Filters/Filters";
+import ContentInfo from "../../components/MainContent/ContentInfo/ContentInfo";
 import TodayContent from "./TodayContent";
 import "./today.scss";
 

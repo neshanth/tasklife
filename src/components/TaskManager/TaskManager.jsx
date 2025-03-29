@@ -3,18 +3,19 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { getTasksResponse, renderToast, updateTaskStatusApi, handleTaskDeleteResponse } from "../../utils/utils";
 import useAppContext from "../../hooks/useAppContext";
 import api from "../../api/api";
-import Home from "../Home/Home";
-import Login from "../Login/Login";
-import Register from "../Register/Register";
+
+import Home from "../../pages/Home/Home.jsx";
+import Login from "../../pages/Login/Login.jsx";
+import Register from "../../pages/Register/Register.jsx";
+import Inbox from "../../pages/Inbox/Inbox.jsx";
+import Dashboard from "../../pages/Dashboard/Dashboard.jsx";
+import Today from "../../pages/Today/Today.jsx";
 import MainContent from "../MainContent/MainContent.jsx";
-import Inbox from "../Inbox/Inbox.jsx";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
-import Dashboard from "../Dashboard/Dashboard.jsx";
 import Spinner from "../Spinner/Spinner";
 import Sidebar from "../Sidebar/Sidebar.jsx";
 import history from "../../history/history.js";
 import TaskForm from "../TaskForm/TaskForm.jsx";
-import Today from "../Today/Today.jsx";
 
 const TaskManager = () => {
   const appPath = "/app";
@@ -194,8 +195,6 @@ const TaskManager = () => {
               path={`${appPath}/today`}
               element={
                 <Today
-                  // pendingTasks={pendingTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
-                  // completedTasks={completedTasks.filter((task) => new Date(task.due_date).toISOString().split("T")[0] === new Date().toISOString().split("T")[0])}
                   handleTaskDelete={handleTaskDelete}
                   updateTaskStatus={updateTaskStatus}
                   isToday={true}

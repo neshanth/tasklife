@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../components/Spinner/Spinner";
 import { useLocation } from "react-router-dom";
 import { renderToast } from "../../utils/utils";
 import useAppContext from "../../hooks/useAppContext";
-import BreadCrumb from "../BreadCrumb/BreadCrumb";
-import ContentInfo from "../MainContent/ContentInfo/ContentInfo";
-import Filters from "../Filters/Filters";
-import TaskContainer from "../TaskContainer/TaskContainer";
+import BreadCrumb from "../../components/BreadCrumb/BreadCrumb";
+import ContentInfo from "../../components/MainContent/ContentInfo/ContentInfo";
+import Filters from "../../components/Filters/Filters";
+import TaskContainer from "../../components/TaskContainer/TaskContainer";
 import "./inbox.scss";
 
 function Inbox({ getTasks, loading, updateTaskStatus, handleTaskDelete, tasks, pendingTasks, completedTasks }) {
